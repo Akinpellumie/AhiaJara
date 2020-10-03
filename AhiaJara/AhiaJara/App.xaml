@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AhiaJara.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <Thickness x:Key="PageMargin" Left="0" Top="0" Right="0" Bottom="0"/>
+        <ResourceDictionary>
+
+            <OnPlatform x:Key="font_book" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular" />
+                <On Platform="iOS" Value="Poppins-Regular" />
+            </OnPlatform>
+            <OnPlatform x:Key="font_medium" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-SemiBold.ttf#Poppins SemiBold" />
+                <On Platform="iOS" Value="Poppins-SemiBold" />
+            </OnPlatform>
+            <OnPlatform x:Key="font_bold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Bold.ttf#Poppins Bold" />
+                <On Platform="iOS" Value="Poppins-Bold"/>
+            </OnPlatform>
+
+            <Style x:Key="contentPage" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="#E5E5E5"/>
+            </Style>
+
+
+            <Style x:Key="GridSpace" TargetType="Grid">
+                <Setter Property="ColumnSpacing" Value="0" />
+                <Setter Property="RowSpacing" Value="0" />
+            </Style>
+
+            <Style TargetType="StackLayout">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <Color x:Key="Primary">#4DC503</Color>
+            <Color x:Key="BtnCol">#F7941D</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Subtitle"/>
+                <Setter Property="FontAttributes" Value="None"/>
+                <Setter Property="FontFamily" Value="{StaticResource font_book}" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource BtnCol}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Color x:Key="NavigationPrimary">#4DC503</Color>
+            <Color x:Key="SideDrawer">#D7E9FB</Color>
+            <Color x:Key="PrimaryDark">#A7A7A7</Color>
+            <Color x:Key="BorderColor">#CBFDD3</Color>
+            <Color x:Key="PlaceHolderColor">#89857F</Color>
+            <Color x:Key="FrameColor">#E3E2E2</Color>
+            <Color x:Key="SuccessColor">#4DC503</Color>
+            <Color x:Key="SubTextColor">#83809B</Color>
+            <Color x:Key="TxtColor">#4E4B46</Color>
+            <Color x:Key="BtnColor">#F7941D</Color>
+            <Color x:Key="moreFrameColor">#E4E4E4</Color>
+            <Color x:Key="SecondaryColor">#F7941D</Color>
+            <Color x:Key="FrameBgColor">#E3E2E2</Color>
+            <Color x:Key="mainbackground">#E5E5E5</Color>
+            <Color x:Key="background">
+                <x:Arguments>
+                    <x:Double>255</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>255</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>255</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.65</x:Double>
+                    <!-- A: 0.0-1.0 -->
+                </x:Arguments>
+            </Color>
+
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+
+            <Style x:Key="FramePinStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BorderColor" Value="#C4C4C4"/>
+                <Setter Property="HeightRequest" Value="63"/>
+                <Setter Property="WidthRequest" Value="23"/>
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+
+            <Style x:Key="FramePickerStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="50"/>
+            </Style>
+
+            <Style x:Key="FrameIconStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="3"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="WidthRequest" Value="40"/>
+                <Setter Property="CornerRadius" Value="3" />
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="FrameCard" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource font_book}"/>
+                <Setter Property="TextColor" Value="{StaticResource TxtColor}"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+            </Style>
+
+            <Style x:Key="EntryPinStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="FontFamily" Value="{StaticResource font_book}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="TextColor" Value="{StaticResource TxtColor}"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+            </Style>
+
+            <Style x:Key="FAFontStyle" TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Poppins-Regular"></On>
+                            <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular"></On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="EdtFontStyle" TargetType="Editor">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Poppins-Regular"></On>
+                            <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular"></On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Poppins-Regular"></On>
+                            <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular"></On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="EdFontStyle" TargetType="Entry">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Poppins-Regular"></On>
+                            <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular"></On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--<Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource font_book}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>-->
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily"
+                        Value="PoppinsRegular" />
+            </Style>
+
+            <Style x:Key="header" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource font_bold}" />
+                <Setter Property="FontSize" Value="Subtitle" />
+                <Setter Property="TextColor" Value="{StaticResource TxtColor}"/>
+            </Style>
+
+            <Style TargetType="Editor">
+                <Setter Property="FontFamily" Value="{StaticResource font_book}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource font_book}" />
+            </Style>
+
+
+
+            <Style x:Key="EditorStyle" TargetType="Editor">
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="100"/>
+                <Setter Property="FontFamily" Value="{StaticResource font_book}" />
+                <Setter Property="TextColor" Value="{StaticResource TxtColor}"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

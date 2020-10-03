@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Views.MorePage"
+             BackgroundColor="#F0F1F5"
+             Shell.NavBarIsVisible="False"
+             Padding="10"
+             Title="More Options">
+
+    <StackLayout Orientation="Vertical">
+
+        <StackLayout Margin="10,10,10,5" x:Name="QueStack">
+            <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
+                        <Image Source="queIcon" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="25" WidthRequest="25"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Questionnaire" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                              HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Margin="0,0,10,0" VerticalOptions="Center">
+                        <Image Source="rightArrow.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="25" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </pv:PancakeView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+        <StackLayout Margin="10,5,10,5" x:Name="SupportStack">
+            <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
+                        <Image Source="headset" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="25" WidthRequest="25"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Support" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                              HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Margin="0,0,10,0" VerticalOptions="Center">
+                        <Image Source="rightArrow.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="25" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </pv:PancakeView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+        <StackLayout Margin="10,5,10,5" x:Name="newsStack">
+            <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
+                        <Image Source="newsUpdate" Aspect="AspectFit" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="News and Update" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                              HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Margin="0,0,10,0" VerticalOptions="Center">
+                        <Image Source="rightArrow.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="25" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </pv:PancakeView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+        <StackLayout Margin="10,5,10,5" x:Name="ProfileStack">
+            <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
+                        <Image Source="proIcon" Aspect="AspectFit" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Profile" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                              HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Margin="0,0,10,0" VerticalOptions="Center">
+                        <Image Source="rightArrow.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="25" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </pv:PancakeView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+        <StackLayout Margin="10,5,10,5" x:Name="LogoutStack">
+            <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
+                        <Image Source="signOut.png" Aspect="AspectFit" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Log Out" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                              HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Margin="0,0,10,0" VerticalOptions="Center">
+                        <Image Source="rightArrow.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="25" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </pv:PancakeView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

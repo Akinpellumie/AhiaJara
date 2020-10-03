@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Controls="clr-namespace:AhiaJara.Controls"
+             x:Class="AhiaJara.Views.SignUpPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource FrameBgColor}">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Margin="10,15">
+            <StackLayout HorizontalOptions="Fill">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0" HorizontalOptions="Start">
+                        <Image HeightRequest="50" Source="ajaraLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End">
+                        <Label Text="Sign Up" FontSize="Subtitle" FontAttributes="Bold" TextColor="Accent"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Email" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                            <Controls:CustomEntry  x:Name="emailEnrty" PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Email" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="First Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                            <Controls:CustomEntry  x:Name="firstNameEnrty" VerticalOptions="End" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="First Name" 
+                                               Keyboard="Email" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Last Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                            <Controls:CustomEntry  x:Name="lastNameEnrty"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Last Name" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Phone Number" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                            <Controls:CustomEntry  x:Name="PassNameEnrty"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Phone Number" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Password" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                            <Controls:CustomEntry x:Name="txtPassword" Grid.Column="1" Margin="0,0,0,0" Placeholder="Password" FontFamily="{StaticResource font_book}"
+                                              Text="password" IsPassword="True" PlaceholderColor="{StaticResource Primary}" Style="{StaticResource EntryStyle}">
+                                <Controls:CustomEntry.Effects>
+                                    <Controls:ShowHidePassEffect />
+                                </Controls:CustomEntry.Effects>
+                            </Controls:CustomEntry>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Confirm Password" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                            <Controls:CustomEntry x:Name="confirmPass" Grid.Column="1" Margin="0,0,0,0" 
+                                              Placeholder="Password" FontFamily="{StaticResource font_book}"
+                                              Text="password" IsPassword="True" PlaceholderColor="{StaticResource Primary}" Style="{StaticResource EntryStyle}">
+                                <Controls:CustomEntry.Effects>
+                                    <Controls:ShowHidePassEffect />
+                                </Controls:CustomEntry.Effects>
+                            </Controls:CustomEntry>
+                        </Frame>
+                    </StackLayout>
+
+                    <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
+                        Text="Sign Up" HeightRequest="50" />
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

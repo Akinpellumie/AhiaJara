@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:AhiaJara.Controls" xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             mc:Ignorable="d"
+             x:Class="AhiaJara.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource FrameBgColor}">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <RelativeLayout Margin="0,0,0,5" x:Name="secondScreen">
+                <StackLayout Orientation="Vertical" VerticalOptions="Start" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0">
+                        <Image HeightRequest="150" Source="ajaraLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+
+                    <StackLayout Orientation="Vertical" Margin="15">
+
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HorizontalOptions="Fill" HeightRequest="50">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="email.png" HeightRequest="24" WidthRequest="24" Margin="5,0,0,0"></Image>
+                                <Controls:CustomEntry  x:Name="txtUsername" Grid.Column="1" PlaceholderColor="{StaticResource Primary}" Placeholder="Astrapolaris id" 
+                                               Text="{Binding username}" Keyboard="Default" Style="{StaticResource EntryStyle}" FontFamily="{StaticResource font_book}"/>
+                            </Grid>
+                        </Frame>
+
+
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,15,0,10" HorizontalOptions="Fill" HeightRequest="50">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="key.png" HeightRequest="24" WidthRequest="24" Margin="5,0,0,0"></Image>
+                                <Controls:CustomEntry x:Name="txtPassword" Grid.Column="1" Margin="0,0,0,0" Placeholder="Password" FontFamily="{StaticResource font_book}"
+                                              Text="password" IsPassword="True" PlaceholderColor="{StaticResource Primary}" Style="{StaticResource EntryStyle}">
+                                    <Controls:CustomEntry.Effects>
+                                        <Controls:ShowHidePassEffect />
+                                    </Controls:CustomEntry.Effects>
+                                </Controls:CustomEntry>
+                            </Grid>
+                        </Frame>
+
+                        <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                            <Image Source="lockQue.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="20" WidthRequest="20"/>
+                            <Label Text="Forgot Password?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" VerticalOptions="End" 
+                                   HorizontalOptions="Start" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ResetPassClicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+                        <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
+                        Text="Login" HeightRequest="50" Command="{Binding LoginCommand}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Margin="10,10,10,15" VerticalOptions="End" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}"
+                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}">
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Don't have an account?" FontSize="Subtitle" TextColor="{StaticResource TxtColor}"/>
+                        <Label Text="Sign Up" FontSize="Subtitle" TextColor="{StaticResource Primary}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding SignUpCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                    </StackLayout>
+                </StackLayout>
+            </RelativeLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
