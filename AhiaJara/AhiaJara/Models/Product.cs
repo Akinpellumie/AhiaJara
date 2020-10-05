@@ -9,5 +9,6 @@ namespace AhiaJara.Models
             public string Name { get; set; }
             public String Image { get; set; }
             public string Price { get; set; }
+            public string Quantity { get; set; }
     }
 }

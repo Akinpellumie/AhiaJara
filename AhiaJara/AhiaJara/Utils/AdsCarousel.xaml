@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Utils.AdsCarousel">
+             x:Class="AhiaJara.Utils.AdsCarousel" HeightRequest="130">
   <ContentView.Content>
-        <AbsoluteLayout HeightRequest="90">
+        <AbsoluteLayout HeightRequest="130">
             <CarouselView
-            x:Name="TheCarousel" ItemsSource="{Binding ProductModelList}"
+            x:Name="TheCarousel" ItemsSource="{Binding CarouselModelList}"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All"
             IndicatorView="indicatorview">
@@ -26,11 +26,13 @@
             </CarouselView>
             <IndicatorView
             x:Name="indicatorview"
+                VerticalOptions="End"
             AbsoluteLayout.LayoutBounds="0.5,0.95,100,100"
             AbsoluteLayout.LayoutFlags="PositionProportional"
             IndicatorColor="LightGray"
             IndicatorSize="10"
-            SelectedIndicatorColor="Yellow" />
+                Margin="0,0,0,5"
+            SelectedIndicatorColor="Accent" />
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

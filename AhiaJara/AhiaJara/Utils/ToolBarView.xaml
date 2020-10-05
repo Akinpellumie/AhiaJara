@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.ToolBarView"
+             BackgroundColor="#E5E5E5"
+             HeightRequest="50" Padding="15,0,15,0">
+    <ContentView.Content>
+        <Grid BackgroundColor="#E5E5E5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <ImageButton HeightRequest="25" BackgroundColor="Transparent" x:Name="back"  
+                                     Source="arrow" WidthRequest="25" Clicked="Back"
+                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label
+                    Grid.Column="1"
+                    FontSize="18"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Hand Saanitizer"
+                    TextColor="{StaticResource TxtColor}"
+                    VerticalOptions="CenterAndExpand" />
+            
+            <StackLayout Grid.Column="2" Margin="5,0,0,0" Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Grid Grid.Column="0">
+                    <ImageButton HeightRequest="25" BackgroundColor="Transparent" x:Name="cart"  
+                                     Source="cartIcon" WidthRequest="25"
+                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <pv:PancakeView CornerRadius="10" BackgroundColor="Red"
+                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
+                        <Label Text="2" TextColor="White" FontSize="6" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Image HeightRequest="25" x:Name="NotsIcon"  
+                                     Source="bellNot" WidthRequest="25"
+                                    Aspect="AspectFit"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    <pv:PancakeView CornerRadius="10" BackgroundColor="Red"
+                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
+                        <Label Text="3" TextColor="White" FontSize="6" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

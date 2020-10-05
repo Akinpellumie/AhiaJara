@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.CheckOutView">
+  <ContentView.Content>
+        <pv:PancakeView CornerRadius="25,25,0,0" BackgroundColor="White"
+                                                HorizontalOptions="Fill" VerticalOptions="Fill" Padding="10">
+            <Grid>
+                <Label VerticalOptions="Start" Text="Order Summary" 
+                   TextColor="{StaticResource TxtColor}"
+                   FontSize="Subtitle"
+                   HorizontalOptions="Start"/>
+
+                <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+                    <StackLayout
+                          x:Name="latestProducts"
+                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    Orientation="Vertical"
+                    Spacing="15">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40*"/>
+                                        <ColumnDefinition Width="60*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                                                HorizontalOptions="Fill" HeightRequest="150" WidthRequest="150" >
+
+                                        <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
+                                    </pv:PancakeView>
+                                    <StackLayout Orientation="Vertical" Grid.Column="1">
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                    </StackLayout>
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference latestProducts}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+                
+                <StackLayout VerticalOptions="End" Orientation="Vertical">
+
+                    <pv:PancakeView BackgroundColor="#F0F0F0" 
+                                    HorizontalOptions="Fill"
+                                    HeightRequest="60"
+                                    Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Total Price:"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Start"
+                               Grid.Column="0"/>
+                            
+                            <Label Text="{Binding Price}"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalOptions="End"
+                               Grid.Column="1"/>
+                        </Grid>
+                    </pv:PancakeView>
+
+                    <StackLayout>
+                        <Button BackgroundColor="Accent"
+                                HorizontalOptions="Fill"
+                                Text="CONTINUE"
+                                TextColor="White"
+                                HeightRequest="50"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </pv:PancakeView>
+    </ContentView.Content>
+</ContentView>

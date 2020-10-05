@@ -22,10 +22,7 @@
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0">
-                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HorizontalOptions="Fill" HeightRequest="50">
-                            <controls:CustomSearch  x:Name="txtSearch" PlaceholderColor="{StaticResource TxtColor}" Placeholder="Search" 
-                                Keyboard="Default" Style="{StaticResource EntryStyle}" FontFamily="{StaticResource font_book}"/>
-                        </Frame>
+                        <View:CustomSearchView/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Margin="5,0,0,0" Orientation="Horizontal">
@@ -41,109 +38,132 @@
             </StackLayout>
             <!--SearchBar End-->
             
-            <!--carouselStack start--><!--
+            <!--carouselStack start-->
             <View:AdsCarousel/>
-            --><!--carouselStack end-->
-            
-            <!--productStack start-->
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    Margin="0,20,0,20"
+            <!--carouselStack end-->
+
+            <!--scrollingProducts starts-->
+            <ScrollView>
+                <StackLayout>
+                    <!--productStack start-->
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                    Margin="0,10,0,5"
                     FontSize="14"
                     HorizontalOptions="StartAndExpand"
                     Text="Latest Products" FontAttributes="Bold"
                     TextColor="{StaticResource TxtColor}"
                     VerticalOptions="Center" />
-                <!--<Label
+                        <!--<Label
                     Margin="0,20,0,20"
                     FontSize="11"
                     HorizontalOptions="EndAndExpand"
                     Text="See More"
                     TextColor="White"
                     VerticalOptions="Center" />-->
-            </StackLayout>
+                    </StackLayout>
 
-            <ScrollView Orientation="Horizontal">
-                <StackLayout
+                    <ScrollView Orientation="Horizontal">
+                        <StackLayout
+                          x:Name="latestProducts"
                     BindableLayout.ItemsSource="{Binding ProductModelList}"
                     Orientation="Horizontal"
                     Spacing="15">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-                                <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
                                                 HorizontalOptions="Fill" HeightRequest="150" WidthRequest="150" >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="70*"/>
-                                            <RowDefinition Height="30*"/>
-                                        </Grid.RowDefinitions>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="70*"/>
+                                                    <RowDefinition Height="30*"/>
+                                                </Grid.RowDefinitions>
 
-                                        <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
-                                        <StackLayout Orientation="Vertical" Grid.Row="1">
-                                            <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
+                                                <StackLayout Orientation="Vertical" Grid.Row="1">
+                                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                            <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                    <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
-                                        </StackLayout>
+                                                </StackLayout>
+                                            </Grid>
+                                            <pv:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference latestProducts}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                                            </pv:PancakeView.GestureRecognizers>
+                                        </pv:PancakeView>
+                                        
                                     </Grid>
-                                </pv:PancakeView>
-                            </Grid>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-            </ScrollView>
-            <!--productStack Ends-->
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                    <!--productStack Ends-->
 
-            <!--PopularproductStack start-->
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    Margin="0,20,0,20"
+                    <!--PopularproductStack start-->
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                    Margin="0,10,0,5"
                     FontSize="14"
                     HorizontalOptions="StartAndExpand"
                     Text="Popular Products" FontAttributes="Bold"
                     TextColor="{StaticResource TxtColor}"
                     VerticalOptions="Center" />
-                <!--<Label
+                        <!--<Label
                     Margin="0,20,0,20"
                     FontSize="11"
                     HorizontalOptions="EndAndExpand"
                     Text="See More"
                     TextColor="White"
                     VerticalOptions="Center" />-->
-            </StackLayout>
+                    </StackLayout>
 
-            <ScrollView Orientation="Horizontal">
-                <StackLayout
+                    <ScrollView Orientation="Horizontal">
+                        <StackLayout
+                            x:Name="popularProducts"
                     BindableLayout.ItemsSource="{Binding ProductModelList}"
                     Orientation="Horizontal"
                     Spacing="15">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-                                <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
                                                 HorizontalOptions="Fill" HeightRequest="150" WidthRequest="150" >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="70*"/>
-                                            <RowDefinition Height="30*"/>
-                                        </Grid.RowDefinitions>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="70*"/>
+                                                    <RowDefinition Height="30*"/>
+                                                </Grid.RowDefinitions>
 
-                                        <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
-                                        <StackLayout Orientation="Vertical" Grid.Row="1">
-                                            <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
+                                                <StackLayout Orientation="Vertical" Grid.Row="1">
+                                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                            <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                    <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
-                                        </StackLayout>
+                                                </StackLayout>
+                                               
+                                            </Grid>
+                                            <pv:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference popularProducts}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                                            </pv:PancakeView.GestureRecognizers>
+                                        </pv:PancakeView>
+                                       
                                     </Grid>
-                                </pv:PancakeView>
-                            </Grid>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                    <!--PopularproductStack Ends-->
                 </StackLayout>
             </ScrollView>
-            <!--PopularproductStack Ends-->
+            <!--scrollingProducts ends-->
 
         </StackLayout>
     </ContentPage.Content>

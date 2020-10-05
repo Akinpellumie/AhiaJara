@@ -23,7 +23,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="Questionnaire" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                        <Label Text="Questionnaire" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
                               HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                     </StackLayout>
 
@@ -52,7 +52,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="Support" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                        <Label Text="Support" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
                               HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                     </StackLayout>
 
@@ -82,7 +82,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="News and Update" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                        <Label Text="News and Update" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
                               HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                     </StackLayout>
 
@@ -111,7 +111,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="Profile" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                        <Label Text="Profile" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
                               HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                     </StackLayout>
 
@@ -140,7 +140,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="Log Out" TextColor="{StaticResource Primary}" VerticalOptions="Center"
+                        <Label Text="Log Out" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
                               HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                     </StackLayout>
 

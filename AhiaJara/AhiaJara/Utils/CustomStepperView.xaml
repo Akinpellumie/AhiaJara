@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AhiaJara.Utils.CustomStepperView">
+  <ContentView.Content>
+        <StackLayout x:Name="Container">
+            <!--<Label BindingContext="{x:Reference stepper}" Text="{Binding Value}" />
+            <Stepper Minimum="1" Maximum="Infinity" x:Name="stepper" Increment="1" />-->
+
+            <StackLayout Orientation="Horizontal">
+                <Button BorderColor="{StaticResource TxtColor}"
+                        BorderWidth="1"
+                        BackgroundColor="Transparent"
+                        Text="-"
+                        TextColor="{StaticResource TxtColor}"
+                        x:Name="MinusBtn"
+                        FontSize="Title"
+                        HorizontalOptions="Center"/>
+                <Entry Text="{Binding Value}" 
+                       x:Name="qty"
+                       FontSize="20"
+                       Keyboard="Numeric"
+                       TextColor="{StaticResource Primary}"/>
+                <Button BorderColor="{StaticResource TxtColor}"
+                        BorderWidth="1"
+                        Text="+" 
+                        TextColor="{StaticResource TxtColor}"
+                        BackgroundColor="Transparent"
+                        x:Name="PlusBtn"
+                        FontSize="Title"
+                        HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

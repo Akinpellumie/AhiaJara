@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Views.DetailPage"
+             BackgroundColor="{StaticResource mainbackground}"
+            NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <Grid>
+            <View:ToolBarView/>
+            <Grid Margin="0,50,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="60*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image VerticalOptions="Fill" Source="{Binding Image}" Aspect="AspectFit" HorizontalOptions="Fill"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <pv:PancakeView CornerRadius="25,25,0,0" BackgroundColor="White"
+                                                HorizontalOptions="Fill" VerticalOptions="Fill" Padding="10">
+                        <Grid>
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Padding="15,10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Name}" Grid.Column="0"  TextColor="{StaticResource TxtColor}" 
+                                   FontSize="Subtitle" HorizontalOptions="Start"/>
+
+                                        <Label Text="{Binding Price}" Grid.Column="1" TextColor="{StaticResource TxtColor}" 
+                                   FontSize="Subtitle" FontAttributes="Bold" HorizontalOptions="End"/>
+                                    </Grid>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical">
+                                    <Label FontSize="Body"
+                                       Text="Open your door to the world of grilling with the sleek Spirit II E-210 gas grill. This two burner grill is built to fit small spaces, and packed with features such as the powerful GS4 grilling system, iGrill capability"
+                                       TextColor="{StaticResource TxtColor}"
+                                       LineBreakMode="WordWrap"
+                                       Margin="0,5,0,10"/>
+                                    <Label FontSize="Subtitle"
+                                       Text="Quantity"
+                                       TextColor="{StaticResource TxtColor}"
+                                       Margin="0,2,0,3"/>
+
+                                    <View:CustomStepperView/>
+
+                                </StackLayout>
+                            </StackLayout>
+
+                            <Grid VerticalOptions="End" HorizontalOptions="Fill">
+                                <Button Grid.Column="0" 
+                                        BorderColor="Accent" 
+                                        Text="ADD CART" 
+                                        x:Name="cartBtn"
+                                        Clicked="ExecuteCallPopUpCommand"
+                                        TextColor="Accent"
+                                        BackgroundColor="Transparent"
+                                        BorderWidth="2"
+                                        CornerRadius="15"/>
+                                
+                                <Button Grid.Column="1" 
+                                        BackgroundColor="Accent" 
+                                        Text="BUY NOW" 
+                                        Command="{Binding Path=BindingContext.NavigateToCheckOutCommand}"
+                                        CommandParameter="{Binding .}"
+                                        TextColor="White"
+                                        CornerRadius="15"/>
+                            </Grid>
+                        </Grid>
+
+                    </pv:PancakeView>
+                </Grid>
+                
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

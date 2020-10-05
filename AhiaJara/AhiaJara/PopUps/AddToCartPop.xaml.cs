@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AhiaJara.Utils
+namespace AhiaJara.PopUps
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AdvertCarousel : ContentView
+    public partial class AddToCartPop
     {
-        public AdvertCarousel()
+        public AddToCartPop()
         {
             InitializeComponent();
         }
