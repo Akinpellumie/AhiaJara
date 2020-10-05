@@ -15,10 +15,10 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-        public DetailPage(Product productModel)
+        public DetailPage(Product proModel)
         {
             InitializeComponent();
-            BindingContext = productModel;
+            BindingContext = proModel;
             //cartBtn.Clicked += ExecuteCallPopUpCommand();
         }
 
