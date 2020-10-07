@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="AhiaJara.Utils.ProductListView">
+  <ContentView.Content>
+      <StackLayout>
+            <flv:FlowListView FlowColumnCount="2" 
+                                              FlowItemsSource="{Binding ProductModelList}" 
+                                              x:Name="latestProducts"
+                                              HorizontalOptions="Fill"
+                                              VerticalOptions="Fill"
+                              FlowIsLoadingInfiniteEnabled="False"
+                              HasUnevenRows="True"
+                              RowHeight="150">
+
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="8,5"
+                                                HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70*"/>
+                                    <RowDefinition Height="30*"/>
+                                </Grid.RowDefinitions>
+
+                                <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
+                                <StackLayout Orientation="Vertical" Grid.Row="1">
+                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                    <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </Grid>
+                            <pv:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference latestProducts}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                            </pv:PancakeView.GestureRecognizers>
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+
+            </flv:FlowListView>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -15,7 +15,7 @@ namespace AhiaJara.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            BindingContext = new LoginViewModel();
         }
 
         public async void ResetPassClicked(object sender, EventArgs e)

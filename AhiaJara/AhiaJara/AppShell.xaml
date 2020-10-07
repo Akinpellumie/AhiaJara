@@ -85,7 +85,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
+    <TabBar Route="main">
         <Tab Title="Home" Icon="HomeIco.png">
             <ShellContent ContentTemplate="{DataTemplate local:Dashboard}" />
         </Tab>

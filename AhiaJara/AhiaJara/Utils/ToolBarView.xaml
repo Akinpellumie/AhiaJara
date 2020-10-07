@@ -20,8 +20,9 @@
             <Label
                     Grid.Column="1"
                     FontSize="18"
-                    HorizontalOptions="CenterAndExpand"
-                    Text="Hand Saanitizer"
+                    Margin="20,0,0,0"
+                    HorizontalOptions="Start"
+                    Text="{Binding Name}"
                     TextColor="{StaticResource TxtColor}"
                     VerticalOptions="CenterAndExpand" />
             
@@ -35,10 +36,11 @@
                 <Grid Grid.Column="0">
                     <ImageButton HeightRequest="25" BackgroundColor="Transparent" x:Name="cart"  
                                      Source="cartIcon" WidthRequest="25"
-                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <pv:PancakeView CornerRadius="10" BackgroundColor="Red"
+                                    Aspect="AspectFit"  HorizontalOptions="Center"
+                                Command="{Binding NavigateToCartPageCommand}" VerticalOptions="Center"/>
+                    <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
                                                 HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
-                        <Label Text="2" TextColor="White" FontSize="6" 
+                        <Label Text="2" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                     </pv:PancakeView>
                 </Grid>
@@ -46,9 +48,9 @@
                     <Image HeightRequest="25" x:Name="NotsIcon"  
                                      Source="bellNot" WidthRequest="25"
                                     Aspect="AspectFit"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
-                    <pv:PancakeView CornerRadius="10" BackgroundColor="Red"
+                    <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
                                                 HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
-                        <Label Text="3" TextColor="White" FontSize="6" 
+                        <Label Text="3" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                     </pv:PancakeView>
                 </Grid>

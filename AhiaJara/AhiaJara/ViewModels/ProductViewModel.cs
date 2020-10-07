@@ -24,12 +24,13 @@ namespace AhiaJara.ViewModels
             NavigateToDetailPageCommand = new Command<Product>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
             CallAddToCartPopUpCommand = new Command<Product>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<Product>(async (model) => await ExecuteCheckOutCommand(model));
-
+            NavigateToCartPageCommand = new Command(CartPage_Clicked);
         }
 
         #region Properties
 
         public Command NavigateToDetailPageCommand { get; }
+        public Command NavigateToCartPageCommand { get; }
         public Command CallAddToCartPopUpCommand { get; }
         public Command NavigateToCheckOutCommand{get; }
         private ObservableCollection<Product> productModelList;
@@ -88,6 +89,11 @@ namespace AhiaJara.ViewModels
         private async Task ExecuteCheckOutCommand(Product model)
         {
             await Navigation.PushAsync(new CheckOutPage(model));
+        }
+
+        public async void CartPage_Clicked()
+        {
+            await Navigation.PushAsync(new CartPage());
         }
 
         private async Task ExecuteCallPopUpCommand()

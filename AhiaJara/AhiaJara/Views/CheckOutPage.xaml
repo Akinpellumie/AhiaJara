@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils"
              x:Class="AhiaJara.Views.CheckOutPage"
-             BackgroundColor="{StaticResource mainBackground}">
+             BackgroundColor="{StaticResource mainbackground}"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
 
         <StackLayout>

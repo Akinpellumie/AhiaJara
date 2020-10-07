@@ -18,7 +18,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical" VerticalOptions="Center" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                <StackLayout Margin="15" Orientation="Vertical" VerticalOptions="Center" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
 
                     <StackLayout Orientation="Vertical" Margin="15">

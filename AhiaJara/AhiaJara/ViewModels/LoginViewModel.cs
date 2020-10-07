@@ -23,11 +23,11 @@ namespace AhiaJara.ViewModels
             await Shell.Current.GoToAsync($"//{nameof(AppShell)}");
         }
 
-        public void OnLoginBtn_Clicked(object sender)
+        public async void OnLoginBtn_Clicked(object sender)
         {
-            Application.Current.MainPage = new NavigationPage(new AppShell());
-            //AppShell fpm = new AppShell();
-            //Application.Current.MainPage = fpm;
+            await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "1");
+            Application.Current.MainPage = new AppShell();
+            await Shell.Current.GoToAsync("//main");
         }
 
         private void OnSignUpClicked(object obj)

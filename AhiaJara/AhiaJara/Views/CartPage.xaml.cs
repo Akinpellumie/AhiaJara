@@ -1,5 +1,4 @@
-﻿using AhiaJara.Models;
-using AhiaJara.ViewModels;
+﻿using AhiaJara.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +11,14 @@ using Xamarin.Forms.Xaml;
 namespace AhiaJara.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CheckOutPage : ContentPage
+    public partial class CartPage : ContentPage
     {
         ProductViewModel ProductViewModel;
-        public CheckOutPage(Product productModel)
+        public CartPage()
         {
-            ProductViewModel = new ProductViewModel(Navigation);
-            InitializeComponent();
-            BindingContext = productModel;
+                ProductViewModel = new ProductViewModel(Navigation);
+                BindingContext = ProductViewModel;
+                InitializeComponent();
         }
-
     }
 }

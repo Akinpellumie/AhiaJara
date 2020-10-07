@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.CartView">
+  <ContentView.Content>
+        <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+            <StackLayout
+                     x:Name="cartItems"
+                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    Orientation="Vertical"
+                    Spacing="10"
+                    Margin="10,0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                                                HorizontalOptions="Fill" HeightRequest="120">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="60*"/>
+                                </Grid.ColumnDefinitions>
+                                <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="#F0F0F0" Padding="15"
+                                                HorizontalOptions="Fill" HeightRequest="150">
+
+                                    <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
+                                </pv:PancakeView>
+                                <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                    <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                </StackLayout>
+                                <ImageButton Grid.Column="1" Source="closeIcon" 
+                                             HeightRequest="30"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="30"
+                                             Margin="0,10,10,0"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Start"/>
+                            </Grid>
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentView.Content>
+</ContentView>

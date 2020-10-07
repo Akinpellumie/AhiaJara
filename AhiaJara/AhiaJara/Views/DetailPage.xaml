@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <Grid>
             <View:ToolBarView/>
-            <Grid Margin="0,50,0,0">
+            <Grid Margin="0,50,0,0" x:Name="details">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40*"/>
                     <RowDefinition Height="60*"/>
@@ -63,12 +63,11 @@
                                         BackgroundColor="Transparent"
                                         BorderWidth="2"
                                         CornerRadius="15"/>
-                                
+
                                 <Button Grid.Column="1" 
                                         BackgroundColor="Accent" 
                                         Text="BUY NOW" 
-                                        Command="{Binding Path=BindingContext.NavigateToCheckOutCommand}"
-                                        CommandParameter="{Binding .}"
+                                        Clicked="CheckOutPage_Clicked"
                                         TextColor="White"
                                         CornerRadius="15"/>
                             </Grid>

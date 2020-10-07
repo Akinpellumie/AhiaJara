@@ -15,8 +15,10 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
+        Product productModel;
         public DetailPage(Product proModel)
         {
+            productModel = proModel;
             InitializeComponent();
             BindingContext = proModel;
             //cartBtn.Clicked += ExecuteCallPopUpCommand();
@@ -26,7 +28,7 @@ namespace AhiaJara.Views
         {
             await PopupNavigation.Instance.PushAsync(new AddToCartPop());
         }
-        public async void CheckOutPage_Clicked(object sender, EventArgs e, Product productModel)
+        public async void CheckOutPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CheckOutPage(productModel));
         }

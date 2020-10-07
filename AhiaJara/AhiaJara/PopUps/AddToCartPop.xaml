@@ -12,8 +12,8 @@
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation DurationIn="100"
                                    DurationOut="100"
-                                   EasingIn="ZoomIn"
-                                   EasingOut="ZoomOut"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
                                    HasBackgroundAnimation="True"
                                    PositionIn="Center"
                                    PositionOut="Center"
@@ -24,20 +24,26 @@
     <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
     <pv:PancakeView Padding="15"
                 CornerRadius="15"
+                    HeightRequest="150"
                  BackgroundColor="White"
-                 HorizontalOptions="CenterAndExpand"
-                 VerticalOptions="Center">
+                 HorizontalOptions="Fill"
+                    Margin="20"
+                 VerticalOptions="CenterAndExpand">
 
-        <StackLayout Orientation="Vertical">
+        <Grid >
             <Label TextColor="{StaticResource TxtColor}"
                    Text="Item Added To Cart"
                    FontSize="Subtitle"
+                   VerticalOptions="CenterAndExpand"
+                   Margin="0,0,0,55"
                    HorizontalOptions="Center"/>
             <Button Text="OK"
+                    Clicked="ClosePopUp_Clicked"
+                    VerticalOptions="End"
                     TextColor="White"
                     BackgroundColor="Accent"
                     CornerRadius="15"
                     HorizontalOptions="Center"/>
-        </StackLayout>
+        </Grid>
     </pv:PancakeView>
 </pages:PopupPage>
