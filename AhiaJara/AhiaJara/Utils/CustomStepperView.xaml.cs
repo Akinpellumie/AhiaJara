@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AhiaJara.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,48 +13,43 @@ namespace AhiaJara.Utils
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CustomStepperView : ContentView
     {
-        public static readonly BindableProperty TextProperty =
-             BindableProperty.Create(
-                propertyName: "Text",
-                 returnType: typeof(int),
-                 declaringType: typeof(CustomStepperView),
-                 defaultValue: 1,
-                 defaultBindingMode: BindingMode.TwoWay);
+        //public static readonly BindableProperty TextProperty =
+        //     BindableProperty.Create(
+        //        propertyName: "Text",
+        //         returnType: typeof(int),
+        //         declaringType: typeof(CustomStepperView),
+        //         defaultValue: 1,
+        //         defaultBindingMode: BindingMode.TwoWay);
 
-        public int Text
-        {
-            get { return (int)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
+        //public int Text
+        //{
+        //    get { return (int)GetValue(TextProperty); }
+        //    set { SetValue(TextProperty, value); }
+        //}
+        ProductViewModel ProductViewModel;
         public CustomStepperView()
         {
+            ProductViewModel = new ProductViewModel(Navigation);
             InitializeComponent();
-            MinusBtn.HeightRequest = 15;
-            PlusBtn.HeightRequest = 15;
-            PlusBtn.WidthRequest = 40;
-            MinusBtn.WidthRequest = 40;
-            PlusBtn.Clicked += PlusBtn_Clicked;
-            MinusBtn.Clicked += MinusBtn_Clicked;
-            qty.SetBinding(Entry.TextProperty, new Binding(nameof(Text), BindingMode.TwoWay, source: this));
-            qty.TextChanged += Entry_TextChanged;
+            this.BindingContext = ProductViewModel;
         }
 
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(e.NewTextValue))
-                this.Text = int.Parse(e.NewTextValue);
-        }
+        //private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(e.NewTextValue))
+        //        this.Text = int.Parse(e.NewTextValue);
+        //}
 
-        private void MinusBtn_Clicked(object sender, EventArgs e)
-        {
-            if (Text > 1)
-                Text--;
-        }
+        //private void MinusBtn_Clicked(object sender, EventArgs e)
+        //{
+        //    if (Text > 1)
+        //        Text--;
+        //}
 
-        private void PlusBtn_Clicked(object sender, EventArgs e)
-        {
-            Text++;
-        }
+        //private void PlusBtn_Clicked(object sender, EventArgs e)
+        //{
+        //    Text++;
+        //}
         //public class CustomStepper : StackLayout
         //{
         //    Button PlusBtn;

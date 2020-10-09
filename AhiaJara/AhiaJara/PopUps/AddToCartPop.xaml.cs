@@ -13,8 +13,10 @@ namespace AhiaJara.PopUps
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddToCartPop
     {
-        public AddToCartPop()
+        int qtyCnt;
+        public AddToCartPop(int txt)
         {
+            qtyCnt = txt;
             InitializeComponent();
         }
 

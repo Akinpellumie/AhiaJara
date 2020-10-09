@@ -7,22 +7,32 @@
             <!--<Label BindingContext="{x:Reference stepper}" Text="{Binding Value}" />
             <Stepper Minimum="1" Maximum="Infinity" x:Name="stepper" Increment="1" />-->
 
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" x:Name="Stepper">
                 <Button BorderColor="{StaticResource TxtColor}"
                         BorderWidth="1"
                         BackgroundColor="Transparent"
+                        HeightRequest="30"
+                        WidthRequest="40"
+                        CornerRadius="10"
                         Text="-"
+                        Command="{Binding Path=BindingContext.MinusBtnCommand, Source={x:Reference Stepper}}"
+                        CommandParameter="{Binding .}"
                         TextColor="{StaticResource TxtColor}"
                         x:Name="MinusBtn"
                         FontSize="Title"
                         HorizontalOptions="Center"/>
-                <Entry Text="{Binding Value}" 
+                <Entry Text="{Binding Text, UpdateSourceEventName=PropertyChanged}" 
                        x:Name="qty"
                        FontSize="20"
                        Keyboard="Numeric"
                        TextColor="{StaticResource Primary}"/>
                 <Button BorderColor="{StaticResource TxtColor}"
                         BorderWidth="1"
+                        HeightRequest="30"
+                        WidthRequest="40"
+                        CornerRadius="10"
+                        Command="{Binding Path=BindingContext.PlusBtnCommand, Source={x:Reference Stepper}}"
+                        CommandParameter="{Binding .}"
                         Text="+" 
                         TextColor="{StaticResource TxtColor}"
                         BackgroundColor="Transparent"

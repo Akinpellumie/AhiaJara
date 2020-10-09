@@ -8,6 +8,7 @@ using Android.Widget;
 using FFImageLoading.Forms.Platform;
 using Xamarin.Forms.Platform.Android;
 using Android.OS;
+using Sharpnado.Presentation.Forms.Droid;
 
 namespace AhiaJara.Droid
 {
@@ -24,6 +25,7 @@ namespace AhiaJara.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.SetFlags(new string[] { "CarouselView_Experimental", "SwipeView_Experimental", "IndicatorView_Experimental" });
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            SharpnadoInitializer.Initialize();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             CachedImageRenderer.Init(true);
             CachedImageRenderer.InitImageViewHandler();

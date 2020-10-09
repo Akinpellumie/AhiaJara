@@ -1,5 +1,4 @@
-﻿using AhiaJara.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AhiaJara.Utils
+namespace AhiaJara.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CheckOutView : ContentView
+    public partial class NewTabbedPage : ContentPage
     {
-        public CheckOutView()
+        public NewTabbedPage()
         {
             InitializeComponent();
         }

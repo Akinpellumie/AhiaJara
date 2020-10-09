@@ -89,7 +89,7 @@
         <Tab Title="Home" Icon="HomeIco.png">
             <ShellContent ContentTemplate="{DataTemplate local:Dashboard}" />
         </Tab>
-        <Tab Title="Skin Issues" Icon="skinMenu.png">
+        <Tab Title="SkinCare" Icon="skinMenu.png">
             <ShellContent ContentTemplate="{DataTemplate local:SkinIssuePage}" />
         </Tab>
         <Tab Title="BeSpoke" Icon="beSpokeMenu.png">

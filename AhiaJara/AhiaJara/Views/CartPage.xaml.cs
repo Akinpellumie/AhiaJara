@@ -1,4 +1,5 @@
-﻿using AhiaJara.ViewModels;
+﻿using AhiaJara.Models;
+using AhiaJara.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,18 @@ namespace AhiaJara.Views
     public partial class CartPage : ContentPage
     {
         ProductViewModel ProductViewModel;
+        //Product prodModel;
         public CartPage()
         {
-                ProductViewModel = new ProductViewModel(Navigation);
-                BindingContext = ProductViewModel;
-                InitializeComponent();
+            ProductViewModel = new ProductViewModel(Navigation);
+            //prodModel = productModel;
+            InitializeComponent();
+            this.BindingContext = ProductViewModel;
+        }
+
+        public async void ContinueBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OrderConPage());
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.CardPaymentView">
+    <ContentView.Content>
+        <StackLayout>
+            <pv:PancakeView
+                BackgroundColor="White" 
+                HeightRequest="120"
+                CornerRadius="15"
+                Padding="5"
+                HorizontalOptions="Fill"
+                Margin="10,15">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="card"
+                           Margin="10,3"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFit"
+                           Grid.Column="0"/>
+
+                    <Label Text="Card Payment"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           Grid.Column="1"
+                           TextColor="{StaticResource TxtColor}"/>
+                </Grid>
+            </pv:PancakeView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

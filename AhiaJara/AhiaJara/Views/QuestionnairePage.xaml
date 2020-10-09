@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:Controls="clr-namespace:AhiaJara.Controls"
+             x:Class="AhiaJara.Views.QuestionnairePage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
+    <ContentPage.Content>
+        <StackLayout>
+            <View:ToolBarView Title="Questionnaire"/>
+
+            <StackLayout Orientation="Vertical" Padding="15">
+                <Label 
+                    Text="Tell us more about yourself, whether we can help you"
+                    HorizontalOptions="Fill"
+                    TextColor="{StaticResource TxtColor}"
+                    FontSize="17"
+                    LineBreakMode="WordWrap"
+                    Margin="0,5,5,10"/>
+
+                <ScrollView Orientation="Vertical">
+                    <StackLayout Orientation="Vertical" x:Name="quest">
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="How did you hear about us?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="40" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">  
+                                    <Controls:CustomPicker.Items>
+                                        <x:String>Friend</x:String>
+                                        <x:String>Social Media</x:String>
+                                        <x:String>Adverts</x:String>
+                                        <x:String>Newspaper</x:String>
+                                    </Controls:CustomPicker.Items>
+                                </Controls:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+                        
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="What is the name of your body location?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomEntry  x:Name="bdyLtnEntry" VerticalOptions="End" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g. body lotion" 
+                                               Keyboard="Email" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="How long have you been using this lotion?"
+                                   TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                                <Controls:CustomEntry  x:Name="lotiondurEntry"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g. 3 months" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="When last did you have a skin reaction?" 
+                                   TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                                <Controls:CustomEntry  x:Name="rxnEntry"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g. 4 weeks ago" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="When caused the skin reaction?" 
+                                   TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame BackgroundColor="White" Padding="0" 
+                                   BorderColor="Transparent" Style="{StaticResource FrameEditorStyle}"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="False">
+                                <Controls:CustomEditor AutoSize="TextChanges"  x:Name="causesEntry"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Tell us about the cause" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="What is your skin type?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FramePickerStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="40" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                    <Controls:CustomPicker.Items>
+                                        <x:String>Dry Skin</x:String>
+                                        <x:String>Normal Skin</x:String>
+                                        <x:String>Oily Skin</x:String>
+                                        <x:String>Combination Skin</x:String>
+                                    </Controls:CustomPicker.Items>
+                                </Controls:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="What is your skin color?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FramePickerStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="40" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                    <Controls:CustomPicker.Items>
+                                        <x:String>Ebony</x:String>
+                                        <x:String>White</x:String>
+                                        <x:String>Caramel</x:String>
+                                        <x:String>Fair</x:String>
+                                    </Controls:CustomPicker.Items>
+                                </Controls:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                      
+                        <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
+                        Text="SUBMIT" HeightRequest="50" Margin="0,10" />
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
