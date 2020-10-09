@@ -28,8 +28,8 @@
                         <Label Text="Email" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                         <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                            <Controls:CustomEntry  x:Name="emailEnrty" PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Email" 
-                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            <Controls:CustomEntry  x:Name="emailEnrty" PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Email" FontFamily="{StaticResource font_book}"
+                                    Text="{Binding Email, Mode=TwoWay}" Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Margin="5,1,5,1">
@@ -37,8 +37,8 @@
                         <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                             <Controls:CustomEntry  x:Name="firstNameEnrty" VerticalOptions="End" 
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="First Name" 
-                                               Keyboard="Email" Style="{StaticResource EntryStyle}"/>
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="First Name" FontFamily="{StaticResource font_book}"
+                                              Text="{Binding Firstname, Mode=TwoWay}" Keyboard="Email" Style="{StaticResource EntryStyle}"/>
                         </Frame>
                     </StackLayout>
                     <StackLayout Margin="5,1,5,1">
@@ -46,8 +46,8 @@
                         <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
                             <Controls:CustomEntry  x:Name="lastNameEnrty"
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Last Name" 
-                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Last Name" FontFamily="{StaticResource font_book}"
+                                              Text="{Binding Lastname, Mode=TwoWay}" Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                         </Frame>
                     </StackLayout>
 
@@ -56,8 +56,8 @@
                         <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
                             <Controls:CustomEntry  x:Name="PassNameEnrty"
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Phone Number" 
-                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Phone Number" FontFamily="{StaticResource font_book}" 
+                                               Text="{Binding PhoneNo, Mode=TwoWay}"  Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                         </Frame>
                     </StackLayout>
 
@@ -66,7 +66,7 @@
                         <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
                             <Controls:CustomEntry x:Name="txtPassword" Grid.Column="1" Margin="0,0,0,0" Placeholder="Password" FontFamily="{StaticResource font_book}"
-                                              Text="password" IsPassword="True" PlaceholderColor="{StaticResource Primary}" Style="{StaticResource EntryStyle}">
+                                              Text="{Binding Password, Mode=TwoWay}" IsPassword="True" PlaceholderColor="{StaticResource Primary}" Style="{StaticResource EntryStyle}">
                                 <Controls:CustomEntry.Effects>
                                     <Controls:ShowHidePassEffect />
                                 </Controls:CustomEntry.Effects>
@@ -89,7 +89,7 @@
                     </StackLayout>
 
                     <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
-                        Text="Sign Up" HeightRequest="50" />
+                        Text="Sign Up" HeightRequest="50" Command="{Binding SignUpCommand}" />
 
                 </StackLayout>
             </ScrollView>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AhiaJara.Services;
 using AhiaJara.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,6 +17,11 @@ namespace AhiaJara.Views
         {
             InitializeComponent();
             BindingContext = new LoginViewModel();
+
+            //MessagingCenter.Subscribe<UserAccessService>(this, "SuccessLogin", (sender) =>
+            //{
+            //    OnSuccessLogin();
+            //});
         }
 
         public async void ResetPassClicked(object sender, EventArgs e)
@@ -23,10 +29,16 @@ namespace AhiaJara.Views
             await Navigation.PushAsync(new SignUpPage());
         }
 
-        public void OnLoginBtn_Clicked(object sender, EventArgs e)
+        public async void OnSuccessLogin()
         {
-            AppShell fpm = new AppShell();
-            Application.Current.MainPage = fpm;
+            await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "1");
+            Application.Current.MainPage = new AppShell();
+            await Shell.Current.GoToAsync("//main");
         }
+        //public void OnLoginBtn_Clicked(object sender, EventArgs e)
+        //{
+        //    AppShell fpm = new AppShell();
+        //    Application.Current.MainPage = fpm;
+        //}
     }
 }

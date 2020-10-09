@@ -4,13 +4,14 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:View="clr-namespace:AhiaJara.Utils"
+             xmlns:viewmodels="clr-namespace:AhiaJara.ViewModels"
              x:Class="AhiaJara.Views.Dashboard"    
              mc:Ignorable="d"
              Padding="10"
             BackgroundColor="{StaticResource mainbackground}"
             NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
-             
+
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -90,11 +91,11 @@
                                                             <RowDefinition Height="30*"/>
                                                         </Grid.RowDefinitions>
 
-                                                        <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
+                                                        <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"  Grid.Row="0"/>
                                                         <StackLayout Orientation="Vertical" Grid.Row="1">
-                                                            <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                            <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                                            <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                            <Label Text="{Binding price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                                         </StackLayout>
 

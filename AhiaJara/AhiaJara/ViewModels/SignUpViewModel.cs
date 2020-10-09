@@ -8,10 +8,9 @@ using Xamarin.Forms;
 
 namespace AhiaJara.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class SignUpViewModel:BaseViewModel
     {
         private UserAccessService userAccessService;
-        public Command LoginCommand { get; }
         public Command SignUpCommand { get; }
 
 
@@ -58,9 +57,8 @@ namespace AhiaJara.ViewModels
             set { SetProperty(ref password, value); }
         }
 
-        public LoginViewModel()
+        public SignUpViewModel()
         {
-            LoginCommand = new Command(() => OnLoginBtn_Clicked());
             SignUpCommand = new Command(() => OnSignUpClicked());
         }
 
@@ -72,39 +70,37 @@ namespace AhiaJara.ViewModels
 
         public void OnLoginBtn_Clicked()
         {
-            if (Email == null || Password == null)
+            if (Email == null || Password == null || Lastname == null || Firstname == null || PhoneNo == null)
             {
                 MessagingCenter.Send(this, "FillAllFields");
             }
             else
             {
-                var loginData = new UserDetails()
+                var registerData = new UserDetails()
                 {
                     email = Email,
-                    password = Password
+                    password = Password,
+                    lastName = Lastname,
+                    firstName = Firstname,
+                    phoneNo = PhoneNo,
+                   
                 };
 
                 userAccessService = new UserAccessService();
-                UserLogin(loginData);
+                RegisterUser(registerData);
 
             }
-          
-               
-            
+
+
+
             //Application.Current.MainPage = new NavigationPage(new AppShell());
             //AppShell fpm = new AppShell();
             //Application.Current.MainPage = fpm;
         }
 
-        private async void UserLogin(UserDetails loginData)
+        private async void RegisterUser(UserDetails registerData)
         {
-            bool result = await userAccessService.LoginUser(loginData);
-            if (result == true)
-            {
-                await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "0");
-                Application.Current.MainPage = new AppShell();
-                await Shell.Current.GoToAsync("//main");
-            }
+            await userAccessService.RegisterUser(registerData);
         }
 
         private void OnSignUpClicked()
@@ -112,7 +108,8 @@ namespace AhiaJara.ViewModels
             //(Email == null || Firstname == null || Lastname == null || Password == null || PhoneNo == null)
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
 
-            Application.Current.MainPage = new NavigationPage(new SignUpPage());
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
+
 }

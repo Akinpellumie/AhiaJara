@@ -30,8 +30,8 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="email.png" HeightRequest="24" WidthRequest="24" Margin="5,0,0,0"></Image>
-                                <Controls:CustomEntry  x:Name="txtUsername" Grid.Column="1" PlaceholderColor="{StaticResource Primary}" Placeholder="Astrapolaris id" 
-                                               Text="{Binding username}" Keyboard="Default" Style="{StaticResource EntryStyle}" FontFamily="{StaticResource font_book}"/>
+                                <Controls:CustomEntry  x:Name="txtUsername" Grid.Column="1" PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Email" 
+                                               Text="{Binding Email, Mode=TwoWay}" Keyboard="Default" Style="{StaticResource EntryStyle}" FontFamily="{StaticResource font_book}"/>
                             </Grid>
                         </Frame>
 
@@ -44,7 +44,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="key.png" HeightRequest="24" WidthRequest="24" Margin="5,0,0,0"></Image>
                                 <Controls:CustomEntry x:Name="txtPassword" Grid.Column="1" Margin="0,0,0,0" Placeholder="Password" FontFamily="{StaticResource font_book}"
-                                              Text="password" IsPassword="True" PlaceholderColor="{StaticResource Primary}" Style="{StaticResource EntryStyle}">
+                                              Text="{Binding Password, Mode=TwoWay}" IsPassword="True" PlaceholderColor="{StaticResource PlaceHolderColor}" Style="{StaticResource EntryStyle}">
                                     <Controls:CustomEntry.Effects>
                                         <Controls:ShowHidePassEffect />
                                     </Controls:CustomEntry.Effects>
