@@ -15,7 +15,7 @@
                     <RowDefinition Height="60*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Image VerticalOptions="Fill" Source="{Binding Image}" Aspect="AspectFit" HorizontalOptions="Fill"/>
+                    <Image VerticalOptions="Fill" Source="{Binding ProductImage}" Aspect="AspectFit" HorizontalOptions="Fill"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -29,7 +29,7 @@
                                             <ColumnDefinition Width="50*"/>
                                             <ColumnDefinition Width="50*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Name}" Grid.Column="0"  TextColor="{StaticResource TxtColor}" 
+                                        <Label Text="{Binding name}" Grid.Column="0"  TextColor="{StaticResource TxtColor}" 
                                    FontSize="Subtitle" HorizontalOptions="Start"/>
 
                                         <Label Text="{Binding Price}" Grid.Column="1" TextColor="{StaticResource TxtColor}" 
@@ -39,7 +39,7 @@
 
                                 <StackLayout Orientation="Vertical">
                                     <Label FontSize="Body"
-                                       Text="Open your door to the world of grilling with the sleek Spirit II E-210 gas grill. This two burner grill is built to fit small spaces, and packed with features such as the powerful GS4 grilling system, iGrill capability"
+                                       Text="{Binding description}"
                                        TextColor="{StaticResource TxtColor}"
                                        LineBreakMode="WordWrap"
                                        Margin="0,5,0,10"/>
