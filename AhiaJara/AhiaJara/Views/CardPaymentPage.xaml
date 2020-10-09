@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:View="clr-namespace:AhiaJara.Utils"
+             x:Class="AhiaJara.Views.CardPaymentPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource mainbackground}">
+    <ContentPage.Content>
+        <StackLayout>
+            <View:ToolBarView Title="Card Payment"/>
+
+            <View:CardPaymentView Margin="15">
+                <View:CardPaymentView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                </View:CardPaymentView.GestureRecognizers>
+            </View:CardPaymentView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

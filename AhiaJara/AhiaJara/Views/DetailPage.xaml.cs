@@ -1,5 +1,6 @@
 ﻿using AhiaJara.Models;
 using AhiaJara.PopUps;
+using AhiaJara.ViewModels;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,21 @@ namespace AhiaJara.Views
     public partial class DetailPage : ContentPage
     {
         Product productModel;
+        ProductViewModel productViewModel;
         public DetailPage(Product proModel)
         {
             productModel = proModel;
             InitializeComponent();
             BindingContext = proModel;
+            cartBtn.BindingContext = productViewModel;
             //cartBtn.Clicked += ExecuteCallPopUpCommand();
         }
 
-        private async void ExecuteCallPopUpCommand(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PushAsync(new AddToCartPop());
-        }
+        //private async void ExecuteCallPopUpCommand(object sender, EventArgs e)
+        //{
+        //    await PopupNavigation.Instance.PushAsync(new AddToCartPop(txt));
+        //    //var nos = north.
+        //}
         public async void CheckOutPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CheckOutPage(productModel));

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Views.OrderPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TabStyle" TargetType="tabs:UnderlinedTabItem">
+                <Setter Property="SelectedTabColor" Value="Accent" />
+                <Setter Property="LabelSize" Value="16" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Padding" Value="20, 0" />
+                <Setter Property="UnderlineAllTab" Value="False" />
+                <Setter Property="UnselectedLabelColor" Value="{StaticResource TxtColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <View:ToolBarView Title="Order"/>
+            </StackLayout>
+
+            <!--<StackLayout>
+                <tabs:TabHostView >
+                    <tabs:TabHostView.Tabs>
+                        <tabs:UnderlinedTabItem Label="Personlig" />
+                        <tabs:UnderlinedTabItem Label="Udforsk" IsSelected="True" />
+                    </tabs:TabHostView.Tabs>
+                </tabs:TabHostView>
+            </StackLayout>-->
+
+
+
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <tabs:TabHostView x:Name="TabHost"
+                                          Margin="-16,0"
+                                      Grid.Row="0"
+                                      HeightRequest="50"
+                                      HorizontalOptions="Fill"
+                                      SegmentedHasSeparator="True"
+                                      SegmentedOutlineColor="Accent"
+                                          BackgroundColor="White"
+                                          ShowScrollbar="False"
+                                          TabType="Scrollable"
+                                          SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
+                        <tabs:TabHostView.Tabs>
+                            <tabs:UnderlinedTabItem Style="{StaticResource TabStyle}"  Label="PENDING ORDER" />
+                            <tabs:UnderlinedTabItem Style="{StaticResource TabStyle}" Label="COMPLETED ORDER" />
+                    </tabs:TabHostView.Tabs>
+                    </tabs:TabHostView>
+
+                    <ScrollView Grid.Row="1">
+                        <tabs:ViewSwitcher x:Name="Switcher"
+                                               Animate="True"
+                                               SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
+                            <StackLayout x:Name="pendingOrder">
+                                <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+                                    <StackLayout
+                     x:Name="PendingOrderItems"
+                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    Orientation="Vertical"
+                    Spacing="10"
+                    Padding="0"
+                    Margin="10,0">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                                                HorizontalOptions="Fill" >
+                                                    <StackLayout>
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <StackLayout Grid.Row="0" Margin="10,0,0,0" 
+                                                 HorizontalOptions="Start"
+                                                 Orientation="Vertical">
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Order ID:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding OrderId}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
+
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Order Status:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding Status}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
+
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Date Dispatched:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding Date}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Row="1" Margin="0,5,0,0">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="40*"/>
+                                                                        <ColumnDefinition Width="60*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="#F0F0F0" Padding="15"
+                                                HorizontalOptions="Fill" HeightRequest="70">
+
+                                                                        <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
+                                                                    </pv:PancakeView>
+                                                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
+                                                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                        <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                    </StackLayout>
+                                                                </Grid>
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Row="2" Margin="0,5,0,0">
+                                                                <Button Text="CONFIRM ORDER RECEIVED"
+                                                BackgroundColor="{Binding Path=BtnColor}"
+                                                HorizontalOptions="Fill"
+                                                HeightRequest="40"
+                                                CornerRadius="15"/>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </pv:PancakeView>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                            </StackLayout>
+                            <StackLayout x:Name="completedOrder">
+                                <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+                                    <StackLayout
+                     x:Name="OrderItems"
+                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    Orientation="Vertical"
+                    Spacing="10"
+                    Padding="0"
+                    Margin="10,0">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                                                HorizontalOptions="Fill" >
+                                                    <StackLayout>
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"/>
+                                                                <RowDefinition Height="Auto"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <StackLayout Grid.Row="0" Margin="10,0,0,0" 
+                                                 HorizontalOptions="Start"
+                                                 Orientation="Vertical">
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Order ID:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding OrderId}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
+
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Order Status:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding Status}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
+
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Date Dispatched:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding Date}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Row="1" Margin="0,5,0,5">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="40*"/>
+                                                                        <ColumnDefinition Width="60*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="#F0F0F0" Padding="15"
+                                                HorizontalOptions="Fill" HeightRequest="70">
+
+                                                                        <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
+                                                                    </pv:PancakeView>
+                                                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
+                                                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                        <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                    </StackLayout>
+                                                                </Grid>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </pv:PancakeView>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                            </StackLayout>
+                        </tabs:ViewSwitcher>
+
+                </ScrollView>
+
+                </Grid>
+            </StackLayout>
+
+            
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,16 +10,16 @@
         <ResourceDictionary>
 
             <OnPlatform x:Key="font_book" x:TypeArguments="x:String">
-                <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular" />
-                <On Platform="iOS" Value="Poppins-Regular" />
+                <On Platform="Android" Value="Roboto-Regular.ttf#Roboto Regular" />
+                <On Platform="iOS" Value="Roboto-Regular" />
             </OnPlatform>
             <OnPlatform x:Key="font_medium" x:TypeArguments="x:String">
-                <On Platform="Android" Value="Poppins-SemiBold.ttf#Poppins SemiBold" />
-                <On Platform="iOS" Value="Poppins-SemiBold" />
+                <On Platform="Android" Value="Roboto-Medium.ttf#Roboto Medium" />
+                <On Platform="iOS" Value="Roboto-Medium" />
             </OnPlatform>
             <OnPlatform x:Key="font_bold" x:TypeArguments="x:String">
-                <On Platform="Android" Value="Poppins-Bold.ttf#Poppins Bold" />
-                <On Platform="iOS" Value="Poppins-Bold"/>
+                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto Bold" />
+                <On Platform="iOS" Value="Roboto-Bold"/>
             </OnPlatform>
 
             <Style x:Key="contentPage" TargetType="ContentPage">
@@ -92,7 +92,16 @@
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+
+            <Style x:Key="FrameEditorStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HeightRequest" Value="45"/>
                 <Setter Property="BackgroundColor" Value="White"/>
                 <Setter Property="BorderColor" Value="Transparent"/>
                 <Setter Property="CornerRadius" Value="5" />
@@ -109,9 +118,10 @@
 
             <Style x:Key="FramePickerStyle" TargetType="Frame">
                 <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Padding" Value="0" />
+                <Setter Property="Padding" Value="3,0,3,0" />
                 <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="CornerRadius" Value="5" />
             </Style>
 
             <Style x:Key="FrameIconStyle" TargetType="Frame">
@@ -133,7 +143,16 @@
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="FontFamily" Value="{StaticResource font_book}"/>
                 <Setter Property="TextColor" Value="{StaticResource TxtColor}"></Setter>
-                <Setter Property="Margin" Value="5,0,0,0"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+            <Style x:Key="PickerEntryStyle" TargetType="Picker">
+                <Setter Property="FontFamily" Value="{StaticResource font_book}"/>
+                <Setter Property="TextColor" Value="{StaticResource TxtColor}"></Setter>
+                <Setter Property="Margin" Value="5,0,0,0"/>
+                <Setter Property="TitleColor" Value="{StaticResource TxtColor}"/>
+                <Setter Property="FontSize" Value="12"/>
             </Style>
 
             <Style x:Key="EntryPinStyle" TargetType="Entry">
@@ -172,8 +191,8 @@
                 <Setter Property="FontFamily">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Poppins-Regular"></On>
-                            <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular"></On>
+                            <On Platform="iOS" Value="Roboto-Regular"></On>
+                            <On Platform="Android" Value="Roboto-Regular.ttf#Roboto Regular"></On>
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
@@ -183,8 +202,8 @@
                 <Setter Property="FontFamily">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Poppins-Regular"></On>
-                            <On Platform="Android" Value="Poppins-Regular.ttf#Poppins Regular"></On>
+                            <On Platform="iOS" Value="Roboto-Regular"></On>
+                            <On Platform="Android" Value="Roboto-Regular.ttf#Roboto Regular"></On>
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
@@ -196,8 +215,8 @@
             </Style>-->
 
             <Style TargetType="Label">
-                <Setter Property="FontFamily"
-                        Value="PoppinsRegular" />
+                <Setter Property="FontFamily" Value="{StaticResource font_book}" />
+                <Setter Property="TextColor" Value="{StaticResource TxtColor}"/>
             </Style>
 
             <Style x:Key="header" TargetType="Label">

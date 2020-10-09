@@ -1,11 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:View="clr-namespace:AhiaJara.Utils"
-             x:Class="AhiaJara.Views.OrderConPage">
+             xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:Controls="clr-namespace:AhiaJara.Controls"
+             x:Class="AhiaJara.Views.OrderConPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+              Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
         <StackLayout>
-            <View:ToolBarView/>
+            <StackLayout>
+                <View:ToolBarView Title="Order Confirmation"/>
+            </StackLayout>
+
+            <StackLayout x:Name="DeliveryDetails" IsVisible="True">
+
+                <StackLayout>
+                    <Label Text="Delivery Details"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       Margin="10"/>
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout Orientation="Vertical" Margin="10,0">
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="First Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomEntry  x:Name="firstNameEnrty" VerticalOptions="End" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="First Name" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="Last Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomEntry  x:Name="lastNameEnrty" VerticalOptions="End" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Last Name" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="Phone Number" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomEntry  x:Name="phoneNoEnrty" VerticalOptions="End" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Phone Number" 
+                                               Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="Address" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame BackgroundColor="White"
+                               BorderColor="Transparent"
+                               Margin="0,0,0,10" 
+                               HorizontalOptions="Fill" 
+                               HasShadow="True">
+                                <Controls:CustomEditor  x:Name="addressEnrty" VerticalOptions="End" 
+                                                AutoSize="TextChanges"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Your address" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="State" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomPicker  x:Name="statePicker" VerticalOptions="End" 
+                                 Title="Select State" Style="{StaticResource EntryStyle}">
+                                    <Controls:CustomPicker.Items>
+                                        <x:String>Abia</x:String>
+                                        <x:String>Adamawa</x:String>
+                                        <x:String>Akwa Ibom</x:String>
+                                        <x:String>Anambra</x:String>
+                                        <x:String>Bauchi</x:String>
+                                        <x:String>Bayelsa</x:String>
+                                    </Controls:CustomPicker.Items>
+                                </Controls:CustomPicker>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="5,1,5,1">
+                            <Label Text="City" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                <Controls:CustomEntry  x:Name="cityEnrty" VerticalOptions="End"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="City" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout VerticalOptions="End">
+                    <Button Text="Save and Continue"
+                        TextColor="White"
+                        BackgroundColor="Accent"
+                        FontSize="15"
+                        CornerRadius="15"
+                        x:Name="SaveBtn"
+                         Clicked="SaveBtn_Clicked"
+                        FontAttributes="None"
+                        HeightRequest="50"
+                        HorizontalOptions="Fill"
+                        Margin="10"/>
+                </StackLayout>
+            </StackLayout>
+
+            <!--<StackLayout x:Name="CardPayment" IsVisible="False">
+                <View:CardPaymentView/>
+            </StackLayout>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

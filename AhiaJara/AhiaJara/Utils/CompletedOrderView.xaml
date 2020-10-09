@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.CompletedOrderView">
+    <ContentView.Content>
+        <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+            <StackLayout
+                     x:Name="OrderItems"
+                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    Orientation="Vertical"
+                    Spacing="10"
+                    Padding="0"
+                    Margin="10,0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                                                HorizontalOptions="Fill" >
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0" Margin="10,0,0,0" 
+                                                 HorizontalOptions="Start"
+                                                 Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Order ID:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                            <Label Text="{Binding OrderId}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Order Status:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                            <Label Text="{Binding Status}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Date Dispatched:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                            <Label Text="{Binding Date}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Margin="0,5,0,5">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="60*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="#F0F0F0" Padding="15"
+                                                HorizontalOptions="Fill" HeightRequest="70">
+
+                                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
+                                            </pv:PancakeView>
+                                            <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                                <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

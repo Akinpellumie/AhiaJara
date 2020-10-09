@@ -15,11 +15,19 @@ namespace AhiaJara.Views
     public partial class CheckOutPage : ContentPage
     {
         ProductViewModel ProductViewModel;
+        Product prodModel;
         public CheckOutPage(Product productModel)
         {
             ProductViewModel = new ProductViewModel(Navigation);
+            prodModel = productModel;
             InitializeComponent();
             BindingContext = productModel;
+            //stackCheckout.BindingContext = productModel;
+        }
+
+        public async void ContinueBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OrderConPage());
         }
 
     }

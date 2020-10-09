@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AhiaJara.Utils
+namespace AhiaJara.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CartView : ContentView
+    public partial class OrderPage : ContentPage
     {
-        //ProductViewModel ProductViewModel;
-        public CartView()
+        ProductViewModel ProductViewModel;
+        public OrderPage()
         {
-            //ProductViewModel = new ProductViewModel(Navigation);
+            ProductViewModel = new ProductViewModel(Navigation);
             InitializeComponent();
-            //BindingContext = ProductViewModel;
+            this.BindingContext = ProductViewModel;
         }
+
     }
 }

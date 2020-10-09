@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="AhiaJara.Views.CheckOutPage"
              BackgroundColor="{StaticResource mainbackground}"
              Shell.TabBarIsVisible="False"
@@ -9,10 +9,62 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <View:ToolBarView/>
-            <StackLayout>
-                <View:CheckOutView/>
-            </StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <View:ToolBarView Title="Cart" Grid.Row="0"/>
+
+                <Grid Grid.Row="1">
+                    <StackLayout VerticalOptions="Fill">
+                        <View:CheckOutView/>
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <StackLayout Orientation="Vertical" Margin="0,0,0,15">
+
+                        <pv:PancakeView BackgroundColor="Transparent" 
+                                    HorizontalOptions="Fill"
+                                    HeightRequest="40"
+                                    Padding="15">
+                            <Grid VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Total Price:"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Start"
+                               Grid.Column="0"/>
+
+                                <Label Text="{Binding TotalPrice}"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalOptions="End"
+                               Grid.Column="1"/>
+                            </Grid>
+                        </pv:PancakeView>
+
+                        <StackLayout>
+                            <Button BackgroundColor="Accent"
+                                HorizontalOptions="Fill"
+                                CornerRadius="15"
+                                Text="CONTINUE"
+                                 Margin="15,0"
+                                Clicked="ContinueBtn_Clicked"
+                                TextColor="White"
+                                HeightRequest="50"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

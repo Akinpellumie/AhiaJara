@@ -8,7 +8,7 @@
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <Grid>
-            <View:ToolBarView/>
+            <View:ToolBarView Title="{Binding Name}"/>
             <Grid Margin="0,50,0,0" x:Name="details">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40*"/>
@@ -20,7 +20,7 @@
 
                 <Grid Grid.Row="1">
                     <pv:PancakeView CornerRadius="25,25,0,0" BackgroundColor="White"
-                                                HorizontalOptions="Fill" VerticalOptions="Fill" Padding="10">
+                                                HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15">
                         <Grid>
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Padding="15,10">
@@ -48,7 +48,7 @@
                                        TextColor="{StaticResource TxtColor}"
                                        Margin="0,2,0,3"/>
 
-                                    <View:CustomStepperView/>
+                                    <View:CustomStepperView x:Name="north"/>
 
                                 </StackLayout>
                             </StackLayout>
@@ -58,7 +58,8 @@
                                         BorderColor="Accent" 
                                         Text="ADD CART" 
                                         x:Name="cartBtn"
-                                        Clicked="ExecuteCallPopUpCommand"
+                                        Command="{Binding Path=BindingContext.CallAddToCartPopUpCommand, Source={x:Reference north}}"
+                                        
                                         TextColor="Accent"
                                         BackgroundColor="Transparent"
                                         BorderWidth="2"
@@ -70,6 +71,9 @@
                                         Clicked="CheckOutPage_Clicked"
                                         TextColor="White"
                                         CornerRadius="15"/>
+                                         <!--Command="{Binding Path=BindingContext.NavigateToCheckOutCommand, Source={x:Reference details}}"
+                                         CommandParameter="{Binding .}"-->
+                                        
                             </Grid>
                         </Grid>
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AhiaJara.Models;
+using AhiaJara.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,12 @@ namespace AhiaJara.Utils
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ToolBarView : ContentView
     {
+        Product productModel;
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create(
+           nameof(Title),
+           typeof(string),
+           typeof(ToolBarView),
+           string.Empty);
         public ToolBarView()
         {
             InitializeComponent();
@@ -20,6 +28,22 @@ namespace AhiaJara.Utils
         void Back(System.Object sender, System.EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        public string Title
+        {
+            get => (string)GetValue(TitleProperty);
+            set => SetValue(TitleProperty, value);
+        }
+
+        public async void CartIcon_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CartPage());
+        }
+
+        public async void BellIcon_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NotificationPage());
         }
     }
 }

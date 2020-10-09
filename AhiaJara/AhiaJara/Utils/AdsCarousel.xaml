@@ -3,36 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AhiaJara.Utils.AdsCarousel" HeightRequest="150">
   <ContentView.Content>
-        <AbsoluteLayout HeightRequest="150">
+        <Grid HeightRequest="150">
             <CarouselView
             x:Name="TheCarousel" ItemsSource="{Binding CarouselModelList}"
-            AbsoluteLayout.LayoutBounds="0,0,1,1"
-            AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
             IndicatorView="indicatorview">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <AbsoluteLayout>
-                            <StackLayout
-                            AbsoluteLayout.LayoutBounds=
-                            "0.5,0.3,AutoSize,AutoSize"
-                            AbsoluteLayout.LayoutFlags=
-                            "PositionProportional"
-                            HorizontalOptions="Center">
+                        <StackLayout
+                            HorizontalOptions="Fill">
                                 <Image Source="{Binding Image}" HorizontalOptions="Fill" Aspect="AspectFit"/>
                             </StackLayout>
-                        </AbsoluteLayout>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
             <IndicatorView
             x:Name="indicatorview"
                 VerticalOptions="End"
-            AbsoluteLayout.LayoutBounds="0.5,0.95,100,100"
-            AbsoluteLayout.LayoutFlags="PositionProportional"
             IndicatorColor="LightGray"
             IndicatorSize="10"
                 Margin="0,0,0,5"
             SelectedIndicatorColor="Accent" />
-        </AbsoluteLayout>
+        </Grid>
     </ContentView.Content>
 </ContentView>

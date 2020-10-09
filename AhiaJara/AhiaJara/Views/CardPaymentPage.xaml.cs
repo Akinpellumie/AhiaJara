@@ -10,16 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace AhiaJara.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderConPage : ContentPage
+    public partial class CardPaymentPage : ContentPage
     {
-        public OrderConPage()
+        public CardPaymentPage()
         {
             InitializeComponent();
         }
 
-        public async void SaveBtn_Clicked(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CardPaymentPage());
+            await DisplayAlert("Yoo", "Your payment is successful", "Ok");
         }
     }
 }

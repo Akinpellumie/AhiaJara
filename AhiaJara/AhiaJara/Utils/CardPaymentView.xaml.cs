@@ -1,5 +1,4 @@
-﻿using AhiaJara.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace AhiaJara.Utils
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CheckOutView : ContentView
+    public partial class CardPaymentView : ContentView
     {
-        public CheckOutView()
+        public CardPaymentView()
         {
             InitializeComponent();
         }
