@@ -31,10 +31,14 @@ namespace AhiaJara.Helpers
         public static string LoginUrl { get { return Constants.domainurl + "/authenticate"; } }
         public static string AllProductsUrl { get { return Constants.domainurl + "/products"; } }
         public static string AddToCart{ get { return Constants.domainurl + "/cart"; } }
+        public static string GetCartCount{ get { return Constants.domainurl + "/cartcount/"; } }
+        public static string GetCart{ get { return Constants.domainurl + "/cart/"; } }
+        public static string PostQuestionaire{ get { return Constants.domainurl + "/questionniareentry"; } }
 
 
         public static Models.UserProfile userprofile { get; set; }
         public static List<ProductModel> ProductsList { get; set; }
+        public static List<CartList> CartItemList { get; set; }
 
         public static int cartCount { get; set; } 
     }

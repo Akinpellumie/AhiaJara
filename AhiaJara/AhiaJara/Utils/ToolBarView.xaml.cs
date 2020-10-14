@@ -1,4 +1,5 @@
 ﻿using AhiaJara.Models;
+using AhiaJara.ViewModels;
 using AhiaJara.Views;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace AhiaJara.Utils
         public ToolBarView()
         {
             InitializeComponent();
+            BindingContext = new ToolbarViewModel();
         }
 
         void Back(System.Object sender, System.EventArgs e)

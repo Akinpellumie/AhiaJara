@@ -14,6 +14,7 @@ namespace AhiaJara.PopUps
     public partial class AddToCartPop
     {
         int qtyCnt;
+
         public AddToCartPop(int txt)
         {
             qtyCnt = txt;

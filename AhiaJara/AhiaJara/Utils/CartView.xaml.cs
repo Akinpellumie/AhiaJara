@@ -13,12 +13,12 @@ namespace AhiaJara.Utils
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CartView : ContentView
     {
-        //ProductViewModel ProductViewModel;
+        ProductViewModel ProductViewModel;
         public CartView()
         {
-            //ProductViewModel = new ProductViewModel(Navigation);
+            ProductViewModel = new ProductViewModel(Navigation);
             InitializeComponent();
-            //BindingContext = ProductViewModel;
+            this.BindingContext = ProductViewModel;
         }
     }
 }

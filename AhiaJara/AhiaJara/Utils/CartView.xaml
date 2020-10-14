@@ -31,14 +31,14 @@
                                             <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="#F0F0F0" Padding="15"
                                                 HorizontalOptions="Fill" HeightRequest="150">
 
-                                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
+                                                <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"/>
                                             </pv:PancakeView>
                                             <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
-                                                <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                                <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                <Label Text="{Binding price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
-                                                <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                <Label Text="{Binding quantitySelected}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                             </StackLayout>
                                             <ImageButton Grid.Column="1" Source="closeIcon" 
@@ -55,7 +55,7 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <StackLayout Grid.Row="1">
+                <!--<StackLayout Grid.Row="1">
                     <pv:PancakeView BackgroundColor="Transparent" 
                                     HorizontalOptions="Fill"
                                     HeightRequest="40"
@@ -80,7 +80,7 @@
                         </Grid>
                     </pv:PancakeView>
 
-                </StackLayout>
+                </StackLayout>-->
             </Grid>
         </StackLayout>
     </ContentView.Content>

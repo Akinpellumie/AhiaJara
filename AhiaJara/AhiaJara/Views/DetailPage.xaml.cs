@@ -1,4 +1,5 @@
-﻿using AhiaJara.Models;
+﻿using AhiaJara.Helpers;
+using AhiaJara.Models;
 using AhiaJara.PopUps;
 using AhiaJara.ViewModels;
 using Rg.Plugins.Popup.Services;
@@ -16,14 +17,21 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-        Product productModel;
+        public static ProductModel newProductModel;
         ProductViewModel productViewModel;
-        public DetailPage(Product proModel)
+        public DetailPage(ProductModel proModel)
         {
-            productModel = proModel;
+            
+            newProductModel = proModel;
             InitializeComponent();
             BindingContext = proModel;
             cartBtn.BindingContext = productViewModel;
+
+            MessagingCenter.Subscribe<ToolbarViewModel>(this, "FillAllFields", async (sender) =>
+            {
+                await DisplayAlert("Network Failed", "Please Check Noetwork Connectivity", "Ok");
+            });
+
             //cartBtn.Clicked += ExecuteCallPopUpCommand();
         }
 
@@ -34,7 +42,9 @@ namespace AhiaJara.Views
         //}
         public async void CheckOutPage_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CheckOutPage(productModel));
+            newProductModel.quantity = Constants.cartCount;
+           
+            await Navigation.PushAsync(new CheckOutPage(newProductModel));
         }
     }
 }

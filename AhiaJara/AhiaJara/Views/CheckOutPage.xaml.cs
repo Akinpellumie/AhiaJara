@@ -14,14 +14,15 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CheckOutPage : ContentPage
     {
-        ProductViewModel ProductViewModel;
-        Product prodModel;
-        public CheckOutPage(Product productModel)
+        public static ProductViewModel ProductViewModel;
+        ProductModel prodModel;
+        public CheckOutPage(ProductModel productModel)
         {
             ProductViewModel = new ProductViewModel(Navigation);
             prodModel = productModel;
             InitializeComponent();
             BindingContext = productModel;
+            
             //stackCheckout.BindingContext = productModel;
         }
 
