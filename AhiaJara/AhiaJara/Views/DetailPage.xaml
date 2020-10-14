@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              x:Class="AhiaJara.Views.DetailPage"
              BackgroundColor="{StaticResource mainbackground}"
             NavigationPage.HasNavigationBar="False"
@@ -23,7 +24,7 @@
                                                 HorizontalOptions="Fill" VerticalOptions="Fill" Padding="15">
                         <Grid>
                             <StackLayout Orientation="Vertical">
-                                <StackLayout Padding="15,10">
+                                <StackLayout Padding="10,10">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50*"/>
@@ -42,17 +43,18 @@
                                        Text="{Binding description}"
                                        TextColor="{StaticResource TxtColor}"
                                        LineBreakMode="WordWrap"
-                                       Margin="0,5,0,10"/>
+                                       Margin="0,10,0,10"/>
                                     <Label FontSize="Subtitle"
                                        Text="Quantity"
                                        TextColor="{StaticResource TxtColor}"
-                                       Margin="0,2,0,3"/>
+                                       Margin="0,10,0,3"/>
 
                                     <View:CustomStepperView x:Name="north"/>
 
                                 </StackLayout>
+                                
                             </StackLayout>
-
+                            
                             <Grid VerticalOptions="End" HorizontalOptions="Fill">
                                 <Button Grid.Column="0" 
                                         BorderColor="Accent" 

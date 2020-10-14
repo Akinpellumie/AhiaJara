@@ -41,7 +41,7 @@
                                     Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
                     <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
                                                 HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
-                        <Label Text="2" TextColor="White" FontSize="8" 
+                        <Label Text="{Binding CartCount}" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                     </pv:PancakeView>
                     <Grid.GestureRecognizers>

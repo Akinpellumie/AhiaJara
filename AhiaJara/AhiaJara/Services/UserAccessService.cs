@@ -13,14 +13,14 @@ namespace AhiaJara.Services
 {
     public class UserAccessService
     {
-        public async Task<bool> RegisterUser(UserDetails loginData)
+        public async Task<bool> RegisterUser(UserDetails registerData)
         {
             bool Response = false;
             await Task.Run(() =>
             {
                 String url = Constants.RegisterUrl;
                 var client = new HttpClient();
-                var json = JsonConvert.SerializeObject(loginData);
+                var json = JsonConvert.SerializeObject(registerData);
                 HttpContent registerDetails = new StringContent(json);
                 registerDetails.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var response = client.PostAsync(url, registerDetails);

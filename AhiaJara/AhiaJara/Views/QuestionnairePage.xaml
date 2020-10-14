@@ -22,11 +22,11 @@
                 <ScrollView Orientation="Vertical">
                     <StackLayout Orientation="Vertical" x:Name="quest">
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="How did you hear about us?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="How did you hear about us?" x:Name="question1" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                 <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="40" 
+                                         HeightRequest="40" x:Name="answer1" SelectedIndexChanged="OnPickerSelected1"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">  
                                     <Controls:CustomPicker.Items>
@@ -40,54 +40,55 @@
                         </StackLayout>
                         
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="What is the name of your body location?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="What is the name of your body location?" x:Name="question2" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                <Controls:CustomEntry  x:Name="bdyLtnEntry" VerticalOptions="End" 
+                                <Controls:CustomEntry  x:Name="answer2" VerticalOptions="End" 
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g. body lotion" 
                                                Keyboard="Email" Style="{StaticResource EntryStyle}"/>
                             </Frame>
                         </StackLayout>
                         <StackLayout Margin="5,1,5,1">
                             <Label Text="How long have you been using this lotion?"
+                                   x:Name="question3"
                                    TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
-                                <Controls:CustomEntry  x:Name="lotiondurEntry"
+                                <Controls:CustomEntry  x:Name="answer3"
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g. 3 months" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                             </Frame>
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="When last did you have a skin reaction?" 
+                            <Label Text="When last did you have a skin reaction?" x:Name="question4"
                                    TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
-                                <Controls:CustomEntry  x:Name="rxnEntry"
+                                <Controls:CustomEntry  x:Name="answer4"
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g. 4 weeks ago" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                             </Frame>
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="When caused the skin reaction?" 
+                            <Label Text="When caused the skin reaction?" x:Name="question5"
                                    TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame BackgroundColor="White" Padding="0" 
                                    BorderColor="Transparent" Style="{StaticResource FrameEditorStyle}"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="False">
-                                <Controls:CustomEditor AutoSize="TextChanges"  x:Name="causesEntry"
+                                <Controls:CustomEditor AutoSize="TextChanges"  x:Name="answer5"
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Tell us about the cause" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                             </Frame>
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="What is your skin type?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="What is your skin type?" x:Name="question6" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame Style="{StaticResource FramePickerStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                 <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="40" 
+                                         HeightRequest="40" x:Name="answer6" SelectedIndexChanged="OnPickerSelected6"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                     <Controls:CustomPicker.Items>
@@ -101,11 +102,11 @@
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="What is your skin color?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="What is your skin color?" x:Name="question7" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                             <Frame Style="{StaticResource FramePickerStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                 <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="40" 
+                                         HeightRequest="40" x:Name="answer7" SelectedIndexChanged="OnPickerSelected7"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                     <Controls:CustomPicker.Items>
@@ -120,7 +121,7 @@
 
                       
                         <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
-                        Text="SUBMIT" HeightRequest="50" Margin="0,10" />
+                        Text="SUBMIT" HeightRequest="50" Margin="0,10" Clicked="OnSubmitQuestion" />
 
                     </StackLayout>
                 </ScrollView>
