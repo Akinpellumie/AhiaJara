@@ -38,7 +38,7 @@ namespace AhiaJara.Helpers
 
         public static Models.UserProfile userprofile { get; set; }
         public static List<ProductModel> ProductsList { get; set; }
-        public static List<CartList> CartItemList { get; set; }
+        public static List<Cart> CartItemList { get; set; }
 
         public static int cartCount { get; set; } 
     }

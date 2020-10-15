@@ -26,7 +26,7 @@ namespace AhiaJara.ViewModels
             Navigation = navigation;
             GetProducts();
             GetAdverts();
-            //GetCarts();
+            GetCarts();
             NavigateToDetailPageCommand = new Command<ProductModel>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
@@ -72,8 +72,8 @@ namespace AhiaJara.ViewModels
             }
         }
 
-        private ObservableCollection<CartItemDetails> cartModelList;
-        public ObservableCollection<CartItemDetails> CartModelList
+        private ObservableCollection<Cart> cartModelList;
+        public ObservableCollection<Cart> CartModelList
         {
             get => cartModelList;
             set
@@ -151,9 +151,8 @@ namespace AhiaJara.ViewModels
 
         public async void GetCarts()
         {
-            cartModelList = new ObservableCollection<CartItemDetails>();
-            IList<CartItemDetails> deliveredTaskModel = new List<CartItemDetails>();
-            var cartItems = new CartItemDetails();
+            cartModelList = new ObservableCollection<Cart>();
+            var cartItems = new Cart();
             //cartModelList.Add(new Product { Name = "Hand Sanitizer ", Image = "ListPr", price = "6999", Status = "pending", Date = "22, September, 2020", OrderId = 2133546, quantity = "2" });
             //cartModelList.Add(new Product { Name = "FreshYo Soap", Image = "ListProo", price = "10000", Status = "completed", Date = "2, September, 2020", OrderId = 2133453, quantity = "1" });
             //cartModelList.Add(new Product { Name = "Skin Tone", Image = "ListProo", price = "22000", Status = "pending", Date = "22, September, 2020", OrderId = 2133558, quantity = "2" });
@@ -166,41 +165,14 @@ namespace AhiaJara.ViewModels
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
                 var result = await client.GetStringAsync(cartEndpoint);
-                //var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
-                //var CartList=JsonConvert.DeserializeObject<List<CartClass>>(result);
-                //var items = CartList[0].cartDetails;
-                var CartList = JsonConvert.DeserializeObject<Dictionary<string, object>>(result);
-                //CartList Cartlist = JsonConvert.DeserializeObject<CartList>(result);
-                //CartDetails cartdetails = Cartlist.cartDetails[0];
-                //CartDetails cartdetails2 = Cartlist.cartDetails[1];
-
-                //foreach (var value1 in Cartlist)
-                //{
-                    //Console.WriteLine(value1.cartDetails);
-                    //Console.WriteLine(value1.productDetails);
-
-                    
-                    //cartItems.productId = value1.cartDetails.productId;
-                    //cartItems.userId = value1.cartDetails.userId;
-                    //cartItems.quantitySelected = value1.cartDetails.quantitySelected;
-                    //cartItems.id = value1.cartDetails.id;
-                    //cartItems.name = value1.productDetails.name;
-                    //cartItems.imgUrl = value1.productDetails.imgUrl;
-                    //cartItems.quantityAvailable = value1.productDetails.quantityAvailable;
-                    //cartItems.price = value1.productDetails.price;
-                    //cartItems.category = value1.productDetails.category;
-                    //cartItems.description = value1.productDetails.description;
-
-                    //deliveredTaskModel.Add(cartItems);
-
-               // }
-                //CartModelList = new ObservableCollection<CartItemDetails>(cartItems);
-                //Constants.CartItemList = CartList;
+                var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
+                CartModelList = new ObservableCollection<Cart>(CartList);
+               
                 IsBusy = false;
             }
             else
             {
-               // CartModelList = new ObservableCollection<CartList>(Constants.CartItemList);
+               CartModelList = new ObservableCollection<Cart>(Constants.CartItemList);
             }
         }
 
@@ -266,11 +238,13 @@ namespace AhiaJara.ViewModels
             //var productModel = model;
             var cartData = new AddCartItem()
             {
-
                 productId = DetailPage.newProductModel.id,
                 userId = Settings.id,
-                quantitySelected = txt.ToString()
-
+                quantitySelected = txt,
+                productName = DetailPage.newProductModel.name,
+                productImgUrl = DetailPage.newProductModel.imgUrl,
+                productPrice = DetailPage.newProductModel.price,
+                productCategory = DetailPage.newProductModel.category,
             };
 
             if(cartData != null)
