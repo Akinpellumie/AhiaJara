@@ -1,12 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Views.RequestPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Controls="clr-namespace:AhiaJara.Controls"
+             x:Class="AhiaJara.Views.RequestPage" 
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10,5,10,10">
+            <StackLayout Margin="10,15,10,25">
+                <Label Text="Request"
+                       TextColor="{StaticResource TxtColor}"
+                       FontSize="20"
+                       FontFamily="{StaticResource font_bold}"
+                       HorizontalOptions="Start"/>
+            </StackLayout>
+                     
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Product Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                            <Controls:CustomEntry  x:Name="proEntry" VerticalOptions="Center" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Glow" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Product Category" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                            <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                <Controls:CustomPicker.Items>
+                                    <x:String>Skin Products</x:String>
+                                    <x:String>Hair Products</x:String>
+                                </Controls:CustomPicker.Items>
+                            </Controls:CustomPicker>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Product Description" 
+                                   TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                        <Frame BackgroundColor="White" Padding="0" 
+                                   BorderColor="Transparent" Style="{StaticResource FrameEditorStyle}"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="False">
+                            <Controls:CustomEditor AutoSize="TextChanges"  x:Name="descEntry"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="short description" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout VerticalOptions="End" Grid.Row="1">
+                    <Button VerticalOptions="End"  HorizontalOptions="Fill" 
+                                        CornerRadius="25" BackgroundColor="Accent" 
+                        Text="SUBMIT" HeightRequest="55" Margin="15,5,15,10" />
+                </StackLayout>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -19,12 +19,17 @@ namespace AhiaJara.Views
 
         public async void OrderPage_Clicked(object obj, EventArgs e)
         {
-            await Navigation.PushAsync(new OrderPage());
+            await Navigation.PushAsync(new BeSpokePage());
         }
 
         public async void QuestionBtn_Clicked(object obj, EventArgs e)
         {
             await Navigation.PushAsync(new QuestionnairePage());
+        }
+
+        public async void SupportBtn_Clicked(object obj, EventArgs e)
+        {
+            await Navigation.PushAsync(new SupportPage());
         }
     }
 }

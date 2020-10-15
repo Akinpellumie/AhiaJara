@@ -1,12 +1,389 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Views.SkinIssuePage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Controls="clr-namespace:AhiaJara.Controls" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ff1="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:View="clr-namespace:AhiaJara.Utils"
+             x:Class="AhiaJara.Views.SkinIssuePage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            <!--firstStack-->
+            <RelativeLayout Margin="0,0,0,5" x:Name="defaultScreen" IsVisible="True">
+                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,15,10,15"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.20}">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Margin="10" VerticalOptions="Fill" HorizontalOptions="Fill" 
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"                          
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+
+                    <StackLayout Margin="10,5">
+
+                        <StackLayout Margin="10,20,10,10">
+                            <Label
+                                    Text="Kindy go through the following questions and answer the ones that concerns your skin challenge(s). For instance, if you are here for a face challenge, you do not need to answer HAIR questions."
+                                    TextColor="{StaticResource TxtColor}"
+                                    FontSize="14"
+                                FontFamily="{StaticResource font_bold}"
+                                    FontAttributes="Italic"
+                                    LineBreakMode="CharacterWrap"
+                                    LineHeight="1.3"
+                                    HorizontalOptions="Fill"/>
+                        </StackLayout>
+
+                        <ScrollView Orientation="Vertical">
+                            <StackLayout Orientation="Vertical" x:Name="skinIssues">
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="How old are you?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomEntry  x:Name="ageEntry" VerticalOptions="End" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g 20" 
+                                               Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+                                    </Frame>
+                                </StackLayout>
+                                
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="What is your gender?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Male</x:String>
+                                                <x:String>Female</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="Do you consider your skin/face to be DRY or OILY?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Dry</x:String>
+                                                <x:String>Oily</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+                                
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="What is the main concern you are having concerning your skin or hair?"
+                                   TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
+                                        <Controls:CustomEntry  x:Name="issueEntry"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="the issue" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="Do you always have pimples?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Yes, very often</x:String>
+                                                <x:String>Sometimes</x:String>
+                                                <x:String>Rarely</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="How often do you wash your Hair?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Very often</x:String>
+                                                <x:String>Sometimes</x:String>
+                                                <x:String>Rarely</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="How often do you exfoliate your skin?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Very often</x:String>
+                                                <x:String>Sometimes</x:String>
+                                                <x:String>Rarely</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="How does your SKIN reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Reddens</x:String>
+                                                <x:String>Burns</x:String>
+                                                <x:String>Tans</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="How does your HAIR reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Reddens</x:String>
+                                                <x:String>Burns</x:String>
+                                                <x:String>Tans</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="How does your FACE reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>Reddens</x:String>
+                                                <x:String>Burns</x:String>
+                                                <x:String>Tans</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>My skin reacts often, turns reddish, itchy or stings</x:String>
+                                                <x:String>My skin rarely reacts, handles most new products I try</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>My skin reacts often, turns reddish, itchy or stings</x:String>
+                                                <x:String>My skin rarely reacts, handles most new products I try</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="What product(s) have you used to battle this challenge? Name them;" 
+                                   TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame BackgroundColor="White" Padding="0" 
+                                   BorderColor="Transparent" Style="{StaticResource FrameEditorStyle}"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="False">
+                                        <Controls:CustomEditor AutoSize="TextChanges"  x:Name="causesEntry"
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="please seperate each answer with a comma. e.g. folly cream, folt cream, xxx" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="5,1,5,1">
+                                    <Label Text="What best describes your cosmetic vibes?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                                    <Frame Style="{StaticResource FramePickerStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="40" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Answer">
+                                            <Controls:CustomPicker.Items>
+                                                <x:String>I travel a lot for work and fun</x:String>
+                                                <x:String>I often wear makeup</x:String>
+                                                <x:String>I have a very active lifestyle</x:String>
+                                                <x:String>I live in a humid climate</x:String>
+                                                <x:String>I reside in a city</x:String>
+                                                <x:String>I enjoy going for massage/spa session</x:String>
+                                            </Controls:CustomPicker.Items>
+                                        </Controls:CustomPicker>
+                                    </Frame>
+                                </StackLayout>
+
+
+                                <Button VerticalOptions="Center"  HorizontalOptions="End" 
+                                        CornerRadius="25" BackgroundColor="Accent" WidthRequest="150"
+                        Text="NEXT" HeightRequest="55" Margin="10" Clicked="OnfirstNext_Clicked" />
+
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                </StackLayout>
+            </RelativeLayout>
+            <!--endOfFirstStack-->
+            
+            
+            <!--secondStack-->
+
+            <Grid Margin="0,0,0,5" VerticalOptions="FillAndExpand" x:Name="secondScreen" IsVisible="False">
+                <!-- Top Content -->
+                <Grid VerticalOptions="Start" Margin="15">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Margin="15">
+                        <Label
+                            FontFamily="{StaticResource font_bold}"
+                            Text="Upload the image of the affected part"
+                            TextColor="{StaticResource TxtColor}"
+                            FontSize="14"
+                            HorizontalOptions="Fill"
+                            Margin="5,5,0,5"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid VerticalOptions="CenterAndExpand">
+                    <StackLayout Grid.Row="0" Padding="10" Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <ff1:SvgCachedImage Source="imageUpload.svg" HeightRequest="350"
+                                    Aspect="AspectFit" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid VerticalOptions="End">
+                    <Button VerticalOptions="Center"  HorizontalOptions="End" 
+                                        CornerRadius="25" BackgroundColor="Accent" 
+                        Text="NEXT" HeightRequest="55" Margin="10,10,10,20" 
+                            WidthRequest="150" Clicked="OnSecondNext_Clicked"/>
+                </Grid>
+            </Grid>
+            <!--endOfSecondStack-->
+        
+            <!--thirdStack-->
+
+            <Grid Margin="0,0,0,5" VerticalOptions="FillAndExpand" x:Name="thirdScreen" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="10*"/>
+                    <!--<RowDefinition Height="1*"/>-->
+                </Grid.RowDefinitions>
+               
+                <StackLayout VerticalOptions="Start" Margin="0,15,0,10" Grid.Row="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Margin="0,10,0,10">
+                        <Label
+                            FontFamily="{StaticResource font_bold}"
+                            Text="Select one of the image below that represent your current skin issue best"
+                            TextColor="{StaticResource TxtColor}"
+                            FontSize="14"
+                            HorizontalOptions="Fill"
+                            Margin="5,5,0,5"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <ScrollView>
+                            <View:SkinIssueImagesView/>
+                        </ScrollView>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--<Grid VerticalOptions="Center" Grid.Row="1" Margin="0,15,0,0">
+                    <StackLayout>
+                        <ScrollView>
+                            <View:ProductListView/>
+                        </ScrollView>
+                    </StackLayout>
+                </Grid>-->
+
+                <StackLayout VerticalOptions="End" Grid.Row="1">
+                    <Button VerticalOptions="Center"  HorizontalOptions="End" 
+                                        CornerRadius="25" BackgroundColor="Accent" 
+                        Text="NEXT" HeightRequest="55" Margin="10,5,10,10" 
+                            WidthRequest="150" Clicked="OnThirdScreen_Clicked"/>
+                </StackLayout>
+            </Grid>
+
+            <!--endOfThirdStack-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
