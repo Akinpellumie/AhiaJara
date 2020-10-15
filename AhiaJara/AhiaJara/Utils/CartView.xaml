@@ -34,11 +34,11 @@
                                                 <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"/>
                                             </pv:PancakeView>
                                             <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
-                                                <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
+                                                <Label Text="{Binding productName}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                                <Label Text="{Binding price}" TextColor="{StaticResource Primary}"
+                                                <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
-                                                <Label Text="{Binding quantitySelected}" TextColor="{StaticResource Primary}"
+                                                <Label Text="{Binding qtySelected}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                             </StackLayout>
                                             <ImageButton Grid.Column="1" Source="closeIcon" 
