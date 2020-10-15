@@ -92,7 +92,7 @@
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="HeightRequest" Value="50"/>
                 <Setter Property="BackgroundColor" Value="White"/>
                 <Setter Property="BorderColor" Value="Transparent"/>
                 <Setter Property="CornerRadius" Value="5" />
@@ -101,7 +101,7 @@
             <Style x:Key="FrameEditorStyle" TargetType="Frame">
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="HeightRequest" Value="50"/>
                 <Setter Property="BackgroundColor" Value="White"/>
                 <Setter Property="BorderColor" Value="Transparent"/>
                 <Setter Property="CornerRadius" Value="5" />

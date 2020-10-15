@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:View="clr-namespace:AhiaJara.Utils"
+             x:Class="AhiaJara.Views.SkinIssueReviewPage" 
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
+    <ContentPage.Content>
+        <StackLayout>
+            <View:ToolBarView Title="Analysis result"/>
+            <StackLayout Margin="15,0,15,0">
+                <pv:PancakeView BackgroundColor="White"
+                                CornerRadius="15"
+                                HorizontalOptions="Fill"
+                                Margin="15,10"
+                                Padding="10">
+                    <StackLayout VerticalOptions="Center" >
+                        <Label
+                            Text="Our system has diagonised that your skin issue is:"
+                            TextColor="{StaticResource TxtColor}"
+                            FontSize="14"
+                            Margin="0,10,0,10"
+                            HorizontalOptions="CenterAndExpand"/>
+
+                        <Label
+                            Text="STRETCH MARKS"
+                            HorizontalOptions="Center"
+                            FontSize="18"
+                            VerticalOptions="Center"
+                            Margin="0,0,0,15"
+                            FontFamily="{StaticResource font_bold}"
+                            TextColor="{StaticResource Primary}"/>
+
+                    </StackLayout>
+
+                </pv:PancakeView>
+
+                <StackLayout Margin="0,10,0,10">
+
+                    <Label
+                            Text="Description"
+                            TextColor="{StaticResource TxtColor}"
+                            FontSize="14"
+                            FontFamily="{StaticResource font_bold}"
+                            HorizontalOptions="Fill"/>
+                    
+                    <Label
+                        Text="Stretch marks is Open your door to the world of grilling with the sleek Spirit II E-210 gas grill. This two burner grill is built to fit small spaces, and packed with features such as the powerful GS4 grilling system, iGrill capability"
+                        FontSize="12"
+                        LineBreakMode="WordWrap"
+                        LineHeight="1.2"
+                        TextColor="{StaticResource TxtColor}"
+                        HorizontalOptions="Fill"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="15,10,15,10">
+
+                <Label
+                            Text="Product Recommended"
+                            TextColor="{StaticResource TxtColor}"
+                            FontSize="14"
+                            FontFamily="{StaticResource font_bold}"
+                            HorizontalOptions="Fill"/>
+
+                <StackLayout>
+                    <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="8,5"
+                                                HorizontalOptions="StartAndExpand" HeightRequest="180" WidthRequest="150" Margin="5" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70*"/>
+                                <RowDefinition Height="30*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="ListProd"  Grid.Row="0"/>
+                            <StackLayout Orientation="Vertical" Grid.Row="1">
+                                <Label Text="Laser Cream" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                                <Label Text="NGN 5,000.00" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </Grid>
+                    </pv:PancakeView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="End" Grid.Row="1">
+                <Button VerticalOptions="End"  HorizontalOptions="Fill" 
+                                        CornerRadius="25" BackgroundColor="Accent" 
+                        Text="BUY NOW" HeightRequest="55" Margin="15,5,15,10" />
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

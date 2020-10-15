@@ -33,12 +33,14 @@ namespace AhiaJara.ViewModels
             NavigateToCartPageCommand = new Command(async => CartPage_Clicked());
             PlusBtnCommand = new Command(PlusBtn_Clicked);
             MinusBtnCommand = new Command(MinusBtn_Clicked);
+            LongClickedCommand = new Command(LongClicked);
             TextChangedCommand = new Command<TextChangedEventArgs>(textChanged => Entry_TextChangedCommand(textChanged));
         }
 
         #region Properties
         public bool IsBusy { get; set; }
         public Command NavigateToDetailPageCommand { get; }
+        public Command LongClickedCommand { get; }
         public Command PlusBtnCommand { get; }
         public Command MinusBtnCommand { get; }
         public Command TextChangedCommand { get; }
@@ -235,6 +237,11 @@ namespace AhiaJara.ViewModels
             
         }
 
+        void LongClicked()
+        {
+            MessagingCenter.Send(this, "longClick");
+            //MessagingCenter.Send<MainPage>(this, "Hi");
+        }
         private async Task ExecuteCheckOutCommand(ProductModel model)
         {
             //model.quantity = Text;

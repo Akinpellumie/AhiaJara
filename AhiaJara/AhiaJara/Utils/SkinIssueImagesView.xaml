@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:effect="clr-namespace:AhiaJara.Effects"
+             x:Class="AhiaJara.Utils.SkinIssueImagesView">
+
+    <ContentView.Content>
+        <StackLayout>
+            <flv:FlowListView FlowColumnCount="2" 
+                                              FlowItemsSource="{Binding ProductModelList}" 
+                                              x:Name="SkinIssue"
+                                              HorizontalOptions="Fill"
+                                              VerticalOptions="Fill"
+                              FlowIsLoadingInfiniteEnabled="False"
+                              HasUnevenRows="True"
+                              RowHeight="150">
+
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView x:Name="panViewBg" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5"
+                                                HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
+
+                            <Image HorizontalOptions="Fill" 
+                                   VerticalOptions="Fill" x:Name="selectImage" Aspect="AspectFill" Source="{Binding ProductImage}"
+                                   effect:LongPressedEffect.Command="{Binding ShowAlertCommand}" 
+                                   effect:LongPressedEffect.CommandParameter="{Binding .}">
+                                <Image.Effects>
+                                    <effect:LongPressedEffect />
+                                </Image.Effects>
+                            </Image>
+
+                            <!--<pv:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference SkinIssue}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                            </pv:PancakeView.GestureRecognizers>-->
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+
+            </flv:FlowListView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="AhiaJara.Views.OrderPage"
              Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource mainbackground}">
 
@@ -21,8 +20,12 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
-                <View:ToolBarView Title="Order"/>
+            <StackLayout Margin="10,15,10,25">
+                <Label Text="Orders"
+                       TextColor="{StaticResource TxtColor}"
+                       FontSize="20"
+                       FontFamily="{StaticResource font_bold}"
+                       HorizontalOptions="Start"/>
             </StackLayout>
 
             <!--<StackLayout>
