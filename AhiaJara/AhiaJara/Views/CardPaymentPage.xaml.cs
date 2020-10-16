@@ -20,6 +20,7 @@ namespace AhiaJara.Views
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await DisplayAlert("Yoo", "Your payment is successful", "Ok");
+            await Navigation.PushAsync(new PayStackPage());
         }
     }
 }

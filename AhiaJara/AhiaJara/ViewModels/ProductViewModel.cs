@@ -27,6 +27,7 @@ namespace AhiaJara.ViewModels
             GetProducts();
             GetAdverts();
             GetCarts();
+            GetLatestProducts();
             NavigateToDetailPageCommand = new Command<ProductModel>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
@@ -59,7 +60,6 @@ namespace AhiaJara.ViewModels
             }
 
         }
-        ProductModel productModel;
         private ObservableCollection<ProductModel> productModelList;
         public ObservableCollection<ProductModel> ProductModelList
         {
@@ -68,6 +68,18 @@ namespace AhiaJara.ViewModels
             {
                 productModelList = value;
                 OnPropertyChanged(nameof(ProductModelList));
+
+            }
+        }
+
+        private ObservableCollection<ProductModel> latestProductModelList;
+        public ObservableCollection<ProductModel> LatestProductModelList
+        {
+            get => latestProductModelList;
+            set
+            {
+                latestProductModelList = value;
+                OnPropertyChanged(nameof(LatestProductModelList));
 
             }
         }
@@ -149,6 +161,30 @@ namespace AhiaJara.ViewModels
 
         }
 
+        public async void GetLatestProducts()
+        {
+
+            if (Constants.LatestProductsList == null)
+            {
+                //IsBusy = true;
+                HttpClient client = new HttpClient();
+                var url = Constants.LatestProductsUrl;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(url);
+                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                LatestProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                Constants.LatestProductsList = ProductsList;
+                //IsBusy = false;
+            }
+            else
+            {
+                LatestProductModelList = new ObservableCollection<ProductModel>(Constants.LatestProductsList);
+            }
+
+        }
+
         public async void GetCarts()
         {
             cartModelList = new ObservableCollection<Cart>();
@@ -176,12 +212,30 @@ namespace AhiaJara.ViewModels
             }
         }
 
-        public void GetAdverts()
+        public async void GetAdverts()
         {
             carouselModelList = new ObservableCollection<Product>();
-            carouselModelList.Add(new Product { Name = "Hand Sanitizer ", Image = "CaroPro", price = "6999" });
-            carouselModelList.Add(new Product { Name = "FreshYo Soap", Image = "CaroProd", price = "10000" });
-            carouselModelList.Add(new Product { Name = "Skin Tone", Image = "CaroProduct", price = "22000" });
+            //carouselModelList.Add(new Product { Name = "Hand Sanitizer ", Image = "CaroPro", price = "6999" });
+            //carouselModelList.Add(new Product { Name = "FreshYo Soap", Image = "CaroProd", price = "10000" });
+            //carouselModelList.Add(new Product { Name = "Skin Tone", Image = "CaroProduct", price = "22000" });
+            if (Constants.CartItemList == null)
+            {
+                //IsBusy = true;
+                HttpClient client = new HttpClient();
+                var carouselEndpoint = Constants.GetAdverts;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(carouselEndpoint);
+                var CartList = JsonConvert.DeserializeObject<List<Product>>(result);
+                CarouselModelList = new ObservableCollection<Product>(CartList);
+
+                IsBusy = false;
+            }
+            else
+            {
+                carouselModelList = new ObservableCollection<Product>(Constants.CarouselItemList);
+            }
 
         }
 

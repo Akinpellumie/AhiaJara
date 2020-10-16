@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Utils.AdsCarousel" HeightRequest="150">
+             x:Class="AhiaJara.Utils.AdsCarousel" HeightRequest="140">
   <ContentView.Content>
-        <Grid HeightRequest="150">
+        <Grid HeightRequest="140">
             <CarouselView
             x:Name="TheCarousel" ItemsSource="{Binding CarouselModelList}"
                 HorizontalOptions="Fill"
@@ -13,7 +13,7 @@
                     <DataTemplate>
                         <StackLayout
                             HorizontalOptions="Fill">
-                                <Image Source="{Binding Image}" HorizontalOptions="Fill" Aspect="AspectFit"/>
+                                <Image Source="{Binding Image}" HorizontalOptions="Fill" Aspect="Fill"/>
                             </StackLayout>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
