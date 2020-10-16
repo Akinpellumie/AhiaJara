@@ -10,9 +10,16 @@ namespace AhiaJara.Models
 {
     public class Product
     {
+       
+        public string imgUrl { get; set; }
+        public string description { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
+        public string id { get; set; }
+      
         public int OrderId { get; set; }
         public string Name { get; set; }
-        public String Image { get; set; }
+        //public String Image { get; set; }
         public string price { get; set; }
         public string Price
         {
@@ -61,6 +68,18 @@ namespace AhiaJara.Models
                 }
                 return Color.Accent;
             }
+        }
+
+        public ImageSource Image
+        {
+
+            get
+            {
+                var source = new Uri(imgUrl);
+
+                return source;
+            }
+            set { Image = value; }
         }
     }
 
