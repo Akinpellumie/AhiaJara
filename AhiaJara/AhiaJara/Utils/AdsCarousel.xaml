@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Utils.AdsCarousel" HeightRequest="140">
+             x:Class="AhiaJara.Utils.AdsCarousel">
   <ContentView.Content>
-        <Grid HeightRequest="140">
+        <Grid>
             <CarouselView
-            x:Name="TheCarousel" ItemsSource="{Binding CarouselModelList}"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill"
+                HeightRequest="140"
+            x:Name="TheCarousel" 
+                ItemsSource="{Binding CarouselModelList}"
+                PeekAreaInsets="50"
             IndicatorView="indicatorview">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout
-                            HorizontalOptions="Fill">
-                                <Image Source="{Binding Image}" HorizontalOptions="Fill" Aspect="Fill"/>
-                            </StackLayout>
+                        <StackLayout HorizontalOptions="Fill">
+                            <Image Source="{Binding Image}" HorizontalOptions="Fill" Aspect="AspectFill"/>
+                        </StackLayout>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
@@ -22,9 +22,9 @@
             x:Name="indicatorview"
                 VerticalOptions="End"
             IndicatorColor="LightGray"
-            IndicatorSize="10"
+            IndicatorSize="6"
                 Margin="0,0,0,5"
             SelectedIndicatorColor="Accent" />
         </Grid>
-    </ContentView.Content>
+  </ContentView.Content>
 </ContentView>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.CartToolBar"
+             BackgroundColor="#E5E5E5"
+             HeightRequest="60" Padding="15,0,15,0"
+             x:Name="RootCartToolBar">
+    <ContentView.Content>
+        <Grid BackgroundColor="#E5E5E5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <ImageButton HeightRequest="25" BackgroundColor="Transparent" x:Name="back"  
+                                     Source="arrow" WidthRequest="25" Clicked="Back"
+                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label
+                    Grid.Column="1"
+                    FontSize="18"
+                    Margin="20,0,0,0"
+                    HorizontalOptions="Start"
+                    Text="{Binding Source={x:Reference RootToolBar}, Path=Title}"
+                    TextColor="{StaticResource TxtColor}"
+                    VerticalOptions="CenterAndExpand" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

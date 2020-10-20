@@ -8,53 +8,46 @@
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
+        <Grid VerticalOptions="Fill">
 
-        <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+            <View:CartToolBar Title="Cart" VerticalOptions="Start"/>
 
-                <View:ToolBarView Title="Cart" Grid.Row="0"/>
+            <Grid VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="Fill">
+                    <View:CartView/>
+                </StackLayout>
 
-                <Grid Grid.Row="1">
-                    <StackLayout VerticalOptions="Fill">
-                        <View:CartView/>
-                    </StackLayout>
+            </Grid>
 
-                </Grid>
+            <Grid VerticalOptions="End">
+                <StackLayout Orientation="Vertical" Margin="0,0,0,15">
 
-                <Grid Grid.Row="2">
-                    <StackLayout Orientation="Vertical" Margin="0,0,0,15">
-
-                        <pv:PancakeView BackgroundColor="Transparent" 
+                    <pv:PancakeView BackgroundColor="Transparent" 
                                     HorizontalOptions="Fill"
                                     HeightRequest="40"
                                     Padding="15">
-                            <Grid VerticalOptions="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                        <Grid VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                                <Label Text="Total Price:"
+                            <Label Text="Total Price:"
                                FontSize="15"
                                FontAttributes="Bold"
                                HorizontalOptions="Start"
                                Grid.Column="0"/>
 
-                                <Label Text="{Binding TotalPrice}"
+                            <Label Text="{Binding TotalPrice}"
                                FontSize="15"
                                FontAttributes="Bold"
                                HorizontalOptions="End"
                                Grid.Column="1"/>
-                            </Grid>
-                        </pv:PancakeView>
+                        </Grid>
+                    </pv:PancakeView>
 
-                        <StackLayout>
-                            <Button BackgroundColor="Accent"
+                    <StackLayout>
+                        <Button BackgroundColor="Accent"
                                 HorizontalOptions="Fill"
                                 CornerRadius="15"
                                 Text="CONTINUE"
@@ -62,12 +55,9 @@
                                 Clicked="ContinueBtn_Clicked"
                                 TextColor="White"
                                 HeightRequest="50"/>
-                        </StackLayout>
                     </StackLayout>
-                </Grid>
+                </StackLayout>
             </Grid>
-
-
-        </StackLayout>
+        </Grid >
     </ContentPage.Content>
 </ContentPage>
