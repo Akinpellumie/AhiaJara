@@ -214,11 +214,11 @@ namespace AhiaJara.ViewModels
 
         public async void GetAdverts()
         {
-            carouselModelList = new ObservableCollection<Product>();
+            //carouselModelList = new ObservableCollection<Product>();
             //carouselModelList.Add(new Product { Name = "Hand Sanitizer ", Image = "CaroPro", price = "6999" });
             //carouselModelList.Add(new Product { Name = "FreshYo Soap", Image = "CaroProd", price = "10000" });
             //carouselModelList.Add(new Product { Name = "Skin Tone", Image = "CaroProduct", price = "22000" });
-            if (Constants.CartItemList == null)
+            if (CarouselModelList == null)
             {
                 //IsBusy = true;
                 HttpClient client = new HttpClient();

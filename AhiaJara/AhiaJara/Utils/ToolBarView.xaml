@@ -36,7 +36,7 @@
                 </Grid>
                 
                 <Grid Grid.Column="0" Margin="0,0,5,0">
-                    <ImageButton HeightRequest="30" BackgroundColor="Transparent" x:Name="cart"  
+                    <Image HeightRequest="30" BackgroundColor="Transparent" x:Name="cart"  
                                      Source="cartIcon" WidthRequest="30"
                                     Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
                     <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"

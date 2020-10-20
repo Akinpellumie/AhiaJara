@@ -24,23 +24,29 @@
                 <StackLayout Grid.Row="0">
 
                     <StackLayout Margin="5,1,5,1">
-                        <Label Text="Product Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
-                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
-                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                            <Controls:CustomEntry  x:Name="proEntry" VerticalOptions="Center" 
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Glow" 
-                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
-                        </Frame>
-                    </StackLayout>
-
-                    <StackLayout Margin="5,1,5,1">
                         <Label Text="Product Category" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                         <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                             <Controls:CustomPicker HorizontalOptions="FillAndExpand"
                                          HeightRequest="45" 
                                          Image="ic_arrow_drop_down"
-                                         Title="Select Answer">
+                                         Title="Select Category">
+                                <Controls:CustomPicker.Items>
+                                    <x:String>Skin Products</x:String>
+                                    <x:String>Hair Products</x:String>
+                                </Controls:CustomPicker.Items>
+                            </Controls:CustomPicker>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Product Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                            <Controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                         HeightRequest="45" 
+                                         Image="ic_arrow_drop_down"
+                                         Title="Select Product">
                                 <Controls:CustomPicker.Items>
                                     <x:String>Skin Products</x:String>
                                     <x:String>Hair Products</x:String>
@@ -60,12 +66,22 @@
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                         </Frame>
                     </StackLayout>
+
+                    <StackLayout Margin="5,1,5,1">
+                        <Label Text="Quantity" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                        <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
+                            <Controls:CustomEntry  x:Name="qtyEntry" VerticalOptions="Center" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g 2" 
+                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
 
                 <StackLayout VerticalOptions="End" Grid.Row="1">
                     <Button VerticalOptions="End"  HorizontalOptions="Fill" 
                                         CornerRadius="25" BackgroundColor="Accent" 
-                        Text="SUBMIT" HeightRequest="55" Margin="15,5,15,10" />
+                        Text="request" HeightRequest="55" Margin="15,5,15,10" />
                 </StackLayout>
             </Grid>
         </StackLayout>
