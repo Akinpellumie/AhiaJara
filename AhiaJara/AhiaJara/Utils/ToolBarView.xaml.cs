@@ -16,6 +16,7 @@ namespace AhiaJara.Utils
     public partial class ToolBarView : ContentView
     {
         Product productModel;
+        Cart cartModel;
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(
            nameof(Title),
            typeof(string),
@@ -40,7 +41,7 @@ namespace AhiaJara.Utils
 
         public async void CartIcon_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CartPage());
+            await Navigation.PushAsync(new CartPage(cartModel));
         }
 
         public async void BellIcon_Clicked(object sender, EventArgs e)

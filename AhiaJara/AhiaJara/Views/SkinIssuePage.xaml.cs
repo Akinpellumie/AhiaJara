@@ -1,19 +1,34 @@
 ﻿using AhiaJara.PopUps;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static AhiaJara.Models.FormsModel;
 
 namespace AhiaJara.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SkinIssuePage : ContentPage
     {
+        private MediaFile _mediaFile;
+        String _answer2, _answer6, _answer7;
+        private string _answer3;
+        private string _answer5;
+        private string _answer14;
+        private string _answer12;
+        private string _answer11;
+        private string _answer10;
+        private string _answer9;
+        private string _answer8;
+
         public SkinIssuePage()
         {
             InitializeComponent();
@@ -42,5 +57,174 @@ namespace AhiaJara.Views
             await Navigation.PushAsync(new SkinIssueReviewPage());
 
         }
+
+        public async void SelectImage(object sender, EventArgs e)
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await DisplayAlert("Warning", "Picking  a photo is not supported", "OK");
+
+                return;
+            }
+
+            _mediaFile = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+                CompressionQuality = 40
+            });
+
+            //userImage.Source = ImageSource.FromStream(() => _mediaFile.GetStream());
+
+            //imageName.Text = System.IO.Path.GetFileName(_mediaFile.Path);
+
+        }
+        public void sendData()
+        {
+            if(_mediaFile != null)
+            {
+                var file = _mediaFile.Path;
+                if (string.IsNullOrEmpty(file) == false)
+                {
+                    var upfilebytes = System.IO.File.ReadAllBytes(file);
+                    MultipartFormDataContent content = new MultipartFormDataContent();
+                    ByteArrayContent baContent = new ByteArrayContent(upfilebytes);
+                    SkinIssuesQuestionAndAnswer queAndAnswer;
+                    var name = System.IO.Path.GetFileName(file);
+                    baContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/" + System.IO.Path.GetExtension(name).Remove(0, 1));
+                    baContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "Image",
+                        FileName = name,
+
+                    };
+
+                    //var categorynew = new List<string>();
+                    //categorynew.Add(((Categorypicker.SelectedItem as CategoriesModel).category));
+                    //                var categoryArray = categorynew.ToArray();
+                    //var jsoncategoryArray = JsonConvert.SerializeObject(categoryArray);
+                    content.Add(baContent, "Image", name);
+                    //new QuestionAndAnswer(question1.Text, _answer1),
+                    content.Add(new StringContent(question1.Text), answer1.Text);
+                    content.Add(new StringContent(question2.Text), _answer2);
+                    content.Add(new StringContent(question3.Text), question3.Text);
+                    content.Add(new StringContent(question4.Text), question4.Text);
+                    content.Add(new StringContent(question5.Text), _answer5);
+                    content.Add(new StringContent(question6.Text), _answer6);
+                    content.Add(new StringContent(question7.Text), _answer7);
+                    content.Add(new StringContent(question8.Text), _answer8);
+                    content.Add(new StringContent(question9.Text), question9.Text);
+                    content.Add(new StringContent(question10.Text), question10.Text);
+                    content.Add(new StringContent(question11.Text), _answer11);
+                    content.Add(new StringContent(question12.Text), _answer12);
+                    content.Add(new StringContent(question14.Text), _answer14);
+                    //content.Add(new StringContent(jsoncategoryArray),"category");
+
+
+                    var response = await client.PostAsync(CreateItem, content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        actindicator.IsVisible = false;
+                        actindicator.IsRunning = false;
+                        await DisplayAlert("Success", itemName.Text + "Created Successful", "ok");
+                        await Shell.Current.Navigation.PopModalAsync();
+
+                    }
+
+                }
+
+
+
+            }
+        
+                itemName.Text = "";
+                itemDescription.Text = "";
+                DealerPhone.Text = "";
+                DealerAddr.Text = "";
+                DealerPhone.Text = "";
+                DealerCity.Text = "";
+                StoreUrl.Text = "";
+            }
+
+        private void OnPickerSelected2(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer2 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected3(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer3 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected5(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer5 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected6(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer6 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected7(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer7 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected8(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer8 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected9(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer9 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected10(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer10 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected11(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer11 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected12(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer12 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+        private void OnPickerSelected14(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedItem = picker.SelectedItem;
+            _answer14 = selectedItem.ToString();// This is the model selected in the picker
+        }
+
+
+
     }
 }
