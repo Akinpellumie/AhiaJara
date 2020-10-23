@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using AhiaJara.Helpers;
+using AhiaJara.Models;
+using AhiaJara.ViewModels;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +16,18 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PayStackPage : ContentPage
     {
-        public PayStackPage()
+        public static ProductViewModel ProductViewModel;
+        ProductModel prodModel;
+        public PayStackPage(ProductModel productModel)
         {
+            prodModel = productModel;
+
+            decimal totalPrice;
+            Formulars formular = new Formulars();
+            string[] ssize = prodModel.TotalPrice.Split(new char[0]);
+            string price = ssize[1].ToString();
+            totalPrice = formular.ConvertToDecimal(price);
+
             InitializeComponent();
 
             JArray jarray = new JArray();
@@ -41,7 +54,7 @@ namespace AhiaJara.Views
             dynamic product = new JObject();
             product.key = "pk_live_472e7785d2a12c332ef662d659c6007772e5a54b";
             product.email = "ahiajara007@gmail.com";
-            product.amount = 490000m;
+            product.amount = totalPrice;
             //product.subaccount = "ACCT_zpve61wnc0fbs6b";
             product.bearer = "account";
             product.@ref = Guid.NewGuid();

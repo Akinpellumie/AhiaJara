@@ -31,7 +31,7 @@ namespace AhiaJara.ViewModels
             NavigateToDetailPageCommand = new Command<ProductModel>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
-            NavigateToCartPageCommand = new Command(async => CartPage_Clicked());
+            NavigateToCartPageCommand = new Command<Cart>(async(model) => CartPage_Clicked(model));
             PlusBtnCommand = new Command(PlusBtn_Clicked);
             MinusBtnCommand = new Command(MinusBtn_Clicked);
             LongClickedCommand = new Command(LongClicked);
@@ -276,11 +276,11 @@ namespace AhiaJara.ViewModels
             
         }
 
-        public async Task CartPage_Clicked()
+        public async Task CartPage_Clicked(Cart model)
         {
             var txt = Text;
             Constants.cartCount = Text;
-            await Navigation.PushAsync(new CartPage());
+            await Navigation.PushAsync(new CartPage(model));
         }
 
         

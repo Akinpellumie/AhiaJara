@@ -16,5 +16,16 @@ namespace AhiaJara.Models
             public string Question { get; set; }
             public string Answer { get; set; }
         }
+
+        public class SkinIssuesQuestionAndAnswer
+        {
+            public SkinIssuesQuestionAndAnswer(String question, String answer)
+            {
+                Question = question;
+                Answer = answer;
+            }
+            public string Question { get; set; }
+            public string Answer { get; set; }
+        }
     }
 }

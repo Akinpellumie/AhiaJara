@@ -14,19 +14,21 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CartPage : ContentPage
     {
-        ProductViewModel ProductViewModel;
+        ProductViewModel productViewModel;
+        Cart newCartModel;
         //Product prodModel;
-        public CartPage()
+        public CartPage(Cart cartModel)
         {
-            ProductViewModel = new ProductViewModel(Navigation);
+            productViewModel = new ProductViewModel(Navigation);
+            cartModel = newCartModel;
             //prodModel = productModel;
             InitializeComponent();
-            this.BindingContext = ProductViewModel;
+            this.BindingContext = productViewModel;
         }
 
         public async void ContinueBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OrderConPage());
+            await Navigation.PushAsync(new OrderConPage(productModel: null, cartModel:newCartModel));
         }
     }
 }

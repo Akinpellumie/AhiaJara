@@ -28,7 +28,7 @@ namespace AhiaJara.Views
 
         public async void ContinueBtn_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OrderConPage());
+            await Navigation.PushAsync(new OrderConPage(productModel:prodModel, cartModel: null));
         }
 
     }

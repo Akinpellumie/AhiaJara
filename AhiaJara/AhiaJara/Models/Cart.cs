@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -60,6 +61,20 @@ namespace AhiaJara.Models
                 return quantityText;
             }
             set { qtySelected = value; }
+        }
+
+        public string TotalPrice
+        {
+            get
+            {
+                int newPrice = Int32.Parse(productPrice);
+                int[] arr = new int[] { newPrice++ };
+                int sum = arr.Sum();
+
+                string totalPrice = sum.ToString();
+                return "NGN " + totalPrice;
+            }
+            set { TotalPrice = value; }
         }
         public ImageSource ProductImage
         {

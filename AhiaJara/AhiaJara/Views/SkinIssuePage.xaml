@@ -49,21 +49,21 @@
                             <StackLayout Orientation="Vertical" x:Name="skinIssues">
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="How old are you?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question1" Text="How old are you?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomEntry  x:Name="ageEntry" VerticalOptions="End" 
+                                        <Controls:CustomEntry  x:Name="answer1" VerticalOptions="End" 
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="e.g 20" 
                                                Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
                                     </Frame>
                                 </StackLayout>
                                 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="What is your gender?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question2" Text="What is your gender?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand" x:Name="answer2"
+                                         HeightRequest="45" SelectedIndexChanged="OnPickerSelected2"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -75,11 +75,11 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="Do you consider your skin/face to be DRY or OILY?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
-                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
+                                    <Label x:Name="question3" Text="Do you consider your skin/face to be DRY or OILY?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent" 
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                         HeightRequest="45" x:Name="answer3" SelectedIndexChanged="OnPickerSelected3"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -92,22 +92,22 @@
                                 
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="What is the main concern you are having concerning your skin or hair?"
+                                    <Label x:Name="question4" Text="What is the main concern you are having concerning your skin or hair?"
                                    TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
-                                        <Controls:CustomEntry  x:Name="issueEntry"
+                                        <Controls:CustomEntry  x:Name="answer4"
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="the issue" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                                     </Frame>
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="Do you always have pimples?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question5" Text="Do you always have pimples?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected5"
+                                         HeightRequest="45" x:Name="answer5"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -120,11 +120,11 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="How often do you wash your Hair?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question6" Text="How often do you wash your Hair?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                         HeightRequest="45" x:Name="answer6" SelectedIndexChanged="OnPickerSelected6"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -137,11 +137,11 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="How often do you exfoliate your skin?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question7" Text="How often do you exfoliate your skin?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                         HeightRequest="45" x:Name="answer7" SelectedIndexChanged="OnPickerSelected7"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -154,11 +154,11 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="How does your SKIN reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question8" Text="How does your SKIN reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected8"
+                                         HeightRequest="45" x:Name="answer8"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -171,11 +171,11 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="How does your HAIR reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question9" Text="How does your HAIR reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                         HeightRequest="45" x:Name="answer9" SelectedIndexChanged="OnPickerSelected9"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -188,11 +188,11 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="How does your FACE reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question10" Text="How does your FACE reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected10"
+                                         HeightRequest="45" x:Name="answer10"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -205,55 +205,55 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question11" Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                         HeightRequest="45" x:Name="answer11" SelectedIndexChanged="OnPickerSelected11"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
-                                                <x:String>My skin reacts often, turns reddish, itchy or stings</x:String>
-                                                <x:String>My skin rarely reacts, handles most new products I try</x:String>
+                                                <x:String>reacts often, turns reddish, itchy or stings</x:String>
+                                                <x:String>rarely reacts, handles most new products I try</x:String>
                                             </Controls:CustomPicker.Items>
                                         </Controls:CustomPicker>
                                     </Frame>
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question12" Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" 
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected12"
+                                         HeightRequest="45" x:Name="answer12"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
-                                                <x:String>My skin reacts often, turns reddish, itchy or stings</x:String>
-                                                <x:String>My skin rarely reacts, handles most new products I try</x:String>
+                                                <x:String>Reacts often, turns reddish, itchy or stings</x:String>
+                                                <x:String>Rarely reacts, handles most new products I try</x:String>
                                             </Controls:CustomPicker.Items>
                                         </Controls:CustomPicker>
                                     </Frame>
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="What product(s) have you used to battle this challenge? Name them;" 
+                                    <Label x:Name="question13" Text="What product(s) have you used to battle this challenge? Name them;" 
                                    TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame BackgroundColor="White" Padding="0" 
                                    BorderColor="Transparent" Style="{StaticResource FrameEditorStyle}"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="False">
-                                        <Controls:CustomEditor AutoSize="TextChanges"  x:Name="causesEntry"
+                                        <Controls:CustomEditor AutoSize="TextChanges"  x:Name="answer13"
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="please seperate each answer with a comma. e.g. folly cream, folt cream, xxx" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                                     </Frame>
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label Text="What best describes your cosmetic vibes?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                                    <Label x:Name="question14" Text="What best describes your cosmetic vibes?" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
                                     <Frame Style="{StaticResource FramePickerStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="40" 
+                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected14"
+                                         HeightRequest="40" x:Name="answer14"
                                          Image="ic_arrow_drop_down"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
@@ -316,6 +316,10 @@
                         <ff1:SvgCachedImage Source="imageUpload.svg" HeightRequest="350"
                                     Aspect="AspectFit" />
                     </StackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectImage"
+                                              NumberOfTapsRequired="1"/>
+                    </Grid.GestureRecognizers>
                 </Grid>
 
                 <Grid VerticalOptions="End">
