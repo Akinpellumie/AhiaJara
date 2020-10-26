@@ -36,6 +36,10 @@ namespace AhiaJara.Helpers
         public static string GetCart{ get { return Constants.domainurl + "/cart/"; } }
         public static string PostQuestionaire{ get { return Constants.domainurl + "/questionniareentry"; } }
         public static string GetAdverts{ get { return Constants.domainurl + "/adverts"; } }
+        public static string postSkinIssue{ get { return Constants.domainurl + "/newskinissue"; } }
+        public static string getSkinIssue{ get { return Constants.domainurl + "/allskinissue"; } }
+        public static string getIncompleteOrder{ get { return Constants.domainurl + "/incompletedorder/"; } }
+        public static string getcompletedOrder{ get { return Constants.domainurl + "/completedorder/"; } }
 
 
         public static Models.UserProfile userprofile { get; set; }
