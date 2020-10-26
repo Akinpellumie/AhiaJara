@@ -380,6 +380,7 @@
                 </Grid>-->
 
                 <StackLayout VerticalOptions="End" Grid.Row="1">
+                    <ActivityIndicator x:Name="actindicator" Grid.RowSpan="2" BackgroundColor="#560202" VerticalOptions="Center" IsVisible="False" HorizontalOptions="Center"/>
                     <Button VerticalOptions="Center"  HorizontalOptions="End" 
                                         CornerRadius="25" BackgroundColor="Accent" 
                         Text="NEXT" HeightRequest="55" Margin="10,5,10,10" 

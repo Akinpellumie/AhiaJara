@@ -1,4 +1,5 @@
-﻿using AhiaJara.PopUps;
+﻿using AhiaJara.Helpers;
+using AhiaJara.PopUps;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
@@ -80,9 +81,14 @@ namespace AhiaJara.Views
             //imageName.Text = System.IO.Path.GetFileName(_mediaFile.Path);
 
         }
-        public void sendData()
+        public async void sendData()
         {
-            if(_mediaFile != null)
+            HttpClient client = new HttpClient();
+
+            var CreateItem = Constants.postSkinIssue;
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+            if (_mediaFile != null)
             {
                 var file = _mediaFile.Path;
                 if (string.IsNullOrEmpty(file) == false)
@@ -108,16 +114,17 @@ namespace AhiaJara.Views
                     //new QuestionAndAnswer(question1.Text, _answer1),
                     content.Add(new StringContent(question1.Text), answer1.Text);
                     content.Add(new StringContent(question2.Text), _answer2);
-                    content.Add(new StringContent(question3.Text), question3.Text);
-                    content.Add(new StringContent(question4.Text), question4.Text);
+                    content.Add(new StringContent(question3.Text), _answer3);
+                    content.Add(new StringContent(question4.Text), answer4.Text);
                     content.Add(new StringContent(question5.Text), _answer5);
                     content.Add(new StringContent(question6.Text), _answer6);
                     content.Add(new StringContent(question7.Text), _answer7);
                     content.Add(new StringContent(question8.Text), _answer8);
-                    content.Add(new StringContent(question9.Text), question9.Text);
-                    content.Add(new StringContent(question10.Text), question10.Text);
+                    content.Add(new StringContent(question9.Text), _answer9);
+                    content.Add(new StringContent(question10.Text), _answer10);
                     content.Add(new StringContent(question11.Text), _answer11);
                     content.Add(new StringContent(question12.Text), _answer12);
+                    content.Add(new StringContent(question13.Text), answer13.Text);
                     content.Add(new StringContent(question14.Text), _answer14);
                     //content.Add(new StringContent(jsoncategoryArray),"category");
 
@@ -127,7 +134,7 @@ namespace AhiaJara.Views
                     {
                         actindicator.IsVisible = false;
                         actindicator.IsRunning = false;
-                        await DisplayAlert("Success", itemName.Text + "Created Successful", "ok");
+                        await DisplayAlert("Success", "Skin Issue" + "Created Successful", "ok");
                         await Shell.Current.Navigation.PopModalAsync();
 
                     }
@@ -138,13 +145,20 @@ namespace AhiaJara.Views
 
             }
         
-                itemName.Text = "";
-                itemDescription.Text = "";
-                DealerPhone.Text = "";
-                DealerAddr.Text = "";
-                DealerPhone.Text = "";
-                DealerCity.Text = "";
-                StoreUrl.Text = "";
+                answer1.Text = "";
+                answer2.SelectedIndex = -1; 
+                answer3.SelectedIndex = -1; 
+                answer4.Text = "";
+                answer5.SelectedIndex = -1;
+                answer6.SelectedIndex = -1;
+                answer7.SelectedIndex = -1;
+                answer8.SelectedIndex = -1;
+                answer9.SelectedIndex = -1;
+                answer10.SelectedIndex = -1;
+                answer11.SelectedIndex = -1;
+                answer12.SelectedIndex = -1;
+                answer13.Text = "";
+                answer14.SelectedIndex = -1;
             }
 
         private void OnPickerSelected2(object sender, EventArgs e)

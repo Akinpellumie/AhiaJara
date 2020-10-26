@@ -13,12 +13,13 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrderPage : ContentPage
     {
-        ProductViewModel ProductViewModel;
+        //ProductViewModel ProductViewModel;
+        OrdersViewModel ordersViewModel;
         public OrderPage()
         {
-            ProductViewModel = new ProductViewModel(Navigation);
+            ordersViewModel = new OrdersViewModel(Navigation);
             InitializeComponent();
-            this.BindingContext = ProductViewModel;
+            this.BindingContext = ordersViewModel;
         }
 
     }

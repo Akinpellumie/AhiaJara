@@ -67,10 +67,16 @@
                                                Animate="True"
                                                SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
                             <StackLayout x:Name="pendingOrder">
+                                <ActivityIndicator 
+                Grid.RowSpan="2"
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
                                 <ScrollView Orientation="Vertical" VerticalOptions="Fill">
                                     <StackLayout
                      x:Name="PendingOrderItems"
-                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    BindableLayout.ItemsSource="{Binding InCompleteOrders}"
                     Orientation="Vertical"
                     Spacing="10"
                     Padding="0"
@@ -94,7 +100,7 @@
                                                                     <Label Text="Order ID:"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
-                                                                    <Label Text="{Binding OrderId}"
+                                                                    <Label Text="{Binding id}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
@@ -103,7 +109,7 @@
                                                                     <Label Text="Order Status:"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
-                                                                    <Label Text="{Binding Status}"
+                                                                    <Label Text="{Binding status}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
@@ -112,7 +118,7 @@
                                                                     <Label Text="Date Dispatched:"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
-                                                                    <Label Text="{Binding Date}"
+                                                                    <Label Text="{Binding dispatchedDate}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
@@ -129,12 +135,13 @@
                                                                         <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
                                                                     </pv:PancakeView>
                                                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
-                                                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                                        <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
-                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                                                         <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                        
                                                                     </StackLayout>
                                                                 </Grid>
                                                             </StackLayout>
@@ -154,10 +161,16 @@
                                 </ScrollView>
                             </StackLayout>
                             <StackLayout x:Name="completedOrder">
+                                <ActivityIndicator 
+                Grid.RowSpan="2"
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
                                 <ScrollView Orientation="Vertical" VerticalOptions="Fill">
                                     <StackLayout
                      x:Name="OrderItems"
-                    BindableLayout.ItemsSource="{Binding ProductModelList}"
+                    BindableLayout.ItemsSource="{Binding CompletedOrders}"
                     Orientation="Vertical"
                     Spacing="10"
                     Padding="0"
@@ -180,7 +193,7 @@
                                                                     <Label Text="Order ID:"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
-                                                                    <Label Text="{Binding OrderId}"
+                                                                    <Label Text="{Binding id}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
@@ -189,7 +202,7 @@
                                                                     <Label Text="Order Status:"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
-                                                                    <Label Text="{Binding Status}"
+                                                                    <Label Text="{Binding status}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
@@ -198,7 +211,7 @@
                                                                     <Label Text="Date Dispatched:"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
-                                                                    <Label Text="{Binding Date}"
+                                                                    <Label Text="{Binding dispatchedDate}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
@@ -215,12 +228,13 @@
                                                                         <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
                                                                     </pv:PancakeView>
                                                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
-                                                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                                        <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
-                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                                                         <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                                                        
                                                                     </StackLayout>
                                                                 </Grid>
                                                             </StackLayout>
