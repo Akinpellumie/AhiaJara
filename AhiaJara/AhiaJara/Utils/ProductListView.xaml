@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="AhiaJara.Utils.ProductListView">
     <ContentView.Content>
         <StackLayout>
@@ -10,13 +10,38 @@
                                               HorizontalOptions="Fill"
                                               VerticalOptions="Fill"
                               FlowIsLoadingInfiniteEnabled="False"
-                              HasUnevenRows="True"
-                              RowHeight="150">
+                              HasUnevenRows="True" SeparatorVisibility="None"
+                              Header="Latest Products"
+                              RowHeight="200">
 
+                <!--<flv:FlowListView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="Latest Products"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#5b6b6f"
+                                   FontFamily="{StaticResource font_medium}"
+                                   HorizontalOptions="Start"
+                                   Margin="5"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </flv:FlowListView.HeaderTemplate>-->
+
+                <!--<flv:FlowListView.FlowLoadingTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <ff:CachedImage Source="loadergif.gif"   
+                                HeightRequest="100"  
+                            VerticalOptions="CenterAndExpand"
+                                WidthRequest="100"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </flv:FlowListView.FlowLoadingTemplate>-->
                 <flv:FlowListView.FlowColumnTemplate>
                     <DataTemplate>
-                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="8,5"
-                                                HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
+                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
+                                                HorizontalOptions="Fill" HeightRequest="200" WidthRequest="100" Margin="5" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70*"/>

@@ -58,7 +58,7 @@
 
                                 <ScrollView>
                                     <!--carouselStack start-->
-                                    <!--<View:AdsCarousel/>-->
+                                    <View:AdsCarousel/>
                                     <!--carouselStack end-->
                                 </ScrollView>
 
@@ -92,13 +92,13 @@
 
                                 <ScrollView Orientation="Vertical">
                                     <StackLayout>
-                                        <Label
+                                        <!--<Label
                                             Margin="0,10,0,5"
                                             FontSize="14"
                                             HorizontalOptions="StartAndExpand"
                                             Text="Latest Products" FontAttributes="Bold"
                                             TextColor="{StaticResource TxtColor}"
-                                            VerticalOptions="Center" />     
+                                            VerticalOptions="Center" />-->     
                                                             <!--<Label
                     Margin="0,20,0,20"
                     FontSize="11"
