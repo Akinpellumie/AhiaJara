@@ -12,15 +12,15 @@
                 <DataTemplate>
                     <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
                         <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
-                                                HorizontalOptions="Fill" HeightRequest="100" WidthRequest="100" >
+                                                HorizontalOptions="Fill" WidthRequest="100" >
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="60*"/>
-                                    <RowDefinition Height="40*"/>
+                                    <RowDefinition Height="70*"/>
+                                    <RowDefinition Height="30*"/>
                                 </Grid.RowDefinitions>
 
                                 <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"  Grid.Row="0"/>
-                                <StackLayout Orientation="Vertical" Grid.Row="1">
+                                <StackLayout Orientation="Vertical" VerticalOptions="End" Grid.Row="1">
                                     <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
                                     <Label Text="{Binding price}" TextColor="{StaticResource Primary}"

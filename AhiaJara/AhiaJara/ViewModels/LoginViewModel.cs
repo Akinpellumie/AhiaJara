@@ -1,6 +1,8 @@
 ﻿using AhiaJara.Models;
+using AhiaJara.PopUps;
 using AhiaJara.Services;
 using AhiaJara.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -70,7 +72,7 @@ namespace AhiaJara.ViewModels
         //    await Shell.Current.GoToAsync($"//{nameof(AppShell)}");
         //}
 
-        public void OnLoginBtn_Clicked()
+        public async void OnLoginBtn_Clicked()
         {
             if (Email == null || Password == null)
             {
@@ -78,6 +80,7 @@ namespace AhiaJara.ViewModels
             }
             else
             {
+                await PopupNavigation.Instance.PushAsync(new PageLoader());
                 var loginData = new UserDetails()
                 {
                     email = Email,
@@ -86,7 +89,6 @@ namespace AhiaJara.ViewModels
 
                 userAccessService = new UserAccessService();
                 UserLogin(loginData);
-
             }
           
                
@@ -102,6 +104,7 @@ namespace AhiaJara.ViewModels
             if (result == true)
             {
                 await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "0");
+                await PopupNavigation.Instance.PopAsync(true);
                 Application.Current.MainPage = new AppShell();
                 await Shell.Current.GoToAsync("//main");
             }
