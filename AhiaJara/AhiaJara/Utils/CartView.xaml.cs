@@ -18,7 +18,7 @@ namespace AhiaJara.Utils
         {
             ProductViewModel = new ProductViewModel(Navigation);
             InitializeComponent();
-            this.BindingContext = ProductViewModel;
+             this.BindingContext = ProductViewModel;
         }
     }
 }

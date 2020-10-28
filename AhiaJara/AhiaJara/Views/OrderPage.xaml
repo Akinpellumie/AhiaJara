@@ -145,12 +145,14 @@
                                                                     </StackLayout>
                                                                 </Grid>
                                                             </StackLayout>
-                                                            <StackLayout Grid.Row="2" Margin="0,5,0,0">
+                                                            <StackLayout Grid.Row="2" Margin="0,5,0,0" x:Name="CompleteOrd">
                                                                 <Button Text="CONFIRM ORDER RECEIVED"
                                                 BackgroundColor="{Binding Path=BtnColor}"
                                                 HorizontalOptions="Fill"
                                                 HeightRequest="40"
-                                                CornerRadius="15"/>
+                                                CornerRadius="15"
+                                                Command="{Binding Path=BindingContext.CompleteOrder, Source={x:Reference CompleteOrd}}"
+                                                CommandParameter="{Binding .}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>

@@ -40,6 +40,7 @@ namespace AhiaJara.Helpers
         public static string getSkinIssue{ get { return Constants.domainurl + "/allskinissue"; } }
         public static string getIncompleteOrder{ get { return Constants.domainurl + "/incompletedorder/"; } }
         public static string getcompletedOrder{ get { return Constants.domainurl + "/completedorder/"; } }
+        public static string postcompleteOrder{ get { return Constants.domainurl + "/completeorder/"; } }
 
 
         public static Models.UserProfile userprofile { get; set; }

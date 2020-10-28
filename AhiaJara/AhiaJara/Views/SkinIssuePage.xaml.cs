@@ -52,7 +52,7 @@ namespace AhiaJara.Views
         public async void OnThirdScreen_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new PopLoader());
-
+            SendData();
             await Task.Delay(6000);
             await PopupNavigation.Instance.PopAsync(true);
             await Navigation.PushAsync(new SkinIssueReviewPage());
@@ -81,11 +81,12 @@ namespace AhiaJara.Views
             //imageName.Text = System.IO.Path.GetFileName(_mediaFile.Path);
 
         }
-        public async void sendData()
+        public async void SendData()
         {
             HttpClient client = new HttpClient();
 
             var CreateItem = Constants.postSkinIssue;
+            var sampleurl = "http://192.168.88.75:5000/newskinissue";
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
             if (_mediaFile != null)
@@ -101,7 +102,7 @@ namespace AhiaJara.Views
                     baContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/" + System.IO.Path.GetExtension(name).Remove(0, 1));
                     baContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
                     {
-                        Name = "Image",
+                        Name = "files",
                         FileName = name,
 
                     };
@@ -110,26 +111,26 @@ namespace AhiaJara.Views
                     //categorynew.Add(((Categorypicker.SelectedItem as CategoriesModel).category));
                     //                var categoryArray = categorynew.ToArray();
                     //var jsoncategoryArray = JsonConvert.SerializeObject(categoryArray);
-                    content.Add(baContent, "Image", name);
+                    content.Add(baContent, "files", name);
                     //new QuestionAndAnswer(question1.Text, _answer1),
-                    content.Add(new StringContent(question1.Text), answer1.Text);
-                    content.Add(new StringContent(question2.Text), _answer2);
-                    content.Add(new StringContent(question3.Text), _answer3);
-                    content.Add(new StringContent(question4.Text), answer4.Text);
-                    content.Add(new StringContent(question5.Text), _answer5);
-                    content.Add(new StringContent(question6.Text), _answer6);
-                    content.Add(new StringContent(question7.Text), _answer7);
-                    content.Add(new StringContent(question8.Text), _answer8);
-                    content.Add(new StringContent(question9.Text), _answer9);
-                    content.Add(new StringContent(question10.Text), _answer10);
-                    content.Add(new StringContent(question11.Text), _answer11);
-                    content.Add(new StringContent(question12.Text), _answer12);
-                    content.Add(new StringContent(question13.Text), answer13.Text);
-                    content.Add(new StringContent(question14.Text), _answer14);
+                    content.Add(new StringContent(answer1.Text),  question1.Text);
+                    content.Add(new StringContent(_answer2), question2.Text);
+                    content.Add(new StringContent(_answer3), question3.Text);
+                    content.Add(new StringContent(answer4.Text), question4.Text);
+                    content.Add(new StringContent(_answer5), question5.Text);
+                    content.Add(new StringContent(_answer6), question6.Text);
+                    content.Add(new StringContent(_answer7), question7.Text);
+                    content.Add(new StringContent(_answer8), question8.Text);
+                    content.Add(new StringContent(_answer9), question9.Text);
+                    content.Add(new StringContent(_answer10), question10.Text);
+                    //content.Add(new StringContent(_answer11), question11.Text);
+                    content.Add(new StringContent(_answer12), question12.Text);
+                    content.Add(new StringContent(answer13.Text), question13.Text);
+                    content.Add(new StringContent(_answer14), question14.Text);
                     //content.Add(new StringContent(jsoncategoryArray),"category");
 
 
-                    var response = await client.PostAsync(CreateItem, content);
+                    var response = await client.PostAsync(sampleurl, content);
                     if (response.IsSuccessStatusCode)
                     {
                         actindicator.IsVisible = false;
@@ -155,7 +156,7 @@ namespace AhiaJara.Views
                 answer8.SelectedIndex = -1;
                 answer9.SelectedIndex = -1;
                 answer10.SelectedIndex = -1;
-                answer11.SelectedIndex = -1;
+                //answer11.SelectedIndex = -1;
                 answer12.SelectedIndex = -1;
                 answer13.Text = "";
                 answer14.SelectedIndex = -1;

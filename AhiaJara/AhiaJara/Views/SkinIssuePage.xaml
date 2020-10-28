@@ -205,22 +205,6 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label x:Name="question11" Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
-                                    <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
-                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                        <Controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                         HeightRequest="45" x:Name="answer11" SelectedIndexChanged="OnPickerSelected11"
-                                         Image="ic_arrow_drop_down"
-                                         Title="Select Answer">
-                                            <Controls:CustomPicker.Items>
-                                                <x:String>reacts often, turns reddish, itchy or stings</x:String>
-                                                <x:String>rarely reacts, handles most new products I try</x:String>
-                                            </Controls:CustomPicker.Items>
-                                        </Controls:CustomPicker>
-                                    </Frame>
-                                </StackLayout>
-
-                                <StackLayout Margin="5,1,5,1">
                                     <Label x:Name="question12" Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">

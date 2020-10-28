@@ -51,6 +51,16 @@ namespace AhiaJara.Models
             }
             set {; }
         }
+        public string newTest {
+            get {
+                int newxx = Int32.Parse(this.productPrice);
+                return newxx.ToString();
+                    }
+            set
+            {
+                ;
+            }
+        }
 
         public string qtySelected
         {
@@ -63,19 +73,26 @@ namespace AhiaJara.Models
             set { qtySelected = value; }
         }
 
-        public string TotalPrice
-        {
-            get
-            {
-                int newPrice = Int32.Parse(productPrice);
-                int[] arr = new int[] { newPrice++ };
-                int sum = arr.Sum();
+        
+       // public string TotalPrice { get; set; }
+        //{
+        //    get
+        //    {
+        //        int newPrice = Int32.Parse(this.productPrice) * this.quantitySelected;
+        //        var i = 0;
+        //        int[] arr = new int[] {i++};
+                
+        //        var tempList = arr.ToList();
+        //        tempList.Add(newPrice);
+        //        arr = tempList.ToArray();
+        //        //int[] arr = new int[] { newPrice++ };
+        //        int sum = arr.Sum();
 
-                string totalPrice = sum.ToString();
-                return "NGN " + totalPrice;
-            }
-            set { TotalPrice = value; }
-        }
+        //        string totalPrice = sum.ToString();
+        //        return "NGN " + totalPrice;
+        //    }
+        //    set { TotalPrice = value; }
+        //}
         public ImageSource ProductImage
         {
 
