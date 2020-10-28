@@ -31,7 +31,7 @@ namespace AhiaJara.ViewModels
             NavigateToDetailPageCommand = new Command<ProductModel>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
-            NavigateToCartPageCommand = new Command<Cart>(async(model) => CartPage_Clicked(model));
+            NavigateToCartPageCommand = new Command<Cart>(async(model) => await CartPage_Clicked(model));
             PlusBtnCommand = new Command(PlusBtn_Clicked);
             MinusBtnCommand = new Command(MinusBtn_Clicked);
             LongClickedCommand = new Command(LongClicked);
@@ -107,6 +107,10 @@ namespace AhiaJara.ViewModels
 
             }
         }
+
+        int Count = 0;
+        short Counter = 0;
+        int SlidePosition = 0;
 
         private int _selectedViewModelIndex = 0;
         public int SelectedViewModelIndex
@@ -229,6 +233,15 @@ namespace AhiaJara.ViewModels
                 var result = await client.GetStringAsync(carouselEndpoint);
                 var CartList = JsonConvert.DeserializeObject<List<Product>>(result);
                 CarouselModelList = new ObservableCollection<Product>(CartList);
+
+                Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+                {
+                    SlidePosition++;
+                    if (SlidePosition == CarouselModelList.Count) SlidePosition = 0;
+                    //cv.Position = SlidePosition;
+                    return true;
+                });
+
 
                 IsBusy = false;
             }
