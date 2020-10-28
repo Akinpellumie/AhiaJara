@@ -1,12 +1,15 @@
 ﻿using AhiaJara.Helpers;
 using AhiaJara.Models;
+using AhiaJara.PopUps;
 using AhiaJara.ViewModel;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AhiaJara.ViewModels
@@ -15,7 +18,7 @@ namespace AhiaJara.ViewModels
     {
         #region Properties
 
-        //public Command NavigateToDetailPageCommand { get; }
+        public Command CompleteOrder { get; }
         private bool isBusy { get; set; }
         public bool IsBusy
         {
@@ -60,6 +63,29 @@ namespace AhiaJara.ViewModels
             Navigation = navigation;
             GetCompletedOrders();
             GetPendingOrders();
+            CompleteOrder = new Command<Orders>(async (model) => await CompleteOrder_Clicked(model));
+        }
+
+        private async Task CompleteOrder_Clicked(Orders order)
+        {
+            var SelectedId = order.id;
+            HttpClient client = new HttpClient();
+            var url = Constants.postcompleteOrder + SelectedId;
+            await PopupNavigation.Instance.PushAsync(new PopLoader());
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+            var content = new StringContent(SelectedId, Encoding.UTF8, "application/json");
+            var result = await client.PostAsync(url, content);
+            await PopupNavigation.Instance.PopAsync(true);
+            if (result.IsSuccessStatusCode)
+            {
+                MessagingCenter.Send(this, "MarkedCompleted");         
+            }
+            else
+            {
+                MessagingCenter.Send(this, "NotMarkedComplete");
+            }
+
         }
         #endregion
 

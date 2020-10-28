@@ -12,7 +12,7 @@
 
             <View:CartToolBar Title="Cart" VerticalOptions="Start"/>
 
-            <Grid VerticalOptions="CenterAndExpand">
+            <Grid VerticalOptions="StartAndExpand" Margin="0,60,0,0">
                 <StackLayout VerticalOptions="Fill">
                     <View:CartView/>
                 </StackLayout>
@@ -38,7 +38,7 @@
                                HorizontalOptions="Start"
                                Grid.Column="0"/>
 
-                            <Label Text="{Binding TotalPrice}"
+                            <Label Text="{Binding Path=Cart.TotalPrice}"
                                FontSize="15"
                                FontAttributes="Bold"
                                HorizontalOptions="End"

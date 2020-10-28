@@ -20,6 +20,16 @@ namespace AhiaJara.Views
             ordersViewModel = new OrdersViewModel(Navigation);
             InitializeComponent();
             this.BindingContext = ordersViewModel;
+
+            MessagingCenter.Subscribe<OrdersViewModel>(this, "MarkedCompleted", async (sender) =>
+            {
+                await DisplayAlert("Success", "Order marked as completed ", "Ok");
+            });
+
+            MessagingCenter.Subscribe<OrdersViewModel>(this, "NotMarkedComplete", async (sender) =>
+            {
+                await DisplayAlert("Network Failure", "Failed to mark order as completed ", "Try Again");
+            });
         }
 
     }

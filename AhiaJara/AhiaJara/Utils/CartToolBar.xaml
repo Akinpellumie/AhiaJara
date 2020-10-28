@@ -4,7 +4,7 @@
              x:Class="AhiaJara.Utils.CartToolBar"
              BackgroundColor="#E5E5E5"
              HeightRequest="60" Padding="15,0,15,0"
-             x:Name="RootCartToolBar">
+             x:Name="RootToolBar">
     <ContentView.Content>
         <Grid BackgroundColor="#E5E5E5">
             <Grid.ColumnDefinitions>
