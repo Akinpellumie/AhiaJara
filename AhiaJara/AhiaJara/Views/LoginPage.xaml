@@ -22,6 +22,7 @@
                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
 
                     <StackLayout Orientation="Vertical" Margin="15">
+                        <Label x:Name="lbl_NoInternet" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="Transparent"/>
 
                         <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HorizontalOptions="Fill" HeightRequest="50">
                             <Grid>

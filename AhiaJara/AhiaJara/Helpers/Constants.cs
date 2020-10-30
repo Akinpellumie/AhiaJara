@@ -41,10 +41,16 @@ namespace AhiaJara.Helpers
         public static string getIncompleteOrder{ get { return Constants.domainurl + "/incompletedorder/"; } }
         public static string getcompletedOrder{ get { return Constants.domainurl + "/completedorder/"; } }
         public static string postcompleteOrder{ get { return Constants.domainurl + "/completeorder/"; } }
+        public static string postBespoke{ get { return Constants.domainurl + "/bespokeentry"; } }
+        public static string getHairProducts{ get { return Constants.domainurl + "/products/Hair"; } }
+        public static string RequestProduct{ get { return Constants.domainurl + "/requestproduct"; } }
+        public static string getSkinProducts{ get { return Constants.domainurl + "/products/Skin"; } }
 
 
         public static Models.UserProfile userprofile { get; set; }
         public static List<ProductModel> ProductsList { get; set; }
+        public static List<ProductModel> HairProductsList { get; set; }
+        public static List<ProductModel> SkinProductsList { get; set; }
         public static List<ProductModel> LatestProductsList { get; set; }
         public static List<Cart> CartItemList { get; set; }
         public static List<Product> CarouselItemList { get; set; }

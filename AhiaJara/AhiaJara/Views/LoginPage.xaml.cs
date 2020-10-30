@@ -16,6 +16,7 @@ namespace AhiaJara.Views
         public LoginPage()
         {
             InitializeComponent();
+            Init();
             BindingContext = new LoginViewModel();
 
             //MessagingCenter.Subscribe<UserAccessService>(this, "SuccessLogin", (sender) =>
@@ -27,6 +28,11 @@ namespace AhiaJara.Views
         public async void ResetPassClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignUpPage());
+        }
+
+        void Init()
+        {
+            App.StartCheckIfInternet(lbl_NoInternet, this);
         }
 
         public async void OnSuccessLogin()

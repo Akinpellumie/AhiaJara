@@ -38,7 +38,7 @@
                                HorizontalOptions="Start"
                                Grid.Column="0"/>
 
-                            <Label Text="{Binding Path=Cart.TotalPrice}"
+                            <Label Text="{Binding newTest}"
                                FontSize="15"
                                FontAttributes="Bold"
                                HorizontalOptions="End"

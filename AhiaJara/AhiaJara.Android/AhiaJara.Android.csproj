@@ -93,6 +93,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\NetworkConnection.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Controls\CustomEditorRenderer.cs" />
     <Compile Include="Resources\Controls\CustomEntryRenderer.cs" />

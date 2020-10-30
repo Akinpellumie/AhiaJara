@@ -83,6 +83,13 @@ namespace AhiaJara.Models
         }
     }
 
+    public class RequestModel
+    {
+        public string productId { get; set; }
+        public string userId { get; set; }
+        public string quantitySelected { get; set; }
+    }
+
     public class ProductModel
     {
         public string name { get; set; }
