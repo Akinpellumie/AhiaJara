@@ -58,7 +58,7 @@ namespace AhiaJara.Models
                     }
             set
             {
-                ;
+                newTest = value;
             }
         }
 
@@ -71,6 +71,7 @@ namespace AhiaJara.Models
                 return quantityText;
             }
             set { qtySelected = value; }
+
         }
 
         

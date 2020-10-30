@@ -53,7 +53,7 @@ namespace AhiaJara.Views
         {
             await PopupNavigation.Instance.PushAsync(new PopLoader());
             SendData();
-            await Task.Delay(6000);
+            //await Task.Delay(6000);
             await PopupNavigation.Instance.PopAsync(true);
             await Navigation.PushAsync(new SkinIssueReviewPage());
 

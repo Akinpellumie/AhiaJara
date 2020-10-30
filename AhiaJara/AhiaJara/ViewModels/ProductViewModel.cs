@@ -29,6 +29,8 @@ namespace AhiaJara.ViewModels
             GetAdverts();
             GetCarts();
             GetLatestProducts();
+            GetHairProducts();
+            GetSkinProducts();
             NavigateToDetailPageCommand = new Command<ProductModel>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
@@ -96,6 +98,30 @@ namespace AhiaJara.ViewModels
             {
                 productModelList = value;
                 OnPropertyChanged(nameof(ProductModelList));
+
+            }
+        }
+
+
+        private ObservableCollection<ProductModel> hairProductModelList;
+        public ObservableCollection<ProductModel> HairProductModelList
+        {
+            get => HairProductModelList;
+            set
+            {
+                hairProductModelList = value;
+                OnPropertyChanged(nameof(HairProductModelList));
+
+            }
+        }
+
+        public ObservableCollection<ProductModel> SkinProductModelList
+        {
+            get => productModelList;
+            set
+            {
+                productModelList = value;
+                OnPropertyChanged(nameof(SkinProductModelList));
 
             }
         }
@@ -191,6 +217,50 @@ namespace AhiaJara.ViewModels
                 ProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
             }
 
+        }
+
+        public async void GetHairProducts()
+        {
+            if (Constants.ProductsList == null)
+            {
+                //IsBusy = true;
+                HttpClient client = new HttpClient();
+                var url = Constants.getHairProducts;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(url);
+                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                HairProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                Constants.HairProductsList = ProductsList;
+                //IsBusy = false;
+            }
+            else
+            {
+                HairProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+            }
+        }
+
+        public async void GetSkinProducts()
+        {
+            if (Constants.ProductsList == null)
+            {
+                //IsBusy = true;
+                HttpClient client = new HttpClient();
+                var url = Constants.getSkinProducts;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(url);
+                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                SkinProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                Constants.HairProductsList = ProductsList;
+                //IsBusy = false;
+            }
+            else
+            {
+                SkinProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+            }
         }
 
         public async void GetLatestProducts()
