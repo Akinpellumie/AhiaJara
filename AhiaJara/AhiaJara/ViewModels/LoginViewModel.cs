@@ -104,9 +104,9 @@ namespace AhiaJara.ViewModels
             if (result == true)
             {
                 await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "0");
-                await PopupNavigation.Instance.PopAsync(true);
                 Application.Current.MainPage = new AppShell();
                 await Shell.Current.GoToAsync("//main");
+                await PopupNavigation.Instance.PopAsync(true);
             }
         }
 

@@ -93,7 +93,8 @@
             </pv:PancakeView>
 
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer />
+                <TapGestureRecognizer Tapped="NewsBtn_Clicked"
+                                      NumberOfTapsRequired="1"/>
             </StackLayout.GestureRecognizers>
         </StackLayout>
 
@@ -122,7 +123,8 @@
             </pv:PancakeView>
 
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer />
+                <TapGestureRecognizer Tapped="FaqBtn_Clicked"
+                                      NumberOfTapsRequired="1"/>
             </StackLayout.GestureRecognizers>
         </StackLayout>
 
@@ -181,9 +183,40 @@
             </pv:PancakeView>
 
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer />
+                <TapGestureRecognizer Tapped="ProfileBtn_Clicked"
+                                      NumberOfTapsRequired="1"/>
             </StackLayout.GestureRecognizers>
         </StackLayout>
+
+        <!--<StackLayout Margin="10,5,10,5" x:Name="ResetPassStack">
+            <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
+                        <Image Source="reset" Aspect="AspectFit" HorizontalOptions="Start" HeightRequest="25" WidthRequest="25" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="Reset Password" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
+                              HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Margin="0,0,10,0" VerticalOptions="Center">
+                        <Image Source="rightArrow.png" HorizontalOptions="End" Aspect="AspectFit" HeightRequest="25" VerticalOptions="Center"/>
+                    </StackLayout>
+                </Grid>
+            </pv:PancakeView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ResetBtn_Clicked"
+                                      NumberOfTapsRequired="1"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>-->
 
         <StackLayout Margin="10,5,10,5" x:Name="LogoutStack">
             <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >

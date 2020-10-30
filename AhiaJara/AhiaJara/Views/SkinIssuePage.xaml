@@ -350,7 +350,7 @@
 
                     <StackLayout>
                         <ScrollView>
-                            <View:SkinIssueImagesView/>
+                            <View:SkinIssueImagesView x:Name="imgView"/>
                         </ScrollView>
                     </StackLayout>
                 </StackLayout>

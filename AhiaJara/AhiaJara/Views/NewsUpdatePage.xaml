@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:View="clr-namespace:AhiaJara.Utils"
+             x:Class="AhiaJara.Views.NewsUpdatePage"             
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
+    <ContentPage.Content>
+        <Grid VerticalOptions="Fill">
+            <View:ToolBarView VerticalOptions="Start" Title="News and Updates"/>
+
+            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                <Image Source="cloud" HeightRequest="350"
+                                    Aspect="AspectFit" />
+                <Label Text="No News and Updates Yet!!!"
+                   TextColor="{StaticResource TxtColor}"
+                       FontSize="14"
+                       VerticalOptions="End"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

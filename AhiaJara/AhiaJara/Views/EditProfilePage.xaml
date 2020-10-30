@@ -1,33 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Controls="clr-namespace:AhiaJara.Controls" xmlns:View="clr-namespace:AhiaJara.Utils"
-             x:Class="AhiaJara.Views.SupportPage" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:Controls="clr-namespace:AhiaJara.Controls"
+             x:Class="AhiaJara.Views.EditProfilePage" 
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
         <StackLayout>
-            <View:ToolBarView Title="Support"/>
+            <View:ToolBarView Title="Edit Profile"/>
             <StackLayout Margin="15">
 
-                <!--<StackLayout Margin="5,1,5,1">
-                    <Label Text="First Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                <StackLayout Margin="5,1,5,1">
+                    <Label Text="Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                        <Controls:CustomEntry  x:Name="FirstNameEntry" VerticalOptions="Center" 
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="First name" 
+                        <Controls:CustomEntry  x:Name="NameEntry" VerticalOptions="Center" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Omokare Juliet" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                     </Frame>
                 </StackLayout>
 
                 <StackLayout Margin="5,1,5,1">
-                    <Label Text="Last Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                    <Label Text="Phone Number" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                        <Controls:CustomEntry  x:Name="LastNameEntry" VerticalOptions="Center" 
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Last name" 
-                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
+                        <Controls:CustomEntry  x:Name="PhoneEntry" VerticalOptions="Center" 
+                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="07035261834" 
+                                               Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
                     </Frame>
                 </StackLayout>
 
@@ -39,27 +39,15 @@
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="example@email.com" 
                                                Keyboard="Email" Style="{StaticResource EntryStyle}"/>
                     </Frame>
-                </StackLayout>-->
-
-                <StackLayout Margin="5,1,5,1">
-                    <Label Text="Message" 
-                                   TextColor="{StaticResource TxtColor}" 
-                           FontSize="12"/>
-                    <Frame BackgroundColor="White" Padding="0" HeightRequest="350" 
-                                   BorderColor="Transparent" Style="{StaticResource FrameEditorStyle}"
-                                           Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="False">
-                        <Controls:CustomEditor AutoSize="TextChanges"  x:Name="msgEntry"
-                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="message" 
-                                               Keyboard="Default" Style="{StaticResource EntryStyle}"/>
-                    </Frame>
                 </StackLayout>
+
 
             </StackLayout>
 
             <StackLayout VerticalOptions="End" Grid.Row="1">
                 <Button VerticalOptions="End"  HorizontalOptions="Fill" 
                                         CornerRadius="25" BackgroundColor="Accent" 
-                        Text="Send Message" TextTransform="None" HeightRequest="55" Margin="15,5,15,10" />
+                        Text="Edit Profile" HeightRequest="55" Margin="15,5,15,10" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

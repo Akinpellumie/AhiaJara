@@ -6,8 +6,39 @@
              x:Class="AhiaJara.Utils.SkinIssueImagesView">
 
     <ContentView.Content>
-        <StackLayout>
-            <flv:FlowListView FlowColumnCount="2" 
+
+        <!--<CollectionView ItemsSource="{Binding ProductModelList}"
+                ItemsLayout="VerticalGrid, 2"
+                        x:Name="SkinIssue"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <pv:PancakeView x:Name="MyPanView" CornerRadius="0,15,15,0" Padding="10" BackgroundColor="White"
+                                                HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
+                            <Grid>
+
+                                <Image HorizontalOptions="Fill" 
+                                   VerticalOptions="Fill" x:Name="selectImage" Aspect="AspectFill" Source="{Binding ProductImage}"/>
+
+                                <ImageButton Source="uncheck.png" HorizontalOptions="End" HeightRequest="35"
+                                     VerticalOptions="Start" Clicked="PickUser_Clicked" Margin="5,10,10,5"
+                                     CommandParameter="{Binding .}" 
+                                        BackgroundColor="Transparent" x:Name="checkBtn" WidthRequest="35"/>
+
+                            </Grid>
+                            <pv:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference SkinIssue}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                            </pv:PancakeView.GestureRecognizers>
+                        </pv:PancakeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
+        <flv:FlowListView FlowColumnCount="2" 
                                               FlowItemsSource="{Binding ProductModelList}" 
                                               x:Name="SkinIssue"
                                               HorizontalOptions="Fill"
@@ -16,31 +47,28 @@
                               HasUnevenRows="True"
                               RowHeight="150">
 
-                <flv:FlowListView.FlowColumnTemplate>
-                    <DataTemplate>
-                        <pv:PancakeView x:Name="panViewBg" CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5"
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <pv:PancakeView x:Name="MyPanView" CornerRadius="0,15,15,0" Padding="10" BackgroundColor="{Binding FirstFrameBackColor}"
                                                 HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
 
-                            <Image HorizontalOptions="Fill" 
-                                   VerticalOptions="Fill" x:Name="selectImage" Aspect="AspectFill" Source="{Binding ProductImage}"
-                                   effect:LongPressedEffect.Command="{Binding ShowAlertCommand}" 
-                                   effect:LongPressedEffect.CommandParameter="{Binding .}">
-                                <Image.Effects>
-                                    <effect:LongPressedEffect />
-                                </Image.Effects>
-                            </Image>
+                        <Image HorizontalOptions="Fill" 
+                                   VerticalOptions="Fill" x:Name="selectImage" Aspect="AspectFill" Source="{Binding ProductImage}"/>
 
-                            <!--<pv:PancakeView.GestureRecognizers>
-                                <TapGestureRecognizer
-                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference SkinIssue}}"
+                            <!--<ImageButton Source="uncheck.png" HorizontalOptions="End" HeightRequest="35"
+                                     VerticalOptions="Start" Clicked="PickUser_Clicked" Margin="5,10,10,5"
+                                     CommandParameter="{Binding .}" 
+                                        BackgroundColor="Transparent" x:Name="checkBtn" WidthRequest="35"/>-->
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.SelectedImageCommand, Source={x:Reference SkinIssue}}"
                                             CommandParameter="{Binding .}"
                                             NumberOfTapsRequired="1" />
-                            </pv:PancakeView.GestureRecognizers>-->
-                        </pv:PancakeView>
-                    </DataTemplate>
-                </flv:FlowListView.FlowColumnTemplate>
+                        </pv:PancakeView.GestureRecognizers>
+                    </pv:PancakeView>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
 
-            </flv:FlowListView>
-        </StackLayout>
+        </flv:FlowListView>
     </ContentView.Content>
 </ContentView>
