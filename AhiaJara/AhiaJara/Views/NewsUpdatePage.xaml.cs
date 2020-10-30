@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace AhiaJara.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewTabbedPage : ContentPage
+    public partial class NewsUpdatePage : ContentPage
     {
-        public NewTabbedPage()
+        public NewsUpdatePage()
         {
             InitializeComponent();
         }

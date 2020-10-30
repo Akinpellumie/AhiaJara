@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AhiaJara.Views.ResetPassPage"             
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid VerticalOptions="Start" Margin="10,15,10,25">
+            <Label Text="Reset Password"
+                       TextColor="{StaticResource TxtColor}"
+                       FontSize="20"
+                       FontFamily="{StaticResource font_bold}"
+                       HorizontalOptions="Start"/>
+        </Grid>
+            <Grid HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                <StackLayout Margin="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Click the reset password button to get a  new password in your email."
+                   TextColor="{StaticResource TxtColor}"
+                       LineBreakMode="WordWrap"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   Margin="0,0,0,25"/>
+
+                    <Button VerticalOptions="End"
+                    HorizontalOptions="Fill" 
+                    CornerRadius="25" 
+                    BackgroundColor="Accent" 
+                    Text="Reset Password" 
+                    TextTransform="None" 
+                    HeightRequest="55" />
+                </StackLayout>
+
+            </Grid>
+
+            <Grid VerticalOptions="End">
+                <Button VerticalOptions="End"
+                    HorizontalOptions="Fill" 
+                    CornerRadius="25" 
+                    Clicked="Back"
+                    BackgroundColor="Accent" 
+                    Text="Back Home" 
+                    TextTransform="None" 
+                    HeightRequest="55" Margin="15,5,15,10" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

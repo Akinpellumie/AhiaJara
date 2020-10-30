@@ -1,12 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Views.NotificationPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils"
+             x:Class="AhiaJara.Views.NotificationPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
+
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <View:ToolBarView Title="Notifications"/>
+            
+            <StackLayout BackgroundColor="White">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0" Margin="3" HorizontalOptions="Start">
+                        <Label Text="Switch off notifications" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"
+                               HorizontalOptions="Start" Margin="10,0,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" HorizontalOptions="End">
+                        <Switch x:Name="NotSwitch" Toggled="NotSwitch_Toggled" />
+                    </StackLayout>
+
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Margin="15" Orientation="Vertical" x:Name="ListStack" IsVisible="True">
+                <View:NotificationView/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

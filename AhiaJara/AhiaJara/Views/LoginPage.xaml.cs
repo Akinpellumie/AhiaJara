@@ -24,9 +24,14 @@ namespace AhiaJara.Views
             //});
         }
 
-        public async void ResetPassClicked(object sender, EventArgs e)
+        public async void SignUpClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignUpPage());
+        }
+
+        public async void ResetPassClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ResetPassPage());
         }
 
         public async void OnSuccessLogin()

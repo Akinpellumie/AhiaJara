@@ -35,6 +35,11 @@
     <item name="colorPrimaryDark">#A7A7A7</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
+	  
+    <!--turn button text to smallCaps-->
+	<item name="android:textAllCaps">false</item>
+	<!--just stops here-->
+	  
     <item name="colorControlActivated">#F7941D</item>
     <item name="colorAccent">#F7941D</item>
     <!-- You can also set colorControlNormal, colorControlActivated
