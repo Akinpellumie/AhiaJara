@@ -5,6 +5,7 @@ using System.Text;
 using Xamarin.Forms;
 using System.Globalization;
 using Newtonsoft.Json;
+using AhiaJara.ViewModel;
 
 namespace AhiaJara.Models
 {
@@ -83,6 +84,7 @@ namespace AhiaJara.Models
         }
     }
 
+
     public class RequestModel
     {
         public string productId { get; set; }
@@ -90,7 +92,8 @@ namespace AhiaJara.Models
         public string quantitySelected { get; set; }
     }
 
-    public class ProductModel
+    public class ProductModel : BaseVM
+
     {
         public string name { get; set; }
         public string imgUrl { get; set; }
@@ -162,6 +165,42 @@ namespace AhiaJara.Models
             }
             set { Quantity = value; }
         }
-        
+
+        private Color firstFrameBackColor = Color.White;
+        public Color FirstFrameBackColor
+        {
+            get
+            {
+                if (firstFrameBackColor != Color.White)
+                {
+                    firstFrameBackColor = Color.White;
+                }
+                else if(firstFrameBackColor == Color.White)
+                {
+                    firstFrameBackColor = Color.FromHex("4DC503");
+                }
+                return firstFrameBackColor;
+            }
+            set
+            {
+                firstFrameBackColor = value;
+                OnPropertyChanged(nameof(FirstFrameBackColor));
+            }
+        }
+
+        private Color secondFrameBackColor;
+        public Color SecondFrameBackColor
+        {
+            set
+            {
+                if (secondFrameBackColor != value)
+                {
+                    secondFrameBackColor = value;
+                    OnPropertyChanged(nameof(SecondFrameBackColor));
+                }
+            }
+            get => secondFrameBackColor;
+        }
+
     }
 }

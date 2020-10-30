@@ -12,7 +12,7 @@
                 <DataTemplate>
                     <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
                         <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
-                                                HorizontalOptions="Fill" WidthRequest="100" >
+                                                HorizontalOptions="Fill" WidthRequest="150" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70*"/>

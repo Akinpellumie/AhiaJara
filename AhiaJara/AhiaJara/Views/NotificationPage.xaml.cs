@@ -16,5 +16,17 @@ namespace AhiaJara.Views
         {
             InitializeComponent();
         }
+
+        private void NotSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (ListStack.IsVisible == true)
+            {
+                ListStack.IsVisible = false;
+            }
+            else if (ListStack.IsVisible == false)
+            {
+                ListStack.IsVisible = true;
+            }
+        }
     }
 }

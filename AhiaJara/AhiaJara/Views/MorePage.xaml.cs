@@ -31,5 +31,21 @@ namespace AhiaJara.Views
         {
             await Navigation.PushAsync(new SupportPage());
         }
+        public async void ProfileBtn_Clicked(object obj, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+        public async void NewsBtn_Clicked(object obj, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewsUpdatePage());
+        }
+        public async void FaqBtn_Clicked(object obj, EventArgs e)
+        {
+            await Navigation.PushAsync(new FaqPage());
+        }
+        public async void ResetBtn_Clicked(object obj, EventArgs e)
+        {
+            await Navigation.PushAsync(new ResetPassPage());
+        }
     }
 }

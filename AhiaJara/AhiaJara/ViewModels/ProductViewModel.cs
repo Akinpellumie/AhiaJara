@@ -9,6 +9,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -34,6 +35,7 @@ namespace AhiaJara.ViewModels
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
             NavigateToCartPageCommand = new Command<Cart>(async(model) => await CartPage_Clicked(model));
+            SelectedImageCommand = new Command<ProductModel>(model => CardImage_SelectionChanged(model));
             PlusBtnCommand = new Command(PlusBtn_Clicked);
             MinusBtnCommand = new Command(MinusBtn_Clicked);
             LongClickedCommand = new Command(LongClicked);
@@ -47,6 +49,7 @@ namespace AhiaJara.ViewModels
         public Command PlusBtnCommand { get; }
         public Command MinusBtnCommand { get; }
         public Command TextChangedCommand { get; }
+        public Command SelectedImageCommand { get; }
         public Command NavigateToCartPageCommand { get; }
         public Command CallAddToCartPopUpCommand { get; }
         public Command NavigateToCheckOutCommand{get; }
@@ -61,6 +64,31 @@ namespace AhiaJara.ViewModels
                 OnPropertyChanged(nameof(Text));
             }
 
+        }
+
+        private Color firstFrameBackColor;
+        public Color FirstFrameBackColor
+        {
+            get => firstFrameBackColor;
+            set
+            {
+                firstFrameBackColor = value;
+                OnPropertyChanged(nameof(FirstFrameBackColor));
+            }
+        }
+
+        private Color secondFrameBackColor;
+        public Color SecondFrameBackColor
+        {
+            set
+            {
+                if (secondFrameBackColor != value)
+                {
+                    secondFrameBackColor = value;
+                    OnPropertyChanged(nameof(SecondFrameBackColor));
+                }
+            }
+            get => secondFrameBackColor;
         }
         private ObservableCollection<ProductModel> productModelList;
         public ObservableCollection<ProductModel> ProductModelList
@@ -416,6 +444,8 @@ namespace AhiaJara.ViewModels
                 this.Text = int.Parse(textChanged.NewTextValue);
         }
 
+
+
         private void MinusBtn_Clicked()
         {
             if (Text > 1)
@@ -431,6 +461,26 @@ namespace AhiaJara.ViewModels
             Constants.cartCount = Text;
             var productCount = new ProductModel();
             productCount.quantity = Constants.cartCount;
+        }
+
+        private void CardImage_SelectionChanged(ProductModel model)
+        {
+
+            model.FirstFrameBackColor = Color.FromHex("4DC503");
+            //ProductModel previous = model.la as ProductModel;
+            //ProductModel current = (eve.CurrentSelection.FirstOrDefault() as ProductModel);
+
+            ////Set the current to the color you want
+            //current.FirstFrameBackColor = Color.Pink;
+            //current.SecondFrameBackColor = Color.Green;
+
+            //if (previous != null)
+            //{
+            //    //Reset the previous to defaulr color
+            //    previous.FirstFrameBackColor = Color.White;
+            //    previous.SecondFrameBackColor = Color.Purple;
+            //}
+
         }
         #endregion
     }
