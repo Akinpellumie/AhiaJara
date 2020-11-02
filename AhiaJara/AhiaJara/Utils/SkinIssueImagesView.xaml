@@ -39,7 +39,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>-->
         <flv:FlowListView FlowColumnCount="2" 
-                                              FlowItemsSource="{Binding ProductModelList}" 
+                                              FlowItemsSource="{Binding SkinIssueList}" 
                                               x:Name="SkinIssue"
                                               HorizontalOptions="Fill"
                                               VerticalOptions="Fill"

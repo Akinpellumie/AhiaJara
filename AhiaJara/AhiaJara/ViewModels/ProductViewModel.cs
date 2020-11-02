@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -31,11 +32,14 @@ namespace AhiaJara.ViewModels
             GetLatestProducts();
             GetHairProducts();
             GetSkinProducts();
+            GetSkinIssues();
             NavigateToDetailPageCommand = new Command<ProductModel>(async (model) => await ExecuteNavigateToDetailPageCommand(model));
+            NavigateToRecommendedPageCommand = new Command<SkinIssue>(model => ExecuteNavigateToRecommendedPageCommand());
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
             NavigateToCartPageCommand = new Command<Cart>(async(model) => await CartPage_Clicked(model));
-            SelectedImageCommand = new Command<ProductModel>(model => CardImage_SelectionChanged(model));
+            //SelectedImageCommand = new Command<ProductModel>(model => CardImage_SelectionChanged(model));
+            SelectedImageCommand = new Command<SkinIssue>(model => CardImage_SelectionChanged1(model));
             PlusBtnCommand = new Command(PlusBtn_Clicked);
             MinusBtnCommand = new Command(MinusBtn_Clicked);
             LongClickedCommand = new Command(LongClicked);
@@ -53,6 +57,8 @@ namespace AhiaJara.ViewModels
         public Command NavigateToCartPageCommand { get; }
         public Command CallAddToCartPopUpCommand { get; }
         public Command NavigateToCheckOutCommand{get; }
+
+        public Command NavigateToRecommendedPageCommand { get; }
         
         private int text = 1;
         public int Text
@@ -122,6 +128,18 @@ namespace AhiaJara.ViewModels
             {
                 productModelList = value;
                 OnPropertyChanged(nameof(SkinProductModelList));
+
+            }
+        }
+
+        public ObservableCollection<SkinIssue> skinIssueList;
+        public ObservableCollection<SkinIssue> SkinIssueList
+        {
+            get => skinIssueList;
+            set
+            {
+                skinIssueList = value;
+                OnPropertyChanged(nameof(SkinIssueList));
 
             }
         }
@@ -197,24 +215,30 @@ namespace AhiaJara.ViewModels
             //productModelList.Add(new Product { Name = "Hand Sanitizer", Image = "ListProd", price = "5000", Status = "completed", Date = "22, September, 2020", OrderId = 2133514, quantity = "2" });
             //productModelList.Add(new Product { Name = "FreshMe Cream", Image = "ListPro.png", price = "2000", Status = "pending", Date = "22, September, 2020", OrderId = 2133578, quantity = "2" });
 
-
-            if (Constants.ProductsList == null)
+            try
             {
-                //IsBusy = true;
-                HttpClient client = new HttpClient();
-                var dashboardEndpoint = Constants.AllProductsUrl;
+                if (Constants.ProductsList == null)
+                {
+                    IsBusy = true;
+                    HttpClient client = new HttpClient();
+                    var dashboardEndpoint = Constants.AllProductsUrl;
 
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var result = await client.GetStringAsync(Constants.AllProductsUrl);
-                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
-                ProductModelList = new ObservableCollection<ProductModel>(ProductsList);
-                Constants.ProductsList = ProductsList;
-                //IsBusy = false;
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var result = await client.GetStringAsync(Constants.AllProductsUrl);
+                    var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                    ProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                    Constants.ProductsList = ProductsList;
+                    IsBusy = false;
+                }
+                else
+                {
+                    ProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                }
             }
-            else
+            catch (Exception)
             {
-                ProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                return;
             }
 
         }
@@ -254,7 +278,7 @@ namespace AhiaJara.ViewModels
                 var result = await client.GetStringAsync(url);
                 var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
                 SkinProductModelList = new ObservableCollection<ProductModel>(ProductsList);
-                Constants.HairProductsList = ProductsList;
+                Constants.SkinProductsList = ProductsList;
                 //IsBusy = false;
             }
             else
@@ -358,6 +382,31 @@ namespace AhiaJara.ViewModels
             orderModelList.Add(new Product { Name = "Skin Tone", Image = "ListProd", price = "22000", Status = "completed", Date = "25, August, 2020", OrderId = 2135648, Quantity = "3" });
         }
 
+        public async void GetSkinIssues()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                var url = Constants.getSkinIssue;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(url);
+                var fetch = JsonConvert.DeserializeObject<List<SkinIssue>>(result);
+                SkinIssueList = new ObservableCollection<SkinIssue>(fetch);
+                var fileList = fetch.First(); // here we have a single FileList object
+                //var test2 = fetch.f
+                //var test = fileList.recommendedProducts;
+                //var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
+                //CartModelList = new ObservableCollection<Cart>(CartList);
+
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
         //#region realData
 
         //public async void GetAllProducts()
@@ -367,11 +416,31 @@ namespace AhiaJara.ViewModels
         //#endregion
 
         #region Navigations
-        private async Task ExecuteNavigateToDetailPageCommand(ProductModel model)
+        private async Task ExecuteNavigateToDetailPageCommand([Optional] ProductModel model)
         {
             
             await Navigation.PushAsync(new DetailPage(model));
             
+        }
+
+        private async void ExecuteNavigateToRecommendedPageCommand()
+        {
+            var rootdir = SkinIssueReviewPage.newSkinIssue.recommendedProducts[0];
+            ProductModel productModel = new ProductModel()
+            {
+                quantityAvailable = rootdir.quantityAvailable,
+                name = rootdir.name,
+                imgUrl = rootdir.imgUrl,
+                price = rootdir.price,
+                category = rootdir.category,
+                description = rootdir.description,
+                createdAt = rootdir.createdAt,
+                updatedAt = rootdir.updatedAt,
+                id = rootdir.id,
+            };
+
+            await Navigation.PushAsync(new DetailPage(productModel));
+
         }
 
         void LongClicked()
@@ -480,6 +549,20 @@ namespace AhiaJara.ViewModels
             //    previous.FirstFrameBackColor = Color.White;
             //    previous.SecondFrameBackColor = Color.Purple;
             //}
+
+        }
+
+        private async void CardImage_SelectionChanged1(SkinIssue model)
+        {
+
+            FirstFrameBackColor = Color.FromHex("4DC503");
+            //var iten = model.recommendedProducts;
+
+            await PopupNavigation.Instance.PushAsync(new PopLoader());
+            await Task.Delay(6000);
+            await PopupNavigation.Instance.PopAsync(true);
+            await Navigation.PushAsync(new SkinIssueReviewPage(model));
+            //var descr = model.description;
 
         }
         #endregion

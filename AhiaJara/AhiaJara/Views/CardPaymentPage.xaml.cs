@@ -16,17 +16,21 @@ namespace AhiaJara.Views
     {
         public ProductViewModel ProductViewModel;
         ProductModel prodModel;
-        public CardPaymentPage(ProductModel productModel)
+        string res;
+        public CardPaymentPage(ProductModel productModel, string cartModel)
         {
             ProductViewModel = new ProductViewModel(Navigation);
             prodModel = productModel;
+            res = cartModel;
             InitializeComponent();
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await DisplayAlert("Yoo", "Your payment is successful", "Ok");
-            await Navigation.PushAsync(new PayStackPage(prodModel));
+            //await DisplayAlert("Yoo", "Your payment is successful", "Ok");
+            await Navigation.PushAsync(new PayStackPage(prodModel, res));
         }
+
+      
     }
 }

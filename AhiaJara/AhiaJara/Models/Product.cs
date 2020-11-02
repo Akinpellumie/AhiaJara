@@ -130,11 +130,16 @@ namespace AhiaJara.Models
             set {;} 
         }
 
+        public string tempPrice
+        {
+            get; set;
+        }
+
         public string TotalPrice
         {
             get
             {
-                int newPrice = Int32.Parse(price);
+                int newPrice = Int32.Parse(tempPrice);
                 int[] arr = new int[] { newPrice++ };
                 int sum = arr.Sum();
 

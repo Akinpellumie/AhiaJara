@@ -19,10 +19,11 @@ namespace AhiaJara.Views
             Init();
             BindingContext = new LoginViewModel();
 
-            //MessagingCenter.Subscribe<UserAccessService>(this, "SuccessLogin", (sender) =>
-            //{
-            //    OnSuccessLogin();
-            //});
+            MessagingCenter.Subscribe<UserAccessService>(this, "LoginFailed", (sender) =>
+            {
+                Device.BeginInvokeOnMainThread(() => {DisplayAlert("Push message", "Incorrect Login details", "OK"); });
+                //DisplayAlert("Login Failed", "Incorrect Login details", "Ok");
+            });
         }
 
         public async void SignUpClicked(object sender, EventArgs e)
@@ -41,6 +42,12 @@ namespace AhiaJara.Views
 
         }
 
+        public async void OnFailedLogin()
+        {
+            await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "1");
+            Application.Current.MainPage = new AppShell();
+            await Shell.Current.GoToAsync("//main");
+        }
         public async void OnSuccessLogin()
         {
             await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "1");
@@ -52,5 +59,8 @@ namespace AhiaJara.Views
         //    AppShell fpm = new AppShell();
         //    Application.Current.MainPage = fpm;
         //}
+        
     }
+
+
 }

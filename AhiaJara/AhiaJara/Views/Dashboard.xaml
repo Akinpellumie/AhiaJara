@@ -71,7 +71,7 @@
                                             Margin="0,10,0,5"
                                             FontSize="14"
                                             HorizontalOptions="StartAndExpand"
-                                            Text="Popular Products" FontAttributes="Bold"
+                                            Text="Latest Products" FontAttributes="Bold"
                                             TextColor="{StaticResource TxtColor}"
                                             VerticalOptions="Center" />
 

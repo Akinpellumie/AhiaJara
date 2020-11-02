@@ -21,12 +21,20 @@ namespace AhiaJara.Views
 
             MessagingCenter.Subscribe<UserAccessService>(this, "SuccessRegister", (sender) =>
             {
-                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                Device.BeginInvokeOnMainThread(() => { Application.Current.MainPage = new NavigationPage(new LoginPage()); });
+                
             });
 
-            MessagingCenter.Subscribe<SignUpViewModel>(this, "FillAllFields", async (sender) =>
+            MessagingCenter.Subscribe<SignUpViewModel>(this, "FillAllFields", (sender) =>
             {
-                await DisplayAlert("Enter Data Alert", "Please fill all fields", "Ok");
+                Device.BeginInvokeOnMainThread(() => { DisplayAlert("Enter Data Alert", "Please fill all fields", "Ok"); });
+                
+            });
+
+            MessagingCenter.Subscribe<SignUpViewModel>(this, "passwordMismatch", (sender) =>
+            {
+                Device.BeginInvokeOnMainThread(() => {DisplayAlert("Enter Data Alert", "Please fill all fields", "Ok"); });
+                
             });
         }
     }

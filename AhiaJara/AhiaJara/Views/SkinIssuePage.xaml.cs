@@ -1,5 +1,6 @@
 ﻿using AhiaJara.Helpers;
 using AhiaJara.PopUps;
+using AhiaJara.ViewModels;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
@@ -30,9 +31,13 @@ namespace AhiaJara.Views
         private string _answer9;
         private string _answer8;
 
+        ProductViewModel productViewModel;
         public SkinIssuePage()
         {
+            productViewModel = new ProductViewModel(Navigation);
             InitializeComponent();
+            this.BindingContext = productViewModel;
+
         }
 
         void OnfirstNext_Clicked(object sender, EventArgs e)
@@ -46,16 +51,17 @@ namespace AhiaJara.Views
             defaultScreen.IsVisible = false;
             secondScreen.IsVisible = false;
             thirdScreen.IsVisible = true;
-            await DisplayAlert("Info","Long-press image to select.","Ok");
+            SendData();
+            //await DisplayAlert("Info","Long-press image to select.","Ok");
         }
 
         public async void OnThirdScreen_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new PopLoader());
-            SendData();
+            
             //await Task.Delay(6000);
             await PopupNavigation.Instance.PopAsync(true);
-            await Navigation.PushAsync(new SkinIssueReviewPage());
+            //await Navigation.PushAsync(new SkinIssueReviewPage());
 
         }
 
@@ -83,69 +89,77 @@ namespace AhiaJara.Views
         }
         public async void SendData()
         {
-            HttpClient client = new HttpClient();
-
-            var CreateItem = Constants.postSkinIssue;
-            var sampleurl = "http://192.168.88.75:5000/newskinissue";
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-            if (_mediaFile != null)
+            try
             {
-                var file = _mediaFile.Path;
-                if (string.IsNullOrEmpty(file) == false)
+                HttpClient client = new HttpClient();
+
+                var CreateItem = Constants.postSkinIssue;
+                var sampleurl = "http://192.168.88.75:5000/newskinissue";
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                if (_mediaFile != null)
                 {
-                    var upfilebytes = System.IO.File.ReadAllBytes(file);
-                    MultipartFormDataContent content = new MultipartFormDataContent();
-                    ByteArrayContent baContent = new ByteArrayContent(upfilebytes);
-                    SkinIssuesQuestionAndAnswer queAndAnswer;
-                    var name = System.IO.Path.GetFileName(file);
-                    baContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/" + System.IO.Path.GetExtension(name).Remove(0, 1));
-                    baContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
+                    var file = _mediaFile.Path;
+                    if (string.IsNullOrEmpty(file) == false)
                     {
-                        Name = "files",
-                        FileName = name,
+                        var upfilebytes = System.IO.File.ReadAllBytes(file);
+                        MultipartFormDataContent content = new MultipartFormDataContent();
+                        ByteArrayContent baContent = new ByteArrayContent(upfilebytes);
+                        SkinIssuesQuestionAndAnswer queAndAnswer;
+                        var name = System.IO.Path.GetFileName(file);
+                        baContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/" + System.IO.Path.GetExtension(name).Remove(0, 1));
+                        baContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
+                        {
+                            Name = "files",
+                            FileName = name,
 
-                    };
+                        };
 
-                    //var categorynew = new List<string>();
-                    //categorynew.Add(((Categorypicker.SelectedItem as CategoriesModel).category));
-                    //                var categoryArray = categorynew.ToArray();
-                    //var jsoncategoryArray = JsonConvert.SerializeObject(categoryArray);
-                    content.Add(baContent, "files", name);
-                    //new QuestionAndAnswer(question1.Text, _answer1),
-                    content.Add(new StringContent(answer1.Text),  question1.Text);
-                    content.Add(new StringContent(_answer2), question2.Text);
-                    content.Add(new StringContent(_answer3), question3.Text);
-                    content.Add(new StringContent(answer4.Text), question4.Text);
-                    content.Add(new StringContent(_answer5), question5.Text);
-                    content.Add(new StringContent(_answer6), question6.Text);
-                    content.Add(new StringContent(_answer7), question7.Text);
-                    content.Add(new StringContent(_answer8), question8.Text);
-                    content.Add(new StringContent(_answer9), question9.Text);
-                    content.Add(new StringContent(_answer10), question10.Text);
-                    //content.Add(new StringContent(_answer11), question11.Text);
-                    content.Add(new StringContent(_answer12), question12.Text);
-                    content.Add(new StringContent(answer13.Text), question13.Text);
-                    content.Add(new StringContent(_answer14), question14.Text);
-                    //content.Add(new StringContent(jsoncategoryArray),"category");
+                        //var categorynew = new List<string>();
+                        //categorynew.Add(((Categorypicker.SelectedItem as CategoriesModel).category));
+                        //                var categoryArray = categorynew.ToArray();
+                        //var jsoncategoryArray = JsonConvert.SerializeObject(categoryArray);
+                        content.Add(baContent, "files", name);
+                        //new QuestionAndAnswer(question1.Text, _answer1),
+                        content.Add(new StringContent(answer1.Text), question1.Text);
+                        content.Add(new StringContent(_answer2), question2.Text);
+                        content.Add(new StringContent(_answer3), question3.Text);
+                        content.Add(new StringContent(answer4.Text), question4.Text);
+                        content.Add(new StringContent(_answer5), question5.Text);
+                        content.Add(new StringContent(_answer6), question6.Text);
+                        content.Add(new StringContent(_answer7), question7.Text);
+                        content.Add(new StringContent(_answer8), question8.Text);
+                        content.Add(new StringContent(_answer9), question9.Text);
+                        content.Add(new StringContent(_answer10), question10.Text);
+                        //content.Add(new StringContent(_answer11), question11.Text);
+                        content.Add(new StringContent(_answer12), question12.Text);
+                        content.Add(new StringContent(answer13.Text), question13.Text);
+                        content.Add(new StringContent(_answer14), question14.Text);
+                        //content.Add(new StringContent(jsoncategoryArray),"category");
 
 
-                    var response = await client.PostAsync(sampleurl, content);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        actindicator.IsVisible = false;
-                        actindicator.IsRunning = false;
-                        await DisplayAlert("Success", "Skin Issue" + "Created Successful", "ok");
-                        await Shell.Current.Navigation.PopModalAsync();
+                        var response = await client.PostAsync(sampleurl, content);
+                        //if (response.IsSuccessStatusCode)
+                        //{
+                        //    //actindicator.IsVisible = false;
+                        //    //actindicator.IsRunning = false;
+                        //    //await DisplayAlert("Success", "Skin Issue" + "Created Successful", "ok");
+                        //    //await Shell.Current.Navigation.PopModalAsync();
+
+                        //}
 
                     }
 
+
+
                 }
 
-
-
             }
-        
+            catch (Exception)
+            {
+                return;
+            }
+           
                 answer1.Text = "";
                 answer2.SelectedIndex = -1; 
                 answer3.SelectedIndex = -1; 
