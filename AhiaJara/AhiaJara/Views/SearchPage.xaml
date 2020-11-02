@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AhiaJara.Views.SearchPage"             
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid VerticalOptions="Start" Margin="10,15,10,25">
+                <Label Text="Search"
+                       TextColor="{StaticResource TxtColor}"
+                       FontSize="20"
+                       FontFamily="{StaticResource font_bold}"
+                       HorizontalOptions="Start"/>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
