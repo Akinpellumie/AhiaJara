@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="AhiaJara.Utils.AdsCarousel">
-    <StackLayout x:Name="mainStack">
+    <!--<StackLayout x:Name="mainStack">
         <CarouselView ItemsSource="{Binding CarouselModelList}"
                           HeightRequest="140"
             x:Name="TheCarousel"
@@ -25,12 +25,42 @@
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
-        <!--<IndicatorView
+        --><!--<IndicatorView
             x:Name="indicatorview"
                 VerticalOptions="End"
             IndicatorColor="LightGray"
             IndicatorSize="6"
                 Margin="0,0,0,5"
-            SelectedIndicatorColor="Orange" />-->
-    </StackLayout>
+            SelectedIndicatorColor="Orange" />--><!--
+    </StackLayout>-->
+
+    <Grid x:Name="mainStack">
+        <CarouselView
+            VerticalOptions="Fill"
+        x:Name="carouselView"
+            HeightRequest="180"
+            IsScrollAnimated="True"
+            ItemsSource="{Binding CarouselModelList}"
+            ItemsUpdatingScrollMode="KeepItemsInView"
+            IndicatorView="indicatorView">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <pv:PancakeView CornerRadius="15" HorizontalOptions="Fill">
+                            <Image Source="{Binding Image}" Aspect="AspectFill"/>
+                        </pv:PancakeView>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView
+            x:Name="indicatorView"
+         Padding="0,0,0,3"
+         HorizontalOptions="Center"
+         IndicatorColor="White"
+            Margin="0,0,0,3"
+         IndicatorSize="7"
+         SelectedIndicatorColor="Accent"
+         VerticalOptions="End" />
+    </Grid>
 </ContentView>
