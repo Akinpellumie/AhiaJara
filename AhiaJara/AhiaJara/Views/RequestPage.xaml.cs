@@ -36,6 +36,9 @@ namespace AhiaJara.Views
         {
             try
             {
+                ProductPicker.SelectedIndex = -1;
+                qtyEntry.Text = "";
+                descEntry.Text = "";
                 Picker picker = sender as Picker;
                 selectedCategory = picker.SelectedItem.ToString();
                 //_answer2 = selectedItem.ToString();// This is the model selected in the picker

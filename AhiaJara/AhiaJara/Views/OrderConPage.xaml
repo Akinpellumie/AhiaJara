@@ -25,7 +25,7 @@
                 <ScrollView>
                     <StackLayout Orientation="Vertical" Margin="10,0">
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="First Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="First Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" x:Name="question1" />
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                 <Controls:CustomEntry  x:Name="firstNameEnrty" VerticalOptions="End" 
@@ -35,7 +35,7 @@
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="Last Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="Last Name" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" x:Name="question2"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                 <Controls:CustomEntry  x:Name="lastNameEnrty" VerticalOptions="End" 
@@ -45,7 +45,7 @@
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="Phone Number" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="Phone Number" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" x:Name="question3"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                 <Controls:CustomEntry  x:Name="phoneNoEnrty" VerticalOptions="End" 
@@ -55,7 +55,7 @@
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="Address" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="Address" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" x:Name="question4"/>
                             <Frame BackgroundColor="White"
                                BorderColor="Transparent"
                                Margin="0,0,0,10" 
@@ -69,10 +69,10 @@
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="State" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="State" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" x:Name="question5"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                <Controls:CustomPicker  x:Name="statePicker" VerticalOptions="End" 
+                                <Controls:CustomPicker  x:Name="statePicker" VerticalOptions="End" SelectedIndexChanged="OnPickerSelected1"
                                  Title="Select State" Style="{StaticResource EntryStyle}">
                                     <Controls:CustomPicker.Items>
                                         <x:String>Abia</x:String>
@@ -81,16 +81,46 @@
                                         <x:String>Anambra</x:String>
                                         <x:String>Bauchi</x:String>
                                         <x:String>Bayelsa</x:String>
-                                    </Controls:CustomPicker.Items>
+                                        <x:String>Benue</x:String>
+                                        <x:String>Borno</x:String>
+                                        <x:String>Cross River</x:String>
+                                        <x:String>Delta</x:String>
+                                        <x:String>Ebonyi</x:String>
+                                        <x:String>Edo</x:String>
+                                        <x:String>Ekiti</x:String>
+                                        <x:String>Enugu</x:String>
+                                        <x:String>Gombe</x:String>
+                                        <x:String>Imo</x:String>
+                                        <x:String>Jigawa</x:String>
+                                        <x:String>Kaduna</x:String>
+                                        <x:String>Kano</x:String>
+                                        <x:String>Katsina</x:String>
+                                        <x:String>Kebbi</x:String>
+                                        <x:String>Kogi</x:String>
+                                        <x:String>Kwara</x:String>
+                                        <x:String>Lagos</x:String>
+                                        <x:String>Nasarawa</x:String>
+                                        <x:String>Niger</x:String>
+                                        <x:String>Ogun</x:String>
+                                        <x:String>Ondo</x:String>
+                                        <x:String>Osun</x:String>
+                                        <x:String>Oyo</x:String>
+                                        <x:String>Plateau</x:String>
+                                        <x:String>Rivers</x:String>
+                                        <x:String>Sokoto</x:String>
+                                        <x:String>Taraba</x:String>
+                                        <x:String>Yobe</x:String>
+                                        <x:String>Zamfara</x:String>
+          </Controls:CustomPicker.Items>
                                 </Controls:CustomPicker>
                             </Frame>
                         </StackLayout>
 
                         <StackLayout Margin="5,1,5,1">
-                            <Label Text="City" TextColor="{StaticResource TxtColor}" FontSize="Subtitle"/>
+                            <Label Text="City" TextColor="{StaticResource TxtColor}" FontSize="Subtitle" x:Name="question6"/>
                             <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                <Controls:CustomEntry  x:Name="cityEnrty" VerticalOptions="End"
+                                <Controls:CustomEntry  x:Name="cityEntry" VerticalOptions="End"
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="City" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                             </Frame>

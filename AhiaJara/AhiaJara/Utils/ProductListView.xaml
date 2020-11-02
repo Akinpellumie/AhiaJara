@@ -11,7 +11,7 @@
                                               VerticalOptions="Fill"
                               FlowIsLoadingInfiniteEnabled="False"
                               HasUnevenRows="True" SeparatorVisibility="None"
-                              Header="Latest Products"
+                              Header="All Products"
                               RowHeight="200">
 
                 <!--<flv:FlowListView.HeaderTemplate>
@@ -41,16 +41,16 @@
                 <flv:FlowListView.FlowColumnTemplate>
                     <DataTemplate>
                         <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
-                                                HorizontalOptions="Fill" HeightRequest="200" WidthRequest="100" Margin="5" >
+                                                HorizontalOptions="Fill" HeightRequest="200"  WidthRequest="100" Margin="5" >
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="70*"/>
+                                    <RowDefinition Height="60*"/>
                                     <RowDefinition Height="30*"/>
                                 </Grid.RowDefinitions>
 
-                                <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"  Grid.Row="0"/>
+                                <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"  Grid.Row="0"/>
                                 <StackLayout Orientation="Vertical" Grid.Row="1">
-                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                    <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
                                     <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>

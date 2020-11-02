@@ -43,6 +43,8 @@ namespace AhiaJara.Views
         public async void CheckOutPage_Clicked(object sender, EventArgs e)
         {
             newProductModel.quantity = Constants.cartCount;
+            var x = Constants.cartCount * Int32.Parse(newProductModel.price);
+            newProductModel.tempPrice = x.ToString();
            
             await Navigation.PushAsync(new CheckOutPage(newProductModel));
         }

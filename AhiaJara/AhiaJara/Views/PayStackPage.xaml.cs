@@ -1,13 +1,17 @@
 ﻿using AhiaJara.Helpers;
 using AhiaJara.Models;
+using AhiaJara.PopUps;
 using AhiaJara.ViewModels;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,17 +22,40 @@ namespace AhiaJara.Views
     {
         public static ProductViewModel ProductViewModel;
         ProductModel prodModel;
-        public PayStackPage(ProductModel productModel)
+        string res;
+        string payCode;
+        string amountPaid;
+        public PayStackPage(ProductModel productModel, string cartModel)
         {
-            prodModel = productModel;
-
+           
+            res = cartModel;
             decimal totalPrice;
-            Formulars formular = new Formulars();
-            string[] ssize = prodModel.TotalPrice.Split(new char[0]);
-            string price = ssize[1].ToString();
-            totalPrice = formular.ConvertToDecimal(price);
+
+            if (productModel != null)
+            {
+                prodModel = productModel;
+                
+                Formulars formular = new Formulars();
+                string[] ssize = prodModel.TotalPrice.Split(new char[0]);
+                string price = ssize[1].ToString();
+                amountPaid = price;
+                totalPrice = formular.ConvertToDecimal(price);
+            }
+            else
+            {
+                var data = JsonConvert.DeserializeObject<List<Cart>>(cartModel);
+                Formulars formular = new Formulars();
+                string ssize = data[0].productPrice;
+                int tempPrice = Int32.Parse(ssize);
+                string price = tempPrice.ToString();
+
+                amountPaid = price;
+                totalPrice = formular.ConvertToDecimal(price);
+            }
+               
 
             InitializeComponent();
+            loadingAsync();
 
             JArray jarray = new JArray();
             dynamic customFieldsArray = new JArray();
@@ -63,21 +90,71 @@ namespace AhiaJara.Views
             hybridWebView.Data = product.ToString();
 
 
-            hybridWebView.RegisterCloseAction(() => DisplayAlert("WebView Closed", "Close button clicked", "ok"));
+            hybridWebView.RegisterCloseAction(() => DisplayAlert("payment cancelled", "your payment have been cancelled", "ok"));
             hybridWebView.RegisterCallBackAction(data => DisplayAlert("Alert", "Hello " + data, "OK"));
 
         }
 
-        private void HybridWebView_PaymentClosed(object sender, string e)
+        public async void HybridWebView_PaymentClosed(object sender, string e)
         {
-            DisplayAlert("WebView Closed", "Close button clicked event", "ok");
+            //await DisplayAlert("WebView Closed", "Close button clicked event", "ok");
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                
+                  Navigation.PushAsync(new Dashboard());
+                
+            });           
+            
         }
 
 
-
-        private void hybridWebView_PaymentSuccessful(object sender, string e)
+        private async void hybridWebView_PaymentSuccessful(object sender, string e)
         {
-            DisplayAlert("Alert", "Payment Reference: " + e, "OK");
+            payCode = e;
+            postOrder();
+            await DisplayAlert("Please keep your payment code", "Payment Code: " + e, "OK");
+            await Navigation.PushAsync(new Dashboard());
+        }
+
+ 
+        private async Task loadingAsync()
+        {
+            await PopupNavigation.Instance.PushAsync(new PageLoader());
+            await Task.Delay(6000);
+            await PopupNavigation.Instance.PopAsync(true);
+            
+        }
+
+        private async void postOrder()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string shippingDetails = Constants.ShippingDetails;
+                var url = Constants.postOrder;
+                //var url = "http://192.168.43.162:5000/order";
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                content.Add(new StringContent(res), "products");
+                content.Add(new StringContent(payCode), "paymentId");
+                //content.Add(new StringContent("e344334443rere3433"), "paymentId");
+
+                content.Add(new StringContent(shippingDetails), "shippinDetails");
+                content.Add(new StringContent(amountPaid), "amountPaid");
+
+                var response = await client.PostAsync(url, content);
+                //var x = "jane";
+                //Console.WriteLine(content);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            //Console.ReadLine();
         }
     }
 }

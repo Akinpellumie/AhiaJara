@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AhiaJara.Models;
+using AhiaJara.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,19 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SkinIssueReviewPage : ContentPage
     {
-        public SkinIssueReviewPage()
+        public static SkinIssue newSkinIssue;
+        ProductViewModel productViewModel;
+        //SkinIssue skinIssue;
+        public SkinIssueReviewPage(SkinIssue skinModel)
         {
+            productViewModel = new ProductViewModel(Navigation);
             InitializeComponent();
+            this.BindingContext = skinModel;
+            buyNowBtn.BindingContext = productViewModel;
+            newSkinIssue = skinModel;
+           
         }
+
+       
     }
 }

@@ -57,9 +57,17 @@ namespace AhiaJara.ViewModels
             set { SetProperty(ref password, value); }
         }
 
+        
+
+        public string confirmPassowwrd;
+        public string ConfirmPassowwrd
+        {
+            get { return confirmPassowwrd; }
+            set { SetProperty(ref confirmPassowwrd, value); }
+        }
         public SignUpViewModel()
         {
-            SignUpCommand = new Command(() => OnSignUpClicked());
+            SignUpCommand = new Command(() => OnSignUp_Clicked());
         }
 
         //private async void OnLoginClicked(object obj)
@@ -68,31 +76,37 @@ namespace AhiaJara.ViewModels
         //    await Shell.Current.GoToAsync($"//{nameof(AppShell)}");
         //}
 
-        public void OnLoginBtn_Clicked()
+        public async void OnSignUp_Clicked()
         {
-            if (Email == null || Password == null || Lastname == null || Firstname == null || PhoneNo == null)
+            if(Password != ConfirmPassowwrd)
             {
-                MessagingCenter.Send(this, "FillAllFields");
+                MessagingCenter.Send(this, "passwordMismatch");
             }
             else
             {
-                var registerData = new UserDetails()
+                if (Email == null || Password == null || Lastname == null || Firstname == null || PhoneNo == null)
                 {
-                    email = Email,
-                    password = Password,
-                    lastName = Lastname,
-                    firstName = Firstname,
-                    phoneNo = PhoneNo,
-                   
-                };
+                    MessagingCenter.Send(this, "FillAllFields");
+                }
+                else
+                {
+                    var registerData = new UserDetails()
+                    {
+                        email = Email,
+                        password = Password,
+                        lastName = Lastname,
+                        firstName = Firstname,
+                        phoneNo = PhoneNo,
 
-                userAccessService = new UserAccessService();
-                RegisterUser(registerData);
+                    };
+
+                    userAccessService = new UserAccessService();
+                    RegisterUser(registerData);
+
+                }
 
             }
-
-
-
+            
             //Application.Current.MainPage = new NavigationPage(new AppShell());
             //AppShell fpm = new AppShell();
             //Application.Current.MainPage = fpm;
