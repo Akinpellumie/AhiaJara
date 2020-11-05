@@ -38,18 +38,33 @@ namespace AhiaJara.Views
 
         private void getShippingData()
         {
-            var shippingData = new List<QuestionAndAnswer>
-                {
-                    new QuestionAndAnswer(question1.Text, firstNameEnrty.Text),
-                    new QuestionAndAnswer(question2.Text, lastNameEnrty.Text),
-                    new QuestionAndAnswer(question3.Text, phoneNoEnrty.Text),
-                    new QuestionAndAnswer(question4.Text, addressEnrty.Text),
-                    new QuestionAndAnswer(question5.Text, _answer1),
-                    new QuestionAndAnswer(question6.Text, cityEntry.Text),
-                };
-            string json = JsonConvert.SerializeObject(shippingData);
+
+            var shippingData1 = new shippingData()
+            {
+                lastName = lastNameEnrty.Text,
+                firstName = firstNameEnrty.Text,
+                phoneNo = phoneNoEnrty.Text,
+                address = addressEnrty.Text,
+                state = _answer1,
+                city = cityEntry.Text,
+
+
+            };
+
+            //var shippingData = new List<QuestionAndAnswer>
+            //    {
+            //        new QuestionAndAnswer(question1.Text, firstNameEnrty.Text),
+            //        new QuestionAndAnswer(question2.Text, lastNameEnrty.Text),
+            //        new QuestionAndAnswer(question3.Text, phoneNoEnrty.Text),
+            //        new QuestionAndAnswer(question4.Text, addressEnrty.Text),
+            //        new QuestionAndAnswer(question5.Text, _answer1),
+            //        new QuestionAndAnswer(question6.Text, cityEntry.Text),
+            //    };
+            string json = JsonConvert.SerializeObject(shippingData1);
             Constants.ShippingDetails = json;
         }
+
+
 
         private void OnPickerSelected1(object sender, EventArgs e)
         {

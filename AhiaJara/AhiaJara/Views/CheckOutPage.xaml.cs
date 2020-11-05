@@ -1,4 +1,5 @@
-﻿using AhiaJara.Models;
+﻿using AhiaJara.Helpers;
+using AhiaJara.Models;
 using AhiaJara.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace AhiaJara.Views
         ProductModel prodModel;
         public CheckOutPage(ProductModel productModel)
         {
+            
             ProductViewModel = new ProductViewModel(Navigation);
             prodModel = productModel;
             InitializeComponent();

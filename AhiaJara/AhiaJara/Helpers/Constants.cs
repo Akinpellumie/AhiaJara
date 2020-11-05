@@ -1,5 +1,6 @@
 ﻿using AhiaJara.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -49,7 +50,7 @@ namespace AhiaJara.Helpers
         public static string getIncompleteOrder{ get { return Constants.domainurl + "/incompletedorder/"; } }
         public static string getcompletedOrder{ get { return Constants.domainurl + "/completedorder/"; } }
         public static string postcompleteOrder{ get { return Constants.domainurl + "/completeorder/"; } }
-        public static string postOrder{ get { return Constants.domainurl + "/completeorder/"; } }
+        public static string postOrder{ get { return Constants.domainurl + "/order"; } }
         public static string postBespoke{ get { return Constants.domainurl + "/bespokeentry"; } }
         public static string getHairProducts{ get { return Constants.domainurl + "/products/Hair"; } }
         public static string RequestProduct{ get { return Constants.domainurl + "/requestproduct"; } }
@@ -64,6 +65,8 @@ namespace AhiaJara.Helpers
         public static List<ProductModel> LatestProductsList { get; set; }
         public static List<Cart> CartItemList { get; set; }
         public static List<Product> CarouselItemList { get; set; }
+
+        public static ArrayList singleOrder { get; set; }
 
         public static string ShippingDetails { get; set; }
 
