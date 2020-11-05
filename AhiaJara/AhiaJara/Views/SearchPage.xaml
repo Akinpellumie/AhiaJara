@@ -1,21 +1,113 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:ff1="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:Controls="clr-namespace:AhiaJara.Controls"
              x:Class="AhiaJara.Views.SearchPage"             
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{StaticResource mainbackground}">
+             BackgroundColor="#C1C0BE">
     <ContentPage.Content>
         <StackLayout>
-            <Grid VerticalOptions="Start" Margin="10,15,10,25">
-                <Label Text="Search"
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="80*"/>
+            </Grid.RowDefinitions>
+            <StackLayout VerticalOptions="Start" Grid.Row="0" Margin="10,15,10,25">
+                    <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
+                        <ImageButton HeightRequest="25" BackgroundColor="Transparent" x:Name="back"  
+                                     Source="arrow" WidthRequest="25" Clicked="Back"
+                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                        <Label Text="Search"
+                       VerticalOptions="Start"
                        TextColor="{StaticResource TxtColor}"
                        FontSize="20"
                        FontFamily="{StaticResource font_bold}"
                        HorizontalOptions="Start"/>
-            </Grid>
-            
+                    </StackLayout>
+
+                    <StackLayout Margin="5,10,5,10"
+                             VerticalOptions="End">
+                        <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" CornerRadius="25" HorizontalOptions="Fill" HeightRequest="50">
+                            <Controls:CustomSearchBar x:Name="searchBar" Grid.Column="1" 
+                                          PlaceholderColor="{StaticResource TxtColor}" 
+                                          Placeholder="Search"
+                                          TextChanged="SearchBar_TextChanged"
+                                          Keyboard="Default"
+                                          Style="{StaticResource EntryStyle}" 
+                                          SearchCommand="{Binding SearchCommand}"
+                                          FontFamily="{StaticResource font_book}"/>
+                        </Frame>
+                    </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" VerticalOptions="Fill">
+                <pv:PancakeView
+                    VerticalOptions="FillAndExpand"
+                    CornerRadius="25,25,0,0"
+                    BackgroundColor="{StaticResource mainbackground}">
+                    <StackLayout>
+                            <StackLayout x:Name="SearchResult" IsVisible="False">
+                                <ActivityIndicator 
+                                    Grid.RowSpan="2"
+                                    x:Name="indic"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+                                <ScrollView >
+                                    <StackLayout>
+                                        <ListView
+                                    x:Name="SearchProduct"
+                                            RowHeight="70"
+                                    Margin="10,15,10,10">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <StackLayout HorizontalOptions="Fill" Margin="5" VerticalOptions="Fill">
+                                                            <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10,3,10,3"
+                                                                HorizontalOptions="Fill" >
+                                                                <Grid HorizontalOptions="Fill">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <Image HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" Source="{Binding ProductImage}" Grid.Column="0"/>
+                                                                    <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Column="1">
+                                                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                                HorizontalOptions="Start" FontSize="12" FontFamily="{StaticResource font_book}"/>
+                                                                        <Label Text="{Binding price}" TextColor="{StaticResource Primary}"
+                                                HorizontalOptions="Start" FontSize="12" FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
+                                                                    </StackLayout>
+
+                                                                </Grid>
+                                                            </pv:PancakeView>
+
+                                                        </StackLayout>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackLayout>
+                                </ScrollView>
+                            </StackLayout>
+                        <StackLayout IsVisible="True" x:Name="emptySearch" VerticalOptions="CenterAndExpand">
+                            <ff1:SvgCachedImage Source="undrawSearch.svg" HeightRequest="350"
+                                        Aspect="AspectFit" />
+                            <Label Text="Search Entries"
+                                   HorizontalOptions="Center"
+                                   Margin="0,10,0,0"
+                                   TextColor="{StaticResource TxtColor}"
+                                   FontSize="13"
+                                   FontFamily="{StaticResource font_book}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </pv:PancakeView>
+            </StackLayout>
+        </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

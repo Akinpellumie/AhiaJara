@@ -29,6 +29,7 @@ namespace AhiaJara.ViewModels
             GetProducts();
             GetAdverts();
             GetCarts();
+            SearchResultPro();
             GetLatestProducts();
             GetHairProducts();
             GetSkinProducts();
@@ -41,14 +42,41 @@ namespace AhiaJara.ViewModels
             //SelectedImageCommand = new Command<ProductModel>(model => CardImage_SelectionChanged(model));
             SelectedImageCommand = new Command<SkinIssue>(model => CardImage_SelectionChanged1(model));
             PlusBtnCommand = new Command(PlusBtn_Clicked);
+            SearchCommand = new Command<TextChangedEventArgs>(textChanged => SearchBar_TextChanged(textChanged));
             MinusBtnCommand = new Command(MinusBtn_Clicked);
             LongClickedCommand = new Command(LongClicked);
             TextChangedCommand = new Command<TextChangedEventArgs>(textChanged => Entry_TextChangedCommand(textChanged));
         }
 
+        public ProductViewModel()
+        {
+        }
+
         #region Properties
-        public bool IsBusy { get; set; }
+        private bool isBusy { get; set; }
+        public bool IsBusy
+        {
+            get => isBusy;
+            set
+            {
+                isBusy = value;
+                OnPropertyChanged(nameof(IsBusy));
+
+            }
+        }
+        private bool isVisible { get; set; }
+        public bool IsVisible
+        {
+            get => isVisible;
+            set
+            {
+                isVisible = value;
+                OnPropertyChanged(nameof(IsVisible));
+
+            }
+        }
         public Command NavigateToDetailPageCommand { get; }
+        public Command SearchCommand { get; }
         public Command LongClickedCommand { get; }
         public Command PlusBtnCommand { get; }
         public Command MinusBtnCommand { get; }
@@ -70,6 +98,18 @@ namespace AhiaJara.ViewModels
                 OnPropertyChanged(nameof(Text));
             }
 
+        }
+
+        private ObservableCollection<ProductModel> searchData;
+        public ObservableCollection<ProductModel> SearchData
+        {
+            get => searchData;
+            set
+            {
+                searchData = value;
+                OnPropertyChanged(nameof(SearchData));
+
+            }
         }
 
         private Color firstFrameBackColor;
@@ -112,7 +152,7 @@ namespace AhiaJara.ViewModels
         private ObservableCollection<ProductModel> hairProductModelList;
         public ObservableCollection<ProductModel> HairProductModelList
         {
-            get => HairProductModelList;
+            get => hairProductModelList;
             set
             {
                 hairProductModelList = value;
@@ -180,8 +220,6 @@ namespace AhiaJara.ViewModels
             }
         }
 
-        int Count = 0;
-        short Counter = 0;
         int SlidePosition = 0;
 
         private int _selectedViewModelIndex = 0;
@@ -234,6 +272,7 @@ namespace AhiaJara.ViewModels
                 else
                 {
                     ProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                    SearchData = ProductModelList;
                 }
             }
             catch (Exception)
@@ -241,6 +280,30 @@ namespace AhiaJara.ViewModels
                 return;
             }
 
+        }
+
+        public async void SearchResultPro()
+        {
+
+            try
+            {
+                IsBusy = true;
+                HttpClient client = new HttpClient();
+                var dashboardEndpoint = Constants.AllProductsUrl;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(Constants.AllProductsUrl);
+                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                SearchData = new ObservableCollection<ProductModel>(ProductsList);
+                //Constants.ProductsList = ProductsList;
+                IsBusy = false;
+                
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
 
         public async void GetHairProducts()
@@ -429,7 +492,7 @@ namespace AhiaJara.ViewModels
             ProductModel productModel = new ProductModel()
             {
                 quantityAvailable = rootdir.quantityAvailable,
-                name = rootdir.name,
+                Name = rootdir.name,
                 imgUrl = rootdir.imgUrl,
                 price = rootdir.price,
                 category = rootdir.category,
@@ -475,7 +538,7 @@ namespace AhiaJara.ViewModels
                 productId = DetailPage.newProductModel.id,
                 userId = Settings.id,
                 quantitySelected = txt,
-                productName = DetailPage.newProductModel.name,
+                productName = DetailPage.newProductModel.Name,
                 productImgUrl = DetailPage.newProductModel.imgUrl,
                 productPrice = DetailPage.newProductModel.price,
                 productCategory = DetailPage.newProductModel.category,
@@ -564,6 +627,23 @@ namespace AhiaJara.ViewModels
             await Navigation.PushAsync(new SkinIssueReviewPage(model));
             //var descr = model.description;
 
+        }
+
+        private void SearchBar_TextChanged(TextChangedEventArgs textChanged)
+        {
+            //thats all you need to make a search  
+
+            if (string.IsNullOrEmpty(textChanged.NewTextValue))
+            {
+                SearchData = ProductModelList;
+                IsVisible = false;
+            }
+            else
+            {
+                //SearchData = (ObservableCollection<BankList>)BankData.Where(x => x.Name.Contains(textChanged.NewTextValue));
+                IsVisible = true;
+                SearchData = (ObservableCollection<ProductModel>)ProductModelList.Where(x => x.Name.Contains(textChanged.NewTextValue, StringComparison.OrdinalIgnoreCase));
+            }
         }
         #endregion
     }

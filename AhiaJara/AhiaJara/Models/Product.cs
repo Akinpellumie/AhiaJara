@@ -95,7 +95,8 @@ namespace AhiaJara.Models
     public class ProductModel : BaseVM
 
     {
-        public string name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
         public string imgUrl { get; set; }
         public int quantityAvailable { get; set; }
         //[JsonProperty("price")]

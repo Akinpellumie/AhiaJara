@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AhiaJara.Utils.DashToolBar">
+  <ContentView.Content>
+        <StackLayout>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" CornerRadius="25" HorizontalOptions="Fill" HeightRequest="50">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="search" HeightRequest="25" WidthRequest="25" Margin="10,0,0,0"></Image>
+                            <Label Text="Search"
+                                               Grid.Column="1"
+                                               TextColor="{StaticResource TxtColor}"
+                                               FontSize="14"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Start"
+                                               FontFamily="{StaticResource font_book}"/>
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Margin="5,0,0,0" Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Margin="0,0,3,0">
+                            <Image HeightRequest="30" BackgroundColor="Transparent" x:Name="cart"  
+                                     Source="cartIcon" WidthRequest="30"
+                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
+                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
+                                <Label Text="{Binding CartCount}" TextColor="White" FontSize="8" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </pv:PancakeView>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CartIcon_Clicked"
+                                              NumberOfTapsRequired="1"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Margin="2,0,5,0">
+                            <Image HeightRequest="30" x:Name="NotsIcon"  
+                                     Source="bellNot" WidthRequest="30"
+                                    Aspect="AspectFit"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                            <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
+                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
+                                <Label Text="3" TextColor="White" FontSize="8" 
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </pv:PancakeView>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BellIcon_Clicked"
+                                              NumberOfTapsRequired="1"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>
