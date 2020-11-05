@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace AhiaJara.Controls
 {
-    public class CustomSearch : SearchBar
+    public class CustomSearchBar : SearchBar
     {
     }
 }

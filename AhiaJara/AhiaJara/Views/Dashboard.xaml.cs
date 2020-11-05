@@ -1,4 +1,5 @@
-﻿using AhiaJara.ViewModels;
+﻿using AhiaJara.Models;
+using AhiaJara.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
