@@ -2,43 +2,11 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="AhiaJara.Utils.AdsCarousel">
-    <!--<StackLayout x:Name="mainStack">
-        <CarouselView ItemsSource="{Binding CarouselModelList}"
-                          HeightRequest="140"
-            x:Name="TheCarousel"
-                      IsSwipeEnabled="True"
-                      IsScrollAnimated="True">
-            <CarouselView.IndicatorView>
-                <IndicatorView
-                x:Name="indicatorview"
-                VerticalOptions="End"
-                IndicatorColor="LightGray"
-                IndicatorSize="6"
-                Margin="0,0,0,5"
-                SelectedIndicatorColor="Orange" />
-            </CarouselView.IndicatorView> 
-            <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <pv:PancakeView CornerRadius="15" HorizontalOptions="Fill">
-                            <Image Source="{Binding Image}" HorizontalOptions="Fill" Aspect="AspectFill"/>
-                    </pv:PancakeView>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
-        --><!--<IndicatorView
-            x:Name="indicatorview"
-                VerticalOptions="End"
-            IndicatorColor="LightGray"
-            IndicatorSize="6"
-                Margin="0,0,0,5"
-            SelectedIndicatorColor="Orange" />--><!--
-    </StackLayout>-->
-
     <Grid x:Name="mainStack">
         <CarouselView
             VerticalOptions="Fill"
         x:Name="carouselView"
-            HeightRequest="180"
+            HeightRequest="150"
             IsScrollAnimated="True"
             ItemsSource="{Binding CarouselModelList}"
             ItemsUpdatingScrollMode="KeepItemsInView"

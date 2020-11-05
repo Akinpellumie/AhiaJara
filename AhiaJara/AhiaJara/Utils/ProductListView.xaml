@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" 
+             xmlns:extension="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="AhiaJara.Utils.ProductListView">
     <ContentView.Content>
         <StackLayout>
@@ -9,51 +13,35 @@
                                               x:Name="latestProducts"
                                               HorizontalOptions="Fill"
                                               VerticalOptions="Fill"
+                              extension:Skeleton.IsParent="True"
+                              extension:Skeleton.IsBusy="{Binding IsBusy}"
+                              extension:Skeleton.Animation="{extension:DefaultAnimation Fade}"
                               FlowIsLoadingInfiniteEnabled="False"
                               HasUnevenRows="True" SeparatorVisibility="None"
-                              Header="All Products"
-                              RowHeight="200">
-
-                <!--<flv:FlowListView.HeaderTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Label Text="Latest Products"
-                                   FontSize="18"
-                                   FontAttributes="Bold"
-                                   TextColor="#5b6b6f"
-                                   FontFamily="{StaticResource font_medium}"
-                                   HorizontalOptions="Start"
-                                   Margin="5"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </flv:FlowListView.HeaderTemplate>-->
-
-                <!--<flv:FlowListView.FlowLoadingTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <ff:CachedImage Source="loadergif.gif"   
-                                HeightRequest="100"  
-                            VerticalOptions="CenterAndExpand"
-                                WidthRequest="100"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </flv:FlowListView.FlowLoadingTemplate>-->
+                              Header="All Products">
+                
                 <flv:FlowListView.FlowColumnTemplate>
                     <DataTemplate>
-                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10"
-                                                HorizontalOptions="Fill" HeightRequest="200"  WidthRequest="100" Margin="5" >
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60*"/>
-                                    <RowDefinition Height="30*"/>
-                                </Grid.RowDefinitions>
-
-                                <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"  Grid.Row="0"/>
-                                <StackLayout Orientation="Vertical" Grid.Row="1">
-                                    <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
-                                                HorizontalOptions="Start" FontSize="Subtitle"/>
+                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10,5,10,5"
+                                                HorizontalOptions="Fill" HeightRequest="100" WidthRequest="80" Margin="3">
+                            <Grid VerticalOptions="Fill">
+                                <Image HorizontalOptions="Center" 
+                                       extension:Skeleton.IsBusy="{Binding IsBusy}"
+                                       extension:Skeleton.BackgroundColor="#c6c6c5" 
+                                       VerticalOptions="StartAndExpand" Aspect="AspectFill" 
+                                       Source="{Binding ProductImage}"  Grid.Row="0"/>
+                                <StackLayout Orientation="Vertical" VerticalOptions="End" Grid.Row="1">
+                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                           LineBreakMode="TailTruncation"
+                                           extension:Skeleton.IsBusy="{Binding IsBusy}"
+                                           extension:Skeleton.BackgroundColor="#c6c6c5"
+                                           HorizontalOptions="Start" FontSize="12" 
+                                           FontFamily="{StaticResource font_book}"/>
                                     <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
-                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                           extension:Skeleton.IsBusy="{Binding IsBusy}"
+                                           extension:Skeleton.BackgroundColor="#c6c6c5"
+                                           HorizontalOptions="Start" FontSize="12" 
+                                           FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
                                 </StackLayout>
                             </Grid>
                             <pv:PancakeView.GestureRecognizers>

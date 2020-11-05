@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AhiaJara.Helpers
 {
-    public class Constants
+    public static class Constants
     {
         public static string domainurl
         {
@@ -15,6 +15,13 @@ namespace AhiaJara.Helpers
                 //return "https://29cebf09-368c-4fb8-ba32-817ee979decc.mock.pstmn.io";
                 //return "api-host-sample.herokuapp.com"
                 return "https://ahiajara.herokuapp.com";
+            }
+        }
+        public static string FaqUrl
+        {
+            get
+            {
+                return "https://ahiajara.netlify.app/faq";
             }
         }
 
@@ -63,6 +70,11 @@ namespace AhiaJara.Helpers
 
         public static string ShippingDetails { get; set; }
 
-        public static int cartCount { get; set; } 
+        public static int cartCount { get; set; }
+
+        public static bool Contains(this string target, string value, StringComparison comparison)
+        {
+            return target.IndexOf(value, comparison) >= 0;
+        }
     }
 }

@@ -4,16 +4,14 @@
              x:Class="AhiaJara.Utils.CustomSearchView">
   <ContentView.Content>
       <StackLayout>
-            <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" HorizontalOptions="Fill" HeightRequest="50">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="searchIconId" HeightRequest="24" WidthRequest="24" Margin="5,0,0,0"></Image>
-                    <Controls:CustomEntry  x:Name="searchBar" Grid.Column="1" PlaceholderColor="{StaticResource TxtColor}" Placeholder="Search" 
-                                               Text="" Keyboard="Default" Style="{StaticResource EntryStyle}" FontFamily="{StaticResource font_book}"/>
-                </Grid>
+            <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" CornerRadius="25" HorizontalOptions="Fill" HeightRequest="50">
+                <Controls:CustomSearchBar x:Name="searchBar" Grid.Column="1" 
+                                          PlaceholderColor="{StaticResource TxtColor}" 
+                                          Placeholder="Search"
+                                          Keyboard="Default"
+                                          Style="{StaticResource EntryStyle}" 
+                                          SearchCommand="{Binding SearchCommand}"
+                                          FontFamily="{StaticResource font_book}"/>
             </Frame>
         </StackLayout>
   </ContentView.Content>

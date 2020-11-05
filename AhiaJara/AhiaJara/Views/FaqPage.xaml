@@ -1,12 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AhiaJara.Views.FaqPage">
+             x:Class="AhiaJara.Views.FaqPage"             
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Margin="0,0,0,15" Grid.Row="0">
+                <StackLayout Orientation="Horizontal" Margin="10,15,10,0">
+                    <ImageButton HeightRequest="25" BackgroundColor="Transparent" x:Name="back"  
+                                     Source="arrow" WidthRequest="25" Clicked="Back"
+                                    Aspect="AspectFit"  HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="FAQ"
+                       TextColor="{StaticResource TxtColor}"
+                       FontSize="20"
+                       FontFamily="{StaticResource font_bold}"
+                       HorizontalOptions="Start"/>
+                </StackLayout>
+                <ProgressBar Progress="0.2" IsVisible="False" HorizontalOptions="FillAndExpand" x:Name="Indic"/>
+            </StackLayout>
+            <WebView Grid.Row="1" HorizontalOptions="Fill"  VerticalOptions="Fill" x:Name="Payview" Navigating="Payview_Navigating" Navigated="Payview_Navigated"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

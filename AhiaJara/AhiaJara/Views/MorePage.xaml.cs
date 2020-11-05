@@ -41,8 +41,8 @@ namespace AhiaJara.Views
         }
         public async void FaqBtn_Clicked(object obj, EventArgs e)
         {
-           await DisplayAlert("Check Later", "We are getting our FAQs page ready", "Ok");
-            //await Navigation.PushAsync(new FaqPage());
+           //await DisplayAlert("Check Later", "We are getting our FAQs page ready", "Ok");
+            await Navigation.PushAsync(new FaqPage());
         }
         public async void ResetBtn_Clicked(object obj, EventArgs e)
         {
