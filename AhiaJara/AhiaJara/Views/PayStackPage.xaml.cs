@@ -25,16 +25,18 @@ namespace AhiaJara.Views
         string res;
         string payCode;
         string amountPaid;
+        //string xData;   
         public PayStackPage(ProductModel productModel, string cartModel)
         {
            
-            res = cartModel;
+           
             decimal totalPrice;
 
             if (productModel != null)
             {
                 prodModel = productModel;
-                
+                res = JsonConvert.SerializeObject(Constants.singleOrder);
+                //res = JsonConvert.SerializeObject(prodModel);
                 Formulars formular = new Formulars();
                 string[] ssize = prodModel.TotalPrice.Split(new char[0]);
                 string price = ssize[1].ToString();
@@ -43,6 +45,7 @@ namespace AhiaJara.Views
             }
             else
             {
+                res = cartModel;
                 var data = JsonConvert.DeserializeObject<List<Cart>>(cartModel);
                 Formulars formular = new Formulars();
                 string ssize = data[0].productPrice;
@@ -142,11 +145,11 @@ namespace AhiaJara.Views
                 content.Add(new StringContent(payCode), "paymentId");
                 //content.Add(new StringContent("e344334443rere3433"), "paymentId");
 
-                content.Add(new StringContent(shippingDetails), "shippinDetails");
+                content.Add(new StringContent(shippingDetails), "shippingDetails");
                 content.Add(new StringContent(amountPaid), "amountPaid");
 
                 var response = await client.PostAsync(url, content);
-                //var x = "jane";
+               // var x = "jane";
                 //Console.WriteLine(content);
             }
             catch (Exception)

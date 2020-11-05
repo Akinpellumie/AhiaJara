@@ -25,7 +25,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
@@ -38,7 +38,7 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
     <MandroidI18n />
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
