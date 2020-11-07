@@ -62,7 +62,7 @@ namespace AhiaJara.Views
                 productCategory = newProductModel.category,
                 productId = newProductModel.id,
                 productImgUrl =newProductModel.imgUrl,
-                productName =newProductModel.name,
+                productName =newProductModel.Name,
                 productPrice =newProductModel.price,
                 quantitySelected =newProductModel.quantity,
                 updatedAt = newProductModel.updatedAt,
