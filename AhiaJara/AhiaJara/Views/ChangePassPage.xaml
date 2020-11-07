@@ -19,9 +19,6 @@
                                               Placeholder="Old Password" FontFamily="{StaticResource font_book}"
                                               Text="" IsPassword="True" 
                                               PlaceholderColor="{StaticResource PlaceHolderColor}" Style="{StaticResource EntryStyle}">
-                            <Controls:CustomEntry.Effects>
-                                <Controls:ShowHidePassEffect />
-                            </Controls:CustomEntry.Effects>
                         </Controls:CustomEntry>
                     </Frame>
                 </StackLayout>
@@ -60,7 +57,7 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="End" Grid.Row="1">
-                <Button VerticalOptions="End"  HorizontalOptions="Fill" 
+                <Button VerticalOptions="End"  HorizontalOptions="Fill" Clicked="ChangePassword_Clicked"
                         CornerRadius="25" TextTransform="None" BackgroundColor="Accent" 
                         Text="Change Password" HeightRequest="55" Margin="15,5,15,10" />
             </StackLayout>

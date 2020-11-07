@@ -14,6 +14,14 @@ namespace AhiaJara.Models
         public string phoneNo { get; set; } 
     }
 
+
+    public class ModifyPassword
+    {
+        public string email { get; set; }
+        public string oldPassword { get; set; }
+        public string newPassword { get; set; }
+    }
+
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Profile
     {

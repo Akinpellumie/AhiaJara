@@ -63,27 +63,43 @@ namespace AhiaJara.ViewModels
             Navigation = navigation;
             GetCompletedOrders();
             GetPendingOrders();
-            CompleteOrder = new Command<Orders>(async (model) => await CompleteOrder_Clicked(model));
+            //PlusBtnCommand = new Command(PlusBtn_Clicked);
+            CompleteOrder = new Command<Orders>(async (model) => await CompleteOrder_Clicked(model)); ;
+            //CompleteOrder = new Command<Orders>(async (model) => await CompleteOrder_Clicked(model));
+            //CompleteOrder = new Command(() => CompleteOrder_Clicked());
         }
 
         private async Task CompleteOrder_Clicked(Orders order)
         {
+            //await PopupNavigation.Instance.PushAsync(new PopLoader());
+            await PopupNavigation.Instance.PushAsync(new PageLoader());
             var SelectedId = order.id;
-            HttpClient client = new HttpClient();
-            var url = Constants.postcompleteOrder + SelectedId;
-            await PopupNavigation.Instance.PushAsync(new PopLoader());
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-            var content = new StringContent(SelectedId, Encoding.UTF8, "application/json");
-            var result = await client.PostAsync(url, content);
-            await PopupNavigation.Instance.PopAsync(true);
-            if (result.IsSuccessStatusCode)
+            try
             {
-                MessagingCenter.Send(this, "MarkedCompleted");         
+                
+                
+                HttpClient client = new HttpClient();
+                var url = Constants.postcompleteOrder + SelectedId;
+                
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var content = new StringContent(SelectedId, Encoding.UTF8, "application/json");
+                var result = await client.PostAsync(url, content);
+                //await PopupNavigation.Instance.PopAsync(true);
+                if (result.IsSuccessStatusCode)
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                    MessagingCenter.Send(this, "MarkedCompleted");
+                }
+                else
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                    MessagingCenter.Send(this, "NotMarkedComplete");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessagingCenter.Send(this, "NotMarkedComplete");
+                return;
             }
 
         }
@@ -91,17 +107,24 @@ namespace AhiaJara.ViewModels
 
         private async void GetPendingOrders()
         {
+            try
+            {
+                IsBusy = true;
+                HttpClient client = new HttpClient();
+                var url = Constants.getIncompleteOrder + Settings.id;
 
-                    IsBusy = true;
-                    HttpClient client = new HttpClient();
-                    var url = Constants.getIncompleteOrder+Settings.id;
-
-                    client.DefaultRequestHeaders.Clear();
-                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                    var result = await client.GetStringAsync(url);
-                    var IncompletedOrderList = JsonConvert.DeserializeObject<List<Orders>>(result);
-                    InCompleteOrders = new ObservableCollection<Orders>(IncompletedOrderList);
-                    IsBusy = false;
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.GetStringAsync(url);
+                List<Orders> IncompletedOrderList = JsonConvert.DeserializeObject<List<Orders>>(result);
+                InCompleteOrders = new ObservableCollection<Orders>(IncompletedOrderList);
+                IsBusy = false;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+                  
             
         }
 
@@ -114,7 +137,8 @@ namespace AhiaJara.ViewModels
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
             var result = await client.GetStringAsync(url);
-            var CompletedOrderList = JsonConvert.DeserializeObject<List<Orders>>(result);
+            List<Orders> CompletedOrderList = JsonConvert.DeserializeObject<List<Orders>>(result);
+            //var CompletedOrderList = JsonConvert.DeserializeObject<List<Orders>>(result);
             CompletedOrders= new ObservableCollection<Orders>(CompletedOrderList);
             IsBusy = false;
         }

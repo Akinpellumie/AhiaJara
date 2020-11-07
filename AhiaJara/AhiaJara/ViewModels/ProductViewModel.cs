@@ -308,24 +308,32 @@ namespace AhiaJara.ViewModels
 
         public async void GetHairProducts()
         {
-            if (Constants.ProductsList == null)
+            try
             {
-                //IsBusy = true;
-                HttpClient client = new HttpClient();
-                var url = Constants.getHairProducts;
+                if (Constants.ProductsList == null)
+                {
+                    //IsBusy = true;
+                    HttpClient client = new HttpClient();
+                    var url = Constants.getHairProducts;
 
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var result = await client.GetStringAsync(url);
-                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
-                HairProductModelList = new ObservableCollection<ProductModel>(ProductsList);
-                Constants.HairProductsList = ProductsList;
-                //IsBusy = false;
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var result = await client.GetStringAsync(url);
+                    var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                    HairProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                    Constants.HairProductsList = ProductsList;
+                    //IsBusy = false;
+                }
+                else
+                {
+                    HairProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                }
             }
-            else
+            catch (Exception)
             {
-                HairProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                return;
             }
+           
         }
 
         public async void GetSkinProducts()

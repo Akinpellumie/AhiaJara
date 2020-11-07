@@ -132,6 +132,7 @@
                         TextColor="White"
                         BackgroundColor="Accent"
                         FontSize="15"
+                            TextTransform="None"
                         CornerRadius="15"
                         x:Name="SaveBtn"
                          Clicked="SaveBtn_Clicked"

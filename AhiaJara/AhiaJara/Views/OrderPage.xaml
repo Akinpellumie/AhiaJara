@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="AhiaJara.Views.OrderPage"
+             x:Name="orderPage"
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource mainbackground}">
@@ -115,15 +116,21 @@
                                                                 </StackLayout>
 
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <Label Text="Date Dispatched:"
-                                                   TextColor="{StaticResource TxtColor}"
-                                                   FontSize="14"/>
                                                                     <Label Text="{Binding dispatchedDate}"
                                                    TextColor="{StaticResource TxtColor}"
                                                    FontSize="14"/>
                                                                 </StackLayout>
+
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Price Paid:"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                    <Label Text="{Binding Price}"
+                                                   TextColor="{StaticResource TxtColor}"
+                                                   FontSize="14"/>
+                                                                </StackLayout>
                                                             </StackLayout>
-                                                            <StackLayout Grid.Row="1" Margin="0,5,0,0">
+                                                            <!--<StackLayout Grid.Row="1" Margin="0,5,0,0">
                                                                 <Grid>
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="40*"/>
@@ -132,27 +139,28 @@
                                                                     <pv:PancakeView Grid.Column="0" CornerRadius="0,15,15,0" BackgroundColor="#F0F0F0" Padding="15"
                                                 HorizontalOptions="Fill" HeightRequest="70">
 
-                                                                        <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Image}"/>
+                                                                        <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Path=products[0].Image}"/>
                                                                     </pv:PancakeView>
                                                                     <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
-                                                                        <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
+                                                                        <Label Text="{Binding Path=products.productName}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                                                        <Label Text="{Binding Quantity}" TextColor="{StaticResource Primary}"
+                                                                        <Label Text="{Binding Path=products[0].quantitySelected}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                                                         <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                                                                         
                                                                     </StackLayout>
                                                                 </Grid>
-                                                            </StackLayout>
+                                                            </StackLayout>-->
                                                             <StackLayout Grid.Row="2" Margin="0,5,0,0" x:Name="CompleteOrd">
-                                                                <Button Text="CONFIRM ORDER RECEIVED"
+                                                                <Button Text="Confirm Order Received"
+                                                                        TextTransform="None"
                                                 BackgroundColor="{Binding Path=BtnColor}"
                                                 HorizontalOptions="Fill"
                                                 HeightRequest="40"
                                                 CornerRadius="15"
-                                                Command="{Binding Path=BindingContext.CompleteOrder, Source={x:Reference CompleteOrd}}"
-                                                CommandParameter="{Binding .}"/>
+                                                Command="{Binding Path=BindingContext.CompleteOrder, Source={x:Reference orderPage}}"
+                                                                        CommandParameter="{Binding .}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
