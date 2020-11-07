@@ -55,6 +55,8 @@ namespace AhiaJara.Helpers
         public static string getHairProducts{ get { return Constants.domainurl + "/products/Hair"; } }
         public static string RequestProduct{ get { return Constants.domainurl + "/requestproduct"; } }
         public static string getSkinProducts{ get { return Constants.domainurl + "/products/Skin"; } }
+        public static string resetPassword{ get { return Constants.domainurl + "/resetpassword"; } }
+        public static string changePassword{ get { return Constants.domainurl + "/passwordchange"; } }
         
 
 

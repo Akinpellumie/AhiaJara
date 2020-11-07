@@ -241,9 +241,9 @@
                     </StackLayout>
                 </Grid>
             </pv:PancakeView>
-
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer />
+                <TapGestureRecognizer Tapped="LogOutBtn_Clicked"
+                                      NumberOfTapsRequired="1"/>
             </StackLayout.GestureRecognizers>
         </StackLayout>
 

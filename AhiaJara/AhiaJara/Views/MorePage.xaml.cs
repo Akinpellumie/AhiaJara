@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,7 +47,16 @@ namespace AhiaJara.Views
         }
         public async void ResetBtn_Clicked(object obj, EventArgs e)
         {
+
             await Navigation.PushAsync(new ResetPassPage());
+        }
+
+        public async void LogOutBtn_Clicked(object obj, EventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Clear();
+            Application.Current.MainPage = new LoginPage();
+            //await Navigation.PushAsync(new LoginPage());
         }
     }
 }

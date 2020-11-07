@@ -20,7 +20,7 @@
                                     <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                            LineBreakMode="TailTruncation"
                                                 HorizontalOptions="Start" FontSize="12" FontFamily="{StaticResource font_book}"/>
-                                    <Label Text="{Binding price}" TextColor="{StaticResource Primary}"
+                                    <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="12" FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
                                 </StackLayout>
 

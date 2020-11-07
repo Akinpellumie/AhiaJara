@@ -93,7 +93,7 @@ namespace AhiaJara.Views
             {
                 HttpClient client = new HttpClient();
 
-                var CreateItem = Constants.postSkinIssue;
+                var url = Constants.postSkinIssue;
                 var sampleurl = "http://192.168.88.75:5000/newskinissue";
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
@@ -138,7 +138,7 @@ namespace AhiaJara.Views
                         //content.Add(new StringContent(jsoncategoryArray),"category");
 
 
-                        var response = await client.PostAsync(sampleurl, content);
+                        var response = await client.PostAsync(url, content);
                         //if (response.IsSuccessStatusCode)
                         //{
                         //    //actindicator.IsVisible = false;

@@ -61,8 +61,9 @@ namespace AhiaJara.Views
                 id = newProductModel.id,
                 productCategory = newProductModel.category,
                 productId = newProductModel.id,
-                productImgUrl =newProductModel.imgUrl,
-                productName =newProductModel.name,
+                productImgUrl = newProductModel.imgUrl,
+                productName = newProductModel.Name,
+                //ProductImage = null;
                 productPrice =newProductModel.price,
                 quantitySelected =newProductModel.quantity,
                 updatedAt = newProductModel.updatedAt,
