@@ -22,12 +22,19 @@
                                     HeightRequest="200">
 
                         <Grid HorizontalOptions="Fill" Grid.Row="0" VerticalOptions="Fill">
-                            <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="userImage.png" />
+                            <Image HorizontalOptions="Fill" x:Name="backgrndImg" VerticalOptions="Fill" Aspect="AspectFill" Source="userImage.png" />
                             <BoxView HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#C4C4C4" Opacity="0.7"/>
                             <controls:CircleImage x:Name="userImagePro" Source="userImage.png"
                                 Aspect="AspectFill"  HorizontalOptions="Center" VerticalOptions="Center"
                                               HeightRequest="100" WidthRequest="100">
+                                <controls:CircleImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CallPrfUploadAsync"
+                                                          NumberOfTapsRequired="1"/>
+                                </controls:CircleImage.GestureRecognizers>
                             </controls:CircleImage>
+                            <ImageButton HeightRequest="35" Margin="20,15,0,0" CornerRadius="35" Clicked="Back"
+                                        IsVisible="True" x:Name="CancelIcon"  Source="left" WidthRequest="35" Padding="5"
+                                    Aspect="AspectFit" BackgroundColor="#60000000"  HorizontalOptions="Start" VerticalOptions="Start"/>
                         </Grid>
                     </pv:PancakeView>
 
