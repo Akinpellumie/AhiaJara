@@ -8,8 +8,8 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="75*"/>
+                    <ColumnDefinition Width="25*"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0">
                     <Frame Style="{StaticResource FrameStyle}" Margin="0,0,0,10" CornerRadius="25" HorizontalOptions="Fill" HeightRequest="50">
@@ -34,19 +34,19 @@
                     </Frame>
                 </StackLayout>
 
-                <StackLayout Grid.Column="1" Margin="5,0,0,0" Orientation="Horizontal">
+                <StackLayout Grid.Column="1" Margin="3,0,0,0" Orientation="Horizontal">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0" Margin="0,0,3,0">
+                        <Grid Grid.Column="0" Margin="0,0,1,0">
                             <Image HeightRequest="30" BackgroundColor="Transparent" x:Name="cart"  
                                      Source="cartIcon" WidthRequest="30"
                                     Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
                             <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
-                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
+                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,13,0,0" HeightRequest="15" WidthRequest="15" >
                                 <Label Text="{Binding CartCount}" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                             </pv:PancakeView>
@@ -56,12 +56,12 @@
                             </Grid.GestureRecognizers>
                         </Grid>
 
-                        <Grid Grid.Column="1" Margin="2,0,5,0">
+                        <Grid Grid.Column="1" Margin="1,0,5,0">
                             <Image HeightRequest="30" x:Name="NotsIcon"  
                                      Source="bellNot" WidthRequest="30"
                                     Aspect="AspectFit"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
                             <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
-                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
+                                                HorizontalOptions="End" VerticalOptions="Start" Margin="0,13,0,0" HeightRequest="15" WidthRequest="15" >
                                 <Label Text="3" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                             </pv:PancakeView>
