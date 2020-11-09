@@ -17,6 +17,7 @@ namespace AhiaJara.Helpers
         public static int cartcount  { get; set; }
         public static string imageUrl { get; set; }
         public static string phone { get; set; }
+        public static int CartTotalPrice { get; set; }
     }
 
 

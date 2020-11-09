@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -28,6 +29,9 @@ namespace AhiaJara.Views
             cartModel = newCartModel;
             //prodModel = productModel;
             InitializeComponent();
+            string productTotal = Settings.CartTotalPrice.ToString();
+            var pel = Math.Round(Convert.ToDouble(productTotal), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
+            Total.Text = pel;
             this.BindingContext = productViewModel;
         }
 

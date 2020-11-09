@@ -7,6 +7,7 @@ using AhiaJara.Views;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -371,6 +372,7 @@ namespace AhiaJara.ViewModels
                 client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
                 var result = await client.GetStringAsync(url);
                 var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                
                 LatestProductModelList = new ObservableCollection<ProductModel>(ProductsList);
                 Constants.LatestProductsList = ProductsList;
                 //IsBusy = false;
@@ -399,6 +401,19 @@ namespace AhiaJara.ViewModels
                 client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
                 var result = await client.GetStringAsync(cartEndpoint);
                 var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
+                ArrayList arr = new ArrayList();
+                foreach (var cart in CartList)
+                {
+                    int thePrice = Int32.Parse(cart.productPrice);
+                    int qty = cart.quantitySelected;
+                    int item = thePrice * qty;
+                    cart.SingleProductPrice = item;
+                    arr.Add(item);
+
+                }
+                int ourSum = arr.Cast<int>().Sum();
+                int meee = ourSum;
+                Settings.CartTotalPrice = meee;
                 CartModelList = new ObservableCollection<Cart>(CartList);
                
                 IsBusy = false;
