@@ -11,7 +11,7 @@
             <View:ToolBarView Title="Edit Profile"/>
             <StackLayout Margin="15">
 
-                <StackLayout Margin="5,1,5,1">
+                <!--<StackLayout Margin="5,1,5,1">
                     <Label Text="Name" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
@@ -19,7 +19,7 @@
                                                PlaceholderColor="{StaticResource PlaceHolderColor}" Placeholder="Omokare Juliet" 
                                                Keyboard="Default" Style="{StaticResource EntryStyle}"/>
                     </Frame>
-                </StackLayout>
+                </StackLayout>-->
 
                 <StackLayout Margin="5,1,5,1">
                     <Label Text="Phone Number" TextColor="{StaticResource TxtColor}" FontSize="12"/>

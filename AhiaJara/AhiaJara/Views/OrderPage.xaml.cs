@@ -23,14 +23,19 @@ namespace AhiaJara.Views
 
             MessagingCenter.Subscribe<OrdersViewModel>(this, "MarkedCompleted", (sender) =>
             {
-                Device.BeginInvokeOnMainThread(() => { DisplayAlert("Success", "Order marked as completed ", "Ok"); });
+                Device.BeginInvokeOnMainThread(() => { DisplayAlert("Success", "Order Completed ", "Ok"); });
                 
             });
 
             MessagingCenter.Subscribe<OrdersViewModel>(this, "NotMarkedComplete", (sender) =>
             {
-                Device.BeginInvokeOnMainThread(() => { DisplayAlert("Network Failure", "Failed to mark order as completed ", "Try Again"); });
+                Device.BeginInvokeOnMainThread(() => { DisplayAlert("Not Dispatched", "This order cannot be marked Completed ", "Ok"); });
                 
+            });
+            MessagingCenter.Subscribe<OrdersViewModel>(this, "checkInternet", (sender) =>
+            {
+                Device.BeginInvokeOnMainThread(() => { DisplayAlert("Network Failure", "We are having problem connecting to the server", "Try Again"); });
+
             });
         }
 

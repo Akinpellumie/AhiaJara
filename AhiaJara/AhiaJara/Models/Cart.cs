@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -41,6 +42,15 @@ namespace AhiaJara.Models
         public DateTime updatedAt { get; set; }
         public string id { get; set; }
 
+        public string newTotal
+        {
+            get
+            {
+                var del = this.productPrice + this.productName;
+                return del;
+            }
+            set {; }
+        }
         public string Price
         {
             get
@@ -74,26 +84,29 @@ namespace AhiaJara.Models
 
         }
 
-        
-       // public string TotalPrice { get; set; }
-        //{
-        //    get
-        //    {
-        //        int newPrice = Int32.Parse(this.productPrice) * this.quantitySelected;
-        //        var i = 0;
-        //        int[] arr = new int[] {i++};
-                
-        //        var tempList = arr.ToList();
-        //        tempList.Add(newPrice);
-        //        arr = tempList.ToArray();
-        //        //int[] arr = new int[] { newPrice++ };
-        //        int sum = arr.Sum();
+        //int i = 0;
+        //int[] arr = new int[] { i++ };
+        //ArrayList arr = new ArrayList();
 
-        //        string totalPrice = sum.ToString();
-        //        return "NGN " + totalPrice;
-        //    }
-        //    set { TotalPrice = value; }
-        //}
+        //var tempList = arr.ToList();
+
+        public string TotalPrice
+        {
+            get
+            {
+                int newPrice = Int32.Parse(productPrice);
+                ArrayList arr = new ArrayList();
+                arr.Add(newPrice);
+                //arr = tempList.ToArray();
+                //int[] arr = new int[] { newPrice++ };
+                int sum = arr.Cast<int>().Sum();
+                //int sum = arr.Sum();
+
+                string totalPrice = sum.ToString();
+                return "NGN " + totalPrice;
+            }
+            set { TotalPrice = value; }
+        }
         public ImageSource ProductImage
         {
 

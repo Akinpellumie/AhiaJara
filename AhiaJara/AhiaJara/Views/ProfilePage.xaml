@@ -22,9 +22,9 @@
                                     HeightRequest="200">
 
                         <Grid HorizontalOptions="Fill" Grid.Row="0" VerticalOptions="Fill">
-                            <Image HorizontalOptions="Fill" x:Name="backgrndImg" VerticalOptions="Fill" Aspect="AspectFill" Source="userImage.png" />
+                            <Image HorizontalOptions="Fill" x:Name="backgrndImg" VerticalOptions="Fill" Aspect="AspectFill" Source="user.png" />
                             <BoxView HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="#C4C4C4" Opacity="0.7"/>
-                            <controls:CircleImage x:Name="userImagePro" Source="userImage.png"
+                            <controls:CircleImage x:Name="userImagePro" Source="user.png"
                                 Aspect="AspectFill"  HorizontalOptions="Center" VerticalOptions="Center"
                                               HeightRequest="100" WidthRequest="100">
                                 <controls:CircleImage.GestureRecognizers>
@@ -77,7 +77,8 @@
                             <StackLayout Margin="0,5">
                                 <pv:PancakeView BackgroundColor="#D1D1D1" 
                                                 HorizontalOptions="Fill" HeightRequest="50" >
-                                    <Label Text="Omokare Juliet Etim"
+                                    <Label Text=""
+                                           x:Name="fullName"
                                            FontSize="13"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
@@ -91,7 +92,8 @@
                                 <pv:PancakeView
                                     BackgroundColor="#D1D1D1" 
                                     HorizontalOptions="Fill" HeightRequest="50" >
-                                    <Label Text="09023456743"
+                                    <Label Text=""
+                                           x:Name="phone"
                                            FontSize="13"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
@@ -105,7 +107,8 @@
                                 <pv:PancakeView
                                     BackgroundColor="#D1D1D1" 
                                     HorizontalOptions="Fill" HeightRequest="50" >
-                                    <Label Text="JandeiEtim@gmail.com"
+                                    <Label Text=""
+                                           x:Name="email"
                                            FontSize="13"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center"
