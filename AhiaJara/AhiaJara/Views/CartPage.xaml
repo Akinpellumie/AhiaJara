@@ -38,7 +38,7 @@
                                HorizontalOptions="Start"
                                Grid.Column="0"/>
 
-                            <Label Text="{Binding newTest}"
+                            <Label x:Name="Total"
                                FontSize="15"
                                FontAttributes="Bold"
                                HorizontalOptions="End"

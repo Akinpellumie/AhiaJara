@@ -41,6 +41,8 @@ namespace AhiaJara.Models
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public string id { get; set; }
+        public string TotalPrice { get; set; }
+        public int SingleProductPrice { get; set; }
 
         public string newTotal
         {
@@ -90,23 +92,23 @@ namespace AhiaJara.Models
 
         //var tempList = arr.ToList();
 
-        public string TotalPrice
-        {
-            get
-            {
-                int newPrice = Int32.Parse(productPrice);
-                ArrayList arr = new ArrayList();
-                arr.Add(newPrice);
-                //arr = tempList.ToArray();
-                //int[] arr = new int[] { newPrice++ };
-                int sum = arr.Cast<int>().Sum();
-                //int sum = arr.Sum();
+        //public string TotalPrice
+        //{
+        //    get
+        //    {
+        //        int newPrice = Int32.Parse(productPrice);
+        //        ArrayList arr = new ArrayList();
+        //        arr.Add(newPrice);
+        //        //arr = tempList.ToArray();
+        //        //int[] arr = new int[] { newPrice++ };
+        //        int sum = arr.Cast<int>().Sum();
+        //        //int sum = arr.Sum();
 
-                string totalPrice = sum.ToString();
-                return "NGN " + totalPrice;
-            }
-            set { TotalPrice = value; }
-        }
+        //        string totalPrice = sum.ToString();
+        //        return "NGN " + totalPrice;
+        //    }
+        //    set { TotalPrice = value; }
+        //}
         public ImageSource ProductImage
         {
 

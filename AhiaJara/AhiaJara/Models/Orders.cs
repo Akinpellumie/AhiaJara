@@ -241,7 +241,7 @@ namespace AhiaJara.Models
         {
             get
             {
-                if (status.Contains("pending"))
+                if (status.Contains("Pending"))
                 {
                     return Color.FromHex("E5E5E5");
                 }
