@@ -13873,10 +13873,13 @@ namespace AhiaJara.Droid
 			public const int undrawSearch = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int userImage = 2131165350;
+			public const int user = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int xamarin_logo = 2131165351;
+			public const int userImage = 2131165351;
+			
+			// aapt resource value: 0x7F0700A8
+			public const int xamarin_logo = 2131165352;
 			
 			static Drawable()
 			{

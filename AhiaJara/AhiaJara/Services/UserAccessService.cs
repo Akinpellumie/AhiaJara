@@ -82,6 +82,8 @@ namespace AhiaJara.Services
                         Settings.userName = userProfile.profile.username;
                         Settings.email = userProfile.profile.email;
                         Settings.isAdmin = userProfile.profile.isAdmin;
+                       Settings.imageUrl = userProfile.profile.userImgUrl;
+                        Settings.phone = userProfile.profile.phoneNo;
 
                     }
                     else

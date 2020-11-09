@@ -34,12 +34,13 @@ namespace AhiaJara.Models
         {
             get
             {
-                if (status.Contains("pending"))
+                if (status.Contains("Dispatched"))
                 {
                     return Color.FromHex("E5E5E5");
                 }
-                return Color.Accent;
+                return Color.FromHex("F0F0F0");
             }
+            set {; }
         }
         public DateTime dispatchedDate
         {

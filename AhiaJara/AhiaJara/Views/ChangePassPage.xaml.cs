@@ -1,6 +1,7 @@
 ﻿using AhiaJara.Helpers;
 using AhiaJara.Models;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -30,8 +31,9 @@ namespace AhiaJara.Views
                 newPassword = newPassword.Text
             };
             var json = JsonConvert.SerializeObject(modifyPassword);
-            if(oldPassword.Text == newPassword.Text)
+            if(conPassword.Text == newPassword.Text)
             {
+                await PopupNavigation.Instance.PushAsync(new PopupPage());
                 try
                 {
 
@@ -48,6 +50,7 @@ namespace AhiaJara.Views
                     {
                         await PopupNavigation.Instance.PopAsync(true);
                         await DisplayAlert("Success", "Password changed successfully", "Ok");
+                        Application.Current.MainPage = new LoginPage();
                     }
                     else
                     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AhiaJara.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,14 @@ namespace AhiaJara.Views
         public EditProfilePage()
         {
             InitializeComponent();
+            ShowUserDetails();
+        }
+
+        private void ShowUserDetails()
+        {
+            //fullName.Text = Settings.firstName + " " + Settings.lastName;
+            PhoneEntry.Text = Settings.phone;
+            emailEntry.Text = Settings.email;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AhiaJara.Models
 {
@@ -29,12 +30,27 @@ namespace AhiaJara.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string username { get; set; }
+        public string userImgUrl { get; set; }
         public bool isAdmin { get; set; }
         public string phoneNo { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public bool isVerified { get; set; }
         public string email { get; set; }
+
+        public ImageSource UserImage
+        {
+
+            get
+            {
+                var source = new Uri(userImgUrl);
+                //var source = new Uri("http://192.168.1.118:5000/images/uploaded_images/" + Image);
+
+                return source;
+            }
+            set { UserImage = value; }
+        }
+
     }
 
     public class UserProfile

@@ -12,8 +12,7 @@ namespace AhiaJara.Helpers
         {
             get
             {
-                //return "https://29cebf09-368c-4fb8-ba32-817ee979decc.mock.pstmn.io";
-                //return "api-host-sample.herokuapp.com"
+                //return "http://192.168.43.162:5000";
                 return "https://ahiajara.herokuapp.com";
             }
         }
@@ -56,6 +55,7 @@ namespace AhiaJara.Helpers
         public static string RequestProduct{ get { return Constants.domainurl + "/requestproduct"; } }
         public static string getSkinProducts{ get { return Constants.domainurl + "/products/Skin"; } }
         public static string resetPassword{ get { return Constants.domainurl + "/resetpassword"; } }
+        public static string uploadImage{ get { return Constants.domainurl + "/imagemember/"; } }
         public static string changePassword{ get { return Constants.domainurl + "/passwordchange"; } }
         
 

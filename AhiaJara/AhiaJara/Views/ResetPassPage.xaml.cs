@@ -43,8 +43,8 @@ namespace AhiaJara.Views
                 HttpClient client = new HttpClient();
                 var url = Constants.resetPassword;
 
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                //client.DefaultRequestHeaders.Clear();
+                //client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var result = await client.PostAsync(url, content);
                 //await PopupNavigation.Instance.PopAsync(true);
