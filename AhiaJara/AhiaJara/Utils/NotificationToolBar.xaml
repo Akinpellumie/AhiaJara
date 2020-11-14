@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="AhiaJara.Utils.CartToolBar"
+             x:Class="AhiaJara.Utils.NotificationToolBar"
              BackgroundColor="#E5E5E5"
              HeightRequest="60" Padding="15,0,15,0"
-             x:Name="RootCartToolBar">
+             x:Name="RootNotToolBar">
     <ContentView.Content>
         <Grid BackgroundColor="#E5E5E5">
             <Grid.ColumnDefinitions>
@@ -23,22 +23,22 @@
                     FontSize="18"
                     Margin="20,0,0,0"
                     HorizontalOptions="Start"
-                    Text="{Binding Source={x:Reference RootCartToolBar}, Path=Title}"
+                    Text="{Binding Source={x:Reference RootNotToolBar}, Path=Title}"
                     TextColor="{StaticResource TxtColor}"
                     VerticalOptions="CenterAndExpand" />
 
             <StackLayout Grid.Column="2" Margin="5,0,0,0" Orientation="Horizontal">
-                <Grid HorizontalOptions="Center" Margin="3,0,5,0">
-                    <Image HeightRequest="30" x:Name="NotsIcon"  
-                                     Source="bellNot" WidthRequest="30"
-                                    Aspect="AspectFit"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                <Grid HorizontalOptions="Center" Margin="0,0,3,0">
+                    <Image HeightRequest="30" BackgroundColor="Transparent" x:Name="cart"  
+                                     Source="cartIcon" WidthRequest="30"
+                                    Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
                     <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
                                                 HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="15" WidthRequest="15" >
-                        <Label Text="3" TextColor="White" FontSize="8" 
+                        <Label Text="{Binding CartCount}" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                     </pv:PancakeView>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BellIcon_Clicked"
+                        <TapGestureRecognizer Tapped="CartIcon_Clicked"
                                               NumberOfTapsRequired="1"/>
                     </Grid.GestureRecognizers>
                 </Grid>

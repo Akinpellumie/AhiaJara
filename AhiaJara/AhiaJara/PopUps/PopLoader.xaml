@@ -34,7 +34,7 @@
                             VerticalOptions="CenterAndExpand"
                                 WidthRequest="200"/>
 
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Analysis result..." 
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Analyzing result..." 
                    TextColor="{StaticResource TxtColor}" FontSize="12"/>
         </Grid>
 
