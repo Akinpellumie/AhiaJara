@@ -22,27 +22,34 @@
                 
                 <flv:FlowListView.FlowColumnTemplate>
                     <DataTemplate>
-                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10,5,10,5"
+                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5,2,5,2"
                                                 HorizontalOptions="Fill" HeightRequest="100" WidthRequest="80" Margin="5">
                             <Grid VerticalOptions="Fill">
-                                <Image HorizontalOptions="Center" 
-                                       extension:Skeleton.IsBusy="{Binding IsBusy}"
-                                       extension:Skeleton.BackgroundColor="#c6c6c5" 
-                                       VerticalOptions="StartAndExpand" Aspect="AspectFill" 
-                                       Source="{Binding ProductImage}"  Grid.Row="0"/>
-                                <StackLayout Orientation="Vertical" VerticalOptions="End" Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70*"/>
+                                    <RowDefinition Height="30*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Grid Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                                    <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}"/>
+                                </Grid>
+                                
+                                <Grid VerticalOptions="Fill" Grid.Row="1">
                                     <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                            LineBreakMode="TailTruncation"
+                                           VerticalOptions="Start"
                                            extension:Skeleton.IsBusy="{Binding IsBusy}"
                                            extension:Skeleton.BackgroundColor="#c6c6c5"
-                                           HorizontalOptions="Start" FontSize="12" 
+                                           HorizontalOptions="Start" FontSize="10" 
                                            FontFamily="{StaticResource font_book}"/>
                                     <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                           VerticalOptions="End"
+                                           Margin="0,2,0,0"
                                            extension:Skeleton.IsBusy="{Binding IsBusy}"
                                            extension:Skeleton.BackgroundColor="#c6c6c5"
                                            HorizontalOptions="Start" FontSize="12" 
                                            FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
-                                </StackLayout>
+                                </Grid>
                             </Grid>
                             <pv:PancakeView.GestureRecognizers>
                                 <TapGestureRecognizer

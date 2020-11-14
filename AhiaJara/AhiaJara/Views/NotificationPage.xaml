@@ -9,9 +9,9 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <View:ToolBarView Title="Notifications"/>
+            <View:NotificationToolBar Title="Notifications"/>
             
-            <StackLayout BackgroundColor="White">
+            <!--<StackLayout BackgroundColor="White">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -28,7 +28,7 @@
                     </StackLayout>
 
                 </Grid>
-            </StackLayout>
+            </StackLayout>-->
 
             <StackLayout Margin="15" Orientation="Vertical" x:Name="ListStack" IsVisible="True">
                 <View:NotificationView/>

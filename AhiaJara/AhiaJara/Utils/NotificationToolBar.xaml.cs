@@ -13,15 +13,16 @@ using Xamarin.Forms.Xaml;
 namespace AhiaJara.Utils
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CartToolBar : ContentView
+    public partial class NotificationToolBar : ContentView
     {
         Product productModel;
+        Cart cartModel;
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(
            nameof(Title),
            typeof(string),
-           typeof(CartToolBar),
+           typeof(ToolBarView),
            string.Empty);
-        public CartToolBar()
+        public NotificationToolBar()
         {
             InitializeComponent();
             BindingContext = new ToolbarViewModel();
@@ -36,6 +37,11 @@ namespace AhiaJara.Utils
         {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
+        }
+
+        public async void CartIcon_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CartPage(cartModel));
         }
 
         public async void BellIcon_Clicked(object sender, EventArgs e)

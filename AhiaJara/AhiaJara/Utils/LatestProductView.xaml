@@ -11,18 +11,30 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="10,5,10,5"
+                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5,2,5,2"
                                                 HorizontalOptions="Fill" HeightRequest="100" WidthRequest="100" >
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70*"/>
+                                    <RowDefinition Height="30*"/>
+                                </Grid.RowDefinitions>
 
-                                <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}" Grid.Row="0"/>
-                                <StackLayout Orientation="Vertical" VerticalOptions="End" Grid.Row="1">
+                                <Grid Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                                    <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}"/>
+                                </Grid>
+
+                                <Grid VerticalOptions="Fill" Grid.Row="1">
                                     <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                            LineBreakMode="TailTruncation"
-                                                HorizontalOptions="Start" FontSize="12" FontFamily="{StaticResource font_book}"/>
+                                           VerticalOptions="Start"
+                                                HorizontalOptions="Start" FontSize="10" FontFamily="{StaticResource font_book}"/>
                                     <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
-                                                HorizontalOptions="Start" FontSize="12" FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
-                                </StackLayout>
+                                           VerticalOptions="End"
+                                           Margin="0,2,0,0"
+                                           HorizontalOptions="Start" 
+                                           FontSize="12" 
+                                           FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
+                                </Grid>
 
                             </Grid>
                             <pv:PancakeView.GestureRecognizers>

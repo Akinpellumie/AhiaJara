@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="AhiaJara.Utils.AdsCarousel">
     <Grid x:Name="mainStack">
         <CarouselView
@@ -13,9 +13,22 @@
             IndicatorView="indicatorView">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <pv:PancakeView CornerRadius="15" HorizontalOptions="Fill">
-                            <Image Source="{Binding Image}" Aspect="AspectFill"/>
+                    <Grid 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <pv:PancakeView CornerRadius="15" HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+                            <!--<Image Source="{Binding Image}" Aspect="Fill"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"/>-->
+                            <ff:CachedImage Source="{Binding Image}"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            Aspect="Fill"
+                                            FadeAnimationEnabled="True"
+                                            FadeAnimationDuration="100"
+                                            FadeAnimationForCachedImages="True"
+                                            DownsampleToViewSize="True"/>
                         </pv:PancakeView>
                     </Grid>
                 </DataTemplate>
