@@ -57,6 +57,8 @@ namespace AhiaJara.Helpers
         public static string resetPassword{ get { return Constants.domainurl + "/resetpassword"; } }
         public static string uploadImage{ get { return Constants.domainurl + "/imagemember/"; } }
         public static string changePassword{ get { return Constants.domainurl + "/passwordchange"; } }
+        public static string AllNotificationsUrl { get { return Constants.domainurl + "/allnotifications/"; } }
+        public static string MyNotificationsUrl { get { return Constants.domainurl + "/notifications/"; } }
         
 
 
@@ -66,6 +68,8 @@ namespace AhiaJara.Helpers
         public static List<ProductModel> SkinProductsList { get; set; }
         public static List<ProductModel> LatestProductsList { get; set; }
         public static List<Cart> CartItemList { get; set; }
+
+
         public static List<Product> CarouselItemList { get; set; }
 
         public static ArrayList singleOrder { get; set; }

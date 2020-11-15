@@ -60,11 +60,11 @@
                             <Image HeightRequest="30" x:Name="NotsIcon"  
                                      Source="bellNot" WidthRequest="30"
                                     Aspect="AspectFit"  HorizontalOptions="Fill" VerticalOptions="Fill"/>
-                            <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
+                            <!--<pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
                                                 HorizontalOptions="End" VerticalOptions="Start" Margin="0,13,0,0" HeightRequest="15" WidthRequest="15" >
                                 <Label Text="3" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
-                            </pv:PancakeView>
+                            </pv:PancakeView>-->
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="BellIcon_Clicked"
                                               NumberOfTapsRequired="1"/>

@@ -25,7 +25,7 @@
                             <Image HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding ProductImage}"/>
                         </pv:PancakeView>
                         <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center">
-                            <Label Text="{Binding name}" TextColor="{StaticResource TxtColor}"
+                            <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
                             <Label Text="{Binding Price}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>

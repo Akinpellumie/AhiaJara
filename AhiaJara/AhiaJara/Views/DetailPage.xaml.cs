@@ -55,10 +55,10 @@ namespace AhiaJara.Views
             var x = newProductModel.quantity * Int32.Parse(newProductModel.price);
             newProductModel.tempPrice = x.ToString();
 
-            var productOrdered = new Cart()
+            var productOrdered = new SendCart()
             {
                 createdAt = newProductModel.createdAt,
-                id = newProductModel.id,
+                id = Settings.id,
                 productCategory = newProductModel.category,
                 productId = newProductModel.id,
                 productImgUrl =newProductModel.imgUrl,

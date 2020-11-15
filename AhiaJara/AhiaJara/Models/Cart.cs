@@ -27,6 +27,21 @@ namespace AhiaJara.Models
         public int cartcount { get; set; }
     }
 
+    public class SendCart
+    {
+        public string productId { get; set; }
+        public string userId { get; set; }
+        public int quantitySelected { get; set; }
+
+        public string productName { get; set; }
+        public string productImgUrl { get; set; }
+        public string productPrice { get; set; }
+        public string productCategory { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
+        public string id { get; set; }
+    }
+
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Cart
     {
