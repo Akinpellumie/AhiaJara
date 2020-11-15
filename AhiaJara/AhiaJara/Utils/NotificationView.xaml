@@ -15,8 +15,8 @@
 
             <ScrollView>
                 <StackLayout>
-                    <ListView x:Name="TransList" HasUnevenRows="True"
-                          SeparatorVisibility="None">
+                    <ListView x:Name="NotificationsList" HasUnevenRows="True"
+                          SeparatorVisibility="Default" SeparatorColor="White">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -36,26 +36,23 @@
                                                     </Grid.ColumnDefinitions>
 
                                                     <StackLayout Grid.Column="0" HorizontalOptions="Start">
-                                                        <Label Text="{Binding Subject}" FontSize="Subtitle" FontFamily="{StaticResource font_bold}"
+                                                        <Label Text="{Binding Date}" FontSize="13" FontFamily="{StaticResource font_bold}"
                                TextColor="{StaticResource TxtColor}" HorizontalOptions="Start"/>
                                                     </StackLayout>
 
-                                                    <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                                    <!--<StackLayout Grid.Column="1" HorizontalOptions="End">
                                                         <BoxView BackgroundColor="{Binding Path=PaymentColor}"  VerticalOptions="Center" 
                                              HeightRequest="10" WidthRequest="10" CornerRadius="50"
-                                             HorizontalOptions="End" Margin="0,3,3,0" Color="{Binding Path=PaymentColor}"/>
-                                                    </StackLayout>
+                                             HorizontalOptions="End" Margin="0,3,3,0" Color="{Binding Path=Color}"/>
+                                                    </StackLayout>-->
 
                                                 </Grid>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Vertical" Grid.Row="1" Margin="0,3,0,3" HorizontalOptions="Start">
-                                                <Label Text="{Binding Body}"
+                                                <Label Text="{Binding Message}"
                                LineBreakMode="WordWrap" FontAttributes="None" FontSize="Subtitle" TextColor="{StaticResource TxtColor}"/>
                                             </StackLayout>
-
-                                            <BoxView Grid.Row="2" BackgroundColor="#E2E0ED" HeightRequest="1" 
-                                             HorizontalOptions="FillAndExpand" Color="#E2E0ED"/>
                                         </Grid>
                                     </StackLayout>
                                 </ViewCell>

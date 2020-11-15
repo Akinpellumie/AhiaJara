@@ -35,6 +35,7 @@ namespace AhiaJara.Views
             if (productModel != null)
             {
                 prodModel = productModel;
+
                 res = JsonConvert.SerializeObject(Constants.singleOrder);
                 //res = JsonConvert.SerializeObject(prodModel);
                 Formulars formular = new Formulars();
@@ -48,9 +49,13 @@ namespace AhiaJara.Views
                 res = cartModel;
                 var data = JsonConvert.DeserializeObject<List<Cart>>(cartModel);
                 Formulars formular = new Formulars();
-                string ssize = data[0].productPrice;
-                int tempPrice = Int32.Parse(ssize);
-                string price = tempPrice.ToString();
+                //string ssize = data[0].productPrice;
+                //int tempPrice = Int32.Parse(ssize);
+                //string price = tempPrice.ToString();
+                //string[] ssize = Settings.CartTotalPrice.Split(new char[0]);
+                string price = Settings.CartTotalPrice.ToString();
+                amountPaid = price;
+                totalPrice = formular.ConvertToDecimal(price);
 
                 amountPaid = price;
                 totalPrice = formular.ConvertToDecimal(price);
@@ -124,7 +129,7 @@ namespace AhiaJara.Views
         {
             await PopupNavigation.Instance.PushAsync(new PageLoader());
             postOrder();
-            await Task.Delay(6000);
+            await Task.Delay(8000);
             await PopupNavigation.Instance.PopAsync(true);
             
         }

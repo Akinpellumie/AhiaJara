@@ -17,8 +17,9 @@ namespace AhiaJara.Views
         OrdersViewModel ordersViewModel;
         public OrderPage()
         {
-            ordersViewModel = new OrdersViewModel(Navigation);
+            
             InitializeComponent();
+            ordersViewModel = new OrdersViewModel(Navigation);
             this.BindingContext = ordersViewModel;
 
             MessagingCenter.Subscribe<OrdersViewModel>(this, "MarkedCompleted", (sender) =>

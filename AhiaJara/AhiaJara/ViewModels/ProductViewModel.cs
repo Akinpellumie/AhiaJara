@@ -47,7 +47,10 @@ namespace AhiaJara.ViewModels
             MinusBtnCommand = new Command(MinusBtn_Clicked);
             LongClickedCommand = new Command(LongClicked);
             TextChangedCommand = new Command<TextChangedEventArgs>(textChanged => Entry_TextChangedCommand(textChanged));
+            RemoveItem = new Command<Cart>(async (model) => await RemoveItem_Clicked(model)); ;
         }
+
+
 
         public ProductViewModel()
         {
@@ -77,6 +80,7 @@ namespace AhiaJara.ViewModels
             }
         }
         public Command NavigateToDetailPageCommand { get; }
+        public Command RemoveItem { get; }
         public Command SearchCommand { get; }
         public Command LongClickedCommand { get; }
         public Command PlusBtnCommand { get; }
@@ -415,7 +419,7 @@ namespace AhiaJara.ViewModels
                 int meee = ourSum;
                 Settings.CartTotalPrice = meee;
                 CartModelList = new ObservableCollection<Cart>(CartList);
-               
+                Constants.CartItemList = CartList;
                 IsBusy = false;
             }
             else
@@ -493,11 +497,27 @@ namespace AhiaJara.ViewModels
             }
         }
 
+        private async Task RemoveItem_Clicked(Cart model)
+        {
+           
+                
+                
+                var SelectedId = model.id;
+                //ConstantsValue.listItemA.RemoveAll(x => x.Item_Id == SelectedId);
+                var itemToRemove = Constants.CartItemList.Single(r => r.id== SelectedId);
+                Constants.CartItemList.Remove(itemToRemove);
+                GetCarts();
+                //var addedItems = ConstantsValue.editComponentList;
+                //Items = new ObservableCollection<ComponentItemsModel>(addedItems);
+                //Emplist.ItemsSource = Items;
+           
+        }
+
         //#region realData
 
         //public async void GetAllProducts()
         //{
-           
+
         //}
         //#endregion
 
