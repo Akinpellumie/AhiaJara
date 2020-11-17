@@ -19,6 +19,7 @@ namespace AhiaJara.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CartPage : ContentPage
     {
+        string TotalPrice;
         ProductViewModel productViewModel;
         Cart newCartModel;
         //Product prodModel;
@@ -29,10 +30,16 @@ namespace AhiaJara.Views
             cartModel = newCartModel;
             //prodModel = productModel;
             InitializeComponent();
-            //string productTotal = Settings.CartTotalPrice.ToString();
-            //var pel = Math.Round(Convert.ToDouble(productTotal), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
-            //Total.Text = pel;
             this.BindingContext = productViewModel;
+            MessagingCenter.Subscribe(this, "totalPrice", (object obj, string cartTotalPrice) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    TotalPrice = cartTotalPrice;
+                    Total.Text = TotalPrice;
+                });
+
+            });
         }
 
         public ObservableCollection<Cart> CartModelList { get; private set; }
