@@ -24,14 +24,14 @@ namespace AhiaJara.Views
         //Product prodModel;
         public CartPage(Cart cartModel)
         {
-            GetCarts();
+            //GetCarts();
             productViewModel = new ProductViewModel(Navigation);
             cartModel = newCartModel;
             //prodModel = productModel;
             InitializeComponent();
-            string productTotal = Settings.CartTotalPrice.ToString();
-            var pel = Math.Round(Convert.ToDouble(productTotal), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
-            Total.Text = pel;
+            //string productTotal = Settings.CartTotalPrice.ToString();
+            //var pel = Math.Round(Convert.ToDouble(productTotal), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
+            //Total.Text = pel;
             this.BindingContext = productViewModel;
         }
 

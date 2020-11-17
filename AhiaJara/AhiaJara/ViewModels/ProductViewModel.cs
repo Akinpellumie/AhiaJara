@@ -313,6 +313,7 @@ namespace AhiaJara.ViewModels
 
         public async void GetHairProducts()
         {
+
             try
             {
                 if (Constants.ProductsList == null)
@@ -328,6 +329,8 @@ namespace AhiaJara.ViewModels
                     HairProductModelList = new ObservableCollection<ProductModel>(ProductsList);
                     Constants.HairProductsList = ProductsList;
                     //IsBusy = false;
+
+                    
                 }
                 else
                 {
@@ -343,89 +346,109 @@ namespace AhiaJara.ViewModels
 
         public async void GetSkinProducts()
         {
-            if (Constants.ProductsList == null)
+            try
             {
-                //IsBusy = true;
-                HttpClient client = new HttpClient();
-                var url = Constants.getSkinProducts;
+                if (Constants.ProductsList == null)
+                {
+                    //IsBusy = true;
+                    HttpClient client = new HttpClient();
+                    var url = Constants.getSkinProducts;
 
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var result = await client.GetStringAsync(url);
-                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
-                SkinProductModelList = new ObservableCollection<ProductModel>(ProductsList);
-                Constants.SkinProductsList = ProductsList;
-                //IsBusy = false;
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var result = await client.GetStringAsync(url);
+                    var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+                    SkinProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                    Constants.SkinProductsList = ProductsList;
+                    //IsBusy = false;
+                }
+                else
+                {
+                    SkinProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                }
             }
-            else
+            catch (Exception)
             {
-                SkinProductModelList = new ObservableCollection<ProductModel>(Constants.ProductsList);
+                return;
             }
         }
 
         public async void GetLatestProducts()
         {
-
-            if (Constants.LatestProductsList == null)
+            try
             {
-                //IsBusy = true;
-                HttpClient client = new HttpClient();
-                var url = Constants.LatestProductsUrl;
+                if (Constants.LatestProductsList == null)
+                {
+                    //IsBusy = true;
+                    HttpClient client = new HttpClient();
+                    var url = Constants.LatestProductsUrl;
 
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var result = await client.GetStringAsync(url);
-                var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
-                
-                LatestProductModelList = new ObservableCollection<ProductModel>(ProductsList);
-                Constants.LatestProductsList = ProductsList;
-                //IsBusy = false;
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var result = await client.GetStringAsync(url);
+                    var ProductsList = JsonConvert.DeserializeObject<List<ProductModel>>(result);
+
+                    LatestProductModelList = new ObservableCollection<ProductModel>(ProductsList);
+                    Constants.LatestProductsList = ProductsList;
+                    //IsBusy = false;
+                }
+                else
+                {
+                    LatestProductModelList = new ObservableCollection<ProductModel>(Constants.LatestProductsList);
+                }
             }
-            else
+            catch (Exception)
             {
-                LatestProductModelList = new ObservableCollection<ProductModel>(Constants.LatestProductsList);
+                return;
             }
+            
 
         }
 
         public async void GetCarts()
         {
+           // await PopupNavigation.Instance.PushAsync(new PageLoader());
+            
             cartModelList = new ObservableCollection<Cart>();
             var cartItems = new Cart();
             //cartModelList.Add(new Product { Name = "Hand Sanitizer ", Image = "ListPr", price = "6999", Status = "pending", Date = "22, September, 2020", OrderId = 2133546, quantity = "2" });
             //cartModelList.Add(new Product { Name = "FreshYo Soap", Image = "ListProo", price = "10000", Status = "completed", Date = "2, September, 2020", OrderId = 2133453, quantity = "1" });
             //cartModelList.Add(new Product { Name = "Skin Tone", Image = "ListProo", price = "22000", Status = "pending", Date = "22, September, 2020", OrderId = 2133558, quantity = "2" });
-            if (Constants.CartItemList == null)
+            try
             {
-                //IsBusy = true;
-                HttpClient client = new HttpClient();
-                var cartEndpoint = Constants.GetCart + Settings.id;
 
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var result = await client.GetStringAsync(cartEndpoint);
-                var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
-                ArrayList arr = new ArrayList();
-                foreach (var cart in CartList)
-                {
-                    int thePrice = Int32.Parse(cart.productPrice);
-                    int qty = cart.quantitySelected;
-                    int item = thePrice * qty;
-                    cart.SingleProductPrice = item;
-                    arr.Add(item);
+               IsBusy = true;
+                    HttpClient client = new HttpClient();
+                    var cartEndpoint = Constants.GetCart + Settings.id;
 
-                }
-                int ourSum = arr.Cast<int>().Sum();
-                int meee = ourSum;
-                Settings.CartTotalPrice = meee;
-                CartModelList = new ObservableCollection<Cart>(CartList);
-                Constants.CartItemList = CartList;
-                IsBusy = false;
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var result = await client.GetStringAsync(cartEndpoint);
+                    var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
+                    ArrayList arr = new ArrayList();
+                    foreach (var cart in CartList)
+                    {
+                        int thePrice = Int32.Parse(cart.productPrice);
+                        int qty = cart.quantitySelected;
+                        int item = thePrice * qty;
+                        cart.SingleProductPrice = item;
+                        arr.Add(item);
+
+                    }
+                    int ourSum = arr.Cast<int>().Sum();
+                    int meee = ourSum;
+                    Settings.CartTotalPrice = meee;
+                    CartModelList = new ObservableCollection<Cart>(CartList);
+                    Constants.CartItemList = CartList;
+                    IsBusy = false;
+                    //await PopupNavigation.Instance.PopAsync(true);
+              
             }
-            else
+            catch (Exception)
             {
-               CartModelList = new ObservableCollection<Cart>(Constants.CartItemList);
+                return;
             }
+           
         }
 
         public async void GetAdverts()
@@ -436,26 +459,34 @@ namespace AhiaJara.ViewModels
             //carouselModelList.Add(new Product { Name = "Skin Tone", Image = "CaroProduct", price = "22000" });
             if (CarouselModelList == null)
             {
-                //IsBusy = true;
-                HttpClient client = new HttpClient();
-                var carouselEndpoint = Constants.GetAdverts;
-
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var result = await client.GetStringAsync(carouselEndpoint);
-                var CartList = JsonConvert.DeserializeObject<List<Product>>(result);
-                CarouselModelList = new ObservableCollection<Product>(CartList);
-
-                Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+                try
                 {
-                    SlidePosition++;
-                    if (SlidePosition == CarouselModelList.Count) SlidePosition = 0;
-                    //cv.Position = SlidePosition;
-                    return true;
-                });
+                    //IsBusy = true;
+                    HttpClient client = new HttpClient();
+                    var carouselEndpoint = Constants.GetAdverts;
+
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var result = await client.GetStringAsync(carouselEndpoint);
+                    var CartList = JsonConvert.DeserializeObject<List<Product>>(result);
+                    CarouselModelList = new ObservableCollection<Product>(CartList);
+
+                    Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+                    {
+                        SlidePosition++;
+                        if (SlidePosition == CarouselModelList.Count) SlidePosition = 0;
+                        //cv.Position = SlidePosition;
+                        return true;
+                    });
 
 
-                IsBusy = false;
+                    IsBusy = false;
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+               
             }
             else
             {
@@ -502,14 +533,25 @@ namespace AhiaJara.ViewModels
            
                 
                 
-                var SelectedId = model.id;
-                //ConstantsValue.listItemA.RemoveAll(x => x.Item_Id == SelectedId);
-                var itemToRemove = Constants.CartItemList.Single(r => r.id== SelectedId);
-                Constants.CartItemList.Remove(itemToRemove);
+            var SelectedId = model.id;
+            var itemToRemove = Constants.CartItemList.Single(r => r.id == SelectedId);
+            Constants.CartItemList.Remove(itemToRemove);
+            
+            try
+            {
+                HttpClient client = new HttpClient();
+                var url = Constants.deleteCartItem + SelectedId;
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var result = await client.DeleteAsync(url);
+                var x = result.StatusCode;
                 GetCarts();
-                //var addedItems = ConstantsValue.editComponentList;
-                //Items = new ObservableCollection<ComponentItemsModel>(addedItems);
-                //Emplist.ItemsSource = Items;
+            }
+            catch(Exception)
+            {
+
+            }
            
         }
 
