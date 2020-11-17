@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -92,7 +93,19 @@ namespace AhiaJara.ViewModels
         public Command NavigateToCheckOutCommand{get; }
 
         public Command NavigateToRecommendedPageCommand { get; }
-        
+
+        private string total;
+        public string Total
+        {
+            get => total;
+            set
+            {
+                total = value;
+                OnPropertyChanged(nameof(Total));
+            }
+
+        }
+
         private int text = 1;
         public int Text
         {
@@ -438,6 +451,10 @@ namespace AhiaJara.ViewModels
                     int ourSum = arr.Cast<int>().Sum();
                     int meee = ourSum;
                     Settings.CartTotalPrice = meee;
+                    string productTotal = meee.ToString();
+                    var pel = Math.Round(Convert.ToDouble(productTotal), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
+                    Total = pel;
+                    MessagingCenter.Send<object, string>(this, "totalPrice", Total);
                     CartModelList = new ObservableCollection<Cart>(CartList);
                     Constants.CartItemList = CartList;
                     IsBusy = false;
