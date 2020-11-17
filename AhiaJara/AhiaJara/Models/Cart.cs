@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using AhiaJara.Helpers;
 using System.Text;
 using Xamarin.Forms;
 
@@ -56,17 +57,18 @@ namespace AhiaJara.Models
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public string id { get; set; }
-        public string TotalPrice { get; set; }
+        public int TotalPrice { get; set; }
         public int SingleProductPrice { get; set; }
 
         public string newTotal
         {
             get
             {
-                var del = this.productPrice + this.productName;
-                return del;
+                var pele = Settings.CartTotalPrice.ToString();
+                var pel = Math.Round(Convert.ToDouble(pele), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
+                return pel;
             }
-            set {; }
+            set {newTotal = value; }
         }
         public string Price
         {

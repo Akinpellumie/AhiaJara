@@ -24,7 +24,7 @@ namespace AhiaJara.Utils
 
         public async void GetNotifications()
         {
-            try
+            try    
             {
                 indic.IsVisible = true;
                 indic.IsRunning = true;

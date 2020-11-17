@@ -13,13 +13,13 @@
             <View:CartToolBar Title="Cart" VerticalOptions="Start"/>
 
             <Grid VerticalOptions="StartAndExpand" Margin="0,60,0,0">
-                <StackLayout VerticalOptions="Fill">
+                <ScrollView VerticalOptions="Fill">
                     <View:CartView/>
-                </StackLayout>
+                </ScrollView>
 
             </Grid>
 
-            <Grid VerticalOptions="End">
+            <Grid VerticalOptions="End" HorizontalOptions="Fill" BackgroundColor="{StaticResource mainbackground}">
                 <StackLayout Orientation="Vertical" Margin="0,0,0,15">
 
                     <pv:PancakeView BackgroundColor="Transparent" 
@@ -38,8 +38,10 @@
                                HorizontalOptions="Start"
                                Grid.Column="0"/>
 
-                            <Label x:Name="Total"
+                            <Label 
+                                x:Name="Total"
                                FontSize="15"
+                                Text="{Binding newTotal}"   
                                FontAttributes="Bold"
                                HorizontalOptions="End"
                                Grid.Column="1"/>
