@@ -52,13 +52,16 @@
                     <pv:PancakeView x:Name="MyPanView" CornerRadius="0,15,15,0" Padding="10" BackgroundColor="{Binding FirstFrameBackColor}"
                                                 HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
 
-                        <Image HorizontalOptions="Fill" 
+                        <Grid>
+                            <Image HorizontalOptions="Fill" 
                                    VerticalOptions="Fill" x:Name="selectImage" Aspect="AspectFill" Source="{Binding ProductImage}"/>
 
-                            <!--<ImageButton Source="uncheck.png" HorizontalOptions="End" HeightRequest="35"
-                                     VerticalOptions="Start" Clicked="PickUser_Clicked" Margin="5,10,10,5"
-                                     CommandParameter="{Binding .}" 
-                                        BackgroundColor="Transparent" x:Name="checkBtn" WidthRequest="35"/>-->
+                            <Image Source="uncheck.png" HorizontalOptions="End" HeightRequest="35"
+                                     VerticalOptions="Start" Margin="5,10,10,5" IsVisible="{Binding IsVisible}"
+                                        BackgroundColor="Transparent" x:Name="checkBtn" WidthRequest="35">
+                                
+                            </Image>
+                        </Grid>
                         <pv:PancakeView.GestureRecognizers>
                             <TapGestureRecognizer
                                             Command="{Binding Path=BindingContext.SelectedImageCommand, Source={x:Reference SkinIssue}}"

@@ -74,6 +74,7 @@
             <Color x:Key="BtnColor">#F7941D</Color>
             <Color x:Key="moreFrameColor">#E4E4E4</Color>
             <Color x:Key="SecondaryColor">#F7941D</Color>
+            <Color x:Key="Accent">#F7941D</Color>
             <Color x:Key="FrameBgColor">#E3E2E2</Color>
             <Color x:Key="mainbackground">#E5E5E5</Color>
             <Color x:Key="background">
