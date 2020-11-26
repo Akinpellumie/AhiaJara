@@ -6,6 +6,11 @@
     <ContentView.Content>
         
         <StackLayout x:Name="cartPage">
+            <ActivityIndicator 
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
                     <ScrollView Orientation="Vertical" VerticalOptions="Fill">
                         <StackLayout
                      x:Name="cartItems"
