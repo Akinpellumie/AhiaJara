@@ -420,8 +420,8 @@ namespace AhiaJara.ViewModels
 
         public async void GetCarts()
         {
-           // await PopupNavigation.Instance.PushAsync(new PageLoader());
-            
+            // await PopupNavigation.Instance.PushAsync(new PageLoader());
+
             cartModelList = new ObservableCollection<Cart>();
             var cartItems = new Cart();
             //cartModelList.Add(new Product { Name = "Hand Sanitizer ", Image = "ListPr", price = "6999", Status = "pending", Date = "22, September, 2020", OrderId = 2133546, quantity = "2" });
@@ -458,8 +458,10 @@ namespace AhiaJara.ViewModels
                     CartModelList = new ObservableCollection<Cart>(CartList);
                     Constants.CartItemList = CartList;
                     IsBusy = false;
-                    //await PopupNavigation.Instance.PopAsync(true);
-              
+
+                
+                //await PopupNavigation.Instance.PopAsync(true);
+
             }
             catch (Exception)
             {
@@ -632,6 +634,8 @@ namespace AhiaJara.ViewModels
 
         private async Task ExecuteCallPopUpCommand()
         {
+            await PopupNavigation.Instance.PushAsync(new PageLoader());
+
             //IsBusy = true;
             var txt = Text;
             //var productModel = model;
@@ -662,9 +666,11 @@ namespace AhiaJara.ViewModels
 
                 if (response.Result.IsSuccessStatusCode)
                 {
+                    
                     //IsBusy = false;
                     ToolbarViewModel toolbarView = new ToolbarViewModel();
                     await toolbarView.GetCartCount();
+                    await PopupNavigation.Instance.PopAsync(true);
                     await PopupNavigation.Instance.PushAsync(new AddToCartPop(txt));
                 }
                 

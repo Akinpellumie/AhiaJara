@@ -119,7 +119,7 @@ namespace AhiaJara.Views
         private async void hybridWebView_PaymentSuccessful(object sender, string e)
         {
             payCode = e;
-            //postOrder();
+            postOrder();
             await DisplayAlert("Please keep your payment code", "Payment Code: " + e, "OK");
             await Navigation.PushAsync(new Dashboard());
         }
@@ -128,7 +128,7 @@ namespace AhiaJara.Views
         private async Task loadingAsync()
         {
             await PopupNavigation.Instance.PushAsync(new PageLoader());
-            postOrder();
+            //postOrder();
             await Task.Delay(8000);
             await PopupNavigation.Instance.PopAsync(true);
             
@@ -148,8 +148,8 @@ namespace AhiaJara.Views
 
                 MultipartFormDataContent content = new MultipartFormDataContent();
                 content.Add(new StringContent(res), "products");
-                //content.Add(new StringContent(payCode), "paymentId");
-                content.Add(new StringContent("e344334443rere3433"), "paymentId");
+                content.Add(new StringContent(payCode), "paymentId");
+                //content.Add(new StringContent("e344334443rere3433"), "paymentId");
 
                 content.Add(new StringContent(shippingDetails), "shippingDetails");
                 content.Add(new StringContent(amountPaid), "amountPaid");
