@@ -254,7 +254,7 @@
 
 
                                 <Button VerticalOptions="Center"  HorizontalOptions="End" 
-                                        CornerRadius="25" BackgroundColor="Accent" WidthRequest="150"
+                                        CornerRadius="25" BackgroundColor="{StaticResource Accent}" WidthRequest="150"
                         Text="NEXT" HeightRequest="55" Margin="10" Clicked="OnfirstNext_Clicked" />
 
                             </StackLayout>
@@ -269,61 +269,12 @@
             <!--secondStack-->
 
             <Grid Margin="0,0,0,5" VerticalOptions="FillAndExpand" x:Name="secondScreen" IsVisible="False">
-                <!-- Top Content -->
-                <Grid VerticalOptions="Start" Margin="15">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <StackLayout>
-                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
-                        </StackLayout>
-                        <StackLayout>
-                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
-                        </StackLayout>
-                        <StackLayout>
-                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
-                        </StackLayout>
-
-                    </StackLayout>
-
-                    <StackLayout Margin="15">
-                        <Label
-                            FontFamily="{StaticResource font_bold}"
-                            Text="Upload the image of the affected part"
-                            TextColor="{StaticResource TxtColor}"
-                            FontSize="14"
-                            HorizontalOptions="Fill"
-                            Margin="5,5,0,5"/>
-                    </StackLayout>
-                </Grid>
-
-                <Grid VerticalOptions="CenterAndExpand">
-                    <StackLayout Grid.Row="0" Padding="10" Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <ff1:SvgCachedImage Source="imageUpload.svg" HeightRequest="350"
-                                    Aspect="AspectFit" />
-                    </StackLayout>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SelectImage"
-                                              NumberOfTapsRequired="1"/>
-                    </Grid.GestureRecognizers>
-                </Grid>
-
-                <Grid VerticalOptions="End">
-                    <Button VerticalOptions="Center"  HorizontalOptions="End" 
-                                        CornerRadius="25" BackgroundColor="Accent" 
-                        Text="NEXT" HeightRequest="55" Margin="10,10,10,20" 
-                            WidthRequest="150" Clicked="OnSecondNext_Clicked"/>
-                </Grid>
-            </Grid>
-            <!--endOfSecondStack-->
-        
-            <!--thirdStack-->
-
-            <Grid Margin="0,0,0,5" VerticalOptions="FillAndExpand" x:Name="thirdScreen" IsVisible="False">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90*"/>
                     <RowDefinition Height="10*"/>
                     <!--<RowDefinition Height="1*"/>-->
                 </Grid.RowDefinitions>
-               
+
                 <StackLayout VerticalOptions="Start" Margin="0,15,0,10" Grid.Row="0">
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <StackLayout>
@@ -354,22 +305,57 @@
                         </ScrollView>
                     </StackLayout>
                 </StackLayout>
-
-                <!--<Grid VerticalOptions="Center" Grid.Row="1" Margin="0,15,0,0">
-                    <StackLayout>
-                        <ScrollView>
-                            <View:ProductListView/>
-                        </ScrollView>
-                    </StackLayout>
-                </Grid>-->
-
-                <!--<StackLayout VerticalOptions="End" Grid.Row="1">
-                    <ActivityIndicator x:Name="actindicator" Grid.RowSpan="2" BackgroundColor="#560202" VerticalOptions="Center" IsVisible="False" HorizontalOptions="Center"/>
+                
+                <Grid VerticalOptions="End">
                     <Button VerticalOptions="Center"  HorizontalOptions="End" 
-                                        CornerRadius="25" BackgroundColor="Accent" 
-                        Text="NEXT" HeightRequest="55" Margin="10,5,10,10" 
-                            WidthRequest="150" Clicked="OnThirdScreen_Clicked"/>
-                </StackLayout>-->
+                                        CornerRadius="25" BackgroundColor="{StaticResource Accent}" 
+                        Text="NEXT" HeightRequest="55" Margin="10,10,10,20" 
+                            WidthRequest="150" Clicked="OnSecondNext_Clicked"/>
+                </Grid>
+            </Grid>
+
+            <!--endOfSecondStack-->
+        
+            <!--thirdStack-->
+
+            <Grid Margin="0,0,0,5" VerticalOptions="FillAndExpand" x:Name="thirdScreen" IsVisible="False">
+                <!-- Top Content -->
+                <Grid VerticalOptions="Start" Margin="15">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Margin="15">
+                        <Label
+                            FontFamily="{StaticResource font_bold}"
+                            Text="Upload the image of the affected part"
+                            TextColor="{StaticResource TxtColor}"
+                            FontSize="14"
+                            HorizontalOptions="Fill"
+                            Margin="5,5,0,5"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="10" Margin="10">
+                    <ff1:SvgCachedImage Source="capture.svg" HeightRequest="350"
+                                        x:Name="CapturedImage"
+                                    Aspect="AspectFit" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectImage"
+                                              NumberOfTapsRequired="1"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+
             </Grid>
 
             <!--endOfThirdStack-->

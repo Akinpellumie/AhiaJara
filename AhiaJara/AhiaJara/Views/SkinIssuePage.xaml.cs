@@ -10,7 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static AhiaJara.Models.FormsModel;
@@ -46,7 +46,7 @@ namespace AhiaJara.Views
             secondScreen.IsVisible = true;
         }
 
-        async void OnSecondNext_Clicked(object sender, EventArgs e)
+         void OnSecondNext_Clicked(object sender, EventArgs e)
         {
             defaultScreen.IsVisible = false;
             secondScreen.IsVisible = false;
@@ -65,22 +65,53 @@ namespace AhiaJara.Views
 
         }
 
+        async void Permission()
+        {
+            await Permissions.RequestAsync<Permissions.Camera>();
+            await Permissions.RequestAsync<Permissions.StorageRead>();
+            await Permissions.RequestAsync<Permissions.StorageWrite>();
+        }
+
         public async void SelectImage(object sender, EventArgs e)
         {
+            Permission();
             await CrossMedia.Current.Initialize();
-
-            if (!CrossMedia.Current.IsPickPhotoSupported)
+            try
             {
-                await DisplayAlert("Warning", "Picking  a photo is not supported", "OK");
 
+
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await DisplayAlert("Warning", "Allow system permission for this App", "Ok");
+
+                }
+
+                _mediaFile = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    PhotoSize = PhotoSize.Medium,
+                    Name = "SkinIssueUpload.jpg",
+                    CompressionQuality = 50,
+                    SaveToAlbum = true
+                });
+            }
+            catch (Exception)
+            {
                 return;
             }
+            //    await CrossMedia.Current.Initialize();
 
-            _mediaFile = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-            {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
-                CompressionQuality = 40
-            });
+            //if (!CrossMedia.Current.IsPickPhotoSupported)
+            //{
+            //    await DisplayAlert("Warning", "Picking  a photo is not supported", "OK");
+
+            //    return;
+            //}
+
+            //_mediaFile = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            //{
+            //    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+            //    CompressionQuality = 40
+            //});
 
             //userImage.Source = ImageSource.FromStream(() => _mediaFile.GetStream());
 
