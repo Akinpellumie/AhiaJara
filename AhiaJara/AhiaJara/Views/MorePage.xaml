@@ -38,7 +38,7 @@
             </StackLayout.GestureRecognizers>
         </StackLayout>
 
-        <StackLayout Margin="10,10,10,5" x:Name="BeSpokeStack">
+        <StackLayout Margin="10,10,10,5" x:Name="RequestStack">
             <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -48,11 +48,11 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Margin="10,0,15,0" Grid.Column="0" VerticalOptions="Center">
-                        <Image Source="beSpokeMenu.png" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="25" WidthRequest="25"/>
+                        <Image Source="requestMenu.png" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="25" WidthRequest="25"/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="BeSpoke" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
+                        <Label Text="Request" TextColor="{StaticResource TxtColor}" VerticalOptions="Center"
                               HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                     </StackLayout>
 
@@ -63,7 +63,7 @@
             </pv:PancakeView>
 
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OrderPage_Clicked"
+                <TapGestureRecognizer Tapped="RequestPage_Clicked"
                                       NumberOfTapsRequired="1"/>
             </StackLayout.GestureRecognizers>
         </StackLayout>

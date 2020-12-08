@@ -95,8 +95,8 @@
         <Tab Title="Order" Icon="order.png">
             <ShellContent ContentTemplate="{DataTemplate local:OrderPage}" />
         </Tab>
-        <Tab Title="Request" Icon="requestMenu.png">
-            <ShellContent ContentTemplate="{DataTemplate local:RequestPage}" />
+        <Tab Title="BeSpoke" Icon="beSpokeMenu.png">
+            <ShellContent ContentTemplate="{DataTemplate local:BeSpokePage}" />
         </Tab>
         <Tab Title="More" Icon="moreMenu.png">
             <ShellContent ContentTemplate="{DataTemplate local:MorePage}" />

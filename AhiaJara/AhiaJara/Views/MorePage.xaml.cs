@@ -18,9 +18,9 @@ namespace AhiaJara.Views
             InitializeComponent();
         }
 
-        public async void OrderPage_Clicked(object obj, EventArgs e)
+        public async void RequestPage_Clicked(object obj, EventArgs e)
         {
-            await Navigation.PushAsync(new BeSpokePage());
+            await Navigation.PushAsync(new RequestPage());
         }
 
         public async void QuestionBtn_Clicked(object obj, EventArgs e)
@@ -51,7 +51,7 @@ namespace AhiaJara.Views
             await Navigation.PushAsync(new ResetPassPage());
         }
 
-        public async void LogOutBtn_Clicked(object obj, EventArgs e)
+        public void LogOutBtn_Clicked(object obj, EventArgs e)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Clear();

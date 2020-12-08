@@ -49,6 +49,24 @@ namespace AhiaJara.ViewModels
             LongClickedCommand = new Command(LongClicked);
             TextChangedCommand = new Command<TextChangedEventArgs>(textChanged => Entry_TextChangedCommand(textChanged));
             RemoveItem = new Command<Cart>(async (model) => await RemoveItem_Clicked(model)); ;
+
+            ItemTappedCommand = new Command((obj) => {
+
+                //reset the bg color 
+                foreach (var model in SkinIssueList)
+                {
+                    model.BGColor = Color.White;
+                    model.IsChecked = false;
+                }
+
+                SkinIssue mo = obj as SkinIssue;
+                int index = SkinIssueList.IndexOf(mo);
+                mo.BGColor = Color.Red;
+                mo.IsChecked = true;
+
+                SkinIssueList.RemoveAt(index);
+                SkinIssueList.Insert(index, mo);
+            });
         }
 
 
@@ -86,6 +104,7 @@ namespace AhiaJara.ViewModels
         public Command LongClickedCommand { get; }
         public Command PlusBtnCommand { get; }
         public Command MinusBtnCommand { get; }
+        public Command ItemTappedCommand { get; set; }
         public Command TextChangedCommand { get; }
         public Command SelectedImageCommand { get; }
         public Command NavigateToCartPageCommand { get; }
@@ -540,6 +559,8 @@ namespace AhiaJara.ViewModels
                 //var CartList = JsonConvert.DeserializeObject<List<Cart>>(result);
                 //CartModelList = new ObservableCollection<Cart>(CartList);
 
+
+
             }
             catch (Exception)
             {
@@ -703,31 +724,9 @@ namespace AhiaJara.ViewModels
             productCount.quantity = Constants.cartCount;
         }
 
-        private void CardImage_SelectionChanged(ProductModel model)
-        {
-
-            model.FirstFrameBackColor = Color.FromHex("4DC503");
-            //ProductModel previous = model.la as ProductModel;
-            //ProductModel current = (eve.CurrentSelection.FirstOrDefault() as ProductModel);
-
-            ////Set the current to the color you want
-            //current.FirstFrameBackColor = Color.Pink;
-            //current.SecondFrameBackColor = Color.Green;
-
-            //if (previous != null)
-            //{
-            //    //Reset the previous to defaulr color
-            //    previous.FirstFrameBackColor = Color.White;
-            //    previous.SecondFrameBackColor = Color.Purple;
-            //}
-
-        }
 
         private async void CardImage_SelectionChanged1(SkinIssue model)
         {
-
-            FirstFrameBackColor = Color.FromHex("4DC503");
-            //var iten = model.recommendedProducts;
 
             await PopupNavigation.Instance.PushAsync(new PopLoader());
             await Task.Delay(6000);

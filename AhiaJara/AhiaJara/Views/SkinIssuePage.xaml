@@ -64,7 +64,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" x:Name="answer2"
                                          HeightRequest="45" SelectedIndexChanged="OnPickerSelected2"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Male</x:String>
@@ -80,7 +80,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
                                          HeightRequest="45" x:Name="answer3" SelectedIndexChanged="OnPickerSelected3"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Dry</x:String>
@@ -108,7 +108,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected5"
                                          HeightRequest="45" x:Name="answer5"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Yes, very often</x:String>
@@ -125,7 +125,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
                                          HeightRequest="45" x:Name="answer6" SelectedIndexChanged="OnPickerSelected6"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Very often</x:String>
@@ -142,7 +142,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
                                          HeightRequest="45" x:Name="answer7" SelectedIndexChanged="OnPickerSelected7"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Very often</x:String>
@@ -159,7 +159,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected8"
                                          HeightRequest="45" x:Name="answer8"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Reddens</x:String>
@@ -176,7 +176,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
                                          HeightRequest="45" x:Name="answer9" SelectedIndexChanged="OnPickerSelected9"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Reddens</x:String>
@@ -193,7 +193,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected10"
                                          HeightRequest="45" x:Name="answer10"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Reddens</x:String>
@@ -210,7 +210,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected12"
                                          HeightRequest="45" x:Name="answer12"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>Reacts often, turns reddish, itchy or stings</x:String>
@@ -238,7 +238,7 @@
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected14"
                                          HeightRequest="40" x:Name="answer14"
-                                         Image="ic_arrow_drop_down"
+                                         Image="ic_arrow_drop_down" Style="{StaticResource PickerEntryStyle}"
                                          Title="Select Answer">
                                             <Controls:CustomPicker.Items>
                                                 <x:String>I travel a lot for work and fun</x:String>
@@ -269,25 +269,20 @@
             <!--secondStack-->
 
             <Grid Margin="0,0,0,5" VerticalOptions="FillAndExpand" x:Name="secondScreen" IsVisible="False">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90*"/>
-                    <RowDefinition Height="10*"/>
-                    <!--<RowDefinition Height="1*"/>-->
-                </Grid.RowDefinitions>
+               
+                    <Grid VerticalOptions="Start" HorizontalOptions="Fill" Margin="0,15,0,15">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout>
+                                <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                            </StackLayout>
 
-                <StackLayout VerticalOptions="Start" Margin="0,15,0,10" Grid.Row="0">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <StackLayout>
-                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
                         </StackLayout>
-                        <StackLayout>
-                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
-                        </StackLayout>
-                        <StackLayout>
-                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
-                        </StackLayout>
-
-                    </StackLayout>
 
                     <StackLayout Margin="0,10,0,10">
                         <Label
@@ -298,13 +293,15 @@
                             HorizontalOptions="Fill"
                             Margin="5,5,0,5"/>
                     </StackLayout>
+                </Grid>
 
+                <Grid VerticalOptions="CenterAndExpand" Margin="0,70,0,10" HorizontalOptions="Fill">
                     <StackLayout>
                         <ScrollView>
                             <View:SkinIssueImagesView x:Name="imgView"/>
                         </ScrollView>
                     </StackLayout>
-                </StackLayout>
+                </Grid>
                 
                 <Grid VerticalOptions="End">
                     <Button VerticalOptions="Center"  HorizontalOptions="End" 
@@ -326,10 +323,10 @@
                             <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
                         </StackLayout>
                         <StackLayout>
-                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
                         </StackLayout>
                         <StackLayout>
-                            <Image Source="checkBoxUn.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
+                            <Image Source="checkBoxFill.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="10"/>
                         </StackLayout>
 
                     </StackLayout>
@@ -355,6 +352,22 @@
                     </Grid.GestureRecognizers>
                 </Grid>
 
+                <Grid VerticalOptions="End" HorizontalOptions="Fill" Margin="10">
+                    <pv:PancakeView BackgroundColor="{StaticResource Accent}" HeightRequest="55" CornerRadius="25">
+                        <Label Text="Proceed"
+                               TextColor="White"
+                               FontSize="14"
+                               FontFamily="{StaticResource font_medium}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer
+                                            Command="{Binding SelectedImageCommand}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                        </pv:PancakeView.GestureRecognizers>
+                    </pv:PancakeView>
+                </Grid>
 
             </Grid>
 

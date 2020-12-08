@@ -72,26 +72,38 @@ namespace AhiaJara.Models
             set { ProductImage = value; }
         }
 
-        private Color firstFrameBackColor = Color.White;
+        private bool isChecked;
 
-        public Color FirstFrameBackColor
+        public bool IsChecked
         {
-            get
-            {
-                if (firstFrameBackColor != Color.White)
-                {
-                    firstFrameBackColor = Color.White;
-                }
-                else if (firstFrameBackColor == Color.White)
-                {
-                    firstFrameBackColor = Color.FromHex("4DC503");
-                }
-                return firstFrameBackColor;
-            }
             set
             {
-                firstFrameBackColor = value;
-                OnPropertyChanged(nameof(FirstFrameBackColor));
+                if (value != null)
+                {
+                    isChecked = value;
+                    OnPropertyChanged(nameof(IsChecked));
+                }
+            }
+            get
+            {
+                return isChecked;
+            }
+        }
+
+        private Color bgColor;
+        public Color BGColor
+        {
+            set
+            {
+                if (value != null)
+                {
+                    bgColor = value;
+                    OnPropertyChanged(nameof(BGColor));
+                }
+            }
+            get
+            {
+                return bgColor;
             }
         }
     }

@@ -39,7 +39,8 @@
             </CollectionView.ItemTemplate>
         </CollectionView>-->
         <flv:FlowListView FlowColumnCount="2" 
-                                              FlowItemsSource="{Binding SkinIssueList}" 
+                                              FlowItemsSource="{Binding SkinIssueList}"
+                                              FlowItemTappedCommand="{Binding ItemTappedCommand}"
                                               x:Name="SkinIssue"
                                               HorizontalOptions="Fill"
                                               VerticalOptions="Fill"
@@ -49,25 +50,25 @@
 
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <pv:PancakeView x:Name="MyPanView" CornerRadius="0,15,15,0" Padding="10" BackgroundColor="{Binding FirstFrameBackColor}"
+                    <pv:PancakeView x:Name="MyPanView" CornerRadius="0,15,15,0" Padding="10" BackgroundColor="{Binding BGColor}"
                                                 HorizontalOptions="Fill" HeightRequest="150" WidthRequest="100" Margin="5" >
 
                         <Grid>
                             <Image HorizontalOptions="Fill" 
                                    VerticalOptions="Fill" x:Name="selectImage" Aspect="AspectFill" Source="{Binding ProductImage}"/>
 
-                            <Image Source="uncheck.png" HorizontalOptions="End" HeightRequest="35"
-                                     VerticalOptions="Start" Margin="5,10,10,5" IsVisible="{Binding IsVisible}"
+                            <Image Source="check.png" HorizontalOptions="End" HeightRequest="35"
+                                     VerticalOptions="Start" Margin="5,10,10,5" IsVisible="{Binding IsChecked}"
                                         BackgroundColor="Transparent" x:Name="checkBtn" WidthRequest="35">
                                 
                             </Image>
                         </Grid>
-                        <pv:PancakeView.GestureRecognizers>
+                        <!--<pv:PancakeView.GestureRecognizers>
                             <TapGestureRecognizer
                                             Command="{Binding Path=BindingContext.SelectedImageCommand, Source={x:Reference SkinIssue}}"
                                             CommandParameter="{Binding .}"
                                             NumberOfTapsRequired="1" />
-                        </pv:PancakeView.GestureRecognizers>
+                        </pv:PancakeView.GestureRecognizers>-->
                     </pv:PancakeView>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
