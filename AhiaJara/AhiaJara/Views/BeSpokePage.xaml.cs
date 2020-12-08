@@ -1,6 +1,8 @@
 ﻿using AhiaJara.Helpers;
 using AhiaJara.PopUps;
 using Newtonsoft.Json;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static AhiaJara.Models.FormsModel;
@@ -28,6 +30,7 @@ namespace AhiaJara.Views
         private string _answer9;
         private string _answer8;
         private string _answer13;
+        private MediaFile _mediaFile;
 
         public BeSpokePage()
         {
@@ -162,6 +165,48 @@ namespace AhiaJara.Views
             var selectedItem = picker.SelectedItem;
             _answer12 = selectedItem.ToString();// This is the model selected in the picker
         }
+
+        async void Permission()
+        {
+            await Permissions.RequestAsync<Permissions.Camera>();
+            await Permissions.RequestAsync<Permissions.StorageRead>();
+            await Permissions.RequestAsync<Permissions.StorageWrite>();
+        }
+
+        public async void UploadImage_Tapped(object sender, EventArgs e)
+        {
+                Permission();
+                await CrossMedia.Current.Initialize();
+                try
+                {
+
+
+                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                    {
+                        await DisplayAlert("Warning", "Allow system permission for this App", "Ok");
+
+                    }
+
+                    _mediaFile = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                    {
+                        PhotoSize = PhotoSize.Medium,
+                        Name = "SkinIssueUpload.jpg",
+                        CompressionQuality = 50,
+                        SaveToAlbum = true
+                    });
+
+                if (_mediaFile != null)
+                {
+                    imgName.Text = _mediaFile.Path;
+                }
+            }
+                catch (Exception)
+                {
+                    return;
+                }
+              
+        }
+
         private void OnPickerSelected13(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;

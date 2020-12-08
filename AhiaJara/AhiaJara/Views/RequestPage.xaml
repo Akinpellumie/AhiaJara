@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:Controls="clr-namespace:AhiaJara.Controls"
+             xmlns:Controls="clr-namespace:AhiaJara.Controls" xmlns:View="clr-namespace:AhiaJara.Utils"
              x:Class="AhiaJara.Views.RequestPage" 
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
-        <StackLayout Margin="10,5,10,10">
-            <StackLayout Margin="10,15,10,25">
-                <Label Text="Request"
-                       TextColor="{StaticResource TxtColor}"
-                       FontSize="20"
-                       FontFamily="{StaticResource font_bold}"
-                       HorizontalOptions="Start"/>
+        <StackLayout>
+            <StackLayout>
+                <View:ToolBarView Title="Request"/>
             </StackLayout>
-                     
-            <Grid>
+
+
+            <Grid Margin="10,5,10,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80*"/>
                     <RowDefinition Height="20*"/>
@@ -78,7 +75,7 @@
 
                 <StackLayout VerticalOptions="End" Grid.Row="1">
                     <Button VerticalOptions="End"  HorizontalOptions="Fill" x:Name="request"
-                                        CornerRadius="25" BackgroundColor="Accent" 
+                                        CornerRadius="25" BackgroundColor="{StaticResource Accent}" 
                         Text="request" HeightRequest="55" Margin="15,5,15,10" Clicked="request_Clicked"/>
                 </StackLayout>
             </Grid>

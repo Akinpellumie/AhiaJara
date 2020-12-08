@@ -93,6 +93,7 @@ namespace AhiaJara.Views
                     CompressionQuality = 50,
                     SaveToAlbum = true
                 });
+                CapturedImage.Source = ImageSource.FromStream(() => _mediaFile.GetStream());
             }
             catch (Exception)
             {
