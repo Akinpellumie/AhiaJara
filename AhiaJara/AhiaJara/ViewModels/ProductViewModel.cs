@@ -61,7 +61,7 @@ namespace AhiaJara.ViewModels
 
                 SkinIssue mo = obj as SkinIssue;
                 int index = SkinIssueList.IndexOf(mo);
-                mo.BGColor = Color.Red;
+                mo.BGColor = Color.FromHex("4DC503");
                 mo.IsChecked = true;
 
                 SkinIssueList.RemoveAt(index);
