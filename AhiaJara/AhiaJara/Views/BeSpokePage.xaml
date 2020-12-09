@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Controls="clr-namespace:AhiaJara.Controls" xmlns:View="clr-namespace:AhiaJara.Utils" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="AhiaJara.Views.BeSpokePage" 
              Shell.NavBarIsVisible="False"
-             Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Margin="15,20,10,25">
+            <StackLayout Margin="15,20,10,15">
                 <Label Text="BeSpoke"
                        TextColor="{StaticResource TxtColor}"
                        FontSize="20"

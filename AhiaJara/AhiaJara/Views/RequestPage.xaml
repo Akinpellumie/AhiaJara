@@ -4,6 +4,7 @@
              xmlns:Controls="clr-namespace:AhiaJara.Controls" xmlns:View="clr-namespace:AhiaJara.Utils"
              x:Class="AhiaJara.Views.RequestPage" 
              Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>

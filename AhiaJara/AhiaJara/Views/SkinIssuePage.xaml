@@ -7,7 +7,13 @@
              BackgroundColor="{StaticResource mainbackground}">
     <ContentPage.Content>
         <StackLayout>
-            
+            <StackLayout Margin="15,15,10,6">
+                <Label Text="Skin Care"
+                       TextColor="{StaticResource TxtColor}"
+                       FontSize="20"
+                       FontFamily="{StaticResource font_bold}"
+                       HorizontalOptions="Start"/>
+            </StackLayout>
             <!--firstStack-->
             <RelativeLayout Margin="0,0,0,5" x:Name="defaultScreen" IsVisible="True">
                 <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="10,15,10,15"
@@ -255,7 +261,7 @@
 
                                 <Button VerticalOptions="Center"  HorizontalOptions="End" 
                                         CornerRadius="25" BackgroundColor="{StaticResource Accent}" WidthRequest="150"
-                        Text="NEXT" HeightRequest="55" Margin="10" Clicked="OnfirstNext_Clicked" />
+                        Text="NEXT" HeightRequest="55" Margin="10,10,10,10" Clicked="OnfirstNext_Clicked" />
 
                             </StackLayout>
                         </ScrollView>
