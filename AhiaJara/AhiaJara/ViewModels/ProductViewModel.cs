@@ -66,6 +66,9 @@ namespace AhiaJara.ViewModels
 
                 SkinIssueList.RemoveAt(index);
                 SkinIssueList.Insert(index, mo);
+
+                Constants.skinIssue = mo;
+
             });
         }
 

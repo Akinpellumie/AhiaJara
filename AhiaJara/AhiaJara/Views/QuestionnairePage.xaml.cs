@@ -1,5 +1,7 @@
 ﻿using AhiaJara.Helpers;
+using AhiaJara.PopUps;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,20 +26,14 @@ namespace AhiaJara.Views
         }
 
         String _answer1, _answer6, _answer7;
-        private void getAnswers()
+        private async void getAnswers()
         {
-            //var dataToSend = new Dictionary<string, string>();
-            //dataToSend.Add(question1.Text, _answer1);
-            //dataToSend.Add(question2.Text, answer2.Text);
-            //dataToSend.Add(question3.Text, answer3.Text);
-            //dataToSend.Add(question4.Text, answer4.Text);
-            //dataToSend.Add(question5.Text, answer5.Text);
-            //dataToSend.Add(question6.Text, _answer6);
-            //dataToSend.Add(question7.Text, _answer7);
-
-            //var list = dataToSend.Select(p => new Dictionary<string, string>() { { p.Key, p.Value } });
-
-            var PowerPlants = new List<QuestionAndAnswer>
+            if(_answer1 != null && answer2.Text != null & _answer6 != null)
+            {
+                await PopupNavigation.Instance.PushAsync(new PageLoader());
+                try
+                {
+                    var PowerPlants = new List<QuestionAndAnswer>
                 {
                     new QuestionAndAnswer(question1.Text, _answer1),
                     new QuestionAndAnswer(question2.Text, answer2.Text),
@@ -47,33 +43,43 @@ namespace AhiaJara.Views
                     new QuestionAndAnswer(question6.Text, _answer6),
                     new QuestionAndAnswer(question7.Text, _answer7),
 
-                 
+
                 };
-            var json = JsonConvert.SerializeObject(PowerPlants);
-            Console.WriteLine(json);
+                    var json = JsonConvert.SerializeObject(PowerPlants);
+                    Console.WriteLine(json);
 
-            var url = Constants.PostQuestionaire;
+                    var url = Constants.PostQuestionaire;
 
-            HttpClient client = new HttpClient();
+                    HttpClient client = new HttpClient();
 
-            //var content = new FormUrlEncodedContent(dataToSend);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            //HttpContent item = new StringContent(json);
-            //item.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-            var response = client.PostAsync(url, content);
-            var result = response.GetAwaiter().GetResult();
+                    //var content = new FormUrlEncodedContent(dataToSend);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    //HttpContent item = new StringContent(json);
+                    //item.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var response = client.PostAsync(url, content);
+                    var result = response.GetAwaiter().GetResult();
 
-            if (response.Result.IsSuccessStatusCode)
-            {
-                DisplayAlert("Questionnaire Submitted", "We will get back to you soon", "Ok");
-                //IsBusy = false;
+                    if (response.Result.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Questionnaire Submitted", "We will get back to you soon", "Ok");
+                        await PopupNavigation.Instance.PopAsync(true);
+                        //IsBusy = false;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Failed", "Please fill all fields and check your internet", "Ok");
+                        await PopupNavigation.Instance.PopAsync(true);
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
             }
-            else
-            {
-                DisplayAlert("Failed", "Please fill all fields and check your internet", "Ok");
-            }
+
+           
         }
 
         private void OnPickerSelected1(object sender, EventArgs e)

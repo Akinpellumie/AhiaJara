@@ -1,5 +1,6 @@
 ﻿using AhiaJara.Helpers;
 using AhiaJara.Models;
+using AhiaJara.PopUps;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -25,49 +26,57 @@ namespace AhiaJara.Views
 
         public async void ChangePassword_Clicked(object sender, EventArgs e)
         {
-            ModifyPassword modifyPassword = new ModifyPassword()
+            if(oldPassword.Text != null && newPassword.Text != null)
             {
-                oldPassword = oldPassword.Text,
-                newPassword = newPassword.Text
-            };
-            var json = JsonConvert.SerializeObject(modifyPassword);
-            if(conPassword.Text == newPassword.Text)
-            {
-                await PopupNavigation.Instance.PushAsync(new PopupPage());
-                try
+                ModifyPassword modifyPassword = new ModifyPassword()
                 {
-
-
-                    HttpClient client = new HttpClient();
-                    var url = Constants.changePassword;
-
-                    client.DefaultRequestHeaders.Clear();
-                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync(url, content);
-                    //await PopupNavigation.Instance.PopAsync(true);
-                    if (result.IsSuccessStatusCode)
+                    oldPassword = oldPassword.Text,
+                    newPassword = newPassword.Text
+                };
+                var json = JsonConvert.SerializeObject(modifyPassword);
+                if (conPassword.Text == newPassword.Text)
+                {
+                    await PopupNavigation.Instance.PushAsync(new PageLoader());
+                    try
                     {
-                        await PopupNavigation.Instance.PopAsync(true);
-                        await DisplayAlert("Success", "Password changed successfully", "Ok");
-                        Application.Current.MainPage = new LoginPage();
+
+
+                        HttpClient client = new HttpClient();
+                        var url = Constants.changePassword;
+
+                        client.DefaultRequestHeaders.Clear();
+                        client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+                        var result = await client.PostAsync(url, content);
+                        //await PopupNavigation.Instance.PopAsync(true);
+                        if (result.IsSuccessStatusCode)
+                        {
+                            await PopupNavigation.Instance.PopAsync(true);
+                            await DisplayAlert("Success", "Password changed successfully", "Ok");
+                            Application.Current.MainPage = new LoginPage();
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PopAsync(true);
+                            await DisplayAlert("Failed", "Incorrect old password", "Try Again");
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        await PopupNavigation.Instance.PopAsync(true);
-                        await DisplayAlert("Failed", "Incorrect old password", "Try Again");
+                        return;
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    return;
+                    await DisplayAlert("Password Mismatch", "Please confirm new password", "Try Again");
                 }
+
             }
             else
             {
-                await DisplayAlert("Password Mismatch", "Please confirm new password", "Try Again");
+                await DisplayAlert("Fill all Fields", "Please fill all fields", "Ok");
             }
-            
+
         }
     }
 }

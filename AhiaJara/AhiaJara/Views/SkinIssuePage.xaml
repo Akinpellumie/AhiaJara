@@ -98,7 +98,7 @@
                                 
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label x:Name="question4" Text="What is the main concern you are having concerning your skin or hair?"
+                                    <Label x:Name="question4" Text="What is the main concern you are having concerning your skin/face or hair?"
                                    TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
@@ -143,7 +143,7 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label x:Name="question7" Text="How often do you exfoliate your skin?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question7" Text="How often do you exfoliate your skin/face?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand"
@@ -160,7 +160,7 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label x:Name="question8" Text="How does your SKIN reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question8" Text="How does your skin/face reacts to hot sun?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected8"
@@ -211,7 +211,7 @@
                                 </StackLayout>
 
                                 <StackLayout Margin="5,1,5,1">
-                                    <Label x:Name="question12" Text="What is the reaction of your skin to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                    <Label x:Name="question12" Text="What is the reaction of your skin/face to new products like?" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                     <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                         <Controls:CustomPicker HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelected12"
@@ -293,7 +293,7 @@
                     <StackLayout Margin="0,10,0,10">
                         <Label
                             FontFamily="{StaticResource font_bold}"
-                            Text="Select one of the image below that represent your current skin issue best"
+                            Text="Select one of the image below that represent your current skin/face issue best"
                             TextColor="{StaticResource TxtColor}"
                             FontSize="14"
                             HorizontalOptions="Fill"
@@ -368,8 +368,7 @@
                                VerticalOptions="Center"/>
                         <pv:PancakeView.GestureRecognizers>
                             <TapGestureRecognizer
-                                            Command="{Binding SelectedImageCommand}"
-                                            CommandParameter="{Binding .}"
+                                            Tapped="OnThirdScreen_Clicked"
                                             NumberOfTapsRequired="1" />
                         </pv:PancakeView.GestureRecognizers>
                     </pv:PancakeView>

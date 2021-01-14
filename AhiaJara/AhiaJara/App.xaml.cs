@@ -2,7 +2,9 @@
 using AhiaJara.Services;
 using AhiaJara.Views;
 using DLToolkit.Forms.Controls;
+using Newtonsoft.Json;
 using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -18,6 +20,7 @@ namespace AhiaJara
         private static Page currentpage;
         private static Timer timer;
         private static bool noInterShow;
+        private static bool tokenAccess;
         public App()
         {
             InitializeComponent();
@@ -26,10 +29,24 @@ namespace AhiaJara
             //MainPage = new NavigationPage(new LoginPage());
             //MainPage = new AppShell();
             DependencyService.Register<MockDataStore>();
+            //TestCall();
             var isLoogged = Xamarin.Essentials.SecureStorage.GetAsync("isLogged").Result;
             if (isLoogged == "1")
             {
-                MainPage = new AppShell();
+                //var savedToken = Xamarin.Essentials.SecureStorage.GetAsync("Token").Result;
+                //Settings.Token = savedToken;
+                //int y = TestCall().Result;
+                //if(y > 0)
+                //{
+                    MainPage = new AppShell();
+                //}
+                //else
+                //{
+                //    MainPage = new NavigationPage(new LoginPage());
+                //}
+                
+                
+                
             }
             else
             {
@@ -52,6 +69,38 @@ namespace AhiaJara
                 }, null, 10, (int)TimeSpan.FromSeconds(3).TotalMilliseconds);
             }
         }
+
+        //public async Task<int> TestCall()
+        //{
+        //    int x=0;
+        //    try
+        //    {
+        //        HttpClient client = new HttpClient();
+        //        var url = Constants.getSkinIssue;
+        //        var savedToken = Xamarin.Essentials.SecureStorage.GetAsync("Token").Result;
+        //        Settings.Token = savedToken;
+        //        client.DefaultRequestHeaders.Clear();
+        //        client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+        //        var response = await client.GetAsync(url);
+
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            x = 1;  
+
+        //        }
+        //        else
+        //        {
+                    
+        //        }
+
+
+        //    }
+        //    catch (Exception)
+        //    {
+                
+        //    }
+        //    return x;
+        //}
 
         private static void CheckIfInternetOvertime()
         {

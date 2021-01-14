@@ -39,17 +39,28 @@ namespace AhiaJara.Views
 
         async void SubmitBespokeClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new PopLoader());
-            SendData();
+            if (answer1.Text != null && _answer3 != null && _answer13 != null)
+                {
+
+                    await PopupNavigation.Instance.PushAsync(new PageLoader());
+                SendData();
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Please fill all fields", "Ok");
+                }
+
             //await Task.Delay(6000);
-            
+
             //await Navigation.PushAsync(new SkinIssueReviewPage());
 
         }
 
         private async void SendData()
         {
-            var PowerPlants = new List<QuestionAndAnswer>
+            try
+            {
+                var PowerPlants = new List<QuestionAndAnswer>
                 {
                     new QuestionAndAnswer(question1.Text, answer1.Text),
                     new QuestionAndAnswer(question2.Text, _answer2),
@@ -62,38 +73,98 @@ namespace AhiaJara.Views
                     new QuestionAndAnswer(question9.Text, _answer9),
                     new QuestionAndAnswer(question10.Text, _answer10),
                     new QuestionAndAnswer(question11.Text, _answer11),
-                    new QuestionAndAnswer(question12.Text, _answer12),
+                    //new QuestionAndAnswer(question12.Text, _answer12),
                     new QuestionAndAnswer(question13.Text, _answer13),
 
 
                 };
-            var json = JsonConvert.SerializeObject(PowerPlants);
-            Console.WriteLine(json);
+                var json = JsonConvert.SerializeObject(PowerPlants);
+                Console.WriteLine(json);
 
-            var url = Constants.postBespoke;
+                var url = Constants.postBespoke;
 
-            HttpClient client = new HttpClient();
+                HttpClient client = new HttpClient();
 
-            //var content = new FormUrlEncodedContent(dataToSend);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-            var response = await client.PostAsync(url, content);
-            //var result = response.GetAwaiter().GetResult();
+                //var content = new FormUrlEncodedContent(dataToSend);
+                //var content = new StringContent(json, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                //var response = await client.PostAsync(url, content);
 
-            if (response.IsSuccessStatusCode)
-            {
-                await PopupNavigation.Instance.PopAsync(true);
-                await DisplayAlert("Bespoke Submitted", "We will get back to you soon", "Ok");
-                //await Navigation.PushAsync(new SkinIssueReviewPage());
-                //IsBusy = false;
+                if (_mediaFile != null)
+                {
+                    var file = _mediaFile.Path;
+                    if (string.IsNullOrEmpty(file) == false)
+                    {
+                        var upfilebytes = System.IO.File.ReadAllBytes(file);
+                        MultipartFormDataContent content = new MultipartFormDataContent();
+                        ByteArrayContent baContent = new ByteArrayContent(upfilebytes);
+                        //SkinIssuesQuestionAndAnswer queAndAnswer;
+                        var name = System.IO.Path.GetFileName(file);
+                        baContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/" + System.IO.Path.GetExtension(name).Remove(0, 1));
+                        baContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
+                        {
+                            Name = "files",
+                            FileName = name,
+
+                        };
+
+                        //var categorynew = new List<string>();
+                        //categorynew.Add(((Categorypicker.SelectedItem as CategoriesModel).category));
+                        //                var categoryArray = categorynew.ToArray();
+                        //var jsoncategoryArray = JsonConvert.SerializeObject(categoryArray);
+                        content.Add(baContent, "files", name);
+                        content.Add(new StringContent(json), "bespokeAnswers");
+
+
+                        var response = await client.PostAsync(url, content);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            await PopupNavigation.Instance.PopAsync(true);
+                            await DisplayAlert("Unique data received", "We will get back to you shortly", "Ok");
+
+                            answer1.Text = "";
+                            answer2.SelectedIndex = -1;
+                            answer3.SelectedIndex = -1;
+                            answer4.Text = "";
+                            answer5.SelectedIndex = -1;
+                            answer6.SelectedIndex = -1;
+                            answer7.SelectedIndex = -1;
+                            answer8.SelectedIndex = -1;
+                            answer9.SelectedIndex = -1;
+                            answer10.SelectedIndex = -1;
+                            //answer11.SelectedIndex = -1;
+                            //answer12.SelectedIndex = -1;
+                            answer13.SelectedIndex = -1;
+
+                            //await Navigation.PushAsync(new SkinIssueReviewPage());
+                            //IsBusy = false;
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PopAsync(true);
+                            await DisplayAlert("Failed", "Please fill all fields and check your internet", "Ok");
+                        }
+                        //if (response.IsSuccessStatusCode)
+                        //{
+                        //    //actindicator.IsVisible = false;
+                        //    //actindicator.IsRunning = false;
+                        //    //await DisplayAlert("Success", "Skin Issue" + "Created Successful", "ok");
+                        //    //await Shell.Current.Navigation.PopModalAsync();
+
+                        //}
+
+                    }
+
+                }
+
             }
-            else
+            catch (Exception)
             {
-                await PopupNavigation.Instance.PopAsync(true);
-                await  DisplayAlert("Failed", "Please fill all fields and check your internet", "Ok");
+                return;
             }
-
+            
         }
 
         private void OnPickerSelected2(object sender, EventArgs e)
@@ -159,13 +230,6 @@ namespace AhiaJara.Views
             _answer11 = selectedItem.ToString();// This is the model selected in the picker
         }
 
-        private void OnPickerSelected12(object sender, EventArgs e)
-        {
-            Picker picker = sender as Picker;
-            var selectedItem = picker.SelectedItem;
-            _answer12 = selectedItem.ToString();// This is the model selected in the picker
-        }
-
         async void Permission()
         {
             await Permissions.RequestAsync<Permissions.Camera>();
@@ -197,7 +261,8 @@ namespace AhiaJara.Views
 
                 if (_mediaFile != null)
                 {
-                    imgName.Text = _mediaFile.Path;
+                    var name = System.IO.Path.GetFileName(_mediaFile.Path);
+                    imgName.Text = name;
                 }
             }
                 catch (Exception)

@@ -31,7 +31,7 @@
                                           x:Name="CategoryPicker" SelectedIndexChanged="OnCategorySelected"
                                          Title="Select Category">
                                 <Controls:CustomPicker.Items>
-                                    <x:String>Skin Products</x:String>
+                                    <x:String>Skin/Face Products</x:String>
                                     <x:String>Hair Products</x:String>
                                 </Controls:CustomPicker.Items>
                             </Controls:CustomPicker>
