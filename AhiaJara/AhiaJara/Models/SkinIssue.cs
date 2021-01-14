@@ -50,7 +50,9 @@ namespace AhiaJara.Models
     public class SkinIssue : BaseVM
     {
         public List<string> symptom { get; set; }
-        public List<RecommendedProduct> recommendedProducts { get; set; }
+        //public List<RecommendedProduct> recommendedProducts { get; set; }
+        public string recommendedProduct { get; set; }
+        public RecommendedProduct recommendedProductId { get; set; }
         public string category { get; set; }
         public string imgUrl { get; set; }
         public string name { get; set; }

@@ -73,11 +73,11 @@
                                 <RowDefinition Height="30*"/>
                             </Grid.RowDefinitions>
 
-                            <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Path=recommendedProducts[0].ProductImage}" Grid.Row="0"/>
+                            <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Path=recommendedProductId.ProductImage}" Grid.Row="0"/>
                             <StackLayout Orientation="Vertical" Grid.Row="1" x:Name="nort">
-                                <Label Text="{Binding Path=recommendedProducts[0].name}" TextColor="{StaticResource TxtColor}"
+                                <Label Text="{Binding Path=recommendedProductId.name}" TextColor="{StaticResource TxtColor}"
                                                 HorizontalOptions="Start" FontSize="Subtitle"/>
-                                <Label Text="{Binding Path=recommendedProducts[0].Price}"  TextColor="{StaticResource Primary}"
+                                <Label Text="{Binding Path=recommendedProductId.Price}"  TextColor="{StaticResource Primary}"
                                                 HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
                             </StackLayout>
                         </Grid>

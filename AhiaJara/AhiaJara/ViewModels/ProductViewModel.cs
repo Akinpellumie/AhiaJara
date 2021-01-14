@@ -616,7 +616,7 @@ namespace AhiaJara.ViewModels
 
         private async void ExecuteNavigateToRecommendedPageCommand()
         {
-            var rootdir = SkinIssueReviewPage.newSkinIssue.recommendedProducts[0];
+            var rootdir = SkinIssueReviewPage.newSkinIssue.recommendedProductId;
             ProductModel productModel = new ProductModel()
             {
                 quantityAvailable = rootdir.quantityAvailable,
