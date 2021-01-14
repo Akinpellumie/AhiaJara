@@ -42,18 +42,18 @@ namespace AhiaJara.Views
 
        void OnfirstNext_Clicked(object sender, EventArgs e)
         {
-            if (answer1.Text != null && _answer5 != null && _answer14 != null)
-            {
-                defaultScreen.IsVisible = false;
-                secondScreen.IsVisible = true;
-            }
-            else
-            {
-                DisplayAlert("Error", "Please fill all fields", "Ok");
-            }
+            //if (answer1.Text != null && _answer5 != null && _answer14 != null)
+            //{
+            //    defaultScreen.IsVisible = false;
+            //    secondScreen.IsVisible = true;
+            //}
+            //else
+            //{
+            //    DisplayAlert("Error", "Please fill all fields", "Ok");
+            //}
 
-            //defaultScreen.IsVisible = false;
-            //secondScreen.IsVisible = true;
+            defaultScreen.IsVisible = false;
+            secondScreen.IsVisible = true;
 
 
         }
@@ -62,10 +62,10 @@ namespace AhiaJara.Views
         {
             if(Constants.skinIssue != null)
             {
-                //Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
-                defaultScreen.IsVisible = false;
-                secondScreen.IsVisible = false;
-                thirdScreen.IsVisible = true;
+                Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
+                //defaultScreen.IsVisible = false;
+                //secondScreen.IsVisible = false;
+                //thirdScreen.IsVisible = true;
             }
             else
             {
