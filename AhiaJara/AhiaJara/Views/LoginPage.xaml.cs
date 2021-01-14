@@ -44,7 +44,7 @@ namespace AhiaJara.Views
 
         public async void OnFailedLogin()
         {
-            await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "1");
+            await Xamarin.Essentials.SecureStorage.SetAsync("isLogged", "0");
             Application.Current.MainPage = new AppShell();
             await Shell.Current.GoToAsync("//main");
         }

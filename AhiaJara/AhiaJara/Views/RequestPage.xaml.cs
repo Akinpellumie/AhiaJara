@@ -42,7 +42,7 @@ namespace AhiaJara.Views
                 Picker picker = sender as Picker;
                 selectedCategory = picker.SelectedItem.ToString();
                 //_answer2 = selectedItem.ToString();// This is the model selected in the picker
-                if (selectedCategory == "Skin Products")
+                if (selectedCategory == "Skin/Face Products")
                 {
                     var prod = Constants.SkinProductsList;
                     var newProd = new ObservableCollection<ProductModel>(prod);
@@ -79,41 +79,49 @@ namespace AhiaJara.Views
 
         private async void request_Clicked(object sender, EventArgs e)
         {
-            try
+            if(qtyEntry.Text != null && _productId != null)
             {
-                await PopupNavigation.Instance.PushAsync(new PopLoader());
-                RequestModel requestProduct = new RequestModel()
+                try
                 {
-                    quantitySelected = qtyEntry.Text,
-                    productId = _productId,
-                    userId = Settings.id,
-                };
+                    await PopupNavigation.Instance.PushAsync(new PageLoader());
+                    RequestModel requestProduct = new RequestModel()
+                    {
+                        quantitySelected = qtyEntry.Text,
+                        productId = _productId,
+                        userId = Settings.id,
+                    };
 
-                HttpClient client = new HttpClient();
+                    HttpClient client = new HttpClient();
 
-                var url = Constants.RequestProduct;
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var url = Constants.RequestProduct;
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
 
-                var json = JsonConvert.SerializeObject(requestProduct);
-                //var content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpContent result = new StringContent(json);
-                result.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var response = await client.PostAsync(url, result);
+                    var json = JsonConvert.SerializeObject(requestProduct);
+                    //var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpContent result = new StringContent(json);
+                    result.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    var response = await client.PostAsync(url, result);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    await PopupNavigation.Instance.PopAsync(true);
-                    await DisplayAlert("Success", "Product request Successful", "ok");
-                    await Shell.Current.Navigation.PopModalAsync();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        await PopupNavigation.Instance.PopAsync(true);
+                        await DisplayAlert("Success", "Product request Successful", "ok");
+                        await Shell.Current.Navigation.PopModalAsync();
+
+                    }
 
                 }
-
+                catch (Exception)
+                {
+                    return;
+                }
             }
-            catch(Exception)
+            else
             {
-                return;
+                await DisplayAlert("Error", "Please fill all fields", "Ok");
             }
+            
 
             CategoryPicker.SelectedIndex = -1;
             ProductPicker.SelectedIndex = -1;

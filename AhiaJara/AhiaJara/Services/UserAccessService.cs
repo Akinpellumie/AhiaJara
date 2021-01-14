@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AhiaJara.Services
@@ -72,7 +73,14 @@ namespace AhiaJara.Services
                         Constants.userprofile = userProfile;
                         //Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 
-
+                        try
+                        {
+                            await SecureStorage.SetAsync("Token", userProfile.token);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Possible that device doesn't support secure storage on device.
+                        }
                         Settings.Token = userProfile.token;
                         Settings.cartcount = userProfile.cartcount;
 

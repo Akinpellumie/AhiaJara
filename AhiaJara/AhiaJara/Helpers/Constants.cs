@@ -12,7 +12,7 @@ namespace AhiaJara.Helpers
         {
             get
             {
-                //return "http://192.168.43.162:5000";
+                //return "http://192.168.1.114:4000";
                 return "https://ahiajara.herokuapp.com";
             }
         }
@@ -70,6 +70,8 @@ namespace AhiaJara.Helpers
         public static List<ProductModel> LatestProductsList { get; set; }
         public static List<Cart> CartItemList { get; set; }
 
+        public static Models.SkinIssue skinIssue { get; set; }
+
 
         public static List<Product> CarouselItemList { get; set; }
 
@@ -83,5 +85,7 @@ namespace AhiaJara.Helpers
         {
             return target.IndexOf(value, comparison) >= 0;
         }
+
+
     }
 }

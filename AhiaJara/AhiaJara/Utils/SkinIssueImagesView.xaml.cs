@@ -34,20 +34,20 @@ namespace AhiaJara.Utils
 
         }
 
-        public void Control_Clicked(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item == null) return;
-            var selectedItem = e.Item as ProductModel;
+        //public void Control_Clicked(object sender, ItemTappedEventArgs e)
+        //{
+        //    if (e.Item == null) return;
+        //    var selectedItem = e.Item as ProductModel;
 
-            //MyPanView.BackgroundColor = Color.FromHex("4DC503");
-        }
+        //    //MyPanView.BackgroundColor = Color.FromHex("4DC503");
+        //}
 
-        private void SkinIssue_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ProductModel selected = e.SelectedItem as ProductModel;
-            selected.FirstFrameBackColor = Color.FromHex("4DC503");
-            OnPropertyChanged();
-        }
+        //private void SkinIssue_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    ProductModel selected = e.SelectedItem as ProductModel;
+        //    selected.FirstFrameBackColor = Color.FromHex("4DC503");
+        //    OnPropertyChanged();
+        //}
 
         //public void PickUser_Clicked(Object Sender, EventArgs args)
         //{

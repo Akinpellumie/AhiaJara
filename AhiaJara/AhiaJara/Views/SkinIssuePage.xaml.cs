@@ -40,28 +40,46 @@ namespace AhiaJara.Views
 
         }
 
-        void OnfirstNext_Clicked(object sender, EventArgs e)
+       void OnfirstNext_Clicked(object sender, EventArgs e)
         {
-            defaultScreen.IsVisible = false;
-            secondScreen.IsVisible = true;
+            if (answer1.Text != null && _answer5 != null && _answer14 != null)
+            {
+                defaultScreen.IsVisible = false;
+                secondScreen.IsVisible = true;
+            }
+            else
+            {
+                DisplayAlert("Error", "Please fill all fields", "Ok");
+            }
+
+            //defaultScreen.IsVisible = false;
+            //secondScreen.IsVisible = true;
+
+
         }
 
          void OnSecondNext_Clicked(object sender, EventArgs e)
         {
-            defaultScreen.IsVisible = false;
-            secondScreen.IsVisible = false;
-            thirdScreen.IsVisible = true;
-            SendData();
+            if(Constants.skinIssue != null)
+            {
+                //Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
+                defaultScreen.IsVisible = false;
+                secondScreen.IsVisible = false;
+                thirdScreen.IsVisible = true;
+            }
+            else
+            {
+                DisplayAlert("Error", "Please select an image to proceed", "Ok");
+            }
+            
+            
             //await DisplayAlert("Info","Long-press image to select.","Ok");
         }
 
-        public async void OnThirdScreen_Clicked(object sender, EventArgs e)
+        void OnThirdScreen_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new PopLoader());
-            
-            //await Task.Delay(6000);
-            await PopupNavigation.Instance.PopAsync(true);
-            //await Navigation.PushAsync(new SkinIssueReviewPage());
+           
+            SendData();   
 
         }
 
@@ -99,34 +117,17 @@ namespace AhiaJara.Views
             {
                 return;
             }
-            //    await CrossMedia.Current.Initialize();
 
-            //if (!CrossMedia.Current.IsPickPhotoSupported)
-            //{
-            //    await DisplayAlert("Warning", "Picking  a photo is not supported", "OK");
-
-            //    return;
-            //}
-
-            //_mediaFile = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-            //{
-            //    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
-            //    CompressionQuality = 40
-            //});
-
-            //userImage.Source = ImageSource.FromStream(() => _mediaFile.GetStream());
-
-            //imageName.Text = System.IO.Path.GetFileName(_mediaFile.Path);
 
         }
         public async void SendData()
         {
+            await PopupNavigation.Instance.PushAsync(new PopLoader());
             try
             {
                 HttpClient client = new HttpClient();
 
                 var url = Constants.postSkinIssue;
-                var sampleurl = "http://192.168.88.75:5000/newskinissue";
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
                 if (_mediaFile != null)
@@ -137,7 +138,7 @@ namespace AhiaJara.Views
                         var upfilebytes = System.IO.File.ReadAllBytes(file);
                         MultipartFormDataContent content = new MultipartFormDataContent();
                         ByteArrayContent baContent = new ByteArrayContent(upfilebytes);
-                        SkinIssuesQuestionAndAnswer queAndAnswer;
+                        //SkinIssuesQuestionAndAnswer queAndAnswer;
                         var name = System.IO.Path.GetFileName(file);
                         baContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/" + System.IO.Path.GetExtension(name).Remove(0, 1));
                         baContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data")
@@ -147,10 +148,6 @@ namespace AhiaJara.Views
 
                         };
 
-                        //var categorynew = new List<string>();
-                        //categorynew.Add(((Categorypicker.SelectedItem as CategoriesModel).category));
-                        //                var categoryArray = categorynew.ToArray();
-                        //var jsoncategoryArray = JsonConvert.SerializeObject(categoryArray);
                         content.Add(baContent, "files", name);
                         //new QuestionAndAnswer(question1.Text, _answer1),
                         content.Add(new StringContent(answer1.Text), question1.Text);
@@ -171,19 +168,26 @@ namespace AhiaJara.Views
 
 
                         var response = await client.PostAsync(url, content);
-                        //if (response.IsSuccessStatusCode)
-                        //{
-                        //    //actindicator.IsVisible = false;
-                        //    //actindicator.IsRunning = false;
-                        //    //await DisplayAlert("Success", "Skin Issue" + "Created Successful", "ok");
-                        //    //await Shell.Current.Navigation.PopModalAsync();
+                        
+                        if (response.IsSuccessStatusCode)
+                        {  
+                            await Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
+                            await PopupNavigation.Instance.PopAsync(true);
 
-                        //}
+                        }
 
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
                     }
 
 
 
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
                 }
 
             }

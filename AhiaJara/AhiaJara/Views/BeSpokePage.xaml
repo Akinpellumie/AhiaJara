@@ -78,7 +78,7 @@
 
 
                             <StackLayout Margin="5,1,5,1">
-                                <Label x:Name="question4" Text="What is the main concern you are having concerning your skin or hair?"
+                                <Label x:Name="question4" Text="What is the main concern you are having concerning your skin/face or hair?"
                                    TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                 <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill"  HasShadow="True">
@@ -125,7 +125,7 @@
                             </StackLayout>
 
                             <StackLayout Margin="5,1,5,1">
-                                <Label Text="How often do you exfoliate your skin?" x:Name="question7" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                <Label Text="How often do you exfoliate your skin/face?" x:Name="question7" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                 <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                     <Controls:CustomPicker HorizontalOptions="FillAndExpand"
@@ -143,7 +143,7 @@
                             </StackLayout>
 
                             <StackLayout Margin="5,1,5,1">
-                                <Label Text="How does your SKIN reacts to hot sun?" x:Name="question8" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                <Label Text="How does your SKIN/face reacts to hot sun?" x:Name="question8" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                 <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                     <Controls:CustomPicker HorizontalOptions="FillAndExpand"
@@ -197,7 +197,7 @@
                             </StackLayout>
 
                             <StackLayout Margin="5,1,5,1">
-                                <Label Text="What is the reaction of your skin to new products like?" x:Name="question11" TextColor="{StaticResource TxtColor}" FontSize="12"/>
+                                <Label Text="What is the reaction of your skin/face to new products like?" x:Name="question11" TextColor="{StaticResource TxtColor}" FontSize="12"/>
                                 <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
                                            Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
                                     <Controls:CustomPicker HorizontalOptions="FillAndExpand"
@@ -212,24 +212,6 @@
                                     </Controls:CustomPicker>
                                 </Frame>
                             </StackLayout>
-
-                            <StackLayout Margin="5,1,5,1">
-                                <Label Text="What is the reaction of your skin to new products like?" x:Name="question12" TextColor="{StaticResource TxtColor}" FontSize="12"/>
-                                <Frame Style="{StaticResource FrameStyle}" BorderColor="Transparent"
-                                           Margin="0,0,0,10" HorizontalOptions="Fill" HasShadow="True">
-                                    <Controls:CustomPicker HorizontalOptions="FillAndExpand" Style="{StaticResource PickerEntryStyle}"
-                                                           x:Name="answer12" SelectedIndexChanged="OnPickerSelected12"
-                                         HeightRequest="45" 
-                                         Image="ic_arrow_drop_down"
-                                         Title="Select Answer">
-                                        <Controls:CustomPicker.Items>
-                                            <x:String>My skin reacts often, turns reddish, itchy or stings</x:String>
-                                            <x:String>My skin rarely reacts, handles most new products I try</x:String>
-                                        </Controls:CustomPicker.Items>
-                                    </Controls:CustomPicker>
-                                </Frame>
-                            </StackLayout>
-
 
                             <StackLayout Margin="5,1,5,1">
                                 <Label Text="What best describes your cosmetic vibes?" x:Name="question13" TextColor="{StaticResource TxtColor}" FontSize="12"/>
