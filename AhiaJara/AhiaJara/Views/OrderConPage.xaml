@@ -130,7 +130,7 @@
                 <StackLayout VerticalOptions="End">
                     <Button Text="Save and Continue"
                         TextColor="White"
-                        BackgroundColor="Accent"
+                        BackgroundColor="{StaticResource Accent}"
                         FontSize="15"
                             TextTransform="None"
                         CornerRadius="15"

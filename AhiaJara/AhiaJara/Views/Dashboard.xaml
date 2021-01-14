@@ -87,6 +87,14 @@
                     Text="See More"
                     TextColor="White"
                     VerticalOptions="Center" />-->
+
+                                        <Label
+                                            Margin="0,10,0,5"
+                                            FontSize="14"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="All Products" FontAttributes="Bold"
+                                            TextColor="{StaticResource TxtColor}"
+                                            VerticalOptions="Center" />
                                         <View:ProductListView/>
                                     </StackLayout>
 
