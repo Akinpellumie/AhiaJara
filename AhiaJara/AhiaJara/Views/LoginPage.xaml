@@ -65,7 +65,7 @@
                     </StackLayout>
 
                     <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-                        <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
+                        <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="{StaticResource Accent}" 
                         Text="Login" HeightRequest="50" TextTransform="None" Command="{Binding LoginCommand}"/>
                     </StackLayout>
                 </StackLayout>

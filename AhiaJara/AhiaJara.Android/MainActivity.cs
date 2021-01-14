@@ -28,7 +28,7 @@ namespace AhiaJara.Droid
             //Forms.SetFlags("CarouselView_Experimental");
             //Forms.SetFlags(new string[] { "CarouselView_Experimental", "SwipeView_Experimental", "IndicatorView_Experimental" });
 
-            Xamarin.Forms.Forms.SetFlags(new string[] { "CarouselView_Experimental", "IndicatorView_Experimental" });
+            Xamarin.Forms.Forms.SetFlags(new string[] { "CarouselView_Experimental", "IndicatorView_Experimental", "CollectionView_Experimental" });
             Forms.Init(this, savedInstanceState);
             SharpnadoInitializer.Initialize();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);

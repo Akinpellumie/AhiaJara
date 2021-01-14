@@ -17,7 +17,7 @@
                         <Image HeightRequest="50" Source="ajaraLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End">
-                        <Label Text="Sign Up" FontSize="Subtitle" FontAttributes="Bold" TextColor="Accent"/>
+                        <Label Text="Sign Up" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource Accent}"/>
                     </StackLayout>
                 </Grid>
             </StackLayout>
@@ -88,7 +88,7 @@
                         </Frame>
                     </StackLayout>
 
-                    <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="Accent" 
+                    <Button VerticalOptions="Center"  HorizontalOptions="Fill" CornerRadius="25" BackgroundColor="{StaticResource Accent}" 
                         Text="Sign Up" HeightRequest="50" Command="{Binding SignUpCommand}" />
 
                 </StackLayout>

@@ -52,7 +52,7 @@
                                       HeightRequest="50"
                                       HorizontalOptions="Fill"
                                       SegmentedHasSeparator="True"
-                                      SegmentedOutlineColor="Accent"
+                                      SegmentedOutlineColor="{StaticResource Accent}"
                                           BackgroundColor="White"
                                           ShowScrollbar="False"
                                           TabType="Scrollable"

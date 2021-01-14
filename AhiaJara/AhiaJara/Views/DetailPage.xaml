@@ -58,18 +58,18 @@
                             
                             <Grid VerticalOptions="End" HorizontalOptions="Fill">
                                 <Button Grid.Column="0" 
-                                        BorderColor="Accent" 
+                                        BorderColor="{StaticResource Accent}" 
                                         Text="Add to Cart" 
                                         x:Name="cartBtn"
                                         Command="{Binding Path=BindingContext.CallAddToCartPopUpCommand, Source={x:Reference north}}"
                                         
-                                        TextColor="Accent"
+                                        TextColor="{StaticResource Accent}"
                                         BackgroundColor="Transparent"
                                         BorderWidth="2"
                                         CornerRadius="15"/>
 
                                 <Button Grid.Column="1" 
-                                        BackgroundColor="Accent" 
+                                        BackgroundColor="{StaticResource Accent}" 
                                         Text="Buy Now" 
                                         Clicked="CheckOutPage_Clicked"
                                         TextColor="White"

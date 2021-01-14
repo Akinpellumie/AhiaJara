@@ -8,60 +8,60 @@
              x:Class="AhiaJara.Utils.ProductListView">
     <ContentView.Content>
         <StackLayout>
-            <flv:FlowListView FlowColumnCount="2" 
-                                              FlowItemsSource="{Binding ProductModelList}" 
-                                              x:Name="latestProducts"
-                                              HorizontalOptions="Fill"
-                                              VerticalOptions="Fill"
-                              extension:Skeleton.IsParent="True"
-                              extension:Skeleton.IsBusy="{Binding IsBusy}"
-                              extension:Skeleton.Animation="{extension:DefaultAnimation Fade}"
-                              FlowIsLoadingInfiniteEnabled="False"
-                              HasUnevenRows="True" SeparatorVisibility="None"
-                              Header="All Products">
-                
-                <flv:FlowListView.FlowColumnTemplate>
+
+            <CollectionView
+                            ItemsSource="{Binding ProductModelList}"
+                            ItemsLayout="VerticalGrid, 2" 
+                            x:Name="latestProducts"   
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedPlant, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding SelectCommand}" 
+                            Margin="12, 0">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5,2,5,2"
+                        <Grid>
+                            <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5,2,5,2"
                                                 HorizontalOptions="Fill" HeightRequest="100" WidthRequest="80" Margin="5">
-                            <Grid VerticalOptions="Fill">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="70*"/>
-                                    <RowDefinition Height="30*"/>
-                                </Grid.RowDefinitions>
-                                
-                                <Grid Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                                    <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}"/>
-                                </Grid>
-                                
-                                <Grid VerticalOptions="Fill" Grid.Row="1">
-                                    <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                <Grid VerticalOptions="Fill">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="70*"/>
+                                        <RowDefinition Height="30*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                                        <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}"/>
+                                    </Grid>
+
+                                    <Grid VerticalOptions="Fill" Grid.Row="1">
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                            LineBreakMode="TailTruncation"
                                            VerticalOptions="Start"
                                            extension:Skeleton.IsBusy="{Binding IsBusy}"
                                            extension:Skeleton.BackgroundColor="#c6c6c5"
                                            HorizontalOptions="Start" FontSize="10" 
                                            FontFamily="{StaticResource font_book}"/>
-                                    <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
                                            VerticalOptions="End"
                                            Margin="0,2,0,0"
                                            extension:Skeleton.IsBusy="{Binding IsBusy}"
                                            extension:Skeleton.BackgroundColor="#c6c6c5"
                                            HorizontalOptions="Start" FontSize="12" 
                                            FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                            <pv:PancakeView.GestureRecognizers>
-                                <TapGestureRecognizer
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer
                                             Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference latestProducts}}"
                                             CommandParameter="{Binding .}"
                                             NumberOfTapsRequired="1" />
-                            </pv:PancakeView.GestureRecognizers>
-                        </pv:PancakeView>
+                                </pv:PancakeView.GestureRecognizers>
+                            </pv:PancakeView>
+                        </Grid>
                     </DataTemplate>
-                </flv:FlowListView.FlowColumnTemplate>
-
-            </flv:FlowListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

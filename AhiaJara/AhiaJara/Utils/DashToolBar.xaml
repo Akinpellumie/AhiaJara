@@ -45,7 +45,7 @@
                             <Image HeightRequest="30" BackgroundColor="Transparent" x:Name="cart"  
                                      Source="cartIcon" WidthRequest="30"
                                     Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <pv:PancakeView CornerRadius="10" BackgroundColor="Accent"
+                            <pv:PancakeView CornerRadius="10" BackgroundColor="{StaticResource Accent}"
                                                 HorizontalOptions="End" VerticalOptions="Start" Margin="0,13,0,0" HeightRequest="15" WidthRequest="15" >
                                 <Label Text="{Binding CartCount}" TextColor="White" FontSize="8" 
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
