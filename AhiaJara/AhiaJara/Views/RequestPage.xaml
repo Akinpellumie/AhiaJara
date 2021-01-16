@@ -45,7 +45,7 @@
                             <Controls:CustomPicker HorizontalOptions="FillAndExpand"
                                                    x:Name="ProductPicker" SelectedIndexChanged="OnProductSelected"
                                          HeightRequest="45" 
-                                         ItemDisplayBinding="{Binding name}" 
+                                         ItemDisplayBinding="{Binding Name}" 
                                          Image="ic_arrow_drop_down"
                                          Title="--Select Product--"/>
                         </Frame>
