@@ -32,11 +32,16 @@ namespace AhiaJara.Views
             //this.BindingContext = ProductViewModel;
         }
 
-        private void OnCategorySelected(object sender, EventArgs e)
+        private async void OnCategorySelected(object sender, EventArgs e)
         {
             try
             {
-                ProductPicker.SelectedIndex = -1;
+                if(ProductPicker.SelectedIndex >= 0)
+                {
+                    await Navigation.PushAsync(new RequestPage());
+                    return;
+                }
+                //await Navigation.PushAsync(new RequestPage());
                 qtyEntry.Text = "";
                 descEntry.Text = "";
                 Picker picker = sender as Picker;
@@ -55,6 +60,7 @@ namespace AhiaJara.Views
                     ProductPicker.ItemsSource = newProd;
 
                 }
+                //ProductPicker.SelectedIndex = -1;
             }
             catch (Exception)
             {
@@ -66,14 +72,25 @@ namespace AhiaJara.Views
         private void OnProductSelected(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;
+           
             selectedProductName = picker.SelectedItem.ToString();
             var idx = picker.SelectedIndex;
             //_answer2 = selectedItem.ToString();// This is the model selected in the picker
+            if(selectedCategory == "Skin/Face Products")
+            {
+                var prod = Constants.SkinProductsList;
+                var newProd = new ObservableCollection<ProductModel>(prod);
+                descEntry.Text = newProd[idx].description;
+                _productId = newProd[idx].id;
+            }
+            else
+            {
                 var prod = Constants.HairProductsList;
                 var newProd = new ObservableCollection<ProductModel>(prod);
                 descEntry.Text = newProd[idx].description;
                 _productId = newProd[idx].id;
 
+            }
             //var a = newProd[idx].name;
         }
 
@@ -107,7 +124,7 @@ namespace AhiaJara.Views
                     {
                         await PopupNavigation.Instance.PopAsync(true);
                         await DisplayAlert("Success", "Product request Successful", "ok");
-                        await Shell.Current.Navigation.PopModalAsync();
+                        await Shell.Current.Navigation.PopAsync();
 
                     }
 

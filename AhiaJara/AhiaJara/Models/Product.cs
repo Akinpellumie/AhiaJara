@@ -92,6 +92,15 @@ namespace AhiaJara.Models
         public string quantitySelected { get; set; }
     }
 
+    public class SupportModel
+    {
+        public string subject { get; set; }
+        public string email { get; set; }
+        public string phoneNo { get; set; }
+        public string fullName { get; set; }
+        public string text { get; set; }
+    }
+
     public class ProductModel : BaseVM
 
     {
