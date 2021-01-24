@@ -58,5 +58,11 @@ namespace AhiaJara.Views
             Application.Current.MainPage = new LoginPage();
             //await Navigation.PushAsync(new LoginPage());
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            //Navigation.PushAsync(new Dashboard());
+            return true;
+        }
     }
 }

@@ -17,6 +17,7 @@
                             HorizontalOptions="Fill"
                             VerticalOptions="Fill"
                             SelectionMode="Single"
+                            IsGrouped="True"
                             SelectedItem="{Binding SelectedPlant, Mode=TwoWay}"
                             SelectionChangedCommand="{Binding SelectCommand}" 
                             Margin="12, 0">

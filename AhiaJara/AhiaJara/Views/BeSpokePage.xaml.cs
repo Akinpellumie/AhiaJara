@@ -278,5 +278,11 @@ namespace AhiaJara.Views
             var selectedItem = picker.SelectedItem;
             _answer13 = selectedItem.ToString();// This is the model selected in the picker
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            //Navigation.PushAsync(new Dashboard());
+            return true;
+        }
     }
 }

@@ -42,22 +42,34 @@ namespace AhiaJara.Views
 
        void OnfirstNext_Clicked(object sender, EventArgs e)
         {
-            //if (answer1.Text != null && _answer5 != null && _answer14 != null)
-            //{
-            //    defaultScreen.IsVisible = false;
-            //    secondScreen.IsVisible = true;
-            //}
-            //else
-            //{
-            //    DisplayAlert("Error", "Please fill all fields", "Ok");
-            //}
+            if (answer1.Text != null && _answer5 != null && _answer14 != null)
+            {
+                defaultScreen.IsVisible = false;
+                secondScreen.IsVisible = true;
+            }
+            else
+            {
+                DisplayAlert("Error", "Please fill all fields", "Ok");
+            }
 
-            defaultScreen.IsVisible = false;
-            secondScreen.IsVisible = true;
+            //defaultScreen.IsVisible = false;
+            //secondScreen.IsVisible = true;
 
 
         }
+        void OnBack_Clicked(object sender, EventArgs e)
+        {
+            defaultScreen.IsVisible = true;
+            secondScreen.IsVisible = false;
 
+        }
+
+        void OnThirdScreenBack_Clicked(object sender, EventArgs e)
+        {
+            defaultScreen.IsVisible = false;
+            secondScreen.IsVisible = true;
+            thirdScreen.IsVisible = false;
+        }
          void OnSecondNext_Clicked(object sender, EventArgs e)
         {
             if(Constants.skinIssue != null)
@@ -289,7 +301,11 @@ namespace AhiaJara.Views
             _answer14 = selectedItem.ToString();// This is the model selected in the picker
         }
 
-
+        protected override bool OnBackButtonPressed()
+        {
+            //Navigation.PushAsync(new Dashboard());
+            return true;
+        }
 
     }
 }
