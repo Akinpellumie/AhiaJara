@@ -1,6 +1,8 @@
 ﻿using AhiaJara.ViewModels;
-
+using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace AhiaJara.Views
@@ -15,6 +17,5 @@ namespace AhiaJara.Views
             InitializeComponent();
             this.BindingContext = ProductViewModel;
         }
-
     }
 }

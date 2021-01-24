@@ -29,85 +29,91 @@
                    
                 </StackLayout>
 
-                <ScrollView Grid.Row="1" Orientation="Vertical">
-                    <StackLayout >
-                        <!--scrollingProducts starts-->
-                        <ScrollView>
+                <StackLayout Grid.Row="1">
 
+                    <!--#region products-->
+                        <StackLayout>
+                            
+                            <!--#region All products-->
+                            <CollectionView
+                            ItemsSource="{Binding ProductModelList}"
+                            ItemsLayout="VerticalGrid, 2" 
+                VerticalScrollBarVisibility="Never"
+                            x:Name="latestProducts"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedPlant, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding SelectCommand}" 
+                            Margin="12, 0">
+                                    <CollectionView.Header>
+                                        <StackLayout>
+                                            <View:AdsCarousel/>
 
-                            <StackLayout>
+                                            <Label
+                                                Margin="0,15,0,5"
+                                                FontSize="14"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="Latest Products" FontAttributes="Bold"
+                                                TextColor="{StaticResource TxtColor}"
+                                                VerticalOptions="Center" />
 
-                                <ScrollView>
-                                    <!--carouselStack start-->
-                                    <View:AdsCarousel/>
-                                    <!--carouselStack end-->
-                                </ScrollView>
-
-                                <!--PopularproductStack start-->
-
-
-                                <ScrollView Orientation="Horizontal">
-                                    <StackLayout>
-                                        <Label
-                                            Margin="0,10,0,5"
-                                            FontSize="14"
-                                            HorizontalOptions="StartAndExpand"
-                                            Text="Latest Products" FontAttributes="Bold"
-                                            TextColor="{StaticResource TxtColor}"
-                                            VerticalOptions="Center" />
-
-                                        <View:LatestProductView/>
-                                        <!--<Label
-                    Margin="0,20,0,20"
-                    FontSize="11"
-                    HorizontalOptions="EndAndExpand"
-                    Text="See More"
-                    TextColor="White"
-                    VerticalOptions="Center" />-->
-                                    </StackLayout>
-                                </ScrollView>
-                                <!--PopularproductStack Ends-->
-
-                                <!--LatestProductStack start-->
-
-
-                                <ScrollView Orientation="Vertical">
-                                    <StackLayout>
-                                        <!--<Label
-                                            Margin="0,10,0,5"
-                                            FontSize="14"
-                                            HorizontalOptions="StartAndExpand"
-                                            Text="Latest Products" FontAttributes="Bold"
-                                            TextColor="{StaticResource TxtColor}"
-                                            VerticalOptions="Center" />-->     
-                                                            <!--<Label
-                    Margin="0,20,0,20"
-                    FontSize="11"
-                    HorizontalOptions="EndAndExpand"
-                    Text="See More"
-                    TextColor="White"
-                    VerticalOptions="Center" />-->
+                                            <View:LatestProductView/>
 
                                         <Label
-                                            Margin="0,10,0,5"
+                                            Margin="0,10,0,10"
                                             FontSize="14"
                                             HorizontalOptions="StartAndExpand"
                                             Text="All Products" FontAttributes="Bold"
                                             TextColor="{StaticResource TxtColor}"
                                             VerticalOptions="Center" />
-                                        <View:ProductListView/>
                                     </StackLayout>
+                                    </CollectionView.Header>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White"
+                                                HorizontalOptions="Fill" HeightRequest="100" WidthRequest="80" Margin="5">
+                                                <Grid VerticalOptions="Fill">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="70*"/>
+                                                        <RowDefinition Height="30*"/>
+                                                    </Grid.RowDefinitions>
 
-                                </ScrollView>
+                                                    <Grid Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                                                        <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}"/>
+                                                    </Grid>
 
-                                <!--LatestProductStack Ends-->
-
-
-                            </StackLayout>
-                        </ScrollView>
-                        <!--scrollingProducts ends-->
-                    </StackLayout>
-                </ScrollView>
+                                                    <Grid VerticalOptions="Fill" Grid.Row="1" Margin="10,2,0,3">
+                                                        <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
+                                           LineBreakMode="TailTruncation"
+                                           VerticalOptions="Start"
+                                           HorizontalOptions="Start" FontSize="10" 
+                                           FontFamily="{StaticResource font_book}"/>
+                                                        <Label Text="{Binding Price}" TextColor="{StaticResource Primary}"
+                                           VerticalOptions="End"
+                                           Margin="0,2,0,0"
+                                           HorizontalOptions="Start" FontSize="12" 
+                                           FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
+                                                    </Grid>
+                                                </Grid>
+                                                <pv:PancakeView.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                            Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference latestProducts}}"
+                                            CommandParameter="{Binding .}"
+                                            NumberOfTapsRequired="1" />
+                                                </pv:PancakeView.GestureRecognizers>
+                                            </pv:PancakeView>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <!--#endregion-->
+                        </StackLayout>
+                        <!--Products ends-->
+                        
+                        
+                </StackLayout>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
