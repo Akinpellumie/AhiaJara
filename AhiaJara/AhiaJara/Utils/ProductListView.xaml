@@ -12,6 +12,7 @@
             <CollectionView
                             ItemsSource="{Binding ProductModelList}"
                             ItemsLayout="VerticalGrid, 2" 
+                VerticalScrollBarVisibility="Never"
                             x:Name="latestProducts"   
                             HorizontalOptions="Fill"
                             VerticalOptions="Fill"
@@ -22,7 +23,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="5,2,5,2"
+                            <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White"
                                                 HorizontalOptions="Fill" HeightRequest="100" WidthRequest="80" Margin="5">
                                 <Grid VerticalOptions="Fill">
                                     <Grid.RowDefinitions>
@@ -34,7 +35,7 @@
                                         <Image HorizontalOptions="Center" VerticalOptions="StartAndExpand" Aspect="AspectFill" Source="{Binding ProductImage}"/>
                                     </Grid>
 
-                                    <Grid VerticalOptions="Fill" Grid.Row="1">
+                                    <Grid VerticalOptions="Fill" Grid.Row="1" Margin="10,2,0,3">
                                         <Label Text="{Binding Name}" TextColor="{StaticResource TxtColor}"
                                            LineBreakMode="TailTruncation"
                                            VerticalOptions="Start"
