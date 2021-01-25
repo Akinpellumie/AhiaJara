@@ -37,7 +37,7 @@
                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"                          
                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
 
-                    <StackLayout Margin="10,5">
+                    <StackLayout Margin="10,10,10,40">
 
                         <StackLayout Margin="10,20,10,10">
                             <Label
@@ -310,6 +310,11 @@
                 </Grid>
                 
                 <Grid VerticalOptions="End">
+                    <Button VerticalOptions="Center"  HorizontalOptions="Start" 
+                                        CornerRadius="25" BackgroundColor="{StaticResource Accent}" 
+                        Text="BACK" HeightRequest="55" Margin="10,10,10,20" 
+                            WidthRequest="150" Clicked="OnBack_Clicked"/>
+                    
                     <Button VerticalOptions="Center"  HorizontalOptions="End" 
                                         CornerRadius="25" BackgroundColor="{StaticResource Accent}" 
                         Text="NEXT" HeightRequest="55" Margin="10,10,10,20" 
@@ -358,8 +363,26 @@
                     </Grid.GestureRecognizers>
                 </Grid>
 
-                <Grid VerticalOptions="End" HorizontalOptions="Fill" Margin="10">
-                    <pv:PancakeView BackgroundColor="{StaticResource Accent}" HeightRequest="55" CornerRadius="25">
+                <Grid VerticalOptions="End" HorizontalOptions="Start" Margin="10">
+
+                    <pv:PancakeView BackgroundColor="{StaticResource Accent}" HeightRequest="55" WidthRequest="150" CornerRadius="25">
+                        <Label Text="Back"
+                               TextColor="White"
+                               FontSize="14"
+                               FontFamily="{StaticResource font_medium}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer
+                                            Tapped="OnThirdScreenBack_Clicked"
+                                            NumberOfTapsRequired="1" />
+                        </pv:PancakeView.GestureRecognizers>
+                    </pv:PancakeView>
+                </Grid>
+
+                <Grid VerticalOptions="End" HorizontalOptions="End" Margin="10">
+
+                    <pv:PancakeView BackgroundColor="{StaticResource Accent}" HeightRequest="55" WidthRequest="150" CornerRadius="25">
                         <Label Text="Proceed"
                                TextColor="White"
                                FontSize="14"

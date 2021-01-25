@@ -40,5 +40,11 @@ namespace AhiaJara.Views
             });
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            //Navigation.PushAsync(new Dashboard());
+            return true;
+        }
+
     }
 }
