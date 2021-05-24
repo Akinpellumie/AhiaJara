@@ -66,19 +66,25 @@
 
                 <StackLayout>
                     <pv:PancakeView CornerRadius="0,15,15,0" BackgroundColor="White" Padding="8,5"
-                                                HorizontalOptions="StartAndExpand" HeightRequest="180" WidthRequest="150" Margin="5" >
+                                                HorizontalOptions="StartAndExpand" HeightRequest="150" WidthRequest="120" Margin="5" >
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="70*"/>
-                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="40*"/>
                             </Grid.RowDefinitions>
 
                             <Image HorizontalOptions="Center" VerticalOptions="Fill" Aspect="AspectFill" Source="{Binding Path=recommendedProductId.ProductImage}" Grid.Row="0"/>
                             <StackLayout Orientation="Vertical" Grid.Row="1" x:Name="nort">
                                 <Label Text="{Binding Path=recommendedProductId.name}" TextColor="{StaticResource TxtColor}"
-                                                HorizontalOptions="Start" FontSize="Subtitle"/>
-                                <Label Text="{Binding Path=recommendedProductId.Price}"  TextColor="{StaticResource Primary}"
-                                                HorizontalOptions="Start" FontSize="Subtitle" FontAttributes="Bold"/>
+                                           LineBreakMode="TailTruncation"
+                                           VerticalOptions="Start"
+                                           HorizontalOptions="Start" FontSize="10" 
+                                           FontFamily="{StaticResource font_book}"/>
+                                <Label Text="{Binding Path=recommendedProductId.Price}" TextColor="{StaticResource Primary}"
+                                           VerticalOptions="End"
+                                           Margin="0,2,0,0"
+                                           HorizontalOptions="Start" FontSize="12" 
+                                           FontFamily="{StaticResource font_bold}" FontAttributes="Bold"/>
                             </StackLayout>
                         </Grid>
                     </pv:PancakeView>

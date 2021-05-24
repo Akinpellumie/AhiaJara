@@ -21,7 +21,7 @@ namespace AhiaJara.Views
     public partial class SkinIssuePage : ContentPage
     {
         private MediaFile _mediaFile;
-        String _answer2, _answer6, _answer7;
+        private string _answer2, _answer6, _answer7;
         private string _answer3;
         private string _answer5;
         private string _answer14;
@@ -74,10 +74,10 @@ namespace AhiaJara.Views
         {
             if(Constants.skinIssue != null)
             {
-                Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
-                //defaultScreen.IsVisible = false;
-                //secondScreen.IsVisible = false;
-                //thirdScreen.IsVisible = true;
+                //Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
+                defaultScreen.IsVisible = false;
+                secondScreen.IsVisible = false;
+                thirdScreen.IsVisible = true;
             }
             else
             {
@@ -90,8 +90,22 @@ namespace AhiaJara.Views
 
         void OnThirdScreen_Clicked(object sender, EventArgs e)
         {
-           
-            SendData();   
+            //answer1.Text = "";
+            //answer2.SelectedIndex = -1;
+            //answer3.SelectedIndex = -1;
+            //answer4.Text = "";
+            //answer5.SelectedIndex = -1;
+            //answer6.SelectedIndex = -1;
+            //answer7.SelectedIndex = -1;
+            //answer8.SelectedIndex = -1;
+            //answer9.SelectedIndex = -1;
+            //answer10.SelectedIndex = -1;
+            ////answer11.SelectedIndex = -1;
+            //answer12.SelectedIndex = -1;
+            //answer13.Text = "";
+            //answer14.SelectedIndex = -1;
+            SendData();
+            
 
         }
 
@@ -187,11 +201,17 @@ namespace AhiaJara.Views
                             await PopupNavigation.Instance.PopAsync(true);
 
                         }
+                        else
+                        {
+                            await DisplayAlert("Error", "Cannot diagonize issue", "Try again Later");
+                            await PopupNavigation.Instance.PopAsync(true);
+                        }
 
                     }
                     else
                     {
                         await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
+                        await PopupNavigation.Instance.PopAsync(true);
                     }
 
 
@@ -200,6 +220,7 @@ namespace AhiaJara.Views
                 else
                 {
                     await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
+                    await PopupNavigation.Instance.PopAsync(true);
                 }
 
             }
@@ -207,21 +228,7 @@ namespace AhiaJara.Views
             {
                 return;
             }
-           
-                answer1.Text = "";
-                answer2.SelectedIndex = -1; 
-                answer3.SelectedIndex = -1; 
-                answer4.Text = "";
-                answer5.SelectedIndex = -1;
-                answer6.SelectedIndex = -1;
-                answer7.SelectedIndex = -1;
-                answer8.SelectedIndex = -1;
-                answer9.SelectedIndex = -1;
-                answer10.SelectedIndex = -1;
-                //answer11.SelectedIndex = -1;
-                answer12.SelectedIndex = -1;
-                answer13.Text = "";
-                answer14.SelectedIndex = -1;
+  
             }
 
         private void OnPickerSelected2(object sender, EventArgs e)
