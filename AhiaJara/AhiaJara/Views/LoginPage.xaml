@@ -14,7 +14,7 @@
                 <StackLayout Orientation="Vertical" VerticalOptions="Start" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0">
-                        <Image HeightRequest="150" Source="ajaraLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                        <Image HeightRequest="150" Source="sekatLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </StackLayout>
                 </StackLayout>
 

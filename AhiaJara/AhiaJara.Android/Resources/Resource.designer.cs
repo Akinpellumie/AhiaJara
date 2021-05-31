@@ -13855,37 +13855,40 @@ namespace AhiaJara.Droid
 			public const int searchIconId = 2131165343;
 			
 			// aapt resource value: 0x7F0700A0
-			public const int signOut = 2131165344;
+			public const int sekatLogo = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int skinMenu = 2131165345;
+			public const int signOut = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int tab_about = 2131165346;
+			public const int skinMenu = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int tab_feed = 2131165347;
+			public const int tab_about = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int tooltip_frame_dark = 2131165348;
+			public const int tab_feed = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int tooltip_frame_light = 2131165349;
+			public const int tooltip_frame_dark = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int uncheck = 2131165350;
+			public const int tooltip_frame_light = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int undrawSearch = 2131165351;
+			public const int uncheck = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int user = 2131165352;
+			public const int undrawSearch = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int userImage = 2131165353;
+			public const int user = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int xamarin_logo = 2131165354;
+			public const int userImage = 2131165354;
+			
+			// aapt resource value: 0x7F0700AB
+			public const int xamarin_logo = 2131165355;
 			
 			static Drawable()
 			{
@@ -14846,14 +14849,17 @@ namespace AhiaJara.Droid
 			// aapt resource value: 0x7F0C0000
 			public const int Appicon = 2131492864;
 			
-			// aapt resource value: 0x7F0C0001
-			public const int icon = 2131492865;
-			
 			// aapt resource value: 0x7F0C0002
-			public const int icon_round = 2131492866;
+			public const int icon = 2131492866;
 			
 			// aapt resource value: 0x7F0C0003
-			public const int launcher_foreground = 2131492867;
+			public const int icon_round = 2131492867;
+			
+			// aapt resource value: 0x7F0C0001
+			public const int ic_launcher = 2131492865;
+			
+			// aapt resource value: 0x7F0C0004
+			public const int launcher_foreground = 2131492868;
 			
 			static Mipmap()
 			{

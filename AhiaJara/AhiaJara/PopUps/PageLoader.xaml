@@ -34,7 +34,7 @@
                             VerticalOptions="CenterAndExpand"
                                 WidthRequest="200"/>
 
-            <Image HeightRequest="150" x:Name="logEff" Source="ajaraLogo.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Image HeightRequest="150" x:Name="logEff" Source="sekatLogo.png" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
 
     </Frame>

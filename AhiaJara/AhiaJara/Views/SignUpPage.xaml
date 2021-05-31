@@ -14,7 +14,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" HorizontalOptions="Start">
-                        <Image HeightRequest="50" Source="ajaraLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                        <Image HeightRequest="50" Source="sekatLogo.png" Aspect="AspectFit" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End">
                         <Label Text="Sign Up" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource Accent}"/>

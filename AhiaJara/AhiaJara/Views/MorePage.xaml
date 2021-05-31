@@ -98,7 +98,7 @@
             </StackLayout.GestureRecognizers>
         </StackLayout>
 
-        <StackLayout Margin="10,5,10,5" x:Name="faqStack">
+        <!--<StackLayout Margin="10,5,10,5" x:Name="faqStack">
             <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -126,7 +126,7 @@
                 <TapGestureRecognizer Tapped="FaqBtn_Clicked"
                                       NumberOfTapsRequired="1"/>
             </StackLayout.GestureRecognizers>
-        </StackLayout>
+        </StackLayout>-->
 
         <StackLayout Margin="10,5,10,5" x:Name="SupportStack">
             <pv:PancakeView CornerRadius="15" BackgroundColor="{StaticResource moreFrameColor}" HorizontalOptions="Fill" HeightRequest="50" >
