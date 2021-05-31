@@ -80,7 +80,7 @@ namespace AhiaJara.Views
             //imageName.Text = System.IO.Path.GetFileName(_mediaFile.Path);
 
         }
-        public void sendData()
+        public async Task sendDataAsync()
         {
             if(_mediaFile != null)
             {
