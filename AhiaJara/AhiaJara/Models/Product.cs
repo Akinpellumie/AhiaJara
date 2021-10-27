@@ -27,7 +27,10 @@ namespace AhiaJara.Models
             get
             {
 
-                var pel = Math.Round(Convert.ToDouble(this.price), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
+                double temp = 0;
+                double.TryParse(this.price, out temp);
+
+                var pel = Math.Round(temp, 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
                 return pel;
             }
             set {;} 
@@ -129,15 +132,17 @@ namespace AhiaJara.Models
             set { ProductImage = value; }
         }
 
-         public string Price
+        public string Price
         {
             get
             {
+                double temp = 0;
+                double.TryParse(this.price, out temp);
 
-                var pel = Math.Round(Convert.ToDouble(this.price), 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
+                var pel = Math.Round(temp, 2).ToString("C", CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
                 return pel;
             }
-            set {;} 
+            set {; }
         }
 
         public string tempPrice
