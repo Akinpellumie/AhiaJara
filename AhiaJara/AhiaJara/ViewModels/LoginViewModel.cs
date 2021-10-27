@@ -108,6 +108,10 @@ namespace AhiaJara.ViewModels
                 await Shell.Current.GoToAsync("//main");
                 await PopupNavigation.Instance.PopAsync(true);
             }
+            else
+            {
+                await PopupNavigation.Instance.PopAsync(true);
+            }
         }
 
         private void OnSignUpClicked()
