@@ -5,12 +5,16 @@ using AhiaJara.Controls;
 using AhiaJara.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Android.Content;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
 namespace AhiaJara.Droid
 {
-    public class CustomPickerRenderer : PickerRenderer
+    public class CustomPickerRenderer : Xamarin.Forms.Platform.Android.AppCompat.PickerRenderer
 	{
+		public CustomPickerRenderer(Context context) : base(context)
+		{
+		}
 		CustomPicker element;
 
 		protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
