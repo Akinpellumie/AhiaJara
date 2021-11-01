@@ -1,6 +1,8 @@
 ﻿using AhiaJara.Helpers;
+using AhiaJara.PopUps;
 using Plugin.FilePicker;
 using Plugin.FileUploader.Abstractions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +35,7 @@ namespace AhiaJara.Views
 
                 bfitem = new FileBytesItem("fileName", file2.DataArray, file2.FileName);
 
-                FilePathItem fpitem = new FilePathItem("fileName", file2.FilePath);
-
-                userImagePro.Source = ImageSource.FromStream(() => file2.GetStream());
-                backgrndImg.Source = ImageSource.FromStream(() => file2.GetStream());
-
+                //FilePathItem fpitem = new FilePathItem("fileName", file2.FilePath);
                 if (file2 != null)
                 {
                     filename = file2.FilePath;
@@ -47,6 +45,7 @@ namespace AhiaJara.Views
                     {
                         if (string.IsNullOrEmpty(filename) == false)
                         {
+                            await PopupNavigation.Instance.PushAsync(new UploadImagePopup());
                             var upfilebytes = System.IO.File.ReadAllBytes(filename);
 
                             ByteArrayContent baContent = new ByteArrayContent(upfilebytes);
@@ -61,8 +60,21 @@ namespace AhiaJara.Views
 
                             //var httpClient = new HttpClient();
                             var updateImageUrl = Constants.uploadImage + Settings.id;
+                            
 
                             var finalresponse = await client.PutAsync(updateImageUrl, content);
+                            await PopupNavigation.Instance.PopAsync(true);
+                            if (finalresponse.IsSuccessStatusCode)
+                            {
+                                userImagePro.Source = ImageSource.FromStream(() => file2.GetStream());
+                                backgrndImg.Source = ImageSource.FromStream(() => file2.GetStream());
+                                await DisplayAlert("Image Uploaded", "Your Profile image has been updated successfully", "ok");
+                            }
+                            else
+                            {
+                                await DisplayAlert("Image Upload Failed", "Check your internet and try again later", "ok");
+                            }
+                            
                         }
                     }
                 }
