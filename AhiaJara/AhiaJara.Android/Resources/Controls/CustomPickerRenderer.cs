@@ -1,11 +1,12 @@
 ﻿using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Support.V4.Content;
+
 using AhiaJara.Controls;
 using AhiaJara.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Content;
+using AndroidX.Core.Content;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
 namespace AhiaJara.Droid

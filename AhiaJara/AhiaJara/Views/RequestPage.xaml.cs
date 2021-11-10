@@ -138,15 +138,11 @@ namespace AhiaJara.Views
             {
                 await DisplayAlert("Error", "Please fill all fields", "Ok");
             }
-            
-
+            //ProductPicker.SelectedIndex = -1;
             CategoryPicker.SelectedIndex = -1;
-            ProductPicker.SelectedIndex = -1;
             qtyEntry.Text = "";
             descEntry.Text = "";
-
-        
-    }
+        }
             
     }
 }

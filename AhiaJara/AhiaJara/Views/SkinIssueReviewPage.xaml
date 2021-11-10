@@ -9,6 +9,8 @@
     <ContentPage.Content>
         <StackLayout>
             <View:ToolBarView Title="Analysis result"/>
+            <ScrollView>
+            <StackLayout>
             <StackLayout Margin="15,0,15,0">
                 <pv:PancakeView BackgroundColor="White"
                                 CornerRadius="15"
@@ -98,7 +100,8 @@
                         Command="{Binding NavigateToRecommendedPageCommand}"
                         Text="BUY NOW" HeightRequest="55" Margin="15,5,15,10" />
             </StackLayout>
-            
+            </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
