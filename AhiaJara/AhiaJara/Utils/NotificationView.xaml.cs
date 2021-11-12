@@ -30,7 +30,8 @@ namespace AhiaJara.Utils
                 indic.IsRunning = true;
 
                 HttpClient client = new HttpClient();
-                var url = Constants.MyNotificationsUrl + Settings.id;
+                //var url = Constants.MyNotificationsUrl + Settings.id;
+                var url = Constants.AllNotificationsUrl;
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
                 var response = await client.GetAsync(url);

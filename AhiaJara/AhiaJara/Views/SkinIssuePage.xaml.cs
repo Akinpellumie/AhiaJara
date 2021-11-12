@@ -196,22 +196,25 @@ namespace AhiaJara.Views
                         var response = await client.PostAsync(url, content);
                         
                         if (response.IsSuccessStatusCode)
-                        {  
-                            await Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
+                        {
                             await PopupNavigation.Instance.PopAsync(true);
+                            await Navigation.PushAsync(new SkinIssueReviewPage(Constants.skinIssue));
+                            
 
                         }
                         else
                         {
-                            await DisplayAlert("Error", "Cannot diagonize issue", "Try again Later");
                             await PopupNavigation.Instance.PopAsync(true);
+                            await DisplayAlert("Error", "Cannot diagonize issue", "Try again Later");
+                            
                         }
 
                     }
                     else
                     {
-                        await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
                         await PopupNavigation.Instance.PopAsync(true);
+                        await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
+                        
                     }
 
 
@@ -219,8 +222,9 @@ namespace AhiaJara.Views
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
                     await PopupNavigation.Instance.PopAsync(true);
+                    await DisplayAlert("Error", "Upload an image of the affected part", "Ok");
+                    
                 }
 
             }

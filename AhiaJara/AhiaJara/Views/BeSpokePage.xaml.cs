@@ -122,24 +122,25 @@ namespace AhiaJara.Views
                         if (response.IsSuccessStatusCode)
                         {
                             await PopupNavigation.Instance.PopAsync(true);
-                            await DisplayAlert("Unique data received", "We will get back to you shortly", "Ok");
+                            await DisplayAlert("Bespoke Data received", "We will get back to you shortly", "Ok");
 
                             answer1.Text = "";
-                            answer2.SelectedIndex = -1;
-                            answer3.SelectedIndex = -1;
+                            answer2.SelectedItem = null;
+                            answer3.SelectedItem = null;
                             answer4.Text = "";
-                            answer5.SelectedIndex = -1;
-                            answer6.SelectedIndex = -1;
+                            answer5.SelectedItem = null;
+                            answer6.SelectedItem = null;
                             answer7.SelectedIndex = -1;
-                            answer8.SelectedIndex = -1;
-                            answer9.SelectedIndex = -1;
-                            answer10.SelectedIndex = -1;
+                            answer8.SelectedItem = null;
+                            answer9.SelectedItem = null;
+                            answer10.SelectedItem = null;
                             //answer11.SelectedIndex = -1;
                             //answer12.SelectedIndex = -1;
-                            answer13.SelectedIndex = -1;
+                            answer13.SelectedItem = null;
 
                             //await Navigation.PushAsync(new SkinIssueReviewPage());
                             //IsBusy = false;
+                            await Navigation.PushAsync(new Dashboard());
                         }
                         else
                         {
@@ -171,6 +172,7 @@ namespace AhiaJara.Views
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
+            if(selectedItem != null)
             _answer2 = selectedItem.ToString();// This is the model selected in the picker
         }
 
@@ -178,6 +180,7 @@ namespace AhiaJara.Views
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
+            if (selectedItem != null)
             _answer3 = selectedItem.ToString();// This is the model selected in the picker
         }
 
@@ -185,35 +188,40 @@ namespace AhiaJara.Views
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer5 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer5 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         private void OnPickerSelected6(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer6 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer6 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         private void OnPickerSelected7(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer7 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer7 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         private void OnPickerSelected8(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer8 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer8 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         private void OnPickerSelected9(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer9 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer9 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         private void OnPickerSelected10(object sender, EventArgs e)
@@ -227,7 +235,8 @@ namespace AhiaJara.Views
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer11 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer11 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         async void Permission()
@@ -276,7 +285,8 @@ namespace AhiaJara.Views
         {
             Picker picker = sender as Picker;
             var selectedItem = picker.SelectedItem;
-            _answer13 = selectedItem.ToString();// This is the model selected in the picker
+            if (selectedItem != null)
+                _answer13 = selectedItem.ToString();// This is the model selected in the picker
         }
 
         protected override bool OnBackButtonPressed()
