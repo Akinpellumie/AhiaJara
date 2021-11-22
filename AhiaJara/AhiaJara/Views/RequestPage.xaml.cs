@@ -45,7 +45,8 @@ namespace AhiaJara.Views
                 qtyEntry.Text = "";
                 descEntry.Text = "";
                 Picker picker = sender as Picker;
-                selectedCategory = picker.SelectedItem.ToString();
+                if (picker.SelectedItem != null)
+                    selectedCategory = picker.SelectedItem.ToString();
                 //_answer2 = selectedItem.ToString();// This is the model selected in the picker
                 if (selectedCategory == "Skin/Face Products")
                 {
@@ -72,8 +73,8 @@ namespace AhiaJara.Views
         private void OnProductSelected(object sender, EventArgs e)
         {
             Picker picker = sender as Picker;
-           
-            selectedProductName = picker.SelectedItem.ToString();
+            if (picker.SelectedItem != null)
+                selectedProductName = picker.SelectedItem.ToString();
             var idx = picker.SelectedIndex;
             //_answer2 = selectedItem.ToString();// This is the model selected in the picker
             if(selectedCategory == "Skin/Face Products")
@@ -124,7 +125,11 @@ namespace AhiaJara.Views
                     {
                         await PopupNavigation.Instance.PopAsync(true);
                         await DisplayAlert("Success", "Product request Successful", "ok");
-                        await Shell.Current.Navigation.PopAsync();
+                        CategoryPicker.SelectedItem = null;
+                        ProductPicker.SelectedItem = null;
+                        qtyEntry.Text = "";
+                        descEntry.Text = "";
+                        
 
                     }
 
@@ -138,15 +143,12 @@ namespace AhiaJara.Views
             {
                 await DisplayAlert("Error", "Please fill all fields", "Ok");
             }
-            
 
-            CategoryPicker.SelectedIndex = -1;
-            ProductPicker.SelectedIndex = -1;
-            qtyEntry.Text = "";
-            descEntry.Text = "";
 
-        
-    }
+            await Shell.Current.Navigation.PopAsync();
+
+
+        }
             
     }
 }

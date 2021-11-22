@@ -627,7 +627,7 @@ namespace AhiaJara.ViewModels
                 description = rootdir.description,
                 createdAt = rootdir.createdAt,
                 updatedAt = rootdir.updatedAt,
-                id = rootdir.id,
+                id = rootdir._id,
             };
 
             await Navigation.PushAsync(new DetailPage(productModel));
@@ -676,28 +676,35 @@ namespace AhiaJara.ViewModels
 
             if(cartData != null)
             {
-                HttpClient client = new HttpClient();
-                var url = Constants.AddToCart;
-              
-                var json = JsonConvert.SerializeObject(cartData);
-                //var content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpContent item = new StringContent(json);
-                item.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
-                var response = client.PostAsync(url, item);
-                var result = response.GetAwaiter().GetResult();
-
-                if (response.Result.IsSuccessStatusCode)
+                try
                 {
-                    
-                    //IsBusy = false;
-                    ToolbarViewModel toolbarView = new ToolbarViewModel();
-                    await toolbarView.GetCartCount();
-                    await PopupNavigation.Instance.PopAsync(true);
-                    await PopupNavigation.Instance.PushAsync(new AddToCartPop(txt));
+                    HttpClient client = new HttpClient();
+                    var url = Constants.AddToCart;
+
+                    var json = JsonConvert.SerializeObject(cartData);
+                    //var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpContent item = new StringContent(json);
+                    item.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                    var response = client.PostAsync(url, item);
+                    var result = response.GetAwaiter().GetResult();
+
+                    if (response.Result.IsSuccessStatusCode)
+                    {
+
+                        //IsBusy = false;
+                        ToolbarViewModel toolbarView = new ToolbarViewModel();
+                        await toolbarView.GetCartCount();
+                        await PopupNavigation.Instance.PopAsync(true);
+                        await PopupNavigation.Instance.PushAsync(new AddToCartPop(txt));
+                        await Navigation.PushAsync(new SkinIssuePage());
+                    }
                 }
-                
+                catch (Exception ex)
+                {
+
+                }                
             }
             
         }

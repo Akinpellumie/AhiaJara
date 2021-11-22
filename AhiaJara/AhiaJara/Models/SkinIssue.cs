@@ -19,7 +19,7 @@ namespace AhiaJara.Models
         public string description { get; set; }
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
-        public string id { get; set; }
+        public string _id { get; set; }
 
         public string Price
         {
