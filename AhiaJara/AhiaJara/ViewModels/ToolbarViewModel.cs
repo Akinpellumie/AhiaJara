@@ -18,6 +18,7 @@ namespace AhiaJara.ViewModels
         {
             GetCartCount();
             GetCarts();
+            GetNotificationCount();
         }
 
         private ObservableCollection<Cart> cartCountList;
@@ -32,6 +33,13 @@ namespace AhiaJara.ViewModels
         {
             get { return cartcount; }
             set { SetProperty(ref cartcount, value); }
+        }
+
+        private int _notificationCount;
+        public int NotificationCount
+        {
+            get => _notificationCount;
+            set => SetProperty(ref _notificationCount, value);
         }
         public async Task<bool> GetCartCount()
         {
@@ -64,6 +72,39 @@ namespace AhiaJara.ViewModels
             return Response;
         }
 
+        private async Task GetNotificationCount()
+        {
+            try
+            {
+
+                HttpClient client = new HttpClient();
+                //var url = Constants.MyNotificationsUrl + Settings.id;
+                var url = Constants.MyNotificationsUrl;
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", Settings.Token);
+                var response = await client.GetAsync(url);
+
+                var json = await response.Content.ReadAsStringAsync();
+
+                //List<MyNotification> userTransactions = JsonConvert.DeserializeObject<List<MyNotification>>(json);
+
+                Notification userTransactions = JsonConvert.DeserializeObject<Notification>(json);
+                if (userTransactions == null)
+                {
+                    return;
+                }
+                else
+                {
+                    _notificationCount = userTransactions.countunread;
+                }
+                // await PopupNavigation.Instance.PopAsync(true);
+                //return userTransactions;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
         public async void GetCarts()
         {
             var cartItems = new Cart();

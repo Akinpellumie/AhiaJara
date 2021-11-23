@@ -49,6 +49,10 @@ namespace AhiaJara.Utils
                 else
                 {
                     NotificationsList.ItemsSource = userTransactions.allNotification;
+                    var newUrl = Constants.markNotificationRead + Settings.id;
+                    var res = client.PostAsync(url, null);
+                    res = res;
+
                 }
                 
 

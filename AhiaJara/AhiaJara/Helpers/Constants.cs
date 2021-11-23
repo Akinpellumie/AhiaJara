@@ -59,6 +59,7 @@ namespace AhiaJara.Helpers
         public static string changePassword{ get { return Constants.domainurl + "/passwordchange"; } }
         public static string AllNotificationsUrl { get { return Constants.domainurl + "/allnotifications/"; } }
         public static string MyNotificationsUrl { get { return Constants.domainurl + "/users/notifications"; } }
+        public static string markNotificationRead{ get { return Constants.domainurl + "/markread/"; } }
         public static string deleteCartItem { get { return Constants.domainurl + "/cart/"; } }
         public static string sendSupportMessage { get { return Constants.domainurl + "/message"; } }
         
