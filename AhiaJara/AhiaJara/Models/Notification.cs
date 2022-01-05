@@ -20,7 +20,7 @@ namespace AhiaJara.Models
         {
             get
             {
-                var x = this.updatedAt.ToString();
+                var x = this.createdAt.ToString();
                 DateTime date = DateTime.Parse(x.Replace("[UTC]", ""));
                 var newDate = date.ToLocalTime().ToString("dddd, MMMM d, yyyy");
                 return newDate;

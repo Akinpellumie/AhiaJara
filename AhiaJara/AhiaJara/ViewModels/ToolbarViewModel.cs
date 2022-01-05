@@ -5,14 +5,16 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AhiaJara.ViewModels
 {
-    public class ToolbarViewModel:BaseVM
+    public class ToolbarViewModel:BaseVM, INotifyPropertyChanged
     {
         public ToolbarViewModel()
         {
@@ -39,7 +41,11 @@ namespace AhiaJara.ViewModels
         public int NotificationCount
         {
             get => _notificationCount;
-            set => SetProperty(ref _notificationCount, value);
+            set {
+                SetProperty(ref _notificationCount, value);
+                OnPropertyChanged("NotificationCount");
+            }
+            
         }
         public async Task<bool> GetCartCount()
         {
@@ -72,7 +78,7 @@ namespace AhiaJara.ViewModels
             return Response;
         }
 
-        private async Task GetNotificationCount()
+        public async Task GetNotificationCount()
         {
             try
             {
@@ -95,7 +101,7 @@ namespace AhiaJara.ViewModels
                 }
                 else
                 {
-                    _notificationCount = userTransactions.countunread;
+                    NotificationCount = userTransactions.countunread;
                 }
                 // await PopupNavigation.Instance.PopAsync(true);
                 //return userTransactions;
@@ -131,5 +137,19 @@ namespace AhiaJara.ViewModels
 
 
         }
+
+        //#region INotifyPropertyChanged
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //void OnPropertyChanged(string propertyName)
+        //{
+        //    if(PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+            
+        //}
+
+        //#endregion
     }
 }

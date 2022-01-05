@@ -12,6 +12,12 @@
              Shell.NavBarIsVisible="False">
 
     <ContentPage.Content>
+        <RefreshView BackgroundColor="Transparent"                   
+					IsRefreshing="{Binding IsRefreshing}"
+					RefreshColor="{StaticResource SecondaryColor}"
+					Command="{Binding RefreshDashboardCommand}"
+					VerticalOptions="FillAndExpand">
+      <ScrollView>
         <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
@@ -116,5 +122,8 @@
                 </StackLayout>
             </Grid>
         </StackLayout>
+                </ScrollView>
+        </RefreshView>
+            
     </ContentPage.Content>
 </ContentPage>

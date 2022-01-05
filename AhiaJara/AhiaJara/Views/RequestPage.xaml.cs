@@ -38,7 +38,7 @@ namespace AhiaJara.Views
             {
                 if(ProductPicker.SelectedIndex >= 0)
                 {
-                    await Navigation.PushAsync(new RequestPage());
+                    //await Navigation.PushAsync(new RequestPage());
                     return;
                 }
                 //await Navigation.PushAsync(new RequestPage());
@@ -124,12 +124,11 @@ namespace AhiaJara.Views
                     if (response.IsSuccessStatusCode)
                     {
                         await PopupNavigation.Instance.PopAsync(true);
-                        await DisplayAlert("Success", "Product request Successful", "ok");
-                        CategoryPicker.SelectedItem = null;
-                        ProductPicker.SelectedItem = null;
+                        await DisplayAlert("Success", "Product request Successful", "ok");         
                         qtyEntry.Text = "";
                         descEntry.Text = "";
                         
+
 
                     }
 
@@ -143,10 +142,6 @@ namespace AhiaJara.Views
             {
                 await DisplayAlert("Error", "Please fill all fields", "Ok");
             }
-
-
-            await Shell.Current.Navigation.PopAsync();
-
 
         }
             

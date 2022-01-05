@@ -17,6 +17,7 @@ using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AhiaJara.ViewModels
@@ -41,6 +42,8 @@ namespace AhiaJara.ViewModels
             CallAddToCartPopUpCommand = new Command<ProductModel>(async (model) => await ExecuteCallPopUpCommand());
             NavigateToCheckOutCommand = new Command<ProductModel>(async (model) => await ExecuteCheckOutCommand(model));
             NavigateToCartPageCommand = new Command<Cart>(async(model) => await CartPage_Clicked(model));
+            RefreshDashboardCommand = new Command(async () => await RefreshDashboardAsync());
+
             //SelectedImageCommand = new Command<ProductModel>(model => CardImage_SelectionChanged(model));
             SelectedImageCommand = new Command<SkinIssue>(model => CardImage_SelectionChanged1(model));
             PlusBtnCommand = new Command(PlusBtn_Clicked);
@@ -72,7 +75,6 @@ namespace AhiaJara.ViewModels
             });
         }
 
-        
 
         public ProductViewModel()
         {
@@ -89,6 +91,13 @@ namespace AhiaJara.ViewModels
                 OnPropertyChanged(nameof(IsBusy));
 
             }
+        }
+        private bool _isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set => SetProperty(ref _isRefreshing, value);
         }
         private bool isVisible { get; set; }
         public bool IsVisible
@@ -113,6 +122,9 @@ namespace AhiaJara.ViewModels
         public Command NavigateToCartPageCommand { get; }
         public Command CallAddToCartPopUpCommand { get; }
         public Command NavigateToCheckOutCommand{get; }
+
+        public ICommand RefreshDashboardCommand { get; }
+         
 
         public Command NavigateToRecommendedPageCommand { get; }
 
@@ -698,7 +710,7 @@ namespace AhiaJara.ViewModels
                         await toolbarView.GetCartCount();
                         await PopupNavigation.Instance.PopAsync(true);
                         await PopupNavigation.Instance.PushAsync(new AddToCartPop(txt));
-                        await Navigation.PushAsync(new SkinIssuePage());
+                        await Navigation.PushAsync(new Dashboard());
                     }
                 }
                 catch (Exception ex)
@@ -732,6 +744,27 @@ namespace AhiaJara.ViewModels
             Constants.cartCount = Text;
             var productCount = new ProductModel();
             productCount.quantity = Constants.cartCount;
+        }
+
+
+        private async Task RefreshDashboardAsync()
+        {
+            try
+            {
+                IsRefreshing = true;
+
+                
+                ToolbarViewModel toolbarView = new ToolbarViewModel();
+                await toolbarView.GetNotificationCount();
+                //if no internet, must wait 50ms to hide refresh loading
+                await Task.Delay(50);
+                IsRefreshing = false;
+            }
+           catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
 
 

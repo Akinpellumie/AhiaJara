@@ -1,6 +1,8 @@
 ﻿using AhiaJara.Models;
+using AhiaJara.PopUps;
 using AhiaJara.Services;
 using AhiaJara.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -90,6 +92,7 @@ namespace AhiaJara.ViewModels
                 }
                 else
                 {
+                    
                     var registerData = new UserDetails()
                     {
                         email = Email,
@@ -102,6 +105,7 @@ namespace AhiaJara.ViewModels
 
                     userAccessService = new UserAccessService();
                     RegisterUser(registerData);
+                    await PopupNavigation.Instance.PopAsync(true);
 
                 }
 
@@ -117,7 +121,7 @@ namespace AhiaJara.ViewModels
             await userAccessService.RegisterUser(registerData);
         }
 
-        private void OnSignUpClicked()
+        private void OnLoginClicked()
         {
             //(Email == null || Firstname == null || Lastname == null || Password == null || PhoneNo == null)
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
